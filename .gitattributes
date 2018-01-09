@@ -1,0 +1,97 @@
+# ******************************************************************************
+# *                                                                            *
+# *                     The PolyGen Documentation Project                      *
+# *                                                                            *
+# *                  https://github.com/tajmone/polygen-docs                   *
+# *                                                                            *
+# ******************************************************************************
+
+# Set Git's default behaviour to text-files autodetection, in case users don't
+# have `core.autocrlf` set:
+
+* text=auto
+
+# ==============================================================================
+#                    Text Files (EOL Normalization Settings)                    
+# ==============================================================================
+# Explicitly declare all files that are text and tell Git how to handle EOLs:
+
+## ================
+## PolyGen Grammars
+## ================
+*.grm          text
+
+## ===========================
+## Highlight langDefs & Themes
+## ===========================
+*.lang         text
+*.theme        text
+
+## ================
+## Shell scripts
+## ================
+*.bat          text eol=crlf
+*.com          text eol=crlf
+*.sh           text eol=lf
+
+## ================
+## Documents files
+## ================
+*.htm          text
+*.html         text
+*.markdown     text
+*.md           text
+
+## =================
+## PP macros modules
+## =================
+*.pp           text
+
+## ================
+## Documentation
+## ================
+LICENSE        text
+
+## ================
+## Git settings
+## ================
+.gitattributes text
+.gitconfig     text
+.gitignore     text
+.gitmodules    text
+
+# ==============================================================================
+#                                  Binary Files                                 
+# ==============================================================================
+# Explicitly declare all files that are binary and shouldn't be modified by Git:
+
+## =========================
+## PolyGen Compiled Grammars
+## =========================
+*.grm.o      binary
+
+
+## ================
+## Windows Binaries
+## ================
+*.exe        binary
+
+# ==============================================================================
+#                                GitHub Linguist                                
+# ==============================================================================
+#  -- https://github.com/github/linguist
+#
+# Manually define/override some extension so that GitHub's Linguist library can
+# 1) Correctly gather statistics on source files, and
+# 2) Use proper syntax highlighting on GitHub's WebUI.
+
+## ============================
+## PolyGen Grammars (sources)
+## ============================
+*.grm    linguist-language=EBNF
+
+## ===========================
+## Highlight langDefs & Themes
+## ===========================
+*.lang   linguist-language=Lua
+*.theme  linguist-language=Lua
