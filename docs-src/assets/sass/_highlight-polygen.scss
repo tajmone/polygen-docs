@@ -1,0 +1,56 @@
+// ******************************************************************************
+// *                                                                            *
+// *                            POLYGEN SYNTAX THEME                            *
+// *                                                                            *
+// ******************************************************************************
+// Syntax highlighting theme for Polygen grammars (using André Simon's Highlight).
+// Designed by Tristano Ajmone.
+
+pre.Polygen,
+code.Polygen	{
+	color: $monokai_05; // "Bianca" White
+	background-color: $monokai_00; // Rangoon Green ( almost black ) 
+}
+
+code.Polygen	{
+
+	.hl.opt {
+		// OPERATORS
+		color: $monokai_08; // Rose ( red )
+	}
+	.hl.str,
+	.hl.esc {
+		// STRINGS & ESCAPE SEQUENCES
+		background-color: $monokai_02; // Fuscous Gray ( blackboard-like brown )
+	}
+	.hl.esc {
+		// ESCAPE SEQUENCES WITHIN STRING 
+		color: $monokai_09; // West Side ( intense orange )  
+	}
+	// .hl.slc,
+	.hl.com {
+		// COMMENTS
+		color: $monokai_04;  // Tallow
+		font-style: italic;
+	}
+	.hl.kwa {
+		// NON-TERMINAL SYMBOLS
+		color: $monokai_0A; // Rajah ( orange )
+	}
+	.hl.kwb {
+		// LABEL IDENTIFIERS
+		color: $monokai_0D; // Sky Blue
+	}
+	.hl.kwc {
+		// LABEL SELECTORS
+		color: $monokai_0B; // Inch Worm ( green )
+	}
+
+
+	.hl.lin {
+		// LINE NUMBERS
+		color: $monokai_03; // Crocodile
+	}
+}
+
+

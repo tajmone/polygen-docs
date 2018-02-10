@@ -1,6 +1,6 @@
 # ******************************************************************************
 # *                                                                            *
-# *                     The PolyGen Documentation Project                      *
+# *                     The Polygen Documentation Project                      *
 # *                                                                            *
 # *                  https://github.com/tajmone/polygen-docs                   *
 # *                                                                            *
@@ -16,3 +16,19 @@
 ## ================
 *.exe
 
+## =================
+## Sass Cache Folder
+## =================
+.sass-cache
+
+## ===============
+## Tools Subfolder
+## ===============
+
+# Ignore everyghing:
+docs-src/tools/*
+
+# except:
+!docs-src/tools/README.md
+!docs-src/tools/download.bat
+!docs-src/tools/cleanup.bat

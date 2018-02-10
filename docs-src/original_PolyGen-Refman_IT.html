@@ -1,0 +1,3346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for HTML5 for Windows version 5.2.0">
+  <title>HOWTO-grm</title>
+  <meta http-equiv="content-type" content=
+  "text/html; charset=utf-8">
+</head>
+<body style="width: 90%; margin: 2em auto; font-size: 20px">
+  <h1 align="center">Polygen - Manuale di Riferimento</h1>
+  <h1 align="center">v1.0pre<br></h1>
+  <h2>Indice</h2><b>1.0</b> <a href=
+  "#1.0_Cos%E8_una_grammatica">Cos'è una grammatica?</a><br>
+  <br>
+  <b>&nbsp; &nbsp; &nbsp;1.0.1</b> <a href=
+  "#1.0.1_Sottoproduzioni">Sottoproduzioni</a><br>
+  <b>&nbsp; &nbsp; &nbsp;1.0.2</b> <a href=
+  "#1.0.2_Sottoproduzioni_opzionali">Sottoproduzioni
+  opzionali</a><br>
+  <b>&nbsp; &nbsp; &nbsp;1.0.3</b> <a href=
+  "#1.0.3_Commenti">Commenti</a><br>
+  <br>
+  <br>
+  <b>2.0</b> <a href=
+  "#2.0_Caratteristiche_avanzate">Caratteristiche avanzate</a><br>
+  <b>&nbsp; &nbsp; &nbsp;</b><b><br></b><b>&nbsp; &nbsp;
+  &nbsp;</b><b>2.0.1</b> <a href=
+  "#2.0.1_Concatenazione">Concatenazione</a><br>
+  <b>&nbsp; &nbsp; &nbsp;2.0.2</b> <a href=
+  "#2.0.2_Epsilon">Epsilon</a><b>&nbsp; &nbsp; &nbsp;</b><b><br>
+  &nbsp; &nbsp; &nbsp;2.0.3</b> <a href=
+  "#2.0.3_Controllo_della_probabilit%E0_di_una">Controllo della
+  probabilità di una produzione</a><br>
+  <b>&nbsp; &nbsp; &nbsp;</b><b>2.0.4</b> <a href=
+  "#2.0.4_Unfolding">Unfolding</a><br>
+  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+  &nbsp;<b><br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.0.4.1</b> <a href=
+  "#2.0.4.1_Di_simboli_non_terminali">Di simboli non
+  terminali<br></a><b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  2.0.4.2</b> <a href="#2.0.4.2_Di_sottoproduzioni">Di
+  sottoproduzioni</a><br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <b>2.0.4.3</b> <a href=
+  "#2.0.4.3_Di_sottoproduzioni_opzionali">Di sottoproduzioni
+  opzionali<br></a><b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  2.0.4.4</b> <a href="#2.0.4.4_Di_sottoproduzioni_permutabili">Di
+  sottoproduzioni permutabili</a><br>
+  <b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+  2.0.4.5</b> <a href="#2.0.4.5_Di_sottoproduzioni_soggette">Di
+  sottoproduzioni soggette ad unfolding in profondità</a><br>
+  <b>&nbsp; &nbsp; &nbsp;</b><br>
+  <b>&nbsp; &nbsp; &nbsp;</b><b>2.0.5</b> <a href=
+  "#2.0.5_Attributi">Attributi</a><br>
+  <b>&nbsp; &nbsp; &nbsp;</b> <b>&nbsp; &nbsp; &nbsp;<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.0.5.1</b> <a href=
+  "#2.0.5.1_Etichette_e_selezione">Etichette e selezione</a><br>
+  <b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.0.5.2</b> <a href=
+  "#2.0.5.2_Selezione_multipla">Selezione multipla</a><a href=
+  "#2.0.5.2_Selezione_multipla"></a><br>
+  <b>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+  <b>2.0.5.3</b> <a href="#2.1.4_Reset_di_una_selezione">Reset
+  dell'ambiente delle etichette</a><br>
+  <br>
+  <b>&nbsp;&nbsp;&nbsp; &nbsp;2.0.6</b> <a href=
+  "#2.0.6_Maiuscole">Maiuscole<br></a><b>&nbsp;&nbsp;&nbsp;
+  &nbsp;2.0.7</b> <a href=
+  "#2.0.7_Permutazioni">Permutazioni</a><br>
+  <b>&nbsp;&nbsp;&nbsp; &nbsp;2.0.8</b> <a href=
+  "#2.0.8_Unfolding_in_profondit%E0">Unfolding in
+  profondità</a><br>
+  <b>&nbsp;&nbsp;&nbsp; &nbsp;2.0.9</b> <a href=
+  "#2.0.9_Folding">Folding</a><br>
+  <b>&nbsp;&nbsp;&nbsp;&nbsp; 2.0.10</b> <a href=
+  "#2.0.9_Folding">Binding</a><br>
+  &nbsp;<br>
+  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+  <b>2.0.10.1</b> <a href="#2.0.10.1_Chiusure">Chiusure</a><br>
+  <b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  2.0.10.2</b> <a href="#2.0.10.2_Sospensioni">Sospensioni</a><br>
+  <br>
+  <b>&nbsp;&nbsp;&nbsp;&nbsp; 2.0.11</b> <a href=
+  "#2.0.9_Folding">Ambienti e Scoping</a><br>
+  <br>
+  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <b>&nbsp;&nbsp;&nbsp;&nbsp;
+  2.0.11.1</b> <a href="#2.0.11.1_Ambiente_a_top-level">Ambienti a
+  top-level</a><br>
+  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+  <b>2.0.11.2</b> <a href=
+  "#2.0.11.2_Sottoproduzioni_e_Scoping">Ambienti locali</a><br>
+  <b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  2.0.11.3</b> <a href="#2.0.11.3_Scoping_lessicale">Scoping
+  statico lessicale</a><br>
+  <br>
+  <b>&nbsp;&nbsp;&nbsp;&nbsp; 2.0.12</b> <a href=
+  "#2.0.5.2_Selezione_multipla">Generazione posizionale</a><br>
+  <b>&nbsp;&nbsp;&nbsp;&nbsp; 2.0.13</b> <a href=
+  "#2.0.13_Iterazione">Iterazione</a><br>
+  <br>
+  <br>
+  <b>2.1</b> <a href="#2.1_Tecniche_avanzate">Tecniche
+  avanzate</a><br>
+  <br>
+  <b>&nbsp; &nbsp; &nbsp;</b><b>2.1.1</b> <a href=
+  "#2.1.1_Ricorsione">Ricorsione</a><br>
+  <b>&nbsp; &nbsp; &nbsp;</b><b>2.1.2</b> <a href=
+  "#2.1.2_Ragruppamento">Raggruppamento</a><br>
+  <b>&nbsp; &nbsp; &nbsp;</b><b>2.1.3</b> <a href=
+  "#2.1.3_Controllo_della_probabilt%E0_di_una">Controllo della
+  probabiltà di una sottoproduzione opzionale</a><br>
+  <br>
+  <br>
+  <b>3.0</b> <a href=
+  "#3.0_Controllo_statico_di_una_grammatica">Controllo statico di
+  una grammatica</a><br>
+  <br>
+  <b>&nbsp; &nbsp; &nbsp;</b><b>3.0.1</b> <a href=
+  "#3.0.1_Errori">Errori</a><br>
+  <br>
+  <b>&nbsp; &nbsp; &nbsp;</b><b>&nbsp; &nbsp;
+  &nbsp;</b><b>&nbsp;3.0.1.1</b> <a href=
+  "#3.0.1.1_Inesistenza_di_simboli_non">Inesistenza di simboli non
+  terminali</a><br>
+  <b>&nbsp; &nbsp; &nbsp;</b><b>&nbsp; &nbsp; &nbsp;</b>
+  <b>&nbsp;</b><b>3.0.1.2</b> <a href=
+  "#3.0.1.2_Ricorsioni_cicliche_e">Ricorsioni cicliche e
+  non-terminazione</a><br>
+  <b>&nbsp; &nbsp; &nbsp;</b><b>&nbsp; &nbsp; &nbsp;</b>
+  <b>&nbsp;</b><b>3.0.1.3</b> <a href=
+  "#3.0.1.3_Unfolding_ricorsivi">Unfolding ricorsivi</a><br>
+  <b>&nbsp; &nbsp; &nbsp;</b><b>&nbsp; &nbsp; &nbsp;</b>
+  <b>&nbsp;</b><b>3.0.1.4</b> <a href=
+  "#3.0.1.4_Epsilon-produzioni">Epsilon-produzioni</a><br>
+  <b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+  3.0.1.5</b> <a href=
+  "#3.0.1.5_Ridefinizione_di_simboli_non_terminali">Ridefinizione
+  di simboli non terminali</a><b><br>
+  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+  3.0.1.6</b> <a href="#3.0.1.6_Carattere_sconosciuto">Carattere
+  illegale</a><br>
+  <b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+  3.0.1.7</b> <a href="#3.0.1.7_Token_inaspettato">Token
+  inaspettato</a><br>
+  <br>
+  <b>&nbsp; &nbsp; &nbsp;</b><b>3.0.2</b> <a href=
+  "#3.0.2_Warning">Warning</a><br>
+  <br>
+  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp; <b>3.0.2.0</b><a href="#3.0.2.0_Livello_0">Livello
+  0</a><br>
+  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+  &nbsp;<b>3.0.2.1</b> <a href="#3.0.2.0_Livello_1">Livello
+  1</a><br>
+  <br>
+  <b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</b><b>3.0.2.1.1</b>
+  <a href="#3.0.2.1.1_Inesistenza_del_simbolo_I">Inesistenza del
+  simbolo <code>I</code></a><br>
+  <b>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</b> <b>&nbsp; &nbsp;
+  &nbsp;</b><b>&nbsp;</b> <b>&nbsp; &nbsp; 3.0.2.1.2</b> <a href=
+  "#3.0.2.1.2_Potenziali_epsilon-produzioni">Potenziali
+  epsilon-produzioni</a><br>
+  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <b>3.0.2.1.3</b> <a href=
+  "#3.0.2.1.3_Selezione_distruttiva">Selezione distruttiva</a><br>
+  <br>
+  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+  &nbsp;<b>3.0.2.2</b> <a href="#3.0.2.0_Livello_2">Livello
+  2</a><br>
+  <b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp; 3.0.2.2.1</b> <a href=
+  "#3.0.2.2.1_Permutazione_inutile">Permutazione inutile</a><br>
+  <b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</b> <b>3.0.2.2.2</b> <a href=
+  "#3.0.2.2.2_Unfolding_inutile">Unfolding inutile</a><br>
+  <br>
+  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;<b>3.0.2.3</b> <a href=
+  "#3.0.2.0_Livello_3">Livello 3</a><br>
+  <br>
+  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  <b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+  3.0.2.3.1</b> <a href=
+  "#3.0.2.3.1_Unfolding_assegnazione">Unfolding di un simbolo
+  legato ad un'assegnazione</a><br>
+  <br>
+  <br>
+  <b>4.0</b> <a href="#4.0_Appendice">Appendice</a><br>
+  <br>
+  <b>&nbsp; &nbsp; &nbsp;</b><b>4.1.1</b> <a href=
+  "#4.1.1_Sintassi_concreta">Sintassi concreta</a><br>
+  <b>&nbsp; &nbsp; &nbsp;4.1.2</b> <a href=
+  "#4.1.2_Sintassi_astratta"></a><a href=
+  "#4.1.2_Sintassi_astratta">Sintassi astratta</a><br>
+  <b>&nbsp; &nbsp; &nbsp;</b><b>4.1.3</b> <a href=
+  "#4.1.3_Regole_lessicali">Regole lessicali</a><br>
+  <b>&nbsp;&nbsp;&nbsp; &nbsp;4.1.4</b> <a href=
+  "#4.1.4_Sequenze_escape">Sequenze escape</a><br>
+  &nbsp; &nbsp;&nbsp; <b>4.1.5</b> <a href=
+  "#4.1.5_Regole_di_traduzione">Regole di traduzione</a><br>
+  <b>&nbsp; &nbsp; &nbsp;</b><br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h2><a name="1.0_Cosè_una_grammatica" id=
+  "1.0_Cosè_una_grammatica"></a>1.0 Cos'è una grammatica?</h2>Una
+  grammatica è un file di testo ASCII che contiene le definizioni
+  della struttura sintattica e dei termini che il programma
+  utilizza per comporre frasi. Il <i>Polygen</i> è in grado di
+  interpretare un linguaggio per la definizione di grammatiche di
+  <i>tipo 2</i> (secondo la classificazione di Chomsky) che
+  consiste in una variante più espressiva dell'<i>EBNF (Extended
+  Backus Naur Form)</i> - una forma semplice e molto utilizzata di
+  descrizione della sintassi di un linguaggio.<br>
+  <br>
+  Una definizione consiste nello specificare per un dato simbolo
+  una serie di <b>produzioni</b> separate dal <b>pipe</b>
+  <font color="#CC0000"><code>|</code></font> e seguite dal
+  <b>punto e virgola <code><font color=
+  "#CC0000">;</font></code></b> che funge da terminatore:<br>
+  <br>
+  <b><samp>ESEMP</samp><samp>IO</samp></b><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> la mela <font color="#CC0000">|</font> il
+  mango <font color="#CC0000">|</font> l'arancia <font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <br>
+  <b><samp>PRODUCE<br></samp></b><code><br>
+  la mela<br>
+  il mango<br>
+  l'arancia</code><br>
+  <br>
+  <br>
+  Questa definizione del simbolo <code><font color=
+  "#996633">S</font></code> (detto <b>non terminale</b>) permette
+  la generazione dei simboli <code>la mela</code>, <code>il
+  mango</code> oppure <code>l'arancia</code> (detti
+  <b>terminali</b>).<br>
+  La probabilità con cui viene generata <code>la mela</code> è pari
+  ad 1 volta su 3, così come per <code>il mango</code> e
+  <code>l'arancia</code>: perciò in presenza di 3 produzioni si ha
+  1 probabilità su 3 per ciascuna di esse; in presenza di 5
+  produzioni si ha una probabilità su 5, ecc.<br>
+  <br>
+  E' possibile fornire numerose definizioni di simboli non
+  terminali diversi e richiamare tali simboli nelle varie
+  produzioni, al fine di rendere articolata la generazione di
+  frasi:<br>
+  <br>
+  <b><samp>ESEMPIO</samp></b><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> il <font color="#996633">Animale</font>
+  mangia <font color="#996633">Frutto</font> <font color=
+  "#CC0000">;</font><br>
+  <br>
+  <font color="#996633">Animale</font> <font color=
+  "#CC0000">::=</font> gatto <font color="#CC0000">|</font> cane
+  <font color="#CC0000">;</font><br>
+  <br>
+  <font color="#996633">Frutto</font> <font color=
+  "#CC0000">::=</font> la mela <font color="#CC0000">|</font> il
+  mango <font color="#CC0000">;</font></code><br>
+  <br>
+  <br>
+  <b><samp>PRODUCE<br></samp></b><code><br>
+  il gatto mangia la mela<br>
+  il cane mangia il mango</code><br>
+  <br>
+  ecc.<br>
+  <br>
+  <br>
+  <small><b>N.B.:</b> il <i>Polygen</i> adotta convenzionalmente il
+  simbolo non terminale <code><font color="#996633">S</font></code>
+  come iniziale, pertanto qualunque grammatica deve presentare
+  almeno la definizione di esso.</small><br>
+  <br>
+  Per convenzione, un termine che comincia per lettera maiuscola è
+  considerato un simbolo non terminale (associato quindi ad una
+  definizione a valle o a monte dell'utilizzo), mentre un termine
+  che comincia per lettera minuscola è cosiderato un simbolo
+  terminale, ovvero una semplice parola. Pertanto, se si desidera
+  generare una parola che inizia con lettera maiuscola, è
+  necessario specificarla tra virgolette affinché non venga confusa
+  con un simbolo non terminale:<br>
+  <br>
+  <b><samp>ESEMPIO</samp></b><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color="#996633">Fido</font> "Fido"
+  <font color="#CC0000">;</font><br>
+  <br>
+  <font color="#996633">Fido</font> <font color=
+  "#CC0000">::=</font> bassotto <font color="#CC0000">|</font>
+  pastore <font color="#CC0000">|</font> alano <font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <br>
+  <b><samp>PRODUCE<br></samp></b><code><br>
+  bassotto Fido<br>
+  pastore Fido<br>
+  alano Fido</code><br>
+  <br>
+  <br>
+  Si noti che i caratteri che il programma utilizza come parole
+  chiave (ad esempio le parentesi tonde e quadrate) devono essere
+  specificati tra virgolette se si desidera che vengano generati in
+  output (si veda la sezione <a href=
+  "#4.1.3_Regole_lessicali">4.1.3</a> per le regole lessicali
+  complete).<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> "(" <font color="#CC0000">(</font>mela
+  <font color="#CC0000">|</font> pera<font color="#CC0000">)</font>
+  ")" <font color="#CC0000">;</font></code><br>
+  <br>
+  <br>
+  <samp><b>PRODUCE<br></b></samp><code><br>
+  ( mela )<br>
+  ( pera )</code><br>
+  <br>
+  <br>
+  <br>
+  <h3><a name="1.0.1_Sottoproduzioni" id=
+  "1.0.1_Sottoproduzioni"></a> 1.0.1 Sottoproduzioni<br></h3>In una
+  definizione, nella parte a destra del <font color=
+  "#CC0000"><code>::=</code></font>, è possibile specificare una
+  sottoproduzione di qualunque forma tra parentesi tonde:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> la <font color=
+  "#CC0000">(</font></code><code>pera</code> <code><font color=
+  "#CC0000">|</font> mela <font color="#CC0000">|</font>
+  banana</code><code><font color="#CC0000">)</font> e' sul
+  <font color="#CC0000">(</font></code><code>tavolo</code>
+  <code><font color="#CC0000">|</font></code>
+  <code>davanzale</code><code><font color="#CC0000">)</font>
+  <font color="#CC0000">;</font><br>
+  <br></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>la pera e' sul tavolo<br>
+  la pera e' sul davanzale<br>
+  la mela e' sul tavolo<br>
+  la mela e' sul davanzale<br>
+  la banana e' sul tavolo<br>
+  la banana e' sul davanzale<br>
+  <br></code><br>
+  <br>
+  <h3><a name="1.0.2_Sottoproduzioni_opzionali" id=
+  "1.0.2_Sottoproduzioni_opzionali"></a> 1.0.2 Sottoproduzioni
+  opzionali<br></h3>Una sottoproduzione specificata tra parentesi
+  quadrate anziché tonde è considerata opzionale ed ha una
+  probabilità del 50% (pari ad 1 volta su 2) di essere
+  generata:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> la <font color="#CC0000">(</font>pera
+  <font color="#CC0000">|</font> mela<font color="#CC0000">)</font>
+  e' sul <font color="#CC0000">(</font>tavolo <font color=
+  "#CC0000">|</font> davanzale<font color="#CC0000">)</font>
+  <font color="#CC0000">[</font>del salotto <font color=
+  "#CC0000">|</font> della cucina<font color="#CC0000">]
+  ;</font><br>
+  <br></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>la pera e' sul tavolo<br>
+  la pera e' sul tavolo del salotto<br>
+  la pera e' sul tavolo della cucina<br>
+  la pera e' sul davanzale<br>
+  <br></code> ecc.<br>
+  <br>
+  <br>
+  <br>
+  <h3><a name="1.0.3_Commenti" id="1.0.3_Commenti"></a> 1.0.3
+  Commenti<br></h3>E' possibile scrivere testo qualunque tra la
+  coppia di parole chiave <font color=
+  "#CC0000"><code>(*</code></font> e <font color=
+  "#CC0000"><code>*)</code></font>. Tale testo verrà completamente
+  ignorato dal <i>Polygen</i>.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> la mela <font color="#CC0000">|</font> la
+  pera <font color="#666666">(* | la banana *)</font> <font color=
+  "#CC0000">|</font> il mango <font color="#CC0000">;</font><br>
+  <font color="#666666">(* anche questo e' un commento
+  *)</font><br>
+  <br></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>la mela<br>
+  la pera<br>
+  il mango<br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br></code>
+  <h2><a name="2.0_Caratteristiche_avanzate" id=
+  "2.0_Caratteristiche_avanzate"></a>2.0 Caratteristiche
+  avanzate<br></h2>Il <i>Polygen</i> supporta una serie di
+  costrutti che aumentano l'espressività del linguaggio di
+  definizione delle grammatiche ben oltre <span style=
+  "font-style: italic;">EBNF</span>.<br>
+  <br>
+  <br>
+  <h3><a name="2.0.1_Concatenazione" id=
+  "2.0.1_Concatenazione"></a>2.0.1
+  Concatenazione<br></h3>L'<b>apice</b> <font color=
+  "#CC0000"><code>^</code></font> può essere prefisso, suffisso o
+  infisso in qualunque punto di una produzione per istruire il
+  programma a non inserire un carattere di spazio nell'output
+  generato:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> "(" <font color="#CC0000">^ (</font>mela
+  <font color="#CC0000">|</font> pera<font color="#CC0000">)
+  ^</font> ")" <font color="#CC0000">;</font><br>
+  <br></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>(mela)<br>
+  (pera)<br>
+  <br></code><br>
+  La concatenazione dell'output è particolarmente comoda nei casi i
+  cui si desidera generare parole assemblando sillabe o lettere da
+  produzioni differenti:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> la bottega del <font color=
+  "#996633">Prodotto</font> <font color="#CC0000">;</font><br>
+  <br>
+  <font color="#996633">Prodotto</font> <font color=
+  "#CC0000">::=</font> <font color="#CC0000">^</font>lo sciroppo
+  <font color="#CC0000">| ^</font>le arance <font color=
+  "#CC0000">|</font> salame <font color="#CC0000">;</font><br>
+  <br></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>la bottega dello sciroppo<br>
+  la bottega delle arancie<br>
+  la bottega del salame<br>
+  <br></code><br>
+  Si badi che la specifica di più apici è del tutto equivalente
+  alla specifica di un apice solo.<br>
+  <br>
+  <br>
+  <h3><a name="2.0.2_Epsilon" id="2.0.2_Epsilon"></a> 2.0.2
+  Epsilon<br></h3>Il carattere di underscore <font color=
+  "#CC0000"><code>_</code></font> è la parola chiave che specifica
+  la produzione vuota, formalmente chiamata <b>epsilon</b>.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> palla <font color="#CC0000">| _ ;</font><br>
+  <br></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>palla<br>
+  <font color="#CC0000">_</font><br></code><br>
+  <br>
+  Si badi che una epsilon-produzione non consiste nel carattere
+  <font color="#CC0000"><code>_</code></font> in sè, né in un
+  carattere di spazio, ma nell'assenza di output.<br>
+  L'esempio di cui sopra è esattamente identico al seguente:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color=
+  "#CC0000">[</font>palla<font color="#CC0000">] ;</font><br>
+  <br></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>palla<br>
+  <font color="#CC0000">_</font><br></code><br>
+  <br>
+  Ovvero una grammatica che può generare l'output <code>a</code>
+  oppure nulla.<br>
+  <br>
+  <br>
+  <br>
+  <h3><a name="2.0.3_Controllo_della_probabilità_di_una" id=
+  "2.0.3_Controllo_della_probabilità_di_una"></a> 2.0.2 Controllo
+  della probabilità di una produzione<br></h3>Il simbolo <b>più</b>
+  <font color="#CC0000"><code>+</code></font> prefisso ad una
+  qualunque produzione aumenta la probabilità che questa venga
+  generata rispetto alle altre della stessa serie; simmetricamente,
+  il simbolo <b>meno</b> <font color=
+  "#CC0000"><code>-</code></font> diminuisce la probabilità. Un
+  numero a piacere di <font color="#CC0000"><code>+</code></font> e
+  <font color="#CC0000"><code>-</code></font> può essere
+  specificato:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> il gatto mangia <font color=
+  "#CC0000">(+</font> la mela <font color="#CC0000">|-</font> la
+  pera <font color="#CC0000">|</font> l'arancia <font color=
+  "#CC0000">|--</font> il limone<font color="#CC0000">)
+  ;</font><br></code><br>
+  <br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>il gatto mangia la mela<br>
+  il gatto mangia la pera<br>
+  il gatto mangia l'arancia<br>
+  il gatto mangia il limone<br>
+  <br></code><br>
+  La definizione del simbolo non terminale <code>S</code> viene
+  internamente interpretata come:<br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> il gatto mangia <font color=
+  "#CC0000">(</font> la mela <font color="#CC0000">|</font> la mela
+  <font color="#CC0000">|</font> la mela <font color=
+  "#CC0000">|</font> la mela<br>
+  <font color="#CC0000">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |</font> la pera <font color=
+  "#CC0000">|</font> la pera<br>
+  <font color="#CC0000">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |</font> l'arancia
+  <font color="#CC0000">|</font> l'arancia <font color=
+  "#CC0000">|</font> l'arancia<br>
+  <font color="#CC0000">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |</font> il limone<font color=
+  "#CC0000">) ;</font><br>
+  <br></code><br>
+  pertanto la probabilità che la produzione <code>la mela</code>
+  venga generata è maggiore rispetto a quella de
+  <code>l'arancia</code>, che è maggiore di quella de <code>la
+  pera</code>, a sua volta maggiore de <code>il limone</code>.<br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h3><a name="2.0.4_Unfolding" id="2.0.4_Unfolding"></a> 2.0.4
+  Unfolding<br></h3>Il <i>Polygen</i> dispone di un potente
+  sottosistema di unfolding che, in generale, permette di portare
+  al livello della sequenza corrente una serie di produzioni
+  altrimenti raccolte in una sottoproduzione o da un simbolo non
+  terminale.<br>
+  Si può intuitivamente vedere questa operazione come un
+  <i>appiattimento</i> di una grammatica operato a monte della
+  generazione e che pertanto può influire su quest'ultima dal punto
+  di vista probabilistico soltanto, poiché la trasformazione non
+  altera la semantica della grammatica sorgente - come dimostrano
+  le regole di traduzione riportate in sezione <a href=
+  "#4.1.5_Regole_di_traduzione">4.1.5</a>.<br>
+  <br>
+  Non tutti i possibili atomi tuttavia possono essere sottoposti ad
+  un unfolding, ma solamente quelli per cui tale operazione ha
+  senso: si consulti la sezione <a href=
+  "#4.1.1_Sintassi_concreta">4.1.1</a> per conoscere tale
+  sottoinsieme.<br>
+  <br>
+  <h4><a name="2.0.4.1_Di_simboli_non_terminali" id=
+  "2.0.4.1_Di_simboli_non_terminali"></a> 2.0.4.1 Di simboli non
+  terminali<br></h4>Si consideri il seguente scenario:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> gatto soriano <font color="#CC0000">|</font>
+  cane <font color="#996633">Razza</font>&nbsp;<font color=
+  "#CC0000">;</font><br>
+  <br>
+  <font color="#996633">Razza</font> <font color=
+  "#CC0000">::=</font> pastore <font color="#CC0000">|</font>
+  dalmata&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>bastardo <font color="#CC0000">;</font><br>
+  <br>
+  <br></code> <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>gatto soriano<br>
+  cane pastore<br>
+  cane dalmata<br>
+  cane bastardo<br>
+  <br></code><br>
+  La probabilità che <code>gatto soriano</code> sia generato è pari
+  a 1 su 2; non vale però lo stesso per <code>cane pastore, cane
+  dalmata</code> e <code>cane bastardo</code>, sebbene un utente
+  possa ritenere ragionevole che siano tutti generabili con la
+  medesima probabilità.<br>
+  Il problema nasce dal fatto che <code>gatto soriano</code> e
+  <code>cane</code> <font color="#996633"><code>Razza</code></font>
+  si spartiscono equamente la produzione di <font color=
+  "#996633"><code>S</code></font>, ovvero la probabilità con cui
+  viene generato <code>gatto soriano</code> è la stessa (pari ad 1
+  su 2) con cui viene generato uno tra&nbsp;<code>cane pastore,
+  cane dalmata</code> e <code>cane bastardo</code>. Nella
+  fattispecie la distribuzione delle probabilità per ogni
+  produzione possibile appare come segue:<br>
+  <br>
+  <table border="1" width="30%" cellpadding="2" cellspacing="2"
+  bgcolor="#CCCCCC">
+    <tbody>
+      <tr>
+        <td><code>gatto soriano</code></td>
+        <td>1/2</td>
+      </tr>
+      <tr>
+        <td><code>cane pastore</code></td>
+        <td>1/2 * 1/3 = 1/6</td>
+      </tr>
+      <tr>
+        <td><code>cane dalmata</code><br></td>
+        <td>1/2 * 1/3 = 1/6</td>
+      </tr>
+      <tr>
+        <td><code>cane bastardo</code></td>
+        <td>1/2 * 1/3 = 1/6</td>
+      </tr>
+    </tbody>
+  </table><br>
+  <br>
+  Come prova, 1/2 + 1/6 + 1/6 + 1/6 = 1.<br>
+  <br>
+  Al fine di ridistribuire equamente le probabilità delle
+  sottoproduzioni sarebbe necessario riscrivere <font color=
+  "#996633"><code>S</code></font> nel modo seguente:<br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> gatto soriano <font color="#CC0000">|</font>
+  cane pastore <font color="#CC0000">|</font> cane dalmata
+  <font color="#CC0000">|</font> cane bastardo <font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  perdendo tuttavia l'architettura originale che raccoglieva le
+  razze in un apposito simbolo non terminale ed aumentando di molto
+  la quantità di lavoro da compiere da parte dell'utente.<br>
+  Per risolvere questo problema, che rappresenta un'istanza del più
+  vasto problema dell'irregolarità della distribuzione delle
+  probabilità in presenza, in generale, di sottoproduzioni, il
+  linguaggio di operare l'<b>unfolding</b> di un simbolo non
+  terminale:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> gatto soriano <font color="#CC0000">|</font>
+  cane <font color="#996633"><font color=
+  "#CC0000">&gt;</font>Razza</font>&nbsp; <font color=
+  "#CC0000">;</font><br>
+  <br>
+  <font color="#996633">Razza</font> <font color=
+  "#CC0000">::=</font> pastore <font color="#CC0000">|</font>
+  dalmata&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>bastardo <font color="#CC0000">;</font></code><br>
+  <br>
+  <br>
+  Prefiggendo la parola chiave <font color=
+  "#CC0000"><code>&gt;</code></font>, il programma opera, nella
+  fase di preprocessing a monte della generazione, la
+  trasformazione di cui sopra, cambiando la distribuzione delle
+  probabilità nel seguente modo:<br>
+  <br>
+  <br>
+  <table border="1" width="30%" cellpadding="2" cellspacing="2"
+  bgcolor="#CCCCCC">
+    <tbody>
+      <tr>
+        <td><code>gatto soriano</code></td>
+        <td>1/4</td>
+      </tr>
+      <tr>
+        <td><code>cane pastore</code></td>
+        <td>1/4</td>
+      </tr>
+      <tr>
+        <td><code>cane dalmata</code><br></td>
+        <td>1/4</td>
+      </tr>
+      <tr>
+        <td><code>cane bastardo</code></td>
+        <td>1/4</td>
+      </tr>
+    </tbody>
+  </table><br>
+  <br>
+  <br>
+  <h4><a name="2.0.4.2_Di_sottoproduzioni" id=
+  "2.0.4.2_Di_sottoproduzioni"></a> 2.0.4.2 Di
+  sottoproduzioni<br></h4>Non è raro utilizzare una sottoproduzione
+  per diminuire la verbosità di una grammatica, ad esempio
+  raccogliendo una serie di sostantivi in base all'articolo che
+  supportano, evitando così di doverne specificare uno per
+  ciascuno.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> il <font color="#CC0000">(</font>gatto
+  <font color="#CC0000">|</font>
+  cane&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>canarino&nbsp;</code><code><font color=
+  "#CC0000">|</font></code>
+  <code>toro&nbsp;</code><code><font color=
+  "#CC0000">|</font></code>
+  <code>lupo&nbsp;</code><code><font color=
+  "#CC0000">|</font></code> <code>gallo<font color=
+  "#CC0000">)</font><br>
+  &nbsp; &nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;lo storione<br>
+  &nbsp; &nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;
+  la&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>capra&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>pecora<font color="#CC0000">)</font> <font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <br>
+  Se da una parte l'architettura e la scalabilità della grammatica
+  ne giovano, dall'altra la qualità dell'output ne risente molto,
+  in quanto 1 volta su 3 verrà generato <code>lo storione</code>
+  per un motivo analogo a quello esposto in sezione <a href=
+  "#2.0.4.1_Di_simboli_non_terminali">2.0.4.1</a>. Per portare
+  l'eterogeneità dell'output al (ragionevolmente desiderabile)
+  livello in cui ciascun animale possa essere prodotto con la
+  medesima probabilità, sarebbe necessario evitare l'utilizzo delle
+  parentesi tonde, le quali danno luogo a sole 3 macro-produzioni,
+  e specificare l'articolo accanto ad ogni nome di animale; in
+  altre parole, quindi, rinunciare all'architettura originale della
+  grammatica.<br>
+  A tale proposito&nbsp;una qualunque sottoproduzione può essere
+  sottoposta ad <b>unfolding</b> in maniera analoga a quanto
+  esposto in sezione <a href=
+  "#2.0.4.1_Di_simboli_non_terminali">2.0.4.1</a> per i simboli non
+  terminali. L'uso dell'operatore <font color=
+  "#CC0000"><code>&gt;</code></font> istruisce il programma a
+  delegare al preprocessore l'onere di operare l'unfolding della
+  sottoproduzione immediatamente seguente, permettendo all'utente
+  di mantenere inalterata l'architettura della grammatica
+  sorgente.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> il</code> <font color=
+  "#CC0000"><code>&gt;</code></font><code><font color=
+  "#CC0000">(</font>gatto <font color="#CC0000">|</font>
+  cane&nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>canarino&nbsp;</code><code><font color="#CC0000">|</font></code><code>toro&nbsp;</code><code><font color="#CC0000">|</font></code><code>lupo&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>gallo<font color="#CC0000">)</font><br>
+  &nbsp; &nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;lo storione<br>
+  &nbsp; &nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp; la&nbsp;</code><font color=
+  "#CC0000"><code>&gt;</code></font><code><font color=
+  "#CC0000">(</font></code><code>capra&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>pecora</code><code><font color="#CC0000">)</font></code>
+  <code><font color="#CC0000">;</font></code><br>
+  <br>
+  <br>
+  viene tradotto esattamente come desiderato:<br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> il gatto <font color="#CC0000">|</font> il
+  cane&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>il canarino&nbsp;</code><code><font color=
+  "#CC0000">|</font></code> <code>il
+  toro&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>il lupo&nbsp;</code><code><font color=
+  "#CC0000">|</font></code> <code>il gallo<br>
+  &nbsp; &nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;lo storione<br>
+  &nbsp; &nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp; la</code>
+  <code>capra&nbsp;</code><code><font color=
+  "#CC0000">|</font></code> <code>la pecora <font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <br>
+  ovvero una serie di produzioni alla stesso livello.<br>
+  <br>
+  Un esempio più articolato:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color=
+  "#3333FF">M:</font>&nbsp;</code><font color=
+  "#CC0000"><code>&gt;</code></font><code><font color=
+  "#CC0000">(</font></code> <code>il <font color=
+  "#CC0000">(</font>gatto <font color="#CC0000">|</font>
+  cane</code> <font color=
+  "#CC0000"><code>&gt;</code></font><code><font color=
+  "#CC0000">(</font>pastore <font color="#CC0000">|</font>
+  dalmata<font color="#CC0000">) |</font></code>
+  <code>canarino&nbsp;</code><code><font color=
+  "#CC0000">|</font></code>
+  <code>toro&nbsp;</code><code><font color=
+  "#CC0000">|</font></code> <code>lupo</code> <code><font color=
+  "#CC0000">|</font></code> <code>gallo<font color=
+  "#CC0000">)</font><br>
+  &nbsp; &nbsp; &nbsp;</code><code>&nbsp; &nbsp;</code>
+  <code><font color="#CC0000">&nbsp;|</font></code> <code>lo
+  storione<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</code> <code><font color=
+  "#CC0000">)</font></code><br>
+  <code>&nbsp; &nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;<font color=
+  "#3333FF">F:</font> la</code> <font color=
+  "#CC0000"><code>&gt;</code></font><code><font color=
+  "#CC0000">(</font></code><code>capra&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>pecora<font color="#CC0000">)</font> <font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <br>
+  viene tradotto in:<br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color="#3333FF">M:</font></code>
+  <code>il gatto <font color="#CC0000">|</font></code>
+  <code><font color="#3333FF">M:</font></code> <code>il cane
+  pastore</code> <code><font color="#CC0000">|</font></code>
+  <code><font color="#3333FF">M:</font></code> <code>il cane
+  dalmata</code> <code><font color="#CC0000">|</font></code>
+  <code><font color="#3333FF">M:</font></code> <code>il
+  canarino&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code><font color="#3333FF">M:</font></code> <code>il
+  toro&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code><font color="#3333FF">M:</font></code> <code>il
+  lupo&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code><font color="#3333FF">M:</font></code> <code>il gallo<br>
+  &nbsp; &nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#3333FF">M:</font></code> <code>lo storione</code><br>
+  <code>&nbsp; &nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;<font color=
+  "#3333FF">F:</font> la</code>
+  <code>capra&nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#3333FF">F:</font></code> <code>pecora <font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <br>
+  <br>
+  <h4><a name="2.0.4.3_Di_sottoproduzioni_opzionali" id=
+  "2.0.4.3_Di_sottoproduzioni_opzionali"></a> 2.0.4.3 Di
+  sottoproduzioni opzionali</h4>Una sottoproduzione tra parentesi
+  quadrate (vedi sezione <a href=
+  "#1.0.2_Sottoproduzioni_opzionali">1.0.2</a>) è equivalente ad
+  una sottoproduzione tra parentesi tonde che produce il contenuto
+  originale oppure <b>epsilon</b> (si veda l'esempio di cui in
+  sezione <a href=
+  "#2.1.3_Controllo_della_probabilt%E0_di_una">2.1.3</a>).<br>
+  Alla luce di ciò, operare l'<b>unfolding</b> di una
+  sottoproduzione opzionale è perfettamente lecito, dunque, ed il
+  risultato è analogo a quanto descritto in sezione <a href=
+  "#2.0.4.2_Di_sottoproduzioni">2.0.4.2</a>.<br>
+  <br>
+  <br>
+  <h4><a name="2.0.4.4_Di_sottoproduzioni_permutabili" id=
+  "2.0.4.4_Di_sottoproduzioni_permutabili"></a> 2.0.4.4 Di
+  sottoproduzioni permutabili</h4>Come è possibile constatare dalle
+  regole di traduzione in sezione <a href=
+  "#4.1.5_Regole_di_traduzione">4.1.5</a>, l'unfolding operato dal
+  preprocessore avviene a valle delle permutazioni (vedi sezione
+  <a href=
+  "file:///home/manta/develop/polygen/0.8/ita/HOWTO-grm.html#2.0.7_Permutazioni">
+  2.0.7</a>): una sottoproduzione permutabile legata all'operatore
+  <font color="#CC0000"><code>&gt;</code></font> è pertanto
+  soggetta prima alla permutazione, la quale mantiene valida
+  l'azione dell'<b>unfolding</b> specificata, che viene eseguita
+  successivamente nella nuova posizione all'interno della
+  sequenza.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color="#CC0000">&gt;{</font>il
+  <font color="#CC0000">&gt;(</font>cane<font color=
+  "#CC0000">|</font> gatto<font color="#CC0000">)}</font>
+  e&nbsp;</code><code><font color=
+  "#CC0000">{</font></code><code>la&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>pecora&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>capra</code><code><font color=
+  "#CC0000">)}</font></code><code> <font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <br>
+  Si presti attenzione al differente comportamento dell'unfolding
+  esterno alle parentesi graffe rispetto a quello interno: la
+  traduzione dà luogo a:<br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> il cane e la&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>pecora&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>capra</code><code><font color="#CC0000">)</font></code><br>
+  <code>&nbsp; &nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;il gatto e
+  la&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>pecora&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>capra</code><code><font color="#CC0000">)</font></code><br>
+  <code>&nbsp; &nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;la&nbsp;</code><code><font color="#CC0000">(</font></code><code>pecora&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>capra</code><code><font color="#CC0000">)</font></code>
+  <code>e il cane<br>
+  &nbsp; &nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;la&nbsp;</code><code><font color="#CC0000">(</font></code><code>pecora&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>capra</code><code><font color="#CC0000">)</font></code>
+  <code>e il gatto&nbsp;</code><code><font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <br>
+  <h4><a name="2.0.4.5_Di_sottoproduzioni_soggette" id=
+  "2.0.4.5_Di_sottoproduzioni_soggette"></a> 2.0.4.5 Di
+  sottoproduzioni soggette ad unfolding in profondità</h4>Come
+  descritto in sezione <a href=
+  "#2.0.8_Sottoproduzioni_soggette">2.0.8</a>, l'unfolding in
+  profondità dà luogo ad una sottoproduzione al cui interno tutto è
+  stato appiattito.<br>
+  Tuttavia talvolta è desiderabile operare un ulteriore
+  <b>unfolding</b>: quello di tale sottoproduzione.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font>&nbsp;</code> <code><font color=
+  "#CC0000">&gt; &gt;&gt;</font> il&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>cane&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>gatto</code><code><font color="#CC0000">)</font></code>
+  <code><font color="#CC0000">|</font> la <font color=
+  "#CC0000">(</font>pecora <font color="#CC0000">|</font>
+  capra<font color="#CC0000">) &lt;&lt; |</font> lo storione
+  <font color="#CC0000">;</font></code><br>
+  <br>
+  <br>
+  che viene tradotto in:<br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> il cane&nbsp;</code><code><font color=
+  "#CC0000">|</font></code> <code>il
+  gatto&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>la pecora&nbsp;</code><code><font color=
+  "#CC0000">|</font></code> <code>la
+  capra&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>lo storione&nbsp;</code><code><font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h3><a name="2.0.5_Attributi" id="2.0.5_Attributi"></a> 2.0.5
+  Attributi</h3>
+  <h4><a name="2.0.5.1_Etichette_e_selezione" id=
+  "2.0.5.1_Etichette_e_selezione"></a> 2.0.5.1 Etichette e
+  selezione<br></h4>Ciascuna produzione o sottoproduzione
+  (innestata a piacere) può essere associata ad una etichetta e,
+  grazie all'operazione di selezione tramite l'operatore
+  <b>punto</b>, è possibile vincolare la generazione al
+  sottoinsieme di una serie di produzioni che la presentano.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color=
+  "#996633">Nome</font><font color="#339999">.S</font> mangia
+  <font color="#996633">Nome</font><font color="#339999">.P</font>
+  <font color="#CC0000">| (</font><font color="#996633">Nome</font>
+  mangiano <font color="#996633">Nome</font><font color=
+  "#CC0000">)</font><font color="#339999">.P</font> <font color=
+  "#CC0000">;</font><br>
+  <br>
+  <font color="#996633">Nome</font> <font color=
+  "#CC0000">::=</font> <font color="#CC0000">(</font><font color=
+  "#3333FF">S:</font> il <font color="#CC0000">|</font>
+  <font color="#3333FF">P:</font> i<font color="#CC0000">)
+  (</font>lup <font color="#CC0000">|</font> gatt<font color=
+  "#CC0000">) ^ (</font><font color="#3333FF">S:</font> o
+  <font color="#CC0000">|</font> <font color="#3333FF">P:</font>
+  i<font color="#CC0000">) ;</font><br>
+  <br></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>il lupo mangia i lupi<br>
+  il lupo mangia i gatti<br>
+  il gatto mangia i lupi<br>
+  il gatto mangia i gatti<br>
+  i lupi mangiano i lupi<br>
+  i lupi mangiano i gatti<br>
+  i gatti mangiano i lupi<br>
+  i gatti mangiano i gatti<br>
+  <br></code><br>
+  La selezione avviene semplicemente eliminando da una serie di
+  produzioni o sottoproduzioni tutte quelle aventi etichetta
+  differente da quella selezionata. Più precisamente, una selezione
+  propaga l'etichetta specificata (a destra del punto) per tutta la
+  generazione di ciò che si trova a sinistra del punto; nel corso
+  della generazione verranno considerate valide solamente quelle
+  produzioni che non sono associate ad alcuna etichetta oppure che
+  sono associate ad un'etichetta che è stata selezionata.<br>
+  Si noti quindi che è possibile operare selezioni in momenti
+  diversi e arricchire la lista delle etichette selezionate: tale
+  tecnica può tornare utile per propagare determinati attributi che
+  si vuole influenzino la generazione.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color="#CC0000">(</font><font color=
+  "#996633">Ogg</font><font color="#339999">.M</font> <font color=
+  "#CC0000">|</font> <font color="#996633">Ogg</font><font color=
+  "#339999">.F</font><font color="#CC0000">)</font><font color=
+  "#339999">.S</font> <font color="#CC0000">|</font> <font color=
+  "#CC0000">(</font><font color="#996633">Ogg</font><font color=
+  "#339999">.M</font> <font color="#CC0000">|</font> <font color=
+  "#996633">Ogg</font><font color="#339999">.F</font><font color=
+  "#CC0000">)</font><font color="#339999">.P</font> <font color=
+  "#CC0000">;</font><br>
+  <br>
+  <font color="#996633">Ogg</font> <font color="#CC0000">::=</font>
+  <font color="#3333FF">M:</font> <font color=
+  "#CC0000">(</font><font color="#CC0000">(</font><font color=
+  "#996633">Art</font> <font color=
+  "#996633">Sost</font><font color="#CC0000">)</font><font color=
+  "#339999">.il</font> <font color="#CC0000">|</font> <font color=
+  "#CC0000">(</font><font color="#996633">Art</font> <font color=
+  "#996633">Sost</font><font color="#CC0000">)</font><font color=
+  "#339999">.lo</font><font color="#CC0000">)</font><br>
+  <font color="#CC0000">&nbsp; &nbsp; &nbsp;|&nbsp;</font>
+  <font color="#3333FF">F:</font> <font color="#996633">Art</font>
+  <font color="#996633">Sost</font> <font color=
+  "#CC0000">;</font><br>
+  <br>
+  <font color="#996633">Art</font> <font color="#CC0000">::=</font>
+  <font color="#3333FF">M:</font> <font color=
+  "#CC0000">(</font><font color="#3333FF">il:</font> <font color=
+  "#CC0000">(</font><font color="#3333FF">S:</font> il <font color=
+  "#CC0000">|</font> <font color="#3333FF">P:</font> i<font color=
+  "#CC0000">)</font> <font color="#CC0000">|</font> <font color=
+  "#3333FF">lo:</font> <font color="#CC0000">(</font><font color=
+  "#3333FF">S:</font> lo <font color="#CC0000">|</font>
+  <font color="#3333FF">P:</font> gli<font color=
+  "#CC0000">)</font><font color="#CC0000">)</font><br>
+  <font color="#CC0000">&nbsp; &nbsp; &nbsp;|&nbsp;</font>
+  <font color="#3333FF">F:</font> <font color=
+  "#CC0000">(</font><font color="#3333FF">S:</font> la <font color=
+  "#CC0000">|</font> <font color="#3333FF">P:</font> le<font color=
+  "#CC0000">)</font> <font color="#CC0000">;</font><br>
+  <br>
+  <font color="#996633">Sost</font> <font color=
+  "#CC0000">::=</font> <font color="#3333FF">M:</font> <font color=
+  "#CC0000">(</font> <font color="#3333FF">il:</font> <font color=
+  "#CC0000">(</font>lup <font color="#CC0000">^</font> <font color=
+  "#996633">Decl</font><font color="#339999">.2</font> <font color=
+  "#CC0000">|</font> can <font color="#CC0000">^</font>
+  <font color="#996633">Decl</font><font color=
+  "#339999">.3</font><font color="#CC0000">)</font><font color=
+  "#CC0000">)</font><br>
+  <font color="#CC0000">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  |</font> <font color="#3333FF">lo:</font> <font color=
+  "#CC0000">(</font>gnom <font color="#CC0000">^</font>
+  <font color="#996633">Decl</font><font color="#339999">.2</font>
+  <font color="#CC0000">|</font> zabaion <font color=
+  "#CC0000">^</font> <font color="#996633">Decl</font><font color=
+  "#339999">.3</font><font color="#CC0000">)</font><font color=
+  "#CC0000">)</font><br>
+  <font color="#CC0000">&nbsp; &nbsp; &nbsp; |&nbsp;</font>
+  <font color="#3333FF">F:</font> pecor <font color=
+  "#CC0000">^</font> <font color="#996633">Decl</font><font color=
+  "#339999">.1</font> <font color="#CC0000">;</font><br>
+  <br>
+  <font color="#996633">Decl</font> <font color=
+  "#CC0000">::=</font> <font color="#3333FF">1:</font> <font color=
+  "#CC0000">(</font><font color="#3333FF">S:</font> a <font color=
+  "#CC0000">|</font> <font color="#3333FF">P:</font> e<font color=
+  "#CC0000">)</font> <font color="#CC0000">|</font> <font color=
+  "#3333FF">2:</font> <font color="#CC0000">(</font><font color=
+  "#3333FF">S:</font> o <font color="#CC0000">|</font> <font color=
+  "#3333FF">P:</font> i<font color="#CC0000">)</font> <font color=
+  "#CC0000">|</font> <font color="#3333FF">3:</font> <font color=
+  "#CC0000">(</font><font color="#3333FF">S:</font> e <font color=
+  "#CC0000">|</font> <font color="#3333FF">P:</font> i<font color=
+  "#CC0000">)</font> <font color="#CC0000">;</font></code><br>
+  <br>
+  <br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>il lupo<br>
+  il cane<br>
+  lo gnomo<br>
+  lo zabaione<br>
+  la pecora<br>
+  i lupi<br>
+  i cani<br>
+  gli gnomi<br>
+  gli zabaioni<br>
+  le pecore<br>
+  <br></code><br>
+  Nell'esempio, assumendo la convenzione secondo cui le etichette
+  <font color="#3333FF"><code>S</code>,
+  <code>P</code>,<code>M</code></font> ed <font color=
+  "#3333FF"><code>F</code></font> si riferiscono rispettivamente
+  alle forme singolare, plurale, maschile e femminile, è stato
+  possibile declinare correttamente sostantivi appartenenti a
+  classi differenti ed associare l'articolo appropriato.<br>
+  Si faccia caso che, volendo in un futuro estendere la serie dei
+  sostantivi, sarà possibile aggiungerne a piacere curandosi
+  solamente di inserirli nella sottoproduzione di <font color=
+  "#996633"><code>Sost</code></font> opportuna.<br>
+  <br>
+  <h4><a name="2.0.5.2_Selezione_multipla" id=
+  "2.0.5.2_Selezione_multipla"></a> 2.0.5.2 Selezione
+  multipla<br></h4>Si prenda l'esempio in sezione <a href=
+  "#2.0.5.1_Etichette_e_selezione">2.0.5.1</a>: la definizione di
+  <code><font color="#996633">S</font></code> si occupa
+  sostanzialmente di attivare le combinazioni delle etichette
+  <code><font color="#3333FF">S,P</font></code> e
+  <code><font color="#3333FF">M,F</font></code> per <font color=
+  "#996633"><code>Ogg</code></font>. Per evitare la frequente
+  scomodità di dover compiere simili operazioni è possibile
+  specificare a destra del punto tra parentesi tonde una serie di
+  etichette separate dal <b>pipe</b>, anziché una singola
+  etichetta.<br>
+  Riprendendo l'esempio di cui sopra:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color="#996633">Ogg</font><font color=
+  "#339999">.(M</font><font color="#339999">|F)</font><font color=
+  "#339999">.(S|P)</font> <font color="#CC0000">;</font></code><br>
+  <br>
+  <br>
+  Analogamente a quanto descritto in sezione <a href=
+  "#2.0.3_Controllo_della_probabilit%E0_di_una">2.0.3</a> per le
+  produzioni, è inoltre possibile specificare dei modificatori di
+  probabilità per le etichette che compaiono in una serie tramite
+  l'utilizzo delle parole chiave <code><font color=
+  "#CC0000">+</font></code> e <code><font color=
+  "#CC0000">-</font></code>.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color="#996633">Ogg</font><font color=
+  "#339999">.(+M</font><font color=
+  "#339999">|--F)</font><font color="#339999">.(S|-P)</font>
+  <font color="#CC0000">;</font></code><br>
+  <br>
+  <br>
+  Che è equivalente a:<br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color="#CC0000">(</font><font color=
+  "#996633">Ogg</font><font color="#339999">.M</font> <font color=
+  "#CC0000">|</font>&nbsp;</code><code><font color=
+  "#996633">Ogg</font><font color="#339999">.M</font> <font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#996633">Ogg</font><font color="#339999">.M</font> <font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#996633">Ogg</font><font color="#339999">.M</font> <font color=
+  "#CC0000">|</font></code> <code><font color=
+  "#996633">Ogg</font><font color="#339999">.F</font><font color=
+  "#CC0000">)</font><font color=
+  "#339999">.S<br></font></code><code><font color="#CC0000">&nbsp;
+  &nbsp;</font></code><code><font color=
+  "#CC0000">|</font></code><code><font color="#CC0000">&nbsp;
+  (</font><font color="#996633">Ogg</font><font color=
+  "#339999">.M</font> <font color=
+  "#CC0000">|</font>&nbsp;</code><code><font color=
+  "#996633">Ogg</font><font color="#339999">.M</font> <font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#996633">Ogg</font><font color="#339999">.M</font> <font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#996633">Ogg</font><font color="#339999">.M</font> <font color=
+  "#CC0000">|</font></code> <code><font color=
+  "#996633">Ogg</font><font color="#339999">.F</font><font color=
+  "#CC0000">)</font><font color="#339999">.S</font></code><br>
+  <code><font color="#CC0000">&nbsp;
+  &nbsp;|</font></code><code><font color="#CC0000">&nbsp;
+  (</font><font color="#996633">Ogg</font><font color=
+  "#339999">.M</font> <font color=
+  "#CC0000">|</font>&nbsp;</code><code><font color=
+  "#996633">Ogg</font><font color="#339999">.M</font> <font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#996633">Ogg</font><font color="#339999">.M</font> <font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#996633">Ogg</font><font color="#339999">.M</font> <font color=
+  "#CC0000">|</font></code> <code><font color=
+  "#996633">Ogg</font><font color="#339999">.F</font><font color=
+  "#CC0000">)</font><font color="#339999">.P</font></code>
+  <code><font color="#CC0000">;</font></code><br>
+  <br>
+  <br>
+  <h4><a name="2.1.4_Reset_di_una_selezione" id=
+  "2.1.4_Reset_di_una_selezione"></a> 2.0.5.3 Reset dell'ambiente
+  delle etichette<br></h4>Va tenuto a mente che l'operatore di
+  selezione aggiunge l'etichetta specificata alla serie di quelle
+  già attive; ciò comporta la necessità di azzerare manualmente
+  tale serie di quando in quando. Si vogliano ad esempio generare
+  numeri interi positivi (zero incluso) di qualunque lunghezza in
+  cui non compaiano zeri non significativi:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color="#996633">Cifra</font>
+  <font color="#CC0000">|</font> <font color=
+  "#996633">S</font><font color="#339999">.nz</font> <font color=
+  "#CC0000">[^</font><font color="#996633">S</font><font color=
+  "#339999">.</font><font color="#CC0000">] ;</font><br>
+  <br>
+  <font color="#996633">Cifra</font> <font color=
+  "#CC0000">::=</font> <font color="#3333FF">z:</font> 0
+  <font color="#CC0000">|</font> <font color="#3333FF">nz:</font>
+  <font color="#CC0000">&gt;(</font></code><code>1<font color=
+  "#CC0000">|</font> 2 <font color="#CC0000">|</font> 3
+  <font color="#CC0000">|</font> 4 <font color="#CC0000">|</font> 5
+  <font color="#CC0000">|</font> 6 <font color="#CC0000">|</font> 7
+  <font color="#CC0000">|</font> 8 <font color="#CC0000">|</font>
+  9<font color="#CC0000">) ;</font></code><br>
+  <code><br></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>0<br>
+  1<br>
+  23<br>
+  23081993<br>
+  112358<br>
+  20020723<br>
+  <br></code> ecc.<br>
+  <br>
+  L'operatore punto non seguito da alcuna etichetta provoca
+  l'azzeramento della serie di selezioni attive in un dato momento
+  della generazione; in altre parole, permette di non propagare
+  oltre le etichette selezionate fino a quel punto della
+  generazione.<br>
+  <br>
+  <br>
+  <br>
+  <h3><a name="2.0.6_Maiuscole" id="2.0.6_Maiuscole"></a> 2.0.6
+  Maiuscole</h3>E' spesso desiderabile, per motivi essenzialmente
+  di forma, rispettare le regole ortografiche di scrittura delle
+  lettere maiuscole, ad esempio, dopo il punto.<br>
+  D'altro canto però l'architettura stessa di una grammattica assai
+  complessa, provvista di produzioni ricorsive che generano
+  subordinate, potrebbe rendere impossibile tale operazione, a meno
+  di riscrivere parte del sorgente.<br>
+  A tale proposito il linguaggio mette a disposizione la parola
+  chiave <b>backslash</b> <font color=
+  "#CC0000"><code>\</code></font> che istruisce il programma a
+  trasformare in maiuscola (nel caso in cui già non lo sia) la
+  prima lettera del simbolo terminale immediatamente
+  successivo.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color="#CC0000">\</font> pippo
+  <font color="#CC0000">(</font>e' <font color="#CC0000">|</font>
+  "." <font color="#CC0000">\)</font> <font color=
+  "#996633">Eulogia</font></code> <code><font color=
+  "#CC0000">^</font> "."</code> <code><font color=
+  "#CC0000">;</font></code><br>
+  <code><br>
+  <font color="#996633">Eulogia</font></code> <code><font color=
+  "#CC0000">::=</font></code><code>proprio un bell'uomo<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;davvero un signore
+  <font color="#CC0000">;</font></code><br>
+  <br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>Pippo e' proprio un bell'uomo.<br>
+  Pippo. Proprio un bell'uomo.</code><br>
+  <code>Pippo e' davvero un signore.<br>
+  Pippo. Davvero un signore.</code><br>
+  <br>
+  <br>
+  Si badi che l'azione dell'operatore <font color=
+  "#CC0000"><code>\</code></font> persiste fino al successivo
+  simbolo terminale risultato della produzione, pertanto ogni altro
+  atomo (epsilon, concatenazione o l'operatore <font color=
+  "#CC0000"><code>\</code></font> stesso) che si interpone agirà
+  come di consueto:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> a <font color="#CC0000">\ ^ \ _</font>
+  b</code><br>
+  <code><br>
+  <samp><b>PRODUCE</b></samp></code><br>
+  <br>
+  aB<br>
+  <br>
+  <br>
+  <h3><a name="2.0.7_Permutazioni" id="2.0.7_Permutazioni"></a>
+  2.0.7 Permutazioni</h3>In molte lingue è possibile cambiare
+  l'ordine delle parole (o di gruppi di parole) in una frase senza
+  che il significato cambi; a livello macroscopico, analogamente, è
+  talvolta possibile cambiare l'ordine delle frasi in un
+  discorso.<br>
+  Per evitare che l'utente debba scrivere più volte la stessa
+  sequenza con alcuni atomi cambiati di posizione, è possibile
+  specificare tra <b>parentesi graffe</b> <code><font color=
+  "#CC0000">{</font></code> e <code><font color=
+  "#CC0000">}</font></code> sottoproduzioni che vengono
+  automaticamente sottoposte ad una permutazione.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> se&nbsp;</code><code><font color=
+  "#CC0000">{</font></code><code>e'</code><code><font color=
+  "#CC0000">}</font></code><code>&nbsp;</code><code><font color=
+  "#CC0000">{</font></code><code>quindi</code><code><font color=
+  "#CC0000">}</font></code><code>&nbsp;</code><code><font color=
+  "#CC0000">{</font></code><code>egli</code><code><font color=
+  "#CC0000">}</font></code> <code><font color=
+  "#CC0000">;</font></code><br>
+  <code><br>
+  <samp><b>PRODUCE</b></samp></code><br>
+  <br>
+  se e' quindi egli<br>
+  se e' egli quindi<br>
+  se egli e' quindi<br>
+  se egli quindi e'<br>
+  se quindi egli e'<br>
+  se quindi e' egli<br>
+  <br>
+  <br>
+  Si badi che la permutabilità di una sottoproduzione si riferisce
+  alla sola sequenza di cui fa parte: specificare sottoproduzioni
+  permutabili in sottosequenze (o altre sottoproduzioni -
+  permutabili o meno) differenti non consente la permutazione. Si
+  noti la differenza tra i due esempi a venire:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font></code> <code><font color=
+  "#CC0000">{</font></code><code>tra 10
+  minuti</code><code><font color=
+  "#CC0000">}</font></code><code><font color=
+  "#CC0000">^</font>,</code> <code><font color=
+  "#CC0000">{</font></code><code>alle 3 in
+  punto</code><code><font color="#CC0000">}^</font>,</code>
+  <code><font color="#CC0000">{{</font>io<font color="#CC0000">}
+  {</font></code><code>partiro'</code><code><font color=
+  "#CC0000">}</font></code> <code>solo</code><code><font color=
+  "#CC0000">}</font></code> <code><font color=
+  "#CC0000">;</font></code><br>
+  <code><br>
+  <samp><b>PRODUCE</b></samp></code><br>
+  <br>
+  tra 10 minuti, alle 3 in punto, io partiro' solo<br>
+  alle 3 in punto, tra 10 minuti, io partiro' solo<br>
+  tra 10 minuti, io partiro' solo, alle 3 in punto<br>
+  alle 3 in punto, io partiro' solo, tra 10 minuti<br>
+  io partiro' solo, tra 10 minuti, alle 3 in punto<br>
+  io partiro' solo, alle 3 in punto, tra 10 minuti<br>
+  tra 10 minuti, alle 3 in punto, partiro' io solo<br>
+  alle 3 in punto, tra 10 minuti, partiro' io solo<br>
+  tra 10 minuti, partiro' io solo, alle 3 in punto<br>
+  alle 3 in punto, partiro' io solo, tra 10 minuti<br>
+  partiro' io solo, tra 10 minuti, alle 3 in punto<br>
+  partiro' io solo, alle 3 in punto, tra 10 minuti<br>
+  <br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font></code> <code><font color=
+  "#CC0000">{</font></code><code>tra 10
+  minuti</code><code><font color=
+  "#CC0000">}</font></code><code><font color=
+  "#CC0000">^</font>,</code> <code><font color=
+  "#CC0000">{</font></code><code>alle 3 in
+  punto</code><code><font color="#CC0000">}^</font>,</code>
+  <code><font color="#CC0000">({</font>io<font color="#CC0000">}
+  {</font></code><code>partiro'</code><code><font color=
+  "#CC0000">}</font></code> <code>solo</code><code><font color=
+  "#CC0000">)</font></code> <code><font color=
+  "#CC0000">;</font></code><br>
+  <code><br>
+  <samp><b>PRODUCE</b></samp></code><br>
+  <br>
+  tra 10 minuti, alle 3 in punto, io partiro' solo<br>
+  alle 3 in punto, tra 10 minuti, io partiro' solo<br>
+  tra 10 minuti, alle 3 in punto, partiro' io solo<br>
+  alle 3 in punto, tra 10 minuti, partiro' io solo<br>
+  <br>
+  <br>
+  <h3><a name="2.0.8_Unfolding_in_profondità" id=
+  "2.0.8_Unfolding_in_profondità"></a> 2.0.8 Unfolding in
+  profondità</h3>E' possibile operare l'unfolding in profondità di
+  una sottoproduzione specificata tra doppie parentesi acute
+  rivolte verso l'interno <font color=
+  "#CC0000"><code>&gt;&gt;</code></font> e <font color=
+  "#CC0000"><code>&lt;&lt;</code></font>: ciascun atomo, a
+  qualunque livello, per cui ha senso l'unfolding (vedi sezione
+  <a href="#2.0.4_Unfolding">2.0.4</a>) è soggetto ad un unfolding
+  appunto. Il risultato è l'appiattimento totale di qualunque
+  sottoproduzione e simbolo non terminale specificati all'interno
+  delle doppie parentesi acute:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> senti <font color="#CC0000">&gt;&gt;</font>
+  <font color="#3333FF">M:</font>&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>il&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>cane<font color="#CC0000">|</font>
+  gatto&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>soriano&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>persiano<font color=
+  "#CC0000">)</font>&nbsp;</code><code><font color=
+  "#CC0000">|</font></code> <code>colibri'</code><code><font color=
+  "#CC0000">)</font></code><br>
+  <code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>lo&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>storione |
+  sciacallo</code><code><font color="#CC0000">)</font></code><br>
+  <code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color=
+  "#CC0000">)</font></code><br>
+  <code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code><font color="#3333FF">F:</font>
+  la&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>pecora&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>raganella&nbsp;</code><code><font color=
+  "#CC0000">|</font></code> <code><font color=
+  "#996633">Animale</font></code><code><font color=
+  "#CC0000">)</font></code><code><br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <font color=
+  "#CC0000">&lt;&lt;</font> <font color=
+  "#CC0000">;</font></code><br>
+  <code><br>
+  <font color=
+  "#996633">Animale</font>&nbsp;</code><code><font color=
+  "#CC0000">::=</font></code>
+  <code>capra&nbsp;</code><code><font color=
+  "#CC0000">|</font></code> <code>mucca
+  da&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>latte&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>carne</code><code><font color="#CC0000">)</font></code>
+  <code><font color="#CC0000">;</font></code><br>
+  <br>
+  <br>
+  <br>
+  Il simbolo non terminale <code><font color=
+  "#996633">S</font></code> viene tradotto in:<br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> senti&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>&nbsp;</code><code><font color=
+  "#3333FF">M:</font></code> <code>il cane<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#3333FF">M:</font></code> <code>il gatto soriano<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#3333FF">M:</font></code> <code>il gatto persiano<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#3333FF">M:</font></code> <code>il colibri'<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#3333FF">M:</font></code> <code>lo storione<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#3333FF">M:</font></code> <code>lo sciacallo<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code><font color="#3333FF">F:</font></code> <code>la pecora<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code><font color="#3333FF">F:</font></code> <code>la
+  raganella<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code><font color="#3333FF">F:</font></code> <code>la capra<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code><font color="#3333FF">F:</font></code> <code>la mucca
+  da&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>latte&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>carne</code><code><font color="#CC0000">)</font></code><br>
+  <code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color="#CC0000">)</font></code>
+  <code><font color="#CC0000">;</font></code><br>
+  <br>
+  <br>
+  L'unfolding in profondità viene tradotto quindi in una
+  sottoproduzione al cui interno tutto viene appiattito
+  ricorsivamente, ad esclusione delle produzioni associate ai
+  simboli non terminali. Ciò è dovuto al fatto che l'operazione
+  consiste di fatto nell'unfolding semplice di ogni atomo per cui
+  tale operazione abbia senso: mentre quindi anche i simboli non
+  terminali sono soggetti a tale trattamento, le produzioni ad essi
+  associate invece non vengono toccate. Tale politica, sebbene
+  possa apparire di primo acchito ingiustificata, permette invero
+  all'utente di specificare un qualunque simbolo non terminale
+  all'interno di una sottoproduzione tra doppie parentesi acute
+  senza dare luogo inavvertitamente ad una serie enorme di
+  unfolding o, ancor peggio, ad unfolding ciclici (vedi sezione
+  <a href="#3.0.1.3_Unfolding_ricorsivi">3.0.1.3</a>).<br>
+  <br>
+  <br>
+  <h3><a name="2.0.9_Folding" id="2.0.9_Folding"></a> 2.0.9
+  Folding</h3>L'unfolding in profondità descritto in sezione
+  <a href="#2.0.8_Sottoproduzioni_soggette">2.0.8</a> può talvolta
+  non essere completamente desiderabile: se nella maggior parte dei
+  casi esso è utilizzato per evitare di specificare esplicitamente
+  l'operatore <font color="#CC0000"><code>&gt;</code></font> per
+  ogni sottoproduzione o simbolo non terminale di una
+  sottoproduzione, non sempre è possibile tuttavia operare
+  ricorsivamente l'unfolding di ogni singolo atomo senza dare luogo
+  ad errori. Il linguaggio supportato dal <i>Polygen</i> permette a
+  tale proposito di <b>bloccare</b> l'unfolding (di un atomo per
+  cui tale operazione avrebbe senso) tramite l'operatore prefisso
+  <font color="#CC0000"><code>&lt;</code></font>.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> senti <font color="#CC0000">&gt;&gt;</font>
+  <font color="#3333FF">M:</font>&nbsp;</code><code><font color=
+  "#CC0000">(</font></code> <code>il&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>cane <font color=
+  "#CC0000">|</font> gatto</code> <code><font color=
+  "#CC0000">&lt;(</font></code><code>soriano&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>persiano<font color=
+  "#CC0000">)</font>&nbsp;</code><code><font color=
+  "#CC0000">|</font></code> <code>colibri'</code><code><font color=
+  "#CC0000">)</font></code><br>
+  <code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>lo&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>storione |
+  sciacallo</code><code><font color="#CC0000">)</font></code><br>
+  <code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color=
+  "#CC0000">)</font></code><br>
+  <code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code><font color="#3333FF">F:</font> la</code>
+  <code><font color="#CC0000">(</font></code><code>pecora&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>raganella</code><code><font color=
+  "#CC0000">)</font></code><code><br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <font color=
+  "#CC0000">&lt;&lt;</font> <font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  in cui il simbolo non terminale <code><font color=
+  "#996633">S</font></code> viene tradotto in:<br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> senti&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>&nbsp;</code><code><font color=
+  "#3333FF">M:</font></code> <code>il cane<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#3333FF">M:</font></code> <code>il
+  gatto&nbsp;</code><code><font color=
+  "#CC0000">(</font></code><code>soriano&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code>persiano<font color="#CC0000">)</font></code><code><br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#3333FF">M:</font></code> <code>il colibri'<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#3333FF">M:</font></code> <code>lo storione<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color=
+  "#CC0000">|</font></code><code>&nbsp;</code><code><font color=
+  "#3333FF">M:</font></code> <code>lo sciacallo<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code><font color="#3333FF">F:</font></code> <code>la pecora<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color="#CC0000">|</font></code>
+  <code><font color="#3333FF">F:</font></code> <code>la
+  raganella</code><br>
+  <code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp;</code><code><font color="#CC0000">)</font></code>
+  <code><font color="#CC0000">;</font></code><br>
+  <br>
+  Si badi che, come dalle regole in sezione <a href=
+  "#4.1.1_Sintassi_concreta">4.1.1</a>, sono errori sintattici il
+  folding di un unfolding e viceversa.<br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h3><a name="2.0.10_Binding" id="2.0.10_Binding"></a>2.0.10
+  Binding</h3>Un binding in generale è un costrutto dichiarativo
+  che associa una serie di produzioni ad un simbolo non terminale.
+  Ogni binding introduce nell'ambiente (si evda la sezione 2.0.11)
+  tale associazione ed ogni produzione generata in tale ambiente
+  può fare riferimento a tali simboli non terminali.<br>
+  <br>
+  <h4><a name="2.0.10.1_Chiusure" id=
+  "2.0.10.1_Chiusure"></a>2.0.10.1 Chiusure</h4>La parola chiave
+  <code><font color="#CC0000">::=</font></code> introduce un
+  binding, già ampiamente discusso in questo manuale, cosiddetto
+  <span style="font-style: italic;">debole</span> o <span style=
+  "font-style: italic;">chiusura</span>.<br>
+  <br>
+  <code style="font-weight: bold;">ESEMPIO</code><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font></code> <code><font color=
+  "#996633">Frutto</font></code> <code>e</code> <code><font color=
+  "#996633">Frutto</font></code> <code><font color="#CC0000">;<br>
+  <br></font></code><code><font color=
+  "#996633">Frutto</font></code> <code><font color=
+  "#CC0000">::=</font> la mela <font color="#CC0000">|</font> il
+  mango <font color="#CC0000">|</font> l'arancia <font color=
+  "#CC0000">;<br>
+  <br></font></code><code style="font-weight: bold;">PRODUCE<br>
+  <br></code>la mela e la mela<br>
+  la mela e il mango<br>
+  la mela e l'arancia<br>
+  il mango e la mela<br>
+  il mango e il mango<br>
+  il mango e l'arancia<br>
+  l'arancia e la mela<br>
+  l'arancia e il mango<br>
+  l'arancia e l'arancia<br>
+  <br>
+  <br>
+  La produzione associata a <code><font color=
+  "#996633">Frutto</font></code> <span style=
+  "font-weight: bold;">non</span> subisce una generazione immediata
+  ma viene chiusa insieme all'ambiente corrente secondo le regole
+  di scoping. Ogni occorrenza del simbolo <code><font color=
+  "#996633">Frutto</font></code> in un ambiente discendente (od il
+  medesimo, come nell'esempio) provoca la generazione della
+  produzione associata nell'ambiente chiuso assieme ad essa.<br>
+  <br>
+  <h4><a name="2.0.10.2_Sospensioni" id=
+  "2.0.10.2_Sospensioni"></a>2.0.10.2 Sospensioni</h4>La parola
+  chiave <code><font color="#CC0000">:=</font></code> introduce una
+  seconda forma di binding detta <span style=
+  "font-style: italic;">forte</span> o <span style=
+  "font-style: italic;">sospensione</span> o <span style=
+  "font-style: italic;">assegnazione</span>.<br>
+  <br>
+  <code style="font-weight: bold;">ESEMPIO</code><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font></code> <code><font color=
+  "#996633">Frutto</font></code> <code>e</code> <code><font color=
+  "#996633">Frutto</font></code> <code><font color="#CC0000">;<br>
+  <br></font></code> <code><font color=
+  "#996633">Frutto</font></code> <code><font color=
+  "#CC0000">:=</font> la mela <font color="#CC0000">|</font> il
+  mango <font color="#CC0000">|</font> l'arancia <font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <code style="font-weight: bold;">PRODUCE<br>
+  <br></code>la mela e la mela<br>
+  il mango e il mango<br>
+  l'arancio e l'arancio<br>
+  <br>
+  <br>
+  La produzione associata a <code><font color=
+  "#996633">Frutto</font></code> viene sospesa e chiusa insieme
+  all'ambiente corrente secondo le regole di scoping. Durante la
+  generazione, alla prima occorrenza del simbolo <code><font color=
+  "#996633">Frutto</font></code> in un ambiente discendente (od il
+  medesimo, come nell'esempio) la produzione associata viene
+  generata <span style="font-weight: bold;">una sola volta</span>
+  nell'ambiente chiuso assieme ad essa ed il risultato,
+  immodificabile, della generazione risposto nell'ambiente; ogni
+  successiva occorrenza dello stesso non terminale produrrà sempre
+  lo stesso risultato.<br>
+  Si badi che la prima generazione avviene in un ambiente in cui il
+  simbolo non terminale in questione è associato alla chiusura, non
+  ancora ad una sospensione: in tal modo è possibile fare uso di
+  ricorsione anche definendo binding forti.<br>
+  <br>
+  <code style="font-weight: bold;">ESEMPIO<br>
+  <br></code><code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font></code> <code><font color=
+  "#CC0000"><span style=
+  "color: rgb(153, 102, 51);">A</span></font></code>
+  <code><font color="#CC0000"><span style=
+  "color: rgb(153, 102, 51);">A</span></font></code>
+  <code><font color="#CC0000">;<br>
+  <br>
+  <span style="color: rgb(153, 102, 51);">A</span> :=</font> a
+  <font color="#CC0000">|</font> a </code><code><font color=
+  "#CC0000">^</font></code> <code><font color=
+  "#CC0000"><span style="color: rgb(153, 102, 51);">A</span></font></code>
+  <code><font color="#CC0000">;<br></font></code><br>
+  <code style="font-weight: bold;">PRODUCE<br>
+  <br></code>a a<code><br></code>aa aa<br>
+  aaa aaa<br>
+  aaaa aaaa<br>
+  ecc.<br>
+  <br>
+  <br>
+  <br>
+  <h3><a name="2.0.11_Ambienti_e_Scoping_lessicale" id=
+  "2.0.11_Ambienti_e_Scoping_lessicale"></a>2.0.11 Ambienti e
+  Scoping</h3>L'ambiente è il contesto, l'insieme dei binding (vedi
+  sezione <a href="#2.0.10_Binding">2.0.10</a>), ovvero delle
+  associazioni da simbolo non terminale a serie produzioni.&nbsp;
+  Tale ambiente può essere arricchito dai binding a top-level
+  oppure da quelli introdotti dai costrutti di scoping.<br>
+  <br>
+  <h4><a name="2.0.11.1_Ambiente_a_top-level" id=
+  "2.0.11.1_Ambiente_a_top-level"></a>2.0.11.1 Ambiente a
+  top-level</h4>In gran parte di questo manuale si è parlato di
+  binding (di qualsivoglia forma) introdotti a top-level del file
+  sorgente, separati dalla parola chiave <code style=
+  "color: rgb(204, 0, 0);">;</code>. Com'è già stato accennato e
+  come è ragionevole aspettarsi, tali binding vengono introdotti
+  nell'ambiente (vuoto) secondo un rapporto di mutua ricorsione:
+  ciascuna produzione legata ad un non termianale può infatti fare
+  riferimento a qualunque simbolo non terminale definito a
+  top-level, a monte o a valle, incluso quello a cui essa stessa è
+  legata.<br>
+  <br>
+  <code style="font-weight: bold;">ESEMPIO<br>
+  <br></code><code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font></code> <code><font color=
+  "#CC0000"><span style="color: rgb(153, 102, 51);">S <span style=
+  "color: rgb(204, 0, 0);">|</span>
+  A</span></font></code><code><font color=
+  "#CC0000">&nbsp;</font></code><code><font color=
+  "#CC0000"><span style="color: rgb(153, 102, 51);"><span style=
+  "color: rgb(204, 0, 0);">|</span></span></font></code>
+  <code><font color="#CC0000"><span style=
+  "color: rgb(153, 102, 51);">B</span></font></code>
+  <code><font color="#CC0000"><span style=
+  "color: rgb(153, 102, 51);"><span style=
+  "color: rgb(204, 0, 0);">|</span></span></font></code>
+  <code>s</code> <code><font color="#CC0000">;<br>
+  <br>
+  <span style="color: rgb(153, 102, 51);">A</span>
+  ::=</font></code> <code><font color="#CC0000"><span style=
+  "color: rgb(153, 102, 51);">S <span style=
+  "color: rgb(204, 0, 0);">|</span>
+  A</span></font></code><code><font color=
+  "#CC0000">&nbsp;</font></code><code><font color=
+  "#CC0000"><span style="color: rgb(153, 102, 51);"><span style=
+  "color: rgb(204, 0, 0);">|</span></span></font></code>
+  <code><font color="#CC0000"><span style=
+  "color: rgb(153, 102, 51);">B</span></font></code>
+  <code><font color="#CC0000"><span style=
+  "color: rgb(153, 102, 51);"><span style=
+  "color: rgb(204, 0, 0);">|</span></span></font></code>
+  <code>a</code> <code><font color="#CC0000">;<br>
+  <br></font></code><code><font color="#CC0000">B :=</font></code>
+  <code><font color="#CC0000"><span style=
+  "color: rgb(153, 102, 51);">S <span style=
+  "color: rgb(204, 0, 0);">|</span>
+  A</span></font></code><code><font color=
+  "#CC0000">&nbsp;</font></code><code><font color=
+  "#CC0000"><span style="color: rgb(153, 102, 51);"><span style=
+  "color: rgb(204, 0, 0);">|</span></span></font></code>
+  <code><font color="#CC0000"><span style=
+  "color: rgb(153, 102, 51);">B</span></font></code>
+  <code><font color="#CC0000"><span style=
+  "color: rgb(153, 102, 51);"><span style=
+  "color: rgb(204, 0, 0);">|</span></span></font></code> <code>b
+  <font color="#CC0000">;<br></font></code><br>
+  <br>
+  E' facile immaginare quale sia la potenza offerta da questa
+  politica.<br>
+  <br>
+  <br>
+  <h4><a name="2.0.11.2_Sottoproduzioni_e_Scoping" id=
+  "2.0.11.2_Sottoproduzioni_e_Scoping"></a>2.0.11.2 Ambienti
+  locali<br></h4>E' possibile introdurre nuovi binding aventi
+  visibiltà locale all'apertura di una sottoproduzione di qualunque
+  forma: il corpo della sottoproduzione (che consiste in un serie
+  di produzioni) può essere preceduto da una serie di binding
+  separati dalla parola chiave <code style=
+  "color: rgb(204, 0, 0);">;</code>, la cui ultima occorrenza
+  separa l'ultimo binding dal corpo.<br>
+  <br>
+  <code style="font-weight: bold;">ESEMPIO<br>
+  <br></code><code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font></code><code> sono <span style=
+  "color: rgb(204, 0, 0);">(</span><span style=
+  "color: rgb(153, 102, 51);">X</span></code> <code><font color=
+  "#CC0000">:= <code><font color=
+  "#996633">Agg</font></code></font></code><code><font color=
+  "#CC0000">;</font></code> <code><span style=
+  "color: rgb(153, 102, 51);">Molto</span></code>
+  <code><font color="#CC0000">::=</font></code> <code>molto
+  <span style=
+  "color: rgb(204, 0, 0);">[</span></code><code><span style=
+  "color: rgb(153, 102, 51);">Molto</span></code><code><span style=
+  "color: rgb(204, 0, 0);">]</span></code><code><font color=
+  "#CC0000">;</font></code> <code><span style=
+  "color: rgb(153, 102, 51);">X</span> <span style=
+  "color: rgb(204, 0, 0);">^</span> "," anzi
+  </code><code><span style=
+  "color: rgb(153, 102, 51);">Molto</span></code><code>
+  <span style="color: rgb(153, 102, 51);">X</span></code>
+  <code><font color="#CC0000">|</font> decisamente</code>
+  <code><span style="color: rgb(153, 102, 51);">Molto</span></code>
+  <code><font color="#996633">Agg</font></code><code><font color=
+  "#CC0000">)</font></code> <code>e</code> <code><font color=
+  "#996633">Agg</font></code> <code><font color=
+  "#CC0000">;</font></code><br>
+  <code style="font-weight: bold;"><br></code><code><font color=
+  "#996633">Agg</font></code> <code><font color=
+  "#CC0000">::=</font></code> <code>bello</code> <code><font color=
+  "#CC0000">|</font></code> <code>simpatico</code>
+  <code><font color="#CC0000">;<br></font></code><br>
+  <code style="font-weight: bold;"><br></code><code style=
+  "font-weight: bold;">PRODUCE</code><br>
+  <code style="font-weight: bold;"><br></code>sono bello, anzi
+  molto bello e simpatico<br>
+  sono bello, anzi molto bello e bello<br>
+  sono bello, anzi molto ... bello e simpatico<br>
+  sono bello, anzi molto ... bello e bello<br>
+  sono simpatico, anzi molto simpatico e bello<br>
+  sono simpatico, anzi molto simpatico e simpatico<br>
+  sono simpatico, anzi molto ... simpatico e bello<br>
+  sono simpatico, anzi molto ... simpatico e simpatico<br>
+  sono decisamente molto bello e simpatico<br>
+  sono decisamente molto bello e bello<br>
+  sono decisamente molto .. bello e simpatico<br>
+  sono decisamente molto .. bello e bello<br>
+  <br>
+  <br>
+  Dall'esempio risulta chiara la visibilità, ovvero lo scope, dei
+  vari simboli non terminali: <code><span style=
+  "color: rgb(153, 102, 51);">X</span></code> e <code><span style=
+  "color: rgb(153, 102, 51);">Molto</span></code> sono locali alla
+  sottoproduzione che li definisce, mentre <code><font color=
+  "#996633">Agg</font></code> è utlizzato sia dal corpo di tale
+  sottoproduzione che dal corpo di <code><font color=
+  "#996633">S</font></code>.<br>
+  Si faccia caso all'utilizzo del costrutto di scoping in
+  conguinzione con il binding forte (vedi sezione <a href=
+  "#2.0.10.2_Sospensioni">2.0.10.2</a>): <code><span style=
+  "color: rgb(153, 102, 51);">X</span></code> è un simbolo
+  introdotto localmente il cui unisco scopo è in qualche modo
+  <span style="font-style: italic;">fissare</span> la generazione
+  di <code><font color="#996633">Agg</font></code>, che
+  nell'ambiente a top-level è definita tramite un binding debole
+  (vedi sezione <a href="#2.0.10.1_Chiusure">2.0.10.1</a>): in
+  generale l'utilizzo degli scope assieme alle varie forme di
+  binding aggiunge molta potenza al linguaggio ed aumenta le
+  possibilità di ingegnerizzazione di una grammatica.<br>
+  <br>
+  Si noti, ancora, che nell'esempio di cui sopra non c'è utilizzo
+  del rapporto di mutua ricorsione dei binding locali, pertanto il
+  medesimo risultato sarebbe stato ottenibile innestando 2
+  scope:<br>
+  <br>
+  <code style="font-weight: bold;">ESEMPIO<br>
+  <br></code><code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font></code><code> sono <span style=
+  "color: rgb(204, 0, 0);">(</span><span style=
+  "color: rgb(153, 102, 51);">X</span></code> <code><font color=
+  "#CC0000">:= <code><font color=
+  "#996633">Agg</font></code></font></code><code><font color=
+  "#CC0000">;</font></code> <code><span style=
+  "color: rgb(204, 0, 0);">(</span></code><code><span style=
+  "color: rgb(153, 102, 51);">Molto</span></code>
+  <code><font color="#CC0000">::=</font></code> <code>molto
+  <span style=
+  "color: rgb(204, 0, 0);">[</span></code><code><span style=
+  "color: rgb(153, 102, 51);">Molto</span></code><code><span style=
+  "color: rgb(204, 0, 0);">]</span></code><code><font color=
+  "#CC0000">;</font></code> <code><span style=
+  "color: rgb(153, 102, 51);">X</span> <span style=
+  "color: rgb(204, 0, 0);">^</span> "," anzi
+  </code><code><span style=
+  "color: rgb(153, 102, 51);">Molto</span></code><code>
+  <span style="color: rgb(153, 102, 51);">X</span></code>
+  <code><font color="#CC0000">|</font> decisamente</code>
+  <code><span style="color: rgb(153, 102, 51);">Molto</span></code>
+  <code><font color="#996633">Agg</font></code><code><font color=
+  "#CC0000">)</font></code><code><font color=
+  "#CC0000">)</font></code><code>e</code> <code><font color=
+  "#996633">Agg</font></code> <code><font color=
+  "#CC0000">;</font></code><br>
+  <code style="font-weight: bold;"><br></code><code><font color=
+  "#996633">Agg</font></code> <code><font color=
+  "#CC0000">::=</font></code> <code>bello</code> <code><font color=
+  "#CC0000">|</font></code> <code>simpatico</code>
+  <code><font color="#CC0000">;</font></code><br>
+  <br>
+  <br>
+  Nulla vieta che il corpo di una sottoproduzione possa essere a
+  sua volta una sottoproduzione, ovviamente: ciò dà luogo
+  all'arricchimento dell'ambiente senza porre in rapporto di mutua
+  ricorsione i binding.<br>
+  <br>
+  Si ricordi infine che <span style=
+  "font-weight: bold;">qualunque</span> tipo di sottoproduzione può
+  introdurre binding locali.<br>
+  <br>
+  <br>
+  <h4><a name="2.0.11.3_Scoping_lessicale" id=
+  "2.0.11.3_Scoping_lessicale"></a>2.0.11.3 Scoping statico
+  lessicale</h4>Le regole di scoping sono al contempo rigide e
+  intuitive: ogni produzione viene generata nell'ambiente in cui è
+  stata definita. Sebbene quindi gli ambieni siano arricchibili
+  tramite binding locali innestati, <span style=
+  "font-weight: bold;">non</span> è possibile generare una
+  produzione definita altrove utilizzando simboli nell'ambiente
+  corrente <span style="font-weight: bold;">anche</span> nel caso
+  in cui tali simboli abbiamo lo stesso nome.<br>
+  <br>
+  <code style="font-weight: bold;">ESEMPIO<br>
+  <br></code><code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font></code><code> <code><span style=
+  "color: rgb(204, 0, 0);">(</span></code></code><code><font color=
+  "#996633">X</font></code> <code><font color=
+  "#CC0000">::=</font></code> <code>a</code> <code><font color=
+  "#CC0000">|</font></code> <code>b</code><code><font color=
+  "#CC0000">;</font></code> <code><font color=
+  "#996633">A<code><font color=
+  "#CC0000">)</font></code></font></code> <code><font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <code><font color="#996633">A</font> <font color=
+  "#CC0000">::=</font></code> <code><font color=
+  "#996633">X</font></code> <code><font color=
+  "#996633">X</font></code> <code><font color=
+  "#CC0000">;</font></code><br>
+  <code><br></code><code><font color="#996633">X</font></code>
+  <code><font color="#CC0000">:=</font></code> <code>x</code>
+  <code><font color="#CC0000">|</font></code> <code>y</code>
+  <code><font color="#CC0000">;</font></code><br>
+  <br>
+  <code style="font-weight: bold;"><br>
+  PRODUCE</code><br>
+  <br>
+  x x<br>
+  y y<br>
+  <br>
+  <br>
+  Per definizione di scoping <span style=
+  "font-weight: bold;">statico</span>, il binding locale di
+  <code><font color="#996633">X</font></code> nella sottoproduzione
+  di <code><font color="#996633">S</font></code> non ha alcun
+  effetto sulla generazione di <code><font color=
+  "#996633">A</font></code>, che è stata <span style=
+  "font-style: italic;">chiusa</span> assieme all'ambiente in cui è
+  stata definita (vedi sezione <a href=
+  "#2.0.10.1_Chiusure">2.0.10.1</a>),&nbsp; ovvero quello a
+  top-level, in cui la <code><font color="#996633">X</font></code>
+  è legata alla produzione <code>x</code> <code><font color=
+  "#CC0000">|</font></code><code>y</code>.<br>
+  <br>
+  Ancora, le regole di scoping lessicale consentono l'<span style=
+  "font-weight: bold;">overriding</span> (o <span style=
+  "font-weight: bold;">shadowing</span>) dei binding:<br>
+  <br>
+  <code style="font-weight: bold;">ESEMPIO<br>
+  <br></code><code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font></code><code> <code><span style=
+  "color: rgb(204, 0, 0);">(</span></code></code><code><font color=
+  "#996633">X</font></code> <code><font color=
+  "#CC0000">::=</font></code> <code>a</code> <code><font color=
+  "#CC0000">|</font></code> <code>b</code><code><font color=
+  "#CC0000">;</font></code><code>&nbsp;</code><code><code><span style="color: rgb(204, 0, 0);">(</span></code></code><code><font color="#996633">X</font></code>
+  <code><font color="#CC0000">::=</font></code> <code>x</code>
+  <code><font color="#CC0000">|</font></code>
+  <code>y</code><code><font color=
+  "#CC0000">;</font></code><code><font color=
+  "#996633">X<code><font color=
+  "#CC0000">))</font></code></font></code> <code><font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <code style="font-weight: bold;">PRODUCE<br>
+  <br></code>x<br>
+  y <code style="font-weight: bold;"><br>
+  <br>
+  <br></code>All'interno della secondo sottoproduzione
+  innestata&nbsp; non c'è visibilità della definizione esterna di
+  <code><font color="#996633">X</font></code>. Le medesime regole
+  di applicano ovviamente anche all'ambiente top-level.<br>
+  <br>
+  Si badi infine che i binding sono ricorsivi, pertanto non è
+  possibile fare riferimento alla definizione di un simbolo
+  nell'ambiente in una ridefinizione in override del medesimo
+  simbolo.<br>
+  <br>
+  <code style="font-weight: bold;">ESEMPIO<br>
+  <br></code><code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font></code><code> <code><span style=
+  "color: rgb(204, 0, 0);">(</span></code></code><code><font color=
+  "#996633">X</font></code> <code><font color=
+  "#CC0000">::=</font></code> <code>a</code> <code><font color=
+  "#CC0000">|</font></code> <code>b</code><code><font color=
+  "#CC0000">;</font></code><code>&nbsp;</code><code><code><span style="color: rgb(204, 0, 0);">(</span></code></code><code><font color="#996633">X</font></code>
+  <code><font color="#CC0000">::=</font></code> <code>x</code>
+  <code style="color: rgb(204, 0, 0);">[</code><code><font color=
+  "#996633">X</font></code><code style=
+  "color: rgb(204, 0, 0);">]</code><code><font color=
+  "#CC0000">;</font></code><code><font color=
+  "#996633">X<code><font color=
+  "#CC0000">))</font></code></font></code> <code><font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <code style="font-weight: bold;">PRODUCE</code><br>
+  <br>
+  x<br>
+  x x<br>
+  x x x ...<br>
+  <br>
+  L'occorrenza di <code><font color="#996633">X</font></code> nel
+  secondo binding innestato viene dunque vista come un ricorsione,
+  non come un riferimento alla <code><font color=
+  "#996633">X</font></code> dell'ambiente padre.<br>
+  Analogamente in presenza di una serie di binding in rapporto di
+  mutua ricorsione:<br>
+  <br>
+  <code style="font-weight: bold;">ESEMPIO<br>
+  <br></code><code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font></code><code> <code><span style=
+  "color: rgb(204, 0, 0);">(</span></code></code><code><font color=
+  "#996633">X</font></code> <code><font color=
+  "#CC0000">::=</font></code> <code>x&nbsp;</code><code style=
+  "color: rgb(204, 0, 0);">[</code><code><font color=
+  "#996633">A</font></code><code><span style=
+  "color: rgb(204, 0, 0);">]</span></code><code><font color=
+  "#CC0000">;</font></code><code>&nbsp;</code><code><font color=
+  "#996633">A</font></code> <code><code><span style=
+  "color: rgb(204, 0, 0);">::=</span> a
+  </code></code><code><font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">[</span>X<span style=
+  "color: rgb(204, 0, 0);">]</span></font></code><code><code><span style="color: rgb(204, 0, 0);">;
+  (</span></code></code><code><font color="#996633">X</font></code>
+  <code><font color="#CC0000">::=</font></code> <code>y</code>
+  <code style="color: rgb(204, 0, 0);">[</code><code><font color=
+  "#996633">A</font></code><code style=
+  "color: rgb(204, 0, 0);">]</code><code><font color=
+  "#CC0000">;</font></code><code><font color=
+  "#996633">A</font></code> <code><font color=
+  "#CC0000">::=</font></code> <code>b <font color=
+  "#996633"><span style=
+  "color: rgb(204, 0, 0);">[</span>X<span style=
+  "color: rgb(204, 0, 0);">];</span> X<code><font color=
+  "#CC0000">))</font></code></font></code> <code><font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <code style="font-weight: bold;">PRODUCE</code><br>
+  <br>
+  y b<br>
+  y b y b<br>
+  y b y b y b ...<br>
+  <br>
+  <br>
+  <h3><a name="2.0.5.3_Selezione_automatica_posizione" id=
+  "2.0.5.3_Selezione_automatica_posizione"></a>2.0.12 Generazione
+  posizionale</h3>Sebbene il sistema di etichette sia piuttosto
+  potente e versatile, nella maggior parte delle circostanza esso
+  torna utile quale semplice <span style=
+  "font-style: italic;">filtro</span> su una serie di produzioni
+  che specificano casi sintattici disgiunti di una data lingua;
+  esempi frequenti possono essere desinenze per articoli,
+  sostantivi e aggettivi in base al genere ed al numero, oppure
+  coniugazioni di verbi in base alla persona, al tempo ed al
+  modo.<br>
+  Ciò che ragionevolmente si vuole dal sistema è poter attivare
+  un'etichetta, ad esempio, per il genere e che la generazione
+  abbia poi luogo coerentemente. Talvolta si desidera tale effeto
+  solamente per una frase:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">(</span></font>sei
+  </code><code><font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">(</span></font></code><code><font color=
+  "#3333FF">M:</font></code> <code>un <font color=
+  "#996633"><span style=
+  "color: rgb(204, 0, 0);">|</span></font></code>
+  <code><font color="#3333FF">F:</font></code>
+  <code>una<font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">)</span></font></code>
+  <code><font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">(</span></font></code><code><font color=
+  "#3333FF">M:</font></code> <code>bel </code><code><font color=
+  "#996633"><span style=
+  "color: rgb(204, 0, 0);">|</span></font></code>
+  <code><font color="#3333FF">F:</font></code>
+  <code>bella</code><code><font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">)</span></font></code> <code>ragazz
+  <font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">^</span></font></code>
+  <code><font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">(</span></font></code><code><font color=
+  "#3333FF">M:</font></code> <code>o </code><code><font color=
+  "#996633"><span style=
+  "color: rgb(204, 0, 0);">|</span></font></code>
+  <code><font color="#3333FF">F:</font></code> <code>a<font color=
+  "#996633"><span style=
+  "color: rgb(204, 0, 0);">))</span><code><font color=
+  "#339999">.(M</font><font color=
+  "#339999">|F)</font></code></font></code> <code><font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  sei un bel ragazzo<br>
+  sei una bella ragazza<br>
+  <br>
+  <br>
+  Per ovviare alla scomodità di dover specificare etichette locali
+  ed attivarle in loco, il linguaggio fornisce un sistema di
+  generazione posizionale automatica. Con tale caratteristica
+  (operativamente equivalente all'utilizzo di etichette e
+  selezione, ma più concisa) è possibile esprimere in maniera molto
+  sintetica gruppi di desinenze, declinazioni, coniugazioni, ecc.
+  La parola chiave <code style="color: rgb(204, 0, 0);">,</code>
+  separa gli atomi che rappresentano le possibili scelte:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> sei </code><code>un</code><code><font color=
+  "#996633"><span style=
+  "color: rgb(204, 0, 0);">,</span></font></code><code>una</code>
+  <code>bel</code><code><font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">,</span></font></code><code>bella</code>
+  <code>ragazz <font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">^</span></font></code>
+  <code>o</code><code><font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">,</span></font></code><code>a</code>
+  <code><font color="#CC0000">;</font></code><br>
+  <br>
+  <br>
+  Il risultato è identico a quello dell'esempio più verboso; la
+  differenza consiste nel fatto che non c'è menzione ad alcuna
+  etichetta: come dalle regole di traduzione in sezione <a href=
+  "file:///C:/Documents%20and%20Settings/alvise%20span%F2/My%20Documents/polygen/1.0pre/ita/HOWTO-Refman.html#4.1.5_Regole_di_traduzione">
+  4.1.5</a>, ogni produzione che presenta gruppi di atomi separati
+  da <code><font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">,</span></font></code> viene tradotta in
+  una sottoproduzione che consiste in tante produzioni separate
+  da&nbsp; <code><font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">|</span></font></code> quanti sono gli
+  atomi nel gruppo e dove ognuna di tali produzioni presenta
+  l'<span style="font-weight: bold;">i</span>-esimo atomo di ogni
+  gruppo, per ogni <span style="font-weight: bold;">i</span>.
+  L'esempio di cui sopra viene tradotto in:<br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> sei un bel ragazz</code> <code><font color=
+  "#996633"><span style=
+  "color: rgb(204, 0, 0);">^</span></font></code> <code>o
+  <span style="color: rgb(204, 0, 0);">|</span> sei una bella
+  ragazz</code> <code><font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">^</span></font></code><code>a</code>
+  <code><font color="#CC0000">;</font></code><br>
+  <br>
+  <br>
+  L'unico limite di questa caratteristica è ovviamente che tutti i
+  gruppi di una produzione raccolgano <span style=
+  "font-weight: bold;">lo stesso numero di atomi</span>. Si badi
+  inoltre che lo <span style="font-style: italic;">scope</span> di
+  tale vincolo è un singola produzione.<br>
+  <br>
+  E' importante capire che la generazione posizionale non
+  sostituisce il sistema di label, ma offre un'alternativa
+  sintetica ad esso nei frequenti casi in cui verrebbe utilizzato
+  per declinare termini. Non è difficile immaginare comunque come
+  tale meccanismo possa tornare utile in altri contesti; ad
+  esempio, a livello macroscopico, per specificare relazioni tra
+  porzioni di una frase:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> </code><code>non
+  potro'</code><code><font color="#996633"><span style=
+  "color: rgb(204, 0, 0);">,</span></font></code><code><span style=
+  "color: rgb(204, 0, 0);">(</span>ho potuto<span style=
+  "color: rgb(204, 0, 0);">)</span> mai</code><code><font color=
+  "#996633"><span style=
+  "color: rgb(204, 0, 0);">,</span></font></code><code><span style=
+  "color: rgb(204, 0, 0);">_</span> venire da te <font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <samp><b>PRODUCE<br>
+  <br></b></samp>non potro' mai venire da te<br>
+  non ho potuto venire da te<br>
+  <b><br></b><br>
+  <br>
+  <h3><a name="2.0.13_Iterazione" id=
+  "2.0.13_Iterazione"></a>2.0.13
+  Iterazione</h3>Sebbene grazie ai costrutti di scoping (vedi
+  <a href="#2.0.11_Ambienti_e_Scoping_lessicale">2.0.11</a>) sia
+  possibile iterare una produzione in maniera molto semplice e
+  concisa, un apposito costrutto di iterazione analogo alla
+  chiusura di Kleene di EBNF può risultare talvolta assai
+  comodo:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> una ragazza m<span style=
+  "color: rgb(204, 0, 0);">^</span> <span style=
+  "color: rgb(204, 0, 0);">(</span>o<span style=
+  "color: rgb(204, 0, 0);">^)+</span></code><code> lto carina
+  <span style="color: rgb(204, 0, 0);">;</span></code><br>
+  <br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  una ragazza molto carina<br>
+  una ragazza moolto carina<br>
+  una ragazza mooolto carina<br>
+  ...<br>
+  <br>
+  <br>
+  Com'è ragionevola aspettarsi, qualunque produzione può essere
+  presente all'interno della sottoproduzione iterata:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <span style=
+  "color: rgb(204, 0, 0);">(</span>a <span style=
+  "color: rgb(204, 0, 0);">|</span> b<span style=
+  "color: rgb(204, 0, 0);">)+</span></code><code> <span style=
+  "color: rgb(204, 0, 0);">;</span></code><br>
+  <br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  a<br>
+  b<br>
+  a a<br>
+  a b<br>
+  b a<br>
+  b b<br>
+  a a a<br>
+  a a b<br>
+  a b a<br>
+  ...<br>
+  <br>
+  <br>
+  Si potrebbe ritenere ragionevole che venisse iterata sempre la
+  stessa generazione, ma non è così (come dalle regole di
+  traduzione <a href="#4.1.5_Regole_di_traduzione">4.1.5</a>),
+  poiché nella maggior parte dei frangenti il comportamento di cui
+  sopra è preveribile ed inoltre semanticamente affine all'analogo
+  costrutto EBNF. E' possibile tuttavia ottenere l'effetto
+  ipotizzato in maniera piuttosto semplice sfruttando il binding
+  forte (vedi sezione <a href=
+  "#2.0.10.2_Sospensioni">2.0.10.2</a>):<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <span style=
+  "color: rgb(204, 0, 0);">(</span><font color=
+  "#996633">X</font>&nbsp;</code><code><font color=
+  "#CC0000">:=</font></code> <code>a <span style=
+  "color: rgb(204, 0, 0);">|</span> b<font color="#CC0000">;
+  (</font><font color="#996633">X</font><span style=
+  "color: rgb(204, 0, 0);">)+)</span></code><code> <span style=
+  "color: rgb(204, 0, 0);">;</span></code><br>
+  <br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  a<br>
+  b<br>
+  a a<br>
+  b b<br>
+  a a a &nbsp;...<br>
+  b b b ...<br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h2><a name="2.1_Tecniche_avanzate" id=
+  "2.1_Tecniche_avanzate"></a>2.1 Tecniche avanzate<br></h2>
+  <h3><a name="2.1.1_Ricorsione" id="2.1.1_Ricorsione"></a>2.1.1
+  Ricorsione<br></h3>E' possibile specificare in una produzione il
+  simbolo che si sta definendo per ottenere una generazione
+  ricorsiva:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color="#996633">Cifra</font>
+  <font color="#CC0000">[^</font> <font color=
+  "#996633">S</font><font color="#CC0000">] ;</font><br>
+  <br>
+  <font color="#996633">Cifra</font> <font color=
+  "#CC0000">::=</font> 0 <font color="#CC0000">|</font> 1
+  <font color="#CC0000">|</font> 2 <font color="#CC0000">|</font> 3
+  <font color="#CC0000">|</font> 4 <font color="#CC0000">|</font> 5
+  <font color="#CC0000">|</font> 6 <font color="#CC0000">|</font> 7
+  <font color="#CC0000">|</font> 8 <font color="#CC0000">|</font> 9
+  <font color="#CC0000">;</font><br>
+  <br></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>0<br>
+  23<br>
+  853211<br>
+  000000<br>
+  00011122335<br>
+  <br></code> ecc.<br>
+  <br>
+  <br>
+  ovvero un numero composto da un numero casuale di cifre da 0 a
+  9.<br>
+  Si provi per esercizio a definire una grammatica che generi frasi
+  di lunghezza variabile agganciando subordinate
+  ricorsivamente.<br>
+  <br>
+  <br>
+  <br>
+  <h3><a name="2.1.2_Ragruppamento" id="2.1.2_Ragruppamento"></a>
+  2.1.2 Raggruppamento<br></h3>Per avere un controllo della
+  distribuzione delle probabilità superiore a quello offerto dalle
+  caratteristiche descritte nelle sezioni <a href=
+  "#2.0.3_Controllo_della_probabilit%E0_di_una">2.0.3</a> e
+  <a href="#2.0.4_Unfolding">2.0.4</a> è possibile utilizzare
+  opportunamente le parentesi tonde:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S1</font> <font color=
+  "#CC0000">::=</font> gatto <font color="#CC0000">|</font> cane
+  <font color="#CC0000">|</font> cammello <font color=
+  "#CC0000">;</font><br>
+  <br>
+  <font color="#996633">S2</font> <font color="#CC0000">::=</font>
+  gatto <font color="#CC0000">|</font> <font color=
+  "#CC0000">(</font>cane <font color="#CC0000">|</font>
+  cammello<font color="#CC0000">) ;</font><br>
+  <br></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>gatto<br>
+  cane<br>
+  cammello<br>
+  <br></code><br>
+  Nella definizione di <font color="#996633"><code>S1</code></font>
+  la distribuzione delle probabilità è:<br>
+  <br>
+  <table border="1" width="30%" cellpadding="2" cellspacing="2"
+  bgcolor="#CCCCCC">
+    <tbody>
+      <tr>
+        <td>gatto</td>
+        <td>1/3</td>
+      </tr>
+      <tr>
+        <td>cane</td>
+        <td>1/3</td>
+      </tr>
+      <tr>
+        <td>cammello</td>
+        <td>1/3</td>
+      </tr>
+    </tbody>
+  </table><br>
+  <br>
+  Nel caso di <font color="#996633"><code>S2</code></font>
+  invece:<br>
+  <br>
+  <table border="1" width="30%" cellpadding="2" cellspacing="2"
+  bgcolor="#CCCCCC">
+    <tbody>
+      <tr>
+        <td>gatto</td>
+        <td>1/2</td>
+      </tr>
+      <tr>
+        <td>cane</td>
+        <td>1/2 * 1/2 = 1/4</td>
+      </tr>
+      <tr>
+        <td>cammello</td>
+        <td>1/2 * 1/2 = 1/4</td>
+      </tr>
+    </tbody>
+  </table><br>
+  <br>
+  <br>
+  <br>
+  <h3><a name="2.1.3_Controllo_della_probabiltà_di_una" id=
+  "2.1.3_Controllo_della_probabiltà_di_una"></a> 2.1.3 Controllo
+  della probabiltà di una sottoproduzione opzionale</h3>Il
+  linguaggio di definizione delle grammatiche riconosciuto dal
+  <i>Polygen</i> non permette il diretto controllo della
+  probabilità con cui una sottoproduzione opzionale viene generata.
+  In altre parole, non esiste un operatore analogo al <font color=
+  "#CC0000"><code>+</code></font> o al <font color=
+  "#CC0000"><code>-</code></font> per le sottoproduzioni tra
+  parentesi quadrate.<br>
+  Esiste tuttavia una tecnica assai semplice per ottenere questo
+  risultato:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> la <font color="#CC0000">(+ _ |</font>
+  bella<font color="#CC0000">)</font> casa <font color=
+  "#CC0000">;</font><br>
+  <br></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>la casa<br>
+  la bella casa<br>
+  <br></code><br>
+  Poiché una sottoproduzione opzionale è di fatto equivalente ad
+  una sottoproduzione non opzionale che genera l'output desiderato
+  oppure nulla (vedi la sezione <a href=
+  "#2.0.2_Epsilon">2.0.2</a>), è possibile operare manualmente tale
+  traduzione ed utilizzare la <font color=
+  "#CC0000"><code>+</code></font> o la <font color=
+  "#CC0000"><code>-</code></font> a piacere.<br>
+  Nell'esempio di cui sopra la probabilità che non venga prodotto
+  nulla è maggiore di quella per cui venga prodotta
+  <code>bella</code>.<br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h2><a name="3.0_Controllo_statico_di_una_grammatica" id=
+  "3.0_Controllo_statico_di_una_grammatica"></a> 3.0 Controllo
+  statico di una grammatica<br></h2>Il <i>Polygen</i> dispone di un
+  potente algoritmo di controllo statico di un file sorgente: è
+  pertanto in grado di verificare in un tempo finito la correttezza
+  di un'intera grammatica senza dover generare ogni produzione
+  possibile ed indipendentemente dalla complessità delle
+  definizioni.<br>
+  Una grammatica che passa con successo la fase di controllo è
+  garantita generare sempre un output valido - come una sorta di
+  prova di <i>soundness.</i><br>
+  Poiché quindi la fase di controllo precede sempre quella di
+  generazione, se il programma produce un output senza messaggi
+  d'errore, allora la grammatica è interamente corretta.<br>
+  <br>
+  Laddove specificato dal messaggio generato dal programma, warning
+  ed errori si riferiscono ad un'area del file di testo sorgente
+  compresa tra due coppie di coordinate che esprimono un numero di
+  linea ed un numero di colonna.<br>
+  <br>
+  <br>
+  <h3><a name="3.0.1_Errori" id="3.0.1_Errori"></a> 3.0.1
+  Errori<br></h3>Sono classificati come errori quei casi che
+  infrangono la definizione di correttezza di una grammatica.<br>
+  Un errore arresta l'esecuzione del programma.<br>
+  <br>
+  <br>
+  <h4><a name="3.0.1.1_Inesistenza_di_simboli_non" id=
+  "3.0.1.1_Inesistenza_di_simboli_non"></a> 3.0.1.1 Inesistenza di
+  simboli non terminali<br></h4>Viene controllata l'esistenza di
+  ciascun simbolo non terminale che appare nella parte destra di
+  una definizione, al fine di evitare che erroneamente vengano
+  utilizzati nelle produzioni simboli non terminali che non sono
+  stati definiti.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color="#996633">A</font> <font color=
+  "#CC0000">|</font> <font color="#996633">B</font> <font color=
+  "#CC0000">;</font><br>
+  <font color="#996633">A</font> <font color="#CC0000">::=</font> a
+  <font color="#CC0000">;</font><br>
+  <br></code> Questa grammatica dà luogo ad un errore, in quanto
+  <font color="#996633"><code>B</code></font> non è definito.<br>
+  <br>
+  <br>
+  <h4><a name="3.0.1.2_Ricorsioni_cicliche_e" id=
+  "3.0.1.2_Ricorsioni_cicliche_e"></a> 3.0.1.2 Ricorsioni cicliche
+  e non-terminazione<br></h4>L'algoritmo di controllo è in grado di
+  verificare che ciascun simbolo non terminale sia in grado di
+  produrre un output, ovvero che la generazione prima o poi termini
+  senza dare luogo a ricorsioni infinite.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S <font color="#CC0000">::=</font> S
+  <font color="#CC0000">|</font> A <font color=
+  "#CC0000">;</font><br>
+  A <font color="#CC0000">::=</font> B <font color=
+  "#CC0000">;</font><br>
+  B <font color="#CC0000">::=</font> S <font color=
+  "#CC0000">|</font> A<font color="#CC0000">;</font></font><br>
+  <br></code><br>
+  Questa grammatica non potrebbe produrre alcun output, poiché la
+  generazione, indipendentemente da quale simbolo non terminale
+  abbia inizio, incorrerebbe in un ciclo ricorsivo infinito.<br>
+  Altri casi, più subdoli, possono dare luogo a sottocicli - una
+  sorta di circuiti:<br>
+  <br>
+  <code><font color="#996633">S <font color=
+  "#CC0000">::=</font></font> a <font color="#996633"><font color=
+  "#CC0000">|</font> A <font color="#CC0000">;</font><br>
+  A <font color="#CC0000">::=</font> B <font color=
+  "#CC0000">;</font><br>
+  B <font color="#CC0000">::=</font> A <font color=
+  "#CC0000">;</font></font></code><br>
+  <br>
+  Sebbene in tale frangente la generazione non dà necessariamente
+  luogo ad una ricorsione ciclica grazie alla presenza del simbolo
+  terminale&nbsp;<code>a</code>, è altresì possibile che venga
+  imboccato un percorso che non terminerà mai: è perciò importante
+  che anche simili casi siano segnalati da un messaggio di
+  errore.<br>
+  <br>
+  <br>
+  <br>
+  <h4><a name="3.0.1.3_Unfolding_ricorsivi" id=
+  "3.0.1.3_Unfolding_ricorsivi"></a> 3.0.1.3 Unfolding
+  ricorsivi</h4>Non è lecito prefiggere l'operatore <font color=
+  "#CC0000"><code>&gt;</code></font> di unfolding (vedi la
+  &nbsp;sezione <a href=
+  "#2.0.4.1_Di_simboli_non_terminali">2.0.4.1</a>) ad un simbolo
+  non terminale che produrrebbe una ricorsione ciclica.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#CC0000"><font color="#996633">S</font> ::=
+  &gt;<font color="#996633">A</font> ;<br>
+  <font color="#996633">A</font> ::= &gt;<font color=
+  "#996633">B</font> ;<br>
+  <font color="#996633">B</font> ::= &gt;<font color=
+  "#996633">S</font> ;</font><br>
+  <br></code><br>
+  Tale grammatica darebbe luogo ad una serie di unfolding che la
+  espanderebbero all'infinito e, pertanto, genera un messaggio
+  d'errore.<br>
+  <br>
+  <br>
+  <h4><a name="3.0.1.4_Epsilon-produzioni" id=
+  "3.0.1.4_Epsilon-produzioni"></a> 3.0.1.4
+  Epsilon-produzioni</h4>E' possibile che una grammatica soddisfi
+  la clausola di terminazione grazie ad una epsilon-produzione,
+  ovvero che l'unico output possibile sia epsilon (si veda la
+  sezione <a href="#2.0.2_Epsilon">2.0.2</a>).<br>
+  In tali casi si è in presenza di una grammatica considerata
+  scorretta:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color="#996633">A</font> <font color=
+  "#CC0000">;</font><br>
+  <br>
+  <font color="#996633">A</font> <font color=
+  "#CC0000">::=</font>&nbsp;</code><code><font color=
+  "#996633">A</font></code> <code><font color="#CC0000">^</font>
+  <font color="#CC0000">| _</font> <font color=
+  "#CC0000">;</font><br>
+  <br></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code><font color="#CC0000">_</font><br>
+  <br></code><br>
+  Anche una selezione distruttiva (vedi <a href=
+  "file:///home/manta/develop/polygen/1.0pre/ita/HOWTO-Refman.html#3.0.2.1.3_Selezione_distruttiva">
+  3.0.2.1.3</a>) in taluni frangenti può dare luogo ad una
+  epsilon-produzione.
+  <h4><br></h4>
+  <h4><a name="3.0.1.5_Ridefinizione_di_simboli_non_terminali" id=
+  "3.0.1.5_Ridefinizione_di_simboli_non_terminali"></a> 3.0.1.5
+  Ridefinizione di simboli non terminali<br></h4>Viene verificato
+  che uno stesso simbolo non terminale non venga accidentalmente
+  definito più volte nello scope.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">A</font> <font color=
+  "#CC0000">::=</font> mela <font color="#CC0000">|</font> pera
+  <font color="#CC0000">|</font> capra <font color=
+  "#CC0000">;</font><br>
+  <font color="#996633"><br>
+  A</font> <font color="#CC0000">::=</font> mandarino <font color=
+  "#CC0000">|</font> anguria <font color="#CC0000">;</font><br>
+  <br></code><br>
+  La cosa vale anche all'interno di scope innestati (vedi sezione
+  <a href="#2.0.11_Ambienti_e_Scoping_lessicale">2.0.11</a>):<br>
+  <br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color=
+  "#996633">S&nbsp;</font></code><code><font color=
+  "#CC0000">::=</font></code> <code><font color="#996633">(A</font>
+  <font color="#CC0000">::=</font> mela <font color=
+  "#CC0000">|</font> pera <font color="#CC0000">|</font> capra
+  <font color="#CC0000">;</font> <font color="#996633">A</font>
+  <font color="#CC0000">::=</font> mandarino <font color=
+  "#CC0000">|</font> anguria&nbsp;</code><code><font color=
+  "#CC0000">;</font></code><code>il&nbsp;</code><code><font color=
+  "#996633">A</font></code><code>)&nbsp;</code><code><font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <br>
+  <h4><a name="3.0.1.6_Carattere_sconosciuto" id=
+  "3.0.1.6_Carattere_sconosciuto"></a> 3.0.1.6 Carattere
+  illegale</h4>Propriamente si tratta di un errore generato dal
+  lexer nel caso in cui, in fase di analisi sintattica del file
+  sorgente, si imbatta in un carattere che non appartiene ad alcun
+  token riconosciuto - ovvero non definito dalle regole lessicali
+  di cui in sezione <a href=
+  "#4.1.3_Regole_lessicali">4.1.3</a>.<br>
+  <br>
+  <br>
+  <h4><a name="3.0.1.7_Token_inaspettato" id=
+  "3.0.1.7_Token_inaspettato"></a> 3.0.1.7 Token inaspettato</h4>Si
+  tratta propriamente di un errore generato dal parser nel caso in
+  cui, in fase di analisi sintattica del file sorgente, si imbatta
+  in un token sì valido ma che non dovrebbe trovarsi in tale
+  posizione - ad indicare pertanto un'infrazione delle regole
+  sintattiche di cui in sezione <a href=
+  "#4.1.1_Sintassi_concreta">4.1.1</a>.<br>
+  <br>
+  <br>
+  <br>
+  <h3><a name="3.0.2_Warning" id="3.0.2_Warning"></a> 3.0.2
+  Warning<br></h3>Sono classificati come warning quei casi che non
+  infrangono la definizione di correttezza di una grammatica, ma
+  che possono portare ad effetti inaspettati o indesiderati. La
+  presenza di messaggi di warning dunque non indica che la
+  grammatica sia scorretta, ma che è poco robusta; tant'è che un
+  warning non arresta l'esecuzione del programma.<br>
+  <br>
+  I warning sono suddivisi in livelli dipendentemente dalla
+  gravità: più basso è il livello, più gravi sono i warning
+  raggruppati in esso; al livello 0 appartengono quei warning che
+  non possono essere ignorati (pur continuando a non rappresentare
+  un pericolo per la generazione).<br>
+  <br>
+  <h4><a name="3.0.2.0_Livello_0" id="3.0.2.0_Livello_0"></a>
+  3.0.2.0 Livello 0</h4>Per ora non esistono warning appatenenti a
+  questo gruppo.<br>
+  <br>
+  <h4><a name="3.0.2.0_Livello_1" id="3.0.2.0_Livello_1"></a>
+  3.0.2.1 Livello 1</h4>
+  <h4><a name="3.0.2.1.1_Inesistenza_del_simbolo_I" id=
+  "3.0.2.1.1_Inesistenza_del_simbolo_I"></a> 3.0.2.1.1 Inesistenza
+  del simbolo <code>I</code><br></h4>La mancata definizione del
+  simbolo non terminale <code>I</code> non permette l'utilizzo
+  dell'opzione <code>-info</code> del programma.<br>
+  Tale simbolo tipicamente specifica una stringa informativa sulla
+  grammatica (autore, titolo, ecc.) e, sebbene non sia di per sè un
+  errore ometterlo, è buona norma aderire a tale convenzione
+  definendolo opportunamente.<br>
+  <br>
+  <h4><a name="3.0.2.1.2_Potenziali_epsilon-produzioni" id=
+  "3.0.2.1.2_Potenziali_epsilon-produzioni"></a> 3.0.2.1.2
+  Potenziali epsilon-produzioni<br></h4>Esistono casi in cui una
+  grammatica non genera in ogni caso epsilon (si veda la sezione
+  <a href="#3.0.1.4_Epsilon-produzioni">3.0.1.4</a>), ma solo
+  potenzialmente.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <font color="#CC0000">[</font>a<font color=
+  "#CC0000">]</font> <font color=
+  "#CC0000">;</font><br></code><code><br></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  <code>a<br>
+  <font color="#CC0000">_</font><br>
+  <br></code><br>
+  Anche alcuni situazioni di selezione distruttiva (vedi <a href=
+  "#3.0.2.1.3_Selezione_distruttiva">3.0.2.1.3</a>) portano a
+  potenziali epsilon-produzioni.<br>
+  <br>
+  <h4><a name="3.0.2.1.3_Selezione_distruttiva" id=
+  "3.0.2.1.3_Selezione_distruttiva"></a> 3.0.2.1.3 Selezione
+  distruttiva</h4>Non è infrequente, nei casi di utilizzo massiccio
+  della selezione (vedi <a href=
+  "#2.0.5.1_Etichette_e_selezione">2.0.5.1</a>), perdere il
+  controllo della propagazione delle etichette e scordarsi di
+  attivarle o attivare quelle sbagliate. In tali situazioni il
+  risultato è la distruzione delle produzioni che dipendono
+  dall'attivazione di tali etichette, con conseguenti
+  epsilon-produzioni.<br>
+  I&nbsp;casi fortunati in cui tale distruzione riguarda un'intera
+  produzione vengono regolarmente segnalati da un warning <a href=
+  "#3.0.2.1.2_Potenziali_epsilon-produzioni">3.0.2.1.2</a> o un
+  errore <a href="#3.0.1.4_Epsilon-produzioni">3.0.1.4</a>, ma nel
+  caso in cui le produzioni distrutte siano all'interno di una
+  sequenza non ci sarebbe modo, tramite solamente l'algoritmo di
+  controllo delle epsilon-produzioni, di rilevare il problema,
+  poiché di fatto non si è in presenza di epsilon-produzioni:<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> a <font color="#996633">A</font><font color=
+  "#339999">.z</font> <font color="#CC0000">;</font></code><br>
+  <br>
+  <code><font color=
+  "#996633">A</font></code><code>&nbsp;<font color=
+  "#CC0000">::=</font> <font color="#3333FF">x:</font> x
+  <font color="#CC0000">|</font> <font color="#3333FF">y:</font> y
+  <font color="#CC0000">;</font></code><br>
+  <br>
+  <samp><b>PRODUCE<br>
+  <br></b></samp>a<br>
+  <br>
+  <br>
+  Il tali casi viene generato in warning apposito che notifica
+  l'utente del problema. Si badi che la correzione di tutti i
+  warning di questo tipo irrobustiscono di molto una grammatica e
+  talvolta possono aiutare persino a rilevare utilizzi
+  concettualmente scorretti delle etichette.<br>
+  <br>
+  <br>
+  <br>
+  <h4><a name="3.0.2.0_Livello_2" id="3.0.2.0_Livello_2"></a>
+  3.0.2.2 Livello 2</h4>
+  <h4><a name="3.0.2.2.1_Permutazione_inutile" id=
+  "3.0.2.2.1_Permutazione_inutile"></a> 3.0.2.2.1 Permutazione
+  inutile</h4>Nel caso in cui in una sequenza appaia una sola
+  sottoproduzione permutabile (si veda la sezione <a href=
+  "#2.0.7_Permutazioni">2.0.7</a>), non avviene di fatto alcuna
+  permutazione per ovvi motivi.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> a <font color=
+  "#CC0000">{</font>b<font color="#CC0000">}</font> c <font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <br>
+  Sebbene una simile situazione non sia propriamente un errore,
+  viene generato un messaggio di warning di bassa gravità.<br>
+  <br>
+  <br>
+  <h4><a name="3.0.2.2.2_Unfolding_inutile" id=
+  "3.0.2.2.2_Unfolding_inutile"></a> 3.0.2.2.2 Unfolding
+  inutile</h4>I casi in cui l'operatore di unfolding sia utilizzato
+  in contesti - pur non scorretti - che non darebbero di fatto
+  luogo ad alcun unfolding vengono segnalati da un warning di bassa
+  gravità.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <span style=
+  "color: rgb(204, 0, 0);">&gt;(</span>b c<span style=
+  "color: rgb(204, 0, 0);">)</span> <font color=
+  "#CC0000">;</font></code><br>
+  <br>
+  <br>
+  L'unfolding di una sottoproduzione costituita da una singola
+  produzione è un caso di unfolding inutile.<br>
+  <br>
+  <br>
+  <br>
+  <h4><a name="3.0.2.0_Livello_3" id="3.0.2.0_Livello_3"></a>
+  3.0.2.3 Livello 3<br></h4>
+  <h4><a name="3.0.2.3.1_Unfolding_assegnazione" id=
+  "3.0.2.3.1_Unfolding_assegnazione"></a> 3.0.2.3.1 Unfolding di un
+  simbolo legato ad un'assegnazione</h4>L'unfolding di un simbolo
+  legato da un binding forte (vedi sezione <a href=
+  "#2.0.10.2_Sospensioni">2.0.10.2</a>) è sintatticamente legale e
+  semanticamente corretto; tuttavia potrebbe suscitare qualche
+  perplessità concettuale. Il risultato è in qualche modo simile al
+  concetto di <span style=
+  "font-style: italic;">ereditarietà</span>: facendo sì che il
+  preprocessore replichi le produzioni legate al simbolo in
+  questione e le inserisca, appiattendole (vedi sezione <a href=
+  "#2.0.4.1_Di_simboli_non_terminali">2.0.4.1</a>), all'interno di
+  un'altra produzione è equivalente a <span style=
+  "font-style: italic;">ereditare</span> le produzioni di tale
+  simbolo per fare in modo che possano generare qualcosa di
+  diverso.<br>
+  <br>
+  <samp><b>ESEMPIO</b></samp><br>
+  <br>
+  <code><font color="#996633">S</font> <font color=
+  "#CC0000">::=</font> <span style=
+  "color: rgb(204, 0, 0);">&gt;</span></code><code><font color=
+  "#CC0000"><span style=
+  "color: rgb(153, 102, 51);">A</span></font></code>
+  <code><font color="#CC0000"><span style=
+  "color: rgb(153, 102, 51);">A</span></font></code><code>&nbsp;</code><code><font color="#CC0000"><span style="color: rgb(153, 102, 51);">A</span></font></code>
+  <code><font color="#CC0000">;<br>
+  <br style="color: rgb(204, 153, 51);">
+  <span style="color: rgb(153, 102, 51);">A</span> :=</font> a
+  <font color="#CC0000">|</font> b <font color=
+  "#CC0000">;<br></font></code><br>
+  <samp><b>PRODUCE</b></samp><br>
+  <br>
+  a a a<br>
+  b a a<br>
+  a b b<br>
+  b b b<br>
+  <br>
+  <br>
+  Tale trucco rappresenta però in qualche modo un abuso
+  dell'unfolding e viene pertanto segnalato da un warning a
+  bassissima gravità.<br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h2><a name="4.0_Appendice" id="4.0_Appendice"></a> 4.0
+  Appendice</h2>
+  <h3><br></h3>
+  <h3><a name="4.1.1_Sintassi_concreta" id=
+  "4.1.1_Sintassi_concreta"></a> 4.1.1 Sintassi
+  concreta<br></h3>Segue la sintassi concreta in notazione
+  <i>EBNF</i> del linguaggio (di tipo 2) di definizione di
+  grammatiche interpretato dal <i>Polygen</i> e descritto in questo
+  documento.<br>
+  I simboli non terminali associati a produzioni sono interamente
+  maiuscoli; i simboli non terminali associati ad espressioni
+  regolari cominciano per lettera minuscola&nbsp; (si veda la
+  sezione <a href="#4.1.3_Regole_lessicali">4.1.3</a>); i simboli
+  terminali sono tra virgolette; <code>S</code> è il simbolo non
+  terminale iniziale.<br>
+  <br>
+  <br>
+  <code>S &nbsp; &nbsp; &nbsp;::= DECLS<br>
+  <br>
+  DECL&nbsp; &nbsp;::= Nonterm "::=" PRODS<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp;Nonterm ":=" PRODS<br>
+  <br>
+  DECLS &nbsp;::= (DECL ";")+<br>
+  <br>
+  PRODS &nbsp;::= PROD ("|" PROD)+<br>
+  <br>
+  PROD &nbsp; ::= ("+" | "-")* SEQ<br>
+  <br>
+  LABELS ::= LABEL ("|" LABEL)*<br>
+  <br>
+  LABEL &nbsp;::=</code> <code>("+" | "-")*</code> <code>Label<br>
+  <br>
+  SEQ &nbsp; &nbsp;::= [Label ":"]</code> <code>(ATOMS)+</code><br>
+  <code><br>
+  ATOMS&nbsp; ::=</code> <code>ATOM ("," ATOM)*</code><br>
+  <code><br>
+  ATOM &nbsp; ::= Term<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; "^"<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; "_"<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp;"\"<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp;UNFOLDABLE<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp;"&gt;" UNFOLDABLE<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp;"&lt;" UNFOLDABLE<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; ATOM "."<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; ATOM DotLabel<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp;ATOM ".(" LABELS
+  ")"</code><code><br>
+  <br>
+  UNFOLDABLE ::= Nonterm<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp;&nbsp;
+  "(" SUB ")" ["+"]<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; &nbsp;&nbsp;&nbsp; "[" SUB
+  "]"<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp;&nbsp; "{" SUB "}"<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp;"&gt;&gt;" SUB
+  "&lt;&lt;"<br>
+  <br>
+  SUB ::=</code> <code>[DECLS</code><code>] PRODS<br></code><br>
+  <br>
+  <br>
+  <h3><a name="4.1.2_Sintassi_astratta" id=
+  "4.1.2_Sintassi_astratta"></a> 4.1.2 Sintassi
+  astratta<br></h3>Per completezza riportiamo di seguito la
+  sintassi astratta del linguaggio interpretato dal <i>Polygen</i>
+  libero dagli zuccheri sintattici e dai termini che interessano
+  solamente la fase di preprocessing (si consulti la sezione
+  <a href="#4.1.5_Regole_di_traduzione">4.1.5</a> per le regole di
+  traduzione).<br>
+  <br>
+  <br>
+  <code>S &nbsp; &nbsp; &nbsp;::= DECLS<br>
+  <br>
+  DECL&nbsp; &nbsp;::= Nonterm "::=" PRODS<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp;Nonterm ":=" PRODS<br>
+  <br>
+  DECLS &nbsp;::= (DECL ";")+<br>
+  <br>
+  PRODS &nbsp;::= SEQ</code> <code>("|" SEQ)*</code><br>
+  <code><br>
+  SEQ &nbsp; &nbsp;::= [Label ":"] (ATOM)+<br>
+  <br>
+  ATOM &nbsp; ::= Nonterm<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; Term<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; "^"<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; "_"<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; "(" SUB ")"<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; ATOM "."<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; ATOM DotLabel<br>
+  <br>
+  SUB ::= [DECLS] PRODS<br></code><br>
+  <br>
+  <br>
+  <h3><a name="4.1.3_Regole_lessicali" id=
+  "4.1.3_Regole_lessicali"></a> 4.1.3 Regole
+  lessicali<br></h3>Seguono le regole lessicali in notazione di
+  espressioni regolari di tipo 3.<br>
+  <br>
+  <code>Term &nbsp; &nbsp; ::= [a-z 0-9 '][a-z A-Z 0-9 ']*<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; " [A-Z a-z 0-9 ( ) _ -
+  ? . , ! : \ & # + * / % $ � [ ] { } ~ @ ; : | &lt; &gt; = ^ ' \
+  "]* "<br>
+  <br>
+  Nonterm &nbsp;::= [A-Z][A-Z a-z 0-9]*<br>
+  <br>
+  Label &nbsp; &nbsp;::= [A-Z a-z 0-9]+<br>
+  <br>
+  DotLabel ::= . Label<br>
+  <br></code><br>
+  Si badi che anche il carattere di spazio può essere specificato
+  tra virgolette come simbolo terminale.<br>
+  <br>
+  <br>
+  <br>
+  <h3><a name="4.1.4_Sequenze_escape" id=
+  "4.1.4_Sequenze_escape"></a> 4.1.4 Sequenze
+  escape<br></h3>L'espressione regolare <code>Term</code> di cui in
+  sezione <a href="#4.1.3_Regole_lessicali">4.1.3</a> riconosce tra
+  virgolette il&nbsp; backslash <code>\</code> , che funge da
+  carattere escape. E' possibile che un simbolo terminale tra
+  virgolette contenga sequenze escape tra le seguenti:<br>
+  <br>
+  <br>
+  <table border="1" width="30%" cellpadding="2" cellspacing="2"
+  bgcolor="#CCCCCC">
+    <tbody>
+      <tr>
+        <td>\\</td>
+        <td>backslash</td>
+      </tr>
+      <tr>
+        <td>\"</td>
+        <td>virgolette</td>
+      </tr>
+      <tr>
+        <td>\n</td>
+        <td>new line</td>
+      </tr>
+      <tr>
+        <td>\r</td>
+        <td>carriage return</td>
+      </tr>
+      <tr>
+        <td>\b</td>
+        <td>backspace</td>
+      </tr>
+      <tr>
+        <td>\t</td>
+        <td>tab</td>
+      </tr>
+      <tr>
+        <td valign="top">\<i>xyz</i></td>
+        <td valign="top">codice ASCII decimale <i>xyz</i><br></td>
+      </tr>
+    </tbody>
+  </table><br>
+  <br>
+  <br>
+  <br>
+  <h3><a name="4.1.5_Regole_di_traduzione" id=
+  "4.1.5_Regole_di_traduzione"></a> 4.1.5 Regole di
+  traduzione</h3>Come riferimento formale riportiamo le regole di
+  traduzione da sintassi concreta a sintassi astratta in ordine di
+  precedenza (dove ovvero la traduzione <span style=
+  "font-style: italic;">i</span>-esima ha luogo prima della
+  <span style="font-style: italic;">i+1</span>-esima). Esse
+  rappresentano quanto operato dal parser nel caso di zuccheri
+  sintattici o dal preprocessore altrimenti.<br>
+  <br>
+  <code><br></code>
+  <table cellpadding="2" cellspacing="2" border="1" width="100%">
+    <tbody>
+      <tr>
+        <td valign="top" align="center"><b>sintassi
+        concreta</b><br></td>
+        <td valign="top" align="center"><b>sintassi
+        astratta</b><br></td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;">
+        <small><code><big><font color=
+        "#3333FF">L:</font></big></code>
+        <code><big>A<sub>11</sub><span style=
+        "color: rgb(204, 0, 0);">,</span>...</big></code><code><big><span style="color: rgb(204, 0, 0);">,</span></big></code><code><big>A<sub>n1</sub></big></code>
+        <code><big>...
+        A<sub>1n</sub></big></code><code><big><span style=
+        "color: rgb(204, 0, 0);">,</span></big></code><code><big>...</big></code><code><big><span style="color: rgb(204, 0, 0);">,</span></big></code><code><big>A<sub>nm</sub></big></code></small></td>
+        <td style="vertical-align: top;">
+        <small><code><big><font color=
+        "#3333FF">L:</font></big></code> <code><big><font color=
+        "#CC0000">(</font></big></code><code><big>A<sub>11</sub>...A<sub>1m</sub></big></code>&nbsp;<code><big><font color="#CC0000">|</font></big></code>
+        <code><big>...</big></code> <code><big><font color=
+        "#CC0000">|</font></big></code>
+        <code><big>A<sub>n1</sub>...A<sub>mn</sub></big></code><code><big><font color="#CC0000">)</font></big></code></small></td>
+      </tr>
+      <tr>
+        <td valign="top"><small><code><big>A<font color=
+        "#339999">.(</font></big></code><code><font color=
+        "#CC0000">+</font></code><code><b><sup>(a<sub>1</sub>)</sup></b><font color="#CC0000">-</font><b><sup>(b<sub>1</sub>)</sup></b></code><code><big><font color="#339999">l<sub>1</sub>|...|</font></big></code><code><font color="#CC0000">+</font><b><sup>(a<sub>n</sub>)</sup></b><font color="#CC0000">-</font><b><sup>(b<sub>n</sub>)</sup></b></code><code><big><font color="#339999">l<sub>n</sub>)</font></big></code><br>
+        </small></td>
+        <td valign="top"><small><code><big><font color=
+        "#CC0000">(<span style="color: rgb(153, 102, 51);">X</span>
+        ::=</font> A<span style=
+        "color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big><font color="#CC0000"><span style=
+        "color: rgb(153, 102, 51);">X</span></font></big><big><font color="#339999">.l<sub>1</sub></font></big></code>
+        <code><big><font color=
+        "#CC0000">|</font></big><big><b><small><sub>(1)</sub></small></b>
+        ...&nbsp;</big><big><font color=
+        "#CC0000">|</font></big><big><b><small><sub>(w</sub><sub>1)</sub></small></b></big>
+        <big><font color="#CC0000"><span style=
+        "color: rgb(153, 102, 51);">X</span></font></big><big><font color="#339999">.l<sub>1</sub></font></big>
+        <big><font color="#CC0000">|</font></big>
+        <big>...&nbsp;<font color="#CC0000">|</font></big>
+        <big><font color="#CC0000"><span style=
+        "color: rgb(153, 102, 51);">X</span></font></big><big><font color="#339999">.l<sub>n</sub></font></big>
+        <big><font color=
+        "#CC0000">|</font></big><big><b><small><sub>(1)</sub></small></b>
+        ...&nbsp;</big><big><font color=
+        "#CC0000">|</font></big><big><b><small><sub>(wn)</sub></small></b></big>
+        <big><font color="#CC0000"><span style=
+        "color: rgb(153, 102, 51);">X</span></font></big><big><font color="#339999">.l<sub>n</sub></font></big><big><font color="#CC0000">)</font></big></code><br>
+
+        <br>
+        <code><big><i>dove</i> <b>w<sub>i</sub> = a<sub>i</sub> -
+        b<sub>i</sub> -</b></big></code> <code><big><b>min</b>
+        <b>{a<sub>1</sub>-b<sub>1</sub> ...</b></big></code>
+        <code><big><b>a<sub>n</sub>-b<sub>n</sub></b></big></code><code><big><b>}</b></big></code><br>
+        </small></td>
+      </tr>
+      <tr>
+        <td valign="top"><small><code><font color=
+        "#CC0000">+</font><b><sup>(a<sub>1</sub>)</sup></b><font color="#CC0000">-</font><b><sup>(b<sub>1</sub>)</sup></b></code>
+        <code><big>P<sub>1</sub></big> <big><font color=
+        "#CC0000">|</font></big>
+        <big>...&nbsp;</big><big><font color=
+        "#CC0000">|</font></big></code><code><font color=
+        "#CC0000">+</font><b><sup>(a<sub>n</sub>)</sup></b><font color="#CC0000">-</font><b><sup>(b<sub>n</sub>)</sup></b></code>
+        <code><big>P<sub>n</sub></big></code><br></small></td>
+        <td valign="top">
+        <small><code><big>P<sub>1</sub>&nbsp;</big></code><code><big><font color="#CC0000">|</font></big></code><code><big><b><small><sub>(1)</sub></small></b>
+        ...&nbsp;</big></code><code><big><font color=
+        "#CC0000">|</font></big></code><code><big><b><small><sub>(w</sub><sub>1)</sub></small></b>
+        P<sub>1</sub>&nbsp;</big></code><code><big><font color=
+        "#CC0000">|</font></big></code><code><big>...&nbsp;</big></code><code><big><font color="#CC0000">|</font></big></code><code><big>P<sub>n</sub>&nbsp;</big></code><code><big><font color="#CC0000">|</font></big></code><code><big><b><small><sub>(1)</sub></small></b>
+        ...&nbsp;</big></code><code><big><font color=
+        "#CC0000">|</font></big></code><code><big><b><small><sub>(wn)</sub></small></b>
+        P<sub>n</sub></big></code><br>
+        <br>
+        <code><big><i>dove</i> <b>w<sub>i</sub> = a<sub>i</sub> -
+        b<sub>i</sub> -</b></big></code> <code><big><b>min</b>
+        <b>{a<sub>1</sub>-b<sub>1</sub> ...</b></big></code>
+        <code><big><b>a<sub>n</sub>-b<sub>n</sub></b></big></code><code><big><b>}</b></big></code><br>
+        </small></td>
+      </tr>
+      <tr>
+        <td valign="top"><small><code><big><font color=
+        "#CC0000">[</font></big></code><code><big>D<span style=
+        "color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big>P</big></code><code><big><font color=
+        "#CC0000">]</font></big></code><br></small></td>
+        <td valign="top"><small><code><big><font color=
+        "#CC0000">(</font><font color="#CC0000">_
+        |</font></big></code> <code><big><font color=
+        "#CC0000">(</font></big></code><code><big>D<span style=
+        "color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big>P</big></code><code><big><font color=
+        "#CC0000">))</font></big></code><br></small></td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;">
+        <small><code><big><font color=
+        "#CC0000">(</font></big></code><code><big>D<span style=
+        "color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big>P</big></code><code><big><font color=
+        "#CC0000">)+</font></big></code></small></td>
+        <td style="vertical-align: top;">
+        <small><code><big><font color=
+        "#CC0000">(</font></big></code><code><big><font color=
+        "#996633">X</font></big></code></small>
+        <small><code><big><font color=
+        "#CC0000">::=</font></big></code></small>
+        <small><code><big><font color=
+        "#CC0000">(</font></big></code><code><big>D<span style=
+        "color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big>P</big></code><code><big><font color=
+        "#CC0000">)</font></big></code></small><small><code><big><font color="#CC0000">(</font><font color="#CC0000">_
+        |</font></big></code></small>
+        <small><code><big><font color="#996633">X</font></big></code><code><big><font color="#CC0000">)</font></big></code><code><big><span style="color: rgb(204, 0, 0);">;</span></big></code></small>
+        <small><code><big><font color=
+        "#996633">X</font></big></code><code><big><font color=
+        "#CC0000">)</font></big></code></small></td>
+      </tr>
+      <tr>
+        <td valign="top"><small><code><big><font color=
+        "#CC0000">&gt;&gt;</font></big></code><code><big>D<span style="color: rgb(204, 0, 0);">;</span>
+        P</big></code> <code><big><font color=
+        "#CC0000">&lt;&lt;</font></big></code><br></small></td>
+        <td valign="top"><small><code><big><font color=
+        "#CC0000">(</font>D<font color=
+        "#CC0000">;</font></big></code>
+        <code><big>P'</big></code><code><big><font color=
+        "#CC0000">)</font></big></code><br>
+        <br>
+        <span style="font-style: italic;">dove</span></small>
+        <small><code><big>P'</big></code></small><small><span style="font-style: italic;">=
+        f(</span><big><big><code>A</code></big></big><span style=
+        "font-style: italic;">) per ogni atomo</span></small>
+        <small><big><big><code>A</code></big></big></small>
+        <small><span style="font-style: italic;">in</span></small>
+        <small><code><big>P</big></code></small><small><br style=
+        "font-style: italic;">
+        <span style="font-style: italic;">con
+        f(</span></small><small><big><big><code>A</code></big></big></small><small><span style="font-style: italic;">)
+        =</span></small> <small><big><big><code>A
+        &nbsp;</code></big></big></small><small><span style=
+        "font-style: italic;">&nbsp;&nbsp;&nbsp; se</span></small>
+        <small><big><big><code>A</code></big></big></small>
+        <small><span style="font-style: italic;">non appartiene
+        all'insieme degli atormi <span style=
+        "font-weight: bold;">unfoldable</span></span><br style=
+        "font-style: italic;">
+        <span style=
+        "font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        f(</span></small><small><big><big><code><span style=
+        "color: rgb(204, 0, 0);">&lt;</span>U</code></big></big></small><small><span style="font-style: italic;">)
+        =</span></small>
+        <small><big><big><code>U</code></big></big></small><small><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        se</span></small>
+        <small><big><big><code>U</code></big></big></small>
+        <small><span style="font-style: italic;">appartiene
+        all'insieme degli atomi <span style=
+        "font-weight: bold;">unfoldable</span></span></small><small><br style="font-style: italic;">
+
+        <span style=
+        "font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        f(</span></small><small><big><big><code>U</code></big></big></small><small><span style="font-style: italic;">)
+        =</span></small> <small><big><big><code><span style=
+        "color: rgb(204, 0, 0);">&gt;</span></code></big></big></small><small><span style="font-style: italic;">f(</span></small><small><big><big><code>U</code></big></big></small><small><span style="font-style: italic;">)</span></small><small><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;</span></small>
+        <small><span style="font-style: italic;">se</span></small>
+        <small><big><big><code>U</code></big></big></small>
+        <small><span style="font-style: italic;">appartiene
+        all'insieme degli atomi <span style=
+        "font-weight: bold;">unfoldable</span></span></small><small><br>
+        </small></td>
+      </tr>
+      <tr>
+        <td valign="top"><small><code><big>P<sub>1</sub>
+        <font color="#CC0000">|</font> ... <font color=
+        "#CC0000">|</font>&nbsp;</big></code><code><big>A<sub>1</sub></big></code>
+        <code><big><font color=
+        "#CC0000">{</font></big></code><code><big>D<sub>1</sub></big></code><code><big><span style="color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big>Q<sub>1</sub><font color=
+        "#CC0000">}</font><font color=
+        "#339999">.<small><code><big><font color=
+        "#339999"><small><code><big><font color=
+        "#339999">l<sub>1</sub></font></big></code></small></font></big></code></small></font></big></code><code><big>...&nbsp;</big></code><code><big>A<sub>n</sub></big></code>
+        <code><big><font color=
+        "#CC0000">{</font></big></code><code><big>D<sub>n</sub></big></code><code><big><span style="color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big>Q</big></code><code><big><sub>n</sub></big></code><code><big><font color="#CC0000">}</font><font color="#339999">.<small><code><big><font color="#339999">l<sub>n</sub></font></big></code></small></font></big></code>
+        <code><big><font color="#CC0000">|</font></big></code>
+        <code><big>... <font color="#CC0000">|</font>
+        P<sub>n</sub></big></code><br></small></td>
+        <td valign="top"><small><code><big>P<sub>1</sub>
+        <font color="#CC0000">|</font> ... <font color=
+        "#CC0000">|</font></big></code> <code><big><font color=
+        "#CC0000">(</font></big></code><code><big>A<sub>1</sub>
+        <font color=
+        "#CC0000">(</font></big></code><code><big>D<sub>1</sub></big></code><code><big><span style="color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big>Q<sup>1</sup><sub>1</sub></big></code><code><big><font color="#CC0000">)</font></big></code><code><big><font color="#339999">.<small><code><big><font color="#339999">l<sub>1</sub></font></big></code></small></font></big></code><code><big>...
+        A<sub>n</sub>&nbsp;</big></code><code><big><font color=
+        "#CC0000">(</font></big></code><code><big>D<sub>1</sub></big></code><code><big><span style="color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big>Q<sup>1</sup></big></code><code><big><sub>n</sub></big></code><code><big><font color="#CC0000">)</font></big></code><code><big>.</big></code><code><big><font color="#339999">l<sub>n</sub></font></big></code>
+        <code><big><font color="#CC0000"><br>
+        &nbsp; &nbsp;</font></big></code><code><big><font color=
+        "#CC0000">|</font> ...</big></code> <code><big><font color=
+        "#CC0000">|</font>&nbsp;<small><code><big>A<sub>1</sub>
+        <font color=
+        "#CC0000">(</font></big></code></small></big></code><code><big>D<sub>n</sub></big></code><code><big><span style="color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big><small><code><big>Q<sup>n!</sup><sub>n</sub></big></code><code><big><font color="#CC0000">)</font></big></code><code><big><font color="#339999">.<small><code><big><font color="#339999">l<sub>1</sub></font></big></code></small></font></big></code><code><big>...
+        A<sub>n</sub>&nbsp;</big></code><code><big><font color=
+        "#CC0000">(</font></big></code></small></big></code><code><big>D<sub>n</sub></big></code><code><big><span style="color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big><small><code><big>Q<sup>n!</sup></big></code><code><big><sub>n</sub></big></code><code><big><font color="#CC0000">)</font></big></code><code><big>.</big></code><code><big><font color="#339999">l<sub>n</sub></font></big></code></small></big></code><code><big><font color="#CC0000">)</font></big></code>
+        <code><big><font color="#CC0000">|</font></big></code>
+        <code><big>... <font color="#CC0000">|</font>
+        P<sub>n</sub></big></code><br>
+        <br></small>
+        <code><i>dove</i>&nbsp;</code><code><big>Q<sup>j</sup><sub>i</sub></big></code>
+        <code><i>è l'</i></code><code>i-<i>esimo elemento
+        della</i></code> <code>j-<i>esima<br>
+        <b>permutazione</b>
+        di</i>&nbsp;</code><code><big>Q<sub>1</sub></big>..</code><code><big>Q</big></code><code><big><sub>n</sub></big><i>(con</i></code><code>i
+        = 1..n, j = 1..n!<i>)</i></code> <small><br></small></td>
+      </tr>
+      <tr>
+        <td valign="top"><small><code><big>P<sub>1</sub>
+        <font color="#CC0000">|</font> ...&nbsp;<font color=
+        "#CC0000">|</font> <font color="#3333FF">L:</font> A
+        <font color=
+        "#CC0000">&gt;(</font></big></code><code><big>D<span style=
+        "color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big>Q<sub>1</sub>&nbsp;<font color=
+        "#CC0000">|</font> ...&nbsp;<font color="#CC0000">|</font>
+        Q<sub>m</sub><font color="#CC0000">)</font><font color=
+        "#339999">.l</font> B&nbsp;<font color="#CC0000">|</font>
+        ...&nbsp;<font color="#CC0000">|</font>
+        P<sub>n</sub><br></big></code></small></td>
+        <td valign="top"><small><code><big><font color=
+        "#CC0000">(</font></big></code><code><big>D<span style=
+        "color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big>P<sub>1</sub>&nbsp;<font color=
+        "#CC0000">|</font> ...&nbsp;<font color=
+        "#CC0000">|</font>&nbsp;<font color="#3333FF">L:</font> A
+        <font color="#CC0000">(</font>Q<sub>1</sub><font color=
+        "#CC0000">)</font><font color="#339999">.l</font>
+        B&nbsp;<font color="#CC0000">|</font> ...&nbsp;<font color=
+        "#CC0000">|</font>&nbsp;<font color="#3333FF">L:</font> A
+        <font color="#CC0000">(</font>Q<sub>m</sub><font color=
+        "#CC0000">)</font><font color="#339999">.l</font>
+        B&nbsp;<font color="#CC0000">|</font> ...&nbsp;<font color=
+        "#CC0000">|</font>&nbsp;P<sub>n</sub></big></code><code><big><font color="#CC0000">)</font></big></code><code><big><br>
+        </big></code></small></td>
+      </tr>
+      <tr>
+        <td valign="top"><small><code><big>P<sub>1</sub>
+        <font color="#CC0000">|</font> ...&nbsp;<font color=
+        "#CC0000">|</font> <font color="#3333FF">L:</font> A
+        <font color="#CC0000">&gt;</font><font color=
+        "#996633">X</font><font color="#339999">.l</font>
+        B&nbsp;<font color="#CC0000">|</font> ...&nbsp;<font color=
+        "#CC0000">|</font> P<sub>n</sub><br>
+        <br>
+        <i>dove</i> <font color="#996633">X</font> <font color=
+        "#CC0000">::=</font></big></code> <code><big>D<span style=
+        "color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big>Q<sub>1</sub>&nbsp;<font color=
+        "#CC0000">|</font> ...&nbsp;<font color=
+        "#CC0000">|</font>&nbsp;Q<sub>m</sub><br></big></code></small></td>
+        <td valign="top"><small><code><big><font color=
+        "#CC0000">(</font></big></code><code><big>D<span style=
+        "color: rgb(204, 0, 0);">;</span></big></code>
+        <code><big>P<sub>1</sub>&nbsp;<font color=
+        "#CC0000">|</font> ...&nbsp;<font color=
+        "#CC0000">|</font>&nbsp;<font color="#3333FF">L:</font> A
+        <font color="#CC0000">(</font>Q<sub>1</sub><font color=
+        "#CC0000">)</font><font color="#339999">.l</font>
+        B&nbsp;<font color="#CC0000">|</font> ...&nbsp;<font color=
+        "#CC0000">|</font>&nbsp;<font color="#3333FF">L:</font> A
+        <font color="#CC0000">(</font>Q<sub>m</sub><font color=
+        "#CC0000">)</font><font color="#339999">.l</font>
+        B&nbsp;<font color="#CC0000">|</font> ...&nbsp;<font color=
+        "#CC0000">|</font>&nbsp;P<sub>n</sub></big></code><code><big><font color="#CC0000">)</font></big></code><code><big><br>
+        </big></code></small></td>
+      </tr>
+    </tbody>
+  </table><br>
+  <br>
+  In cui valgono le seguenti convenzioni notazionali:<br>
+  <br>
+  <br>
+  <table border="1" width="60%" cellpadding="2" cellspacing="2">
+    <tbody>
+      <tr>
+        <td><code><big>P</big></code><code>,</code>
+        <code><big>Q</big></code></td>
+        <td>produzioni o serie di produzioni</td>
+      </tr>
+      <tr>
+        <td><big><code>A</code></big><code>,</code>
+        <big><code>B</code></big></td>
+        <td>atomi o (sotto)sequenze di atomi</td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;">D<br></td>
+        <td style="vertical-align: top;">dichirazione o serie di
+        dichiarazioni<br></td>
+      </tr>
+      <tr>
+        <td><code><big><font color=
+        "#3333FF">L</font></big></code><code>,</code>
+        <code><big><font color="#339999">l</font></big></code></td>
+        <td>etichette</td>
+      </tr>
+      <tr>
+        <td valign="top"><code><big><font color=
+        "#996633">X</font></big></code><code>,</code>
+        <code><big><font color=
+        "#996633">Y</font></big></code><br></td>
+        <td valign="top">simboli non terminali<br></td>
+      </tr>
+      <tr>
+        <td><code><font color=
+        "#CC0000">+</font><b><sup>(n)</sup></b><font color=
+        "#CC0000">-</font><b><sup>(m)</sup></b></code></td>
+        <td>giustapposizione di <b>n</b> operatori
+        <code><font color="#CC0000">+</font></code> e <b>m</b>
+        operatori <code><font color="#CC0000">-</font></code></td>
+      </tr>
+      <tr>
+        <td><code><big>P</big></code> <code><big><font color=
+        "#CC0000">|</font></big></code><code><big><b><small><sub>(1)</sub></small></b>
+        ...</big></code> <code><big><font color=
+        "#CC0000">|</font></big></code><code><big><b><small><sub>(n)</sub></small></b>
+        P</big></code></td>
+        <td>ripetizione di <b>n</b> produzioni
+        <code><big>P</big></code></td>
+      </tr>
+    </tbody>
+  </table><br>
+</body>
+</html>

@@ -1,0 +1,66 @@
+// ******************************************************************************
+// *                                                                            *
+// *                              BASE16 — Monokai                              *
+// *                                                                            *
+// ******************************************************************************
+// Color scheme "Monokai" by Wimer Hazenberg:
+// 
+//  -- http://www.monokai.nl
+// 
+// Ported from YAML to SCSS by Tristano Ajmone, based on the source file from
+// Chris Kempson's Base16 project (MIT License):
+// 
+//  -- https://github.com/chriskempson/base16-builder/blob/master/schemes/monokai.yml
+// 
+// A few extra colors added to the scheme.
+
+
+$monokai_00: #272822; // Rangoon Green ( almost black )
+$monokai_01: #383830; // Armadillo ( almost black )
+$monokai_02: #49483E; // Fuscous Gray ( blackboard-like brown )
+$monokai_03: #75715E; // Crocodile
+$monokai_04: #A59F85; // Tallow
+$monokai_05: #F8F8F2; // Bianca
+$monokai_06: #F5F4F1; // Pampas
+$monokai_07: #F9F8F5; // Desert Storm
+$monokai_08: #F92672; // Rose ( red )
+$monokai_09: #FD971F; // West Side ( intense orange )
+$monokai_0A: #F4BF75; // Rajah ( orange )
+$monokai_0B: #A6E22E; // Inch Worm ( green )
+$monokai_0C: #A1EFE4; // Water Leaf ( cyan/turquoise )
+$monokai_0D: #66D9EF; // Sky Blue
+$monokai_0E: #AE81FF; // Lavender ( purple )
+$monokai_0F: #CC6633; // Piper ( brick red )
+// Extra colors:
+$monokai_10: #FFE792; // Golden Glow ( yellow )
+$monokai_11: #E6DB74; // Flax ( dull yellow )
+$monokai_12: #1776BC; // Lochmara ( blue )
+$monokai_13: #6298CD; // Danube ( dull blue )
+
+
+
+// ==============================================================================
+//                                The MIT License                                
+// ==============================================================================
+// Copyright (c) 2017 Tristano Ajmone <tajmone@gmail.com>
+// Copyright (c) 2012 Wimer Hazenberg
+// Copyright (c) 2012 Chris Kempson
+// 
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+// 
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

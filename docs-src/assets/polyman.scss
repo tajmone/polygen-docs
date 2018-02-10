@@ -1,0 +1,26 @@
+// ******************************************************************************
+// *                                                                            *
+// *                        GitHub Pandoc HTML5 Template                        *
+// *                                                                            *
+// *                     v2.0 | 2017/11/20 | pandoc v2.0.2                      *
+// *                                                                            *
+// ******************************************************************************
+/* github-markdown.css -- MIT License:
+
+   Copyright (c) 2017 Tristano Ajmone.
+   Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+   Copyright (c) 2017 GitHub Inc.
+*/
+
+
+@import 'sass/github-markdown.scss';
+@import 'sass/alerts.scss';
+@import 'sass/pandoc.scss'; 			// pandoc specific CSS
+
+
+@import 'sass/base16-monokai.scss';		// "Monokai" Scheme for PolyGen Syntax Theme
+@import 'sass/highlight-polygen.scss';  // Highlight Theme for PolyGen Syntax
+
+@import 'sass/highlight-ebnf.scss';     // Highlight Theme for EBNF Syntax
+
+@import 'sass/tables-symbols.scss';     // PolyGen Symbols inside Tables 

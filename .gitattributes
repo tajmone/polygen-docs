@@ -1,6 +1,6 @@
 # ******************************************************************************
 # *                                                                            *
-# *                     The PolyGen Documentation Project                      *
+# *                     The Polygen Documentation Project                      *
 # *                                                                            *
 # *                  https://github.com/tajmone/polygen-docs                   *
 # *                                                                            *
@@ -17,7 +17,7 @@
 # Explicitly declare all files that are text and tell Git how to handle EOLs:
 
 ## ================
-## PolyGen Grammars
+## Polygen Grammars
 ## ================
 *.grm          text
 
@@ -66,7 +66,7 @@ LICENSE        text
 # Explicitly declare all files that are binary and shouldn't be modified by Git:
 
 ## =========================
-## PolyGen Compiled Grammars
+## Polygen Compiled Grammars
 ## =========================
 *.grm.o      binary
 
