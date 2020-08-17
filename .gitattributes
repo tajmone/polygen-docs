@@ -1,97 +1,48 @@
-# ******************************************************************************
-# *                                                                            *
-# *                     The Polygen Documentation Project                      *
-# *                                                                            *
-# *                  https://github.com/tajmone/polygen-docs                   *
-# *                                                                            *
-# ******************************************************************************
-
-# Set Git's default behaviour to text-files autodetection, in case users don't
-# have `core.autocrlf` set:
+#############################################
+#  The Polygen Documentation Project:       #
+#  https://github.com/tajmone/polygen-docs  #
+#############################################
 
 * text=auto
 
-# ==============================================================================
-#                    Text Files (EOL Normalization Settings)                    
-# ==============================================================================
-# Explicitly declare all files that are text and tell Git how to handle EOLs:
+*.exe   binary
 
-## ================
+## Repository Configurations
+############################
+.editorconfig    text eol=lf
+.gitlab-ci.yml   text eol=lf
+.travis.yml      text eol=lf
+.gitattributes   text eol=lf
+.gitconfig       text eol=lf
+.gitignore       text eol=lf
+.gitmodules      text eol=lf
+
 ## Polygen Grammars
-## ================
-*.grm          text
+###################
+*.grm     text linguist-language=EBNF
+*.grm.o   binary
 
-## ===========================
-## Highlight langDefs & Themes
-## ===========================
-*.lang         text
-*.theme        text
+## Highlight Assets
+###################
+[attr]Hihglight text linguist-language=Lua gitlab-language=Lua
+*.lang    Hihglight
+*.theme   Hihglight
 
-## ================
 ## Shell scripts
-## ================
-*.bat          text eol=crlf
-*.com          text eol=crlf
-*.sh           text eol=lf
+################
+*.bat   text eol=crlf
+*.sh    text eol=lf
 
-## ================
-## Documents files
-## ================
-*.htm          text
-*.html         text
-*.markdown     text
-*.md           text
-
-## =================
-## PP macros modules
-## =================
-*.pp           text
-
-## ================
 ## Documentation
-## ================
-LICENSE        text
+################
+*.htm     text
+*.html    text
+*.md      text
+LICENSE   text
 
-## ================
-## Git settings
-## ================
-.gitattributes text
-.gitconfig     text
-.gitignore     text
-.gitmodules    text
+## Pandoc Assets
+################
+*.pp         text
+*.markdown   text
 
-# ==============================================================================
-#                                  Binary Files                                 
-# ==============================================================================
-# Explicitly declare all files that are binary and shouldn't be modified by Git:
-
-## =========================
-## Polygen Compiled Grammars
-## =========================
-*.grm.o      binary
-
-
-## ================
-## Windows Binaries
-## ================
-*.exe        binary
-
-# ==============================================================================
-#                                GitHub Linguist                                
-# ==============================================================================
-#  -- https://github.com/github/linguist
-#
-# Manually define/override some extension so that GitHub's Linguist library can
-# 1) Correctly gather statistics on source files, and
-# 2) Use proper syntax highlighting on GitHub's WebUI.
-
-## ============================
-## PolyGen Grammars (sources)
-## ============================
-*.grm    linguist-language=EBNF
-
-## ===========================
-## Highlight langDefs & Themes
-## ===========================
-*.lang   linguist-language=Lua
-*.theme  linguist-language=Lua
+# EOF #

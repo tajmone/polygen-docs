@@ -1,29 +1,22 @@
-# ******************************************************************************
-# *                                                                            *
-# *                     The Polygen Documentation Project                      *
-# *                                                                            *
-# *                  https://github.com/tajmone/polygen-docs                   *
-# *                                                                            *
-# ******************************************************************************
+#############################################
+#  The Polygen Documentation Project:       #
+#  https://github.com/tajmone/polygen-docs  #
+#############################################
 
-## =========================
 ## Polygen Compiled Grammars
-## =========================
+############################
 *.grm.o
 
-## ================
 ## Windows Binaries
-## ================
+###################
 *.exe
 
-## =================
 ## Sass Cache Folder
-## =================
+####################
 .sass-cache
 
-## ===============
 ## Tools Subfolder
-## ===============
+##################
 
 # Ignore everyghing:
 docs-src/tools/*
@@ -32,3 +25,33 @@ docs-src/tools/*
 !docs-src/tools/README.md
 !docs-src/tools/download.bat
 !docs-src/tools/cleanup.bat
+
+############################
+## COMMON IGNORE PATTERNS ##
+############################
+
+## Linux
+########
+*~
+.directory
+.fuse_hidden*
+.nfs*
+.Trash-*
+
+## macOS
+########
+*.DS_Store
+._*
+.AppleDouble
+.LSOverride
+Icon
+
+## Windows
+##########
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+.BIN/
+
+# EOF #
