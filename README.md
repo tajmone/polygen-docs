@@ -1,3 +1,8 @@
+[![GNU GPL v2 License][license badge]][LICENSE]&nbsp;
+![PML Spec][pml badge]&nbsp;
+![Repository Version][release badge]&nbsp;
+![build status][travis badge]
+
 # Polygen-Docs
 
 - https://github.com/tajmone/polygen-docs
@@ -12,10 +17,10 @@ Welcome to `polygen-docs`, the "Polygen Documentation Revival" project.
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3,4" -->
 
 - [The Documents](#the-documents)
+- [Project Contents](#project-contents)
 - [About](#about)
 - [License](#license)
 - [Credits](#credits)
-- [Files and Folders](#files-and-folders)
 - [Links](#links)
 
 <!-- /MarkdownTOC -->
@@ -24,10 +29,22 @@ Welcome to `polygen-docs`, the "Polygen Documentation Revival" project.
 
 # The Documents
 
-The _Polygen Meta Language Spec_ (links to HTML Preview):
+The _Polygen Meta Language Spec_ (Live HTML preview links):
 
 - [`polygen-spec_EN.html`][PML en HTML Preview] — English
 - [`polygen-spec_IT.html`][PML it HTML Preview] — Italian
+
+
+# Project Contents
+
+- [`/archived/`](./archived) — archived copies of every document release.
+- [`/docs-src/`](./docs-src) — markdown source files and build toolchain.
+- [`CONTRIBUTING.md`][CONTRIBUTING] — Contributors' Guidelines.
+- [`LICENSE`][LICENSE] — GNU GPLv2 license.
+- [`polygen-spec_EN.html`](./polygen-spec_EN.html) — latest version of _PML Spec_ (English).
+- [`polygen-spec_IT.html`](./polygen-spec_IT.html) — latest version of _PML Spec_ (Italian).
+- [`validate.sh`][validate.sh] — (for contributors) validates code styles consistency of source files (requires [EClint]).
+
 
 # About
 
@@ -40,13 +57,11 @@ The translation of the English manual is now complete, and both the Italian and 
 This project is maintained by [Tristano Ajmone] and Polygen's author [Alvise Spanò].
 
 
-
 # License
 
-- [`LICENSE`](./LICENSE)
+- [`LICENSE`][LICENSE]
 
 The manuals are released under the same license of Polygen: GNU GPL version 2 (or above).
-
 
 
 # Credits
@@ -57,14 +72,6 @@ For a full list of credits, and their licenses, see:
 
 - [`/docs-src/CREDITS.md`](./docs-src/CREDITS.md)
 - [`/docs-src/assets/LICENSE`](./docs-src/assets/LICENSE)
-
-
-# Files and Folders
-
-- [`/archived/`](./archived) — archived copies of every document release
-- [`/docs-src/`](./docs-src) — markdown source files and build toolchain
-- [`polygen-spec_EN.html`](./polygen-spec_EN.html) — latest version of _PML Spec_ (English)
-- [`polygen-spec_IT.html`](./polygen-spec_IT.html) — latest version of _PML Spec_ (Italian)
 
 
 # Links
@@ -87,6 +94,23 @@ For a full list of credits, and their licenses, see:
 
 [PML en HTML Preview]: http://htmlpreview.github.io/?https://github.com/tajmone/polygen-docs/blob/master/polygen-spec_EN.html "Live HTML preview of 'Polygen Meta Language Spec' (English)"
 [PML it HTML Preview]: http://htmlpreview.github.io/?https://github.com/tajmone/polygen-docs/blob/master/polygen-spec_IT.html "Live HTML preview of 'Polygen Meta Language Spec' (Italian)"
+
+<!-- 3rd party tools -->
+
+[EClint]: https://www.npmjs.com/package/eclint "Visit EClint home at NPM"
+
+<!-- project files and folders -->
+
+[CONTRIBUTING]: ./CONTRIBUTING.md "Read the Contributors' Guidelines"
+[LICENSE]: ./LICENSE "View GNU GPL version 2 license file"
+[validate.sh]: ./validate.sh "View script source"
+
+<!-- badges -->
+
+[license badge]: https://img.shields.io/badge/license-GPLv2-00b5da.svg
+[pml badge]: https://img.shields.io/badge/PML%20Spec-1.0-brightgreen "Polygen Meta Language Specification version 1.0"
+[release badge]: https://img.shields.io/badge/release-1.1.0-brightgreen "HTML Docs edition v1.1.0 (2018-02-10)"
+[travis badge]: https://travis-ci.com/tajmone/polygen-docs.svg?branch=master "Travis CI: code styles validation via EditorConfig"
 
 <!-- people -->
 
