@@ -1,15 +1,17 @@
 # Required Tools Folder
 
-In this folder you can download and unpack all the required tools for building the Polygen documents. (The `.gitignore` file in this folder is set to ignore everything except this README file)
+In this folder you can download and unpack all the required tools for building the Polygen documents.
+(The `.gitignore` file in this folder is set to ignore everything except this README file)
 
-All instructions were written for Windows x64. If you're using another OS, visit the links provided in the [troubleshooting section] and download the appropriate files for your OS.
+All instructions were written for Windows x64.
+If you're using another OS, visit the links provided in the [troubleshooting section] and download the appropriate files for your OS.
 
 
 -----
 
 **Table of Contents**
 
-<!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="true" lowercase_only_ascii="true" uri_encoding="true" depth="3" -->
+<!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3,4" -->
 
 - [Download Via Script](#download-via-script)
 - [Manual Download](#manual-download)
@@ -29,11 +31,15 @@ If you have installed on your system [7-Zip] and [cURL], you can just run the fo
 
 - [`download.bat`](./download.bat)
 
-The script will take care of everything: it will download to this folder all the tools as Zip files, and then extract from them all the required files. The script won't make any changes to your system: nothing is written to the registry, and all files will be unpacked strictly in this folder. 
+The script will take care of everything: it will download to this folder all the tools as Zip files, and then extract from them all the required files.
+The script won't make any changes to your system: nothing is written to the registry, and all files will be unpacked strictly in this folder.
 
-The automated script is the preferred way to install these third party tools, as future versions of the script could also be used to update all tools to a newer version (if the need arises). If you don't have [7-Zip] and [cURL] on your system, consider installing them.
+The automated script is the preferred way to install these third party tools, as future versions of the script could also be used to update all tools to a newer version (if the need arises).
+If you don't have [7-Zip] and [cURL] on your system, consider installing them.
 
-If you'r looking for trusted precompiled cURL binaries for Windows, you can get them from [Viktor Szakáts]'s page. Alternatively, you can use the [cURL Download Wizard]. If you want a quick fix for this task, just download this file (x64):
+If you'r looking for trusted precompiled cURL binaries for Windows, you can get them from [Viktor Szakáts]'s page.
+Alternatively, you can use the [cURL Download Wizard].
+If you want a quick fix for this task, just download this file (x64):
 
 - https://bintray.com/vszakats/generic/download_file?file_path=curl-7.57.0-win64-mingw.7z
 
@@ -89,6 +95,9 @@ If any of the above link have become obsolete in time, or if the proposed files 
 - [Highlight homepage]
 - [Highlight GitHub repository]
 
+<!-----------------------------------------------------------------------------
+                               REFERENCE LINKS
+------------------------------------------------------------------------------>
 
 [Viktor Szakáts]: https://bintray.com/vszakats/generic/curl/ "Viktor Szakáts' cURL downloads page"
 [7-Zip]: http://7-zip.org/ "Visit 7-Zip website"
@@ -109,3 +118,5 @@ If any of the above link have become obsolete in time, or if the proposed files 
 [Highlight GitHub repository]: https://github.com/andre-simon/highlight "Visit Highlight GitHub repository"
 
 [troubleshooting section]: #troubleshooting
+
+<!-- EOF -->

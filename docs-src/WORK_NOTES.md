@@ -6,7 +6,7 @@ Some notes for maintaninace of the _Polygen Meta Language Spec_ document.
 
 **Table of Contents**
 
-<!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="true" lowercase_only_ascii="true" uri_encoding="true" depth="3" -->
+<!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3,4" -->
 
 - [Introduction](#introduction)
     - [Cross-References Usage](#cross-references-usage)
@@ -27,7 +27,8 @@ Some notes for maintaninace of the _Polygen Meta Language Spec_ document.
 
 ## Cross-References Usage
 
-These document contains some work notes regarding `pandoc-crossref` filter labels used in the documents for internal cross referencing. For full details on how `pandoc-crossref` filter cross references work, see:
+These document contains some work notes regarding `pandoc-crossref` filter labels used in the documents for internal cross referencing.
+For full details on how `pandoc-crossref` filter cross references work, see:
 
 - http://lierdakil.github.io/pandoc-crossref/#section-labels
 
@@ -38,7 +39,8 @@ For each document language there is a section offering two tables:
 
 ## Original Section Numbers
 
-The frist table lists the sections numbers of the original document, and the custom labels implemented to replace them in the new edition. Here is the meaning of its columns:
+The frist table lists the sections numbers of the original document, and the custom labels implemented to replace them in the new edition.
+Here is the meaning of its columns:
 
 1. Section Number in original document (numbers have changed in new version)
 2. Title of the section
@@ -53,7 +55,7 @@ The second table provides an alphabetically sorted list of all Section Labels us
 Also useful for copy-&-paste operations.
 
 
-# Italian Document 
+# Italian Document
 
 ## Original Section Numbers
 
@@ -112,7 +114,7 @@ For "OLD S.N.", refer to [original Italian document].
 | `{#sec:unfolding-sottoproduzioni}`       | `[@sec:unfolding-sottoproduzioni]`       |
 | `{#sec:unfolding}`                       | `[@sec:unfolding]`                       |
 
-# English Document 
+# English Document
 
 ## Original Section Numbers
 
@@ -176,8 +178,11 @@ For "OLD S.N.", refer to [original English document].
 | `{#sec:unfolding}`                          | `[@sec:unfolding]`                          |
 
 
+<!-----------------------------------------------------------------------------
+                               REFERENCE LINKS
+------------------------------------------------------------------------------>
 
-  
 [original Italian document]: ./original_Polygen-Refman_IT.html "View original Italian document"
-
 [original English document]: ./original_Polygen-Refman_EN.html "View original English document"
+
+<!-- EOF -->

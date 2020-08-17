@@ -1,6 +1,7 @@
 # Credits
 
-The creation of Polygen documents reuses some third party resources, all comptabile with the GPLv2 license. Their full licenses can be found in:
+The creation of Polygen documents reuses some third party resources, all comptabile with the GPLv2 license.
+Their full licenses can be found in:
 
 - [`assets/LICENSE`](./assets/LICENSE)
 
@@ -9,7 +10,7 @@ The creation of Polygen documents reuses some third party resources, all comptab
 
 **Table of Contents**
 
-<!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="true" lowercase_only_ascii="true" uri_encoding="true" depth="3" -->
+<!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3,4" -->
 
 - [Highlight Syntax Definitions](#highlight-syntax-definitions)
     - [Polygen Grammars Syntax](#polygen-grammars-syntax)
@@ -67,36 +68,38 @@ This is a modified version of a template I've created for the __[Pandoc-Goodies]
 
 **GitHub HTML5 Panodc Template** is Copyright © Tristano Ajmone, 2017, released under [The MIT License](https://github.com/tajmone/pandoc-goodies/blob/master/templates/html5/github/LICENSE) (MIT):
 
-    MIT License
-    
-    Copyright (c) Tristano Ajmone, 2017 (github.com/tajmone/pandoc-goodies)
-    Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-    Copyright (c) 2017 GitHub Inc.
-    
-    "GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017, released
-    under the MIT License (MIT); it contains readaptations of substantial portions
-    of the following third party softwares:
-    
-    (1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
-    (2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
-    
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
+```
+MIT License
+
+Copyright (c) Tristano Ajmone, 2017 (github.com/tajmone/pandoc-goodies)
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+Copyright (c) 2017 GitHub Inc.
+
+"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017, released
+under the MIT License (MIT); it contains readaptations of substantial portions
+of the following third party softwares:
+
+(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
+(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
 
 This template is build on top of [Sindre Sorhus](https://github.com/sindresorhus)’ **GitHub Markdown CSS**, plus some CSS modules taken from [GitHub](https://github.com) Incorporation’s **Primer CSS**:
@@ -127,7 +130,7 @@ For the syntax highlight themes in this project, I've used the following color s
 
 - [Base16 Monokai](#Base16-monokai)
 - [Base16 London Tube](#base16-london-tube)
- 
+
 
 ```
 Base16 Builder is released under the MIT License:
@@ -160,7 +163,7 @@ For the syntax highlighting of EBNF rules, I've used some colors from the "__Bas
 
 - [`assets/macros.pp`](./assets/macros.pp)
 
-The `macros.pp` module reuses some PP macros I had created for the "__The Pandoc-Goodies PP-Macros Library__" project: 
+The `macros.pp` module reuses some PP macros I had created for the "__The Pandoc-Goodies PP-Macros Library__" project:
 
 - https://github.com/tajmone/pandoc-goodies/tree/master/pp/macros
 
@@ -171,9 +174,14 @@ The original macros are released under MIT License, with copyright notice:
     Copyright (c) Tristano Ajmone 2017, MIT License.
 
 
+<!-----------------------------------------------------------------------------
+                               REFERENCE LINKS
+------------------------------------------------------------------------------>
 
 [Pandoc-Goodies]: https://github.com/tajmone/pandoc-goodies "Visit Pandoc-Goodies project on GitHub"
 
 [Highlight]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight website"
 
 [base16-builder]: https://github.com/chriskempson/base16-builder/ "Visit Base16 Builder project on GitHub"
+
+<!-- EOF -->

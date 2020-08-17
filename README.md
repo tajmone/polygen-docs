@@ -9,7 +9,7 @@ Welcome to `polygen-docs`, the "Polygen Documentation Revival" project.
 
 **Table of Contents**
 
-<!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="true" lowercase_only_ascii="true" uri_encoding="true" depth="3" -->
+<!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3,4" -->
 
 - [The Documents](#the-documents)
 - [About](#about)
@@ -31,9 +31,11 @@ The _Polygen Meta Language Spec_ (links to HTML Preview):
 
 # About
 
-The goal of this project is to gather all Polygen related documentation into a centralized repository for easier maintainance. All documents are written in markdown and converted to HTML through a customized toolchain leveraging pandoc, PP macros, Highlight and pandoc-crossref. 
+The goal of this project is to gather all Polygen related documentation into a centralized repository for easier maintainance.
+All documents are written in markdown and converted to HTML through a customized toolchain leveraging pandoc, PP macros, Highlight and pandoc-crossref.
 
-The pre-existing Polygen manual has been republished under the new title _Polygen Meta Language Spec_. The translation of the English manual is now complete, and both the Italian and English documents have been revised for this new edition.
+The pre-existing Polygen manual has been republished under the new title _Polygen Meta Language Spec_.
+The translation of the English manual is now complete, and both the Italian and English documents have been revised for this new edition.
 
 This project is maintained by [Tristano Ajmone] and Polygen's author [Alvise Spanò].
 
@@ -73,25 +75,22 @@ For a full list of credits, and their licenses, see:
 - [Polygen Wiki in Italian]
 
 
-
-
-
+<!-----------------------------------------------------------------------------
+                               REFERENCE LINKS
+------------------------------------------------------------------------------>
 
 [Polygen repository]: https://github.com/alvisespano/Polygen "Visit Polygen official GitHub repository"
-
 [Polygen Website]: http://www.polygen.org "Visit Polygen official website at www.polygen.org"
 
-[Tristano Ajmone]: https://github.com/tajmone "View Tristano Ajmone's GitHub profile"
-
-[Alvise Spanò]: https://github.com/alvisespano "View Alvise Spanò's GitHub profile"
-
-[draftwork]: https://github.com/tajmone/polygen-docs/tree/draftwork
-
 [Polygen Wiki in English]: https://github.com/alvisespano/Polygen/wiki "Visit the English Polygen Wiki"
-
 [Polygen Wiki in Italian]: https://github.com/tajmone/Polygen/wiki "Visit the Italian Polygen Wiki"
 
 [PML en HTML Preview]: http://htmlpreview.github.io/?https://github.com/tajmone/polygen-docs/blob/master/polygen-spec_EN.html "Live HTML preview of 'Polygen Meta Language Spec' (English)"
-
 [PML it HTML Preview]: http://htmlpreview.github.io/?https://github.com/tajmone/polygen-docs/blob/master/polygen-spec_IT.html "Live HTML preview of 'Polygen Meta Language Spec' (Italian)"
 
+<!-- people -->
+
+[Alvise Spanò]: https://github.com/alvisespano "View Alvise Spanò's GitHub profile"
+[Tristano Ajmone]: https://github.com/tajmone "View Tristano Ajmone's GitHub profile"
+
+<!-- EOF -->
