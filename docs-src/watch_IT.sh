@@ -16,8 +16,8 @@ source init.sh
 # =============================
 echo Now watching Polygen docs for changes...
 multiwatch \
-    polygen-spec_IT*.markdown \
-    polygen-spec_inc*.markdown \
-    assets/polyman.css \
-    -e 'bash conv_IT.sh'
+	polygen-spec_IT*.markdown \
+	polygen-spec_inc*.markdown \
+	assets/polyman.css \
+	-e 'bash conv_IT.sh'
 

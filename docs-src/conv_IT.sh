@@ -6,18 +6,17 @@
 # ******************************************************************************
 echo Converting polygen-spec_IT to html5...
 pp -import=assets/macros.pp \
-           polygen-spec_IT.markdown \
-| pandoc \
-     -F pandoc-crossref \
-     -F pandoc-citeproc \
-     -f markdown \
-     -t html5 \
-    --template=assets/GitHub.html5 \
-    --toc \
-    --toc-depth=5 \
-    --self-contained \
-     -o polygen-spec_IT.html
+	polygen-spec_IT.markdown \
+|	pandoc \
+		-F pandoc-crossref \
+		-F pandoc-citeproc \
+		-f markdown \
+		-t html5 \
+		--template=assets/GitHub.html5 \
+		--toc \
+		--toc-depth=5 \
+		--self-contained \
+		-o polygen-spec_IT.html
 
 echo Completed!
 echo ------------------------------------------------------------------------------
-

@@ -1,5 +1,5 @@
 @ECHO OFF
-::   "download.bat" | v1.0 | 2018/01/10 
+::   "download.bat" | v1.0 | 2018/01/10
 ::   ******************************************************************************
 ::   *                                                                            *
 ::   *                  Third-Party Tools Auto-Downloader Script                  *
