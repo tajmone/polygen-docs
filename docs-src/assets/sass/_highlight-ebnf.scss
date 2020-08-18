@@ -1,41 +1,39 @@
-// ******************************************************************************
-// *                                                                            *
-// *                             EBNF SYNTAX THEME                              *
-// *                                                                            *
-// ******************************************************************************
+// *****************************************************************************
+// *                                                                           *
+// *                            EBNF SYNTAX THEME                              *
+// *                                                                           *
+// *****************************************************************************
 // Syntax highlighting theme for EBNF (using André Simon's Highlight).
 // Designed by Tristano Ajmone.
-// 
+//
 // Colors taken from "Base16 London Tube" scheme, by Jan T. Sott (MIT License):
-// 
+//
 //  -- https://github.com/chriskempson/base16-builder/blob/master/schemes/tube.yml
 
 pre.EBNF,
 code.EBNF   {
-    // BASE COLOR
-    // ==========
-    color: #231f20; // almost black
-    // FG color doesn't actually show up in EBNF examples!
-    // BG color: keep template's default
+  // BASE COLOR
+  // ==========
+  color: #231f20; // almost black
+  // FG color doesn't actually show up in EBNF examples!
+  // BG color: keep template's default
 }
 
 code.EBNF   {
 
-    .hl.opt {
-        // OPERATORS
-        // =========
-        color: #ee2e24; // red
-    }
-    .hl.str {
-        // STRINGS
-        // =======
-        color: #009ddc; // blue 
-    }
-    .hl.kwa {
-        // NON-TERMINAL SYMBOLS
-        // ====================
-        color: #b06110; // brown 
-    }
+  hl.opt {
+    // OPERATORS
+    // =========
+    color: #ee2e24; // red
+  }
+  .hl.str {
+    // STRINGS
+    // =======
+    color: #009ddc; // blue
+  }
+  .hl.kwa {
+    // NON-TERMINAL SYMBOLS
+    // ====================
+    color: #b06110; // brown
+  }
 }
-
-

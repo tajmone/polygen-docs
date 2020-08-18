@@ -1,10 +1,10 @@
-// ******************************************************************************
-// *                                                                            *
-// *                        GitHub Pandoc HTML5 Template                        *
-// *                                                                            *
-// *                     v2.0 | 2017/11/20 | pandoc v2.0.2                      *
-// *                                                                            *
-// ******************************************************************************
+// *****************************************************************************
+// *                                                                           *
+// *                       GitHub Pandoc HTML5 Template                        *
+// *                                                                           *
+// *                    v2.0 | 2020/08/18 | pandoc v2.0.2                      *
+// *                                                                           *
+// *****************************************************************************
 /* github-markdown.css -- MIT License:
 
    Copyright (c) 2017 Tristano Ajmone.
@@ -15,12 +15,12 @@
 
 @import 'sass/github-markdown.scss';
 @import 'sass/alerts.scss';
-@import 'sass/pandoc.scss'; 			// pandoc specific CSS
+@import 'sass/pandoc.scss';             // pandoc specific CSS
 
 
-@import 'sass/base16-monokai.scss';		// "Monokai" Scheme for PolyGen Syntax Theme
-@import 'sass/highlight-polygen.scss';  // Highlight Theme for PolyGen Syntax
+@import 'sass/base16-monokai.scss';     // "Monokai" Scheme for PolyGen Syntax Theme
+@import 'sass/highlight-polygen.scss';  // Highlight Theme: for PolyGen Syntax
 
-@import 'sass/highlight-ebnf.scss';     // Highlight Theme for EBNF Syntax
+@import 'sass/highlight-ebnf.scss';     // Highlight Theme: for EBNF Syntax
 
-@import 'sass/tables-symbols.scss';     // PolyGen Symbols inside Tables 
+@import 'sass/tables-symbols.scss';     // PolyGen Symbols inside Tables
