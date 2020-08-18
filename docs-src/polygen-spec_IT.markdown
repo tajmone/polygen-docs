@@ -23,7 +23,7 @@ keywords:
    - ebnf
 toc-title:      Indice
 #==============================================================================
-#                           pandoc-crossref settings                           
+#                           pandoc-crossref settings
 #==============================================================================
 numberSections: true
 sectionsDepth: -1
@@ -35,14 +35,14 @@ nameInLink: true
 chapters: true
 autoSectionLabels: true
 #==============================================================================
-#                      Blocco di Testo Prima dell'Indice                       
+#                      Blocco di Testo Prima dell'Indice
 #==============================================================================
 summary: |
     Edizione **!DocVer** (!DocDate) per **PML !PMLVer**, Polygen **!PolygenV**.
 
     :::::: Note :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
     __Copyright © 2002-18 Alvise Spanò.__ Questo documento è soggetto ai termini
-    della licenza [GNU General Public License] (GPLv2+); o la versione 2 della 
+    della licenza [GNU General Public License] (GPLv2+); o la versione 2 della
     licenza o (a propria scelta) una versione successiva. È lecito redistribuirlo
     o modificarlo secondo i termini della medesima licenza.
 
@@ -306,9 +306,9 @@ La definizione del simbolo non terminale `S` viene internamente interpretata com
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 S ::= il gatto mangia ( la mela | la mela | la mela | la mela
-                      | la pera | la  pera
-                      | l'arancia | l'arancia | l'arancia
-                      | il  limone) ;
+                      | la pera | la  pera
+                      | l'arancia | l'arancia | l'arancia
+                      | il  limone) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 pertanto la probabilità che la produzione `la mela` venga generata è maggiore rispetto a quella de `l'arancia`, che è maggiore di quella de `la pera`, a sua volta maggiore de `il limone`.
@@ -329,9 +329,9 @@ Si consideri il seguente scenario:
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= gatto soriano | cane Razza ;
+S ::= gatto soriano | cane Razza ;
 
-Razza ::= pastore | dalmata | bastardo ;
+Razza ::= pastore | dalmata | bastardo ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCE**
@@ -345,7 +345,7 @@ cane bastardo
 
 La probabilità che `gatto soriano` sia generato è pari a 1 su 2; non vale però lo stesso per `cane pastore`, `cane dalmata` e `cane bastardo`, sebbene un utente possa ritenere ragionevole che siano tutti generabili con la medesima probabilità.
 
-Il problema nasce dal fatto che `gatto soriano` e `cane Razza` si spartiscono equamente la produzione di `S`, ovvero la probabilità con cui viene generato `gatto soriano` è la stessa (pari ad 1 su 2) con cui viene generato uno tra `cane pastore`, `cane dalmata` e `cane bastardo`. Nella fattispecie la distribuzione delle probabilità per ogni produzione possibile   appare come segue:
+Il problema nasce dal fatto che `gatto soriano` e `cane Razza` si spartiscono equamente la produzione di `S`, ovvero la probabilità con cui viene generato `gatto soriano` è la stessa (pari ad 1 su 2) con cui viene generato uno tra `cane pastore`, `cane dalmata` e `cane bastardo`. Nella fattispecie la distribuzione delle probabilità per ogni produzione possibile   appare come segue:
 
 |                 |                  |
 |-----------------|------------------|
@@ -373,7 +373,7 @@ Per risolvere questo problema, che rappresenta un’istanza del più vasto probl
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 S ::= gatto soriano | cane >Razza ;
 
-Razza ::= pastore | dalmata | bastardo ;
+Razza ::= pastore | dalmata | bastardo ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Prefiggendo la parola chiave `>`, il programma opera, nella fase di preprocessing a monte della generazione, la trasformazione di cui sopra, cambiando la distribuzione delle probabilità nel seguente modo:
@@ -393,31 +393,31 @@ Non è raro utilizzare una sottoproduzione per diminuire la verbosità di una gr
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= il (gatto | cane | canarino | toro | lupo | gallo)
+S ::= il (gatto | cane | canarino | toro | lupo | gallo)
     | lo storione
-    | la (capra | pecora) ;
+    | la (capra | pecora) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Se da una parte l'architettura e la scalabilità della grammatica ne giovano, dall'altra la qualità dell'output ne risente molto, in quanto 1 volta su 3 verrà generato `lo storione` per un motivo analogo a quello esposto in [@sec:simboli-non-terminali]. Per portare l'eterogeneità dell'output al (ragionevolmente desiderabile) livello in cui ciascun animale possa essere prodotto con la medesima probabilità, sarebbe necessario evitare l'utilizzo delle parentesi tonde, le quali danno luogo a sole 3 macro-produzioni, e specificare l'articolo accanto ad ogni nome di animale; in altre parole, quindi, rinunciare all'architettura originale della grammatica.
 
-A tale proposito una qualunque sottoproduzione può essere sottoposta ad __unfolding__ in maniera analoga a quanto esposto in [@sec:simboli-non-terminali] per i simboli non terminali. L'uso dell'operatore `>` istruisce il programma a delegare al preprocessore l'onere di operare l'unfolding della sottoproduzione immediatamente seguente, permettendo all'utente di mantenere inalterata l'architettura della grammatica sorgente.
+A tale proposito una qualunque sottoproduzione può essere sottoposta ad __unfolding__ in maniera analoga a quanto esposto in [@sec:simboli-non-terminali] per i simboli non terminali. L'uso dell'operatore `>` istruisce il programma a delegare al preprocessore l'onere di operare l'unfolding della sottoproduzione immediatamente seguente, permettendo all'utente di mantenere inalterata l'architettura della grammatica sorgente.
 
 **ESEMPIO**
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= il >(gatto | cane | canarino | toro | lupo | gallo)
+S ::= il >(gatto | cane | canarino | toro | lupo | gallo)
     | lo storione
-    | la >(capra | pecora) ;
+    | la >(capra | pecora) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 viene tradotto esattamente come desiderato:
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= il gatto | il cane | il canarino | il toro | il lupo | il gallo
-    | lo storione
-    | la capra | la pecora ;
+S ::= il gatto | il cane | il canarino | il toro | il lupo | il gallo
+    | lo storione
+    | la capra | la pecora ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ovvero una serie di produzioni alla stesso livello.
@@ -428,19 +428,19 @@ Un esempio più articolato:
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= M: >( il (gatto | cane >(pastore | dalmata) | canarino | toro | lupo | gallo)
-          | lo storione
-          )
-   |  F: la >(capra | pecora) ;
+S ::= M: >( il (gatto | cane >(pastore | dalmata) | canarino | toro | lupo | gallo)
+          | lo storione
+          )
+   |  F: la >(capra | pecora) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 viene tradotto in:
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= M: il gatto | M: il cane pastore | M: il cane dalmata | M: il canarino | M: il toro | M: il lupo | M: il gallo
-   |  M: lo storione
-   |  F: la capra | F: pecora ;
+S ::= M: il gatto | M: il cane pastore | M: il cane dalmata | M: il canarino | M: il toro | M: il lupo | M: il gallo
+   |  M: lo storione
+   |  F: la capra | F: pecora ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Di sottoproduzioni opzionali
@@ -457,17 +457,17 @@ Come è possibile constatare dalle regole di traduzione in [@sec:regole-traduzio
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= >{il >(cane | gatto)} e {la (pecora | capra)} ;
+S ::= >{il >(cane | gatto)} e {la (pecora | capra)} ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Si presti attenzione al differente comportamento dell'unfolding esterno alle parentesi graffe rispetto a quello interno; la traduzione dà luogo a:
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= il cane e la (pecora | capra)
-   | il gatto e la (pecora | capra)
-   | la (pecora | capra) e il cane
-   | la (pecora | capra) e il gatto ;
+S ::= il cane e la (pecora | capra)
+   | il gatto e la (pecora | capra)
+   | la (pecora | capra) e il cane
+   | la (pecora | capra) e il gatto ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Di sottoproduzioni soggette ad unfolding in profondità
@@ -480,14 +480,14 @@ Tuttavia talvolta è desiderabile operare un ulteriore __unfolding__: quello di 
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= > >> il (cane | gatto) | la (pecora | capra) << | lo storione ;
+S ::= > >> il (cane | gatto) | la (pecora | capra) << | lo storione ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 che viene tradotto in:
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= il cane | il gatto | la pecora | la capra | lo storione ;
+S ::= il cane | il gatto | la pecora | la capra | lo storione ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ## Attributi
@@ -586,9 +586,9 @@ Che è equivalente a:
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= (Ogg.M | Ogg.M | Ogg.M | Ogg.M | Ogg.F).S
-   |  (Ogg.M | Ogg.M | Ogg.M | Ogg.M | Ogg.F).S
-   |  (Ogg.M | Ogg.M | Ogg.M | Ogg.M | Ogg.F).P ;
+S ::= (Ogg.M | Ogg.M | Ogg.M | Ogg.M | Ogg.F).S
+   |  (Ogg.M | Ogg.M | Ogg.M | Ogg.M | Ogg.F).S
+   |  (Ogg.M | Ogg.M | Ogg.M | Ogg.M | Ogg.F).P ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Reset dell'ambiente delle etichette
@@ -634,7 +634,7 @@ A tale proposito il linguaggio mette a disposizione la parola chiave **backslash
 S ::= \ pippo (e' | "." \) Eulogia ^ "." ;
 
 Eulogia ::= proprio un bell'uomo
-         |  davvero un signore ;
+         |  davvero un signore ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCE**
@@ -671,7 +671,7 @@ Per evitare che l'utente debba scrivere più volte la stessa sequenza con alcuni
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= se {e'} {quindi} {egli} ;
+S ::= se {e'} {quindi} {egli} ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCE**
@@ -735,31 +735,31 @@ alle 3 in punto, tra 10 minuti, partiro' io solo
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= senti >> M: ( il (cane| gatto (soriano | persiano) | colibri')
-                  | lo (storione
+S ::= senti >> M: ( il (cane| gatto (soriano | persiano) | colibri')
+                  | lo (storione
                   | sciacallo)
-                  )
-             | F: la (pecora | raganella | Animale)
-            << ;
+                  )
+             | F: la (pecora | raganella | Animale)
+            << ;
 
-Animale ::= capra | mucca da (latte | carne) ;
+Animale ::= capra | mucca da (latte | carne) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Il simbolo non terminale `S` viene tradotto in:
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= senti ( M: il cane
-            | M: il gatto soriano
-            | M: il gatto persiano
-            | M: il colibri'
-            | M: lo storione
-            | M: lo sciacallo
-            | F: la pecora
-            | F: la raganella
-            | F: la capra
-            | F: la mucca da (latte | carne)
-            ) ;
+S ::= senti ( M: il cane
+            | M: il gatto soriano
+            | M: il gatto persiano
+            | M: il colibri'
+            | M: lo storione
+            | M: lo sciacallo
+            | F: la pecora
+            | F: la raganella
+            | F: la capra
+            | F: la mucca da (latte | carne)
+            ) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 L'unfolding in profondità viene tradotto quindi in una sottoproduzione al cui interno tutto viene appiattito ricorsivamente, ad esclusione delle produzioni associate ai simboli non terminali. Ciò è dovuto al fatto che l'operazione consiste di fatto nell'unfolding semplice di ogni atomo per cui tale operazione abbia senso: mentre quindi anche i simboli non terminali sono soggetti a tale trattamento, le produzioni ad essi associate invece non vengono toccate. Tale politica, sebbene possa apparire di primo acchito ingiustificata, permette invero all'utente di specificare un qualunque simbolo non terminale all'interno di una sottoproduzione tra doppie parentesi acute senza dare luogo inavvertitamente ad una serie enorme di unfolding o, ancor peggio, ad unfolding ciclici (vedi [@sec:unfolding-ricorsivi]).
@@ -1050,7 +1050,7 @@ Per ovviare alla scomodità di dover specificare etichette locali ed attivarle i
 S ::= sei un,una  bel,bella ragazz ^ o,a ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Il risultato è identico a quello dell'esempio più verboso; la differenza consiste nel fatto che non c'è menzione ad alcuna etichetta: come dalle regole di traduzione in [@sec:regole-traduzione], ogni produzione che presenta gruppi di atomi separati da `,` viene tradotta in una sottoproduzione che consiste in tante produzioni separate da  `|` quanti sono gli atomi nel gruppo e dove ognuna di tali produzioni presenta l'__i__-esimo atomo di ogni gruppo, per ogni __i__. L'esempio di cui sopra viene tradotto in:
+Il risultato è identico a quello dell'esempio più verboso; la differenza consiste nel fatto che non c'è menzione ad alcuna etichetta: come dalle regole di traduzione in [@sec:regole-traduzione], ogni produzione che presenta gruppi di atomi separati da `,` viene tradotta in una sottoproduzione che consiste in tante produzioni separate da  `|` quanti sono gli atomi nel gruppo e dove ognuna di tali produzioni presenta l'__i__-esimo atomo di ogni gruppo, per ogni __i__. L'esempio di cui sopra viene tradotto in:
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1125,7 +1125,7 @@ Si potrebbe ritenere ragionevole che venisse iterata sempre la stessa generazion
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= (X := a | b; (X)+) ;
+S ::= (X := a | b; (X)+) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCE**
@@ -1245,7 +1245,7 @@ Laddove specificato dal messaggio generato dal programma, warning ed errori si r
 
 Sono classificati come errori quei casi che infrangono la definizione di correttezza di una grammatica.
 
-Un errore arresta l'esecuzione del programma. 
+Un errore arresta l'esecuzione del programma.
 
 ### Inesistenza di simboli non terminali
 
@@ -1260,7 +1260,7 @@ S ::= A | B ;
 A ::= a ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Questa grammatica dà luogo ad un errore, in quanto `B` non è definito. 
+Questa grammatica dà luogo ad un errore, in quanto `B` non è definito.
 
 ### Ricorsioni cicliche e non-terminazione
 
@@ -1272,7 +1272,7 @@ L'algoritmo di controllo è in grado di verificare che ciascun simbolo non termi
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 S ::= S | A ;
 A ::= B ;
-B ::= S | A; 
+B ::= S | A ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Questa grammatica non potrebbe produrre alcun output, poiché la generazione, indipendentemente da quale simbolo non terminale abbia inizio, incorrerebbe in un ciclo ricorsivo infinito.
@@ -1286,8 +1286,8 @@ A ::= B ;
 B ::= A ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Sebbene in tale frangente la generazione non dia necessariamente luogo ad una ricorsione infinita grazie alla presenza del simbolo terminale `a`, è virtualmente possibile che la generazione non termini. Casi simili sono segnalati da un messaggio di errore.
-      
+Sebbene in tale frangente la generazione non dia necessariamente luogo ad una ricorsione infinita grazie alla presenza del simbolo terminale `a`, è virtualmente possibile che la generazione non termini. Casi simili sono segnalati da un messaggio di errore.
+
 
 ### Unfolding ricorsivi {#sec:unfolding-ricorsivi}
 
@@ -1316,7 +1316,7 @@ In tali casi si è in presenza di una grammatica considerata scorretta:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 S ::= A ;
 
-A ::= A ^ | _ ;
+A ::= A ^ | _ ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCE**
@@ -1346,7 +1346,7 @@ La cosa vale anche all’interno di scope innestati (vedi [@sec:ambienti-scoping
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= (A ::= mela | pera | capra ; A ::= mandarino | anguria ; il A) ; 
+S ::= (A ::= mela | pera | capra ; A ::= mandarino | anguria ; il A) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Carattere illegale
@@ -1359,7 +1359,7 @@ Si tratta propriamente di un errore generato dal parser nel caso in cui, in fase
 
 ## Warning
 
-Sono classificati come warning quei casi che non infrangono la definizione di correttezza di una grammatica, ma che possono portare ad effetti inaspettati o indesiderati. La presenza di messaggi di warning dunque non indica che la grammatica sia scorretta, ma che è poco robusta; tant'è che un warning non arresta l'esecuzione del programma. 
+Sono classificati come warning quei casi che non infrangono la definizione di correttezza di una grammatica, ma che possono portare ad effetti inaspettati o indesiderati. La presenza di messaggi di warning dunque non indica che la grammatica sia scorretta, ma che è poco robusta; tant'è che un warning non arresta l'esecuzione del programma.
 
 I warning sono suddivisi in livelli dipendentemente dalla gravità: più basso è il livello, più gravi sono i warning raggruppati in esso; al livello 0 appartengono quei warning che non possono essere ignorati (pur continuando a non rappresentare un pericolo per la generazione).
 
@@ -1399,7 +1399,7 @@ Anche alcune situazioni di selezione distruttiva ([vedi @sec:selezione-distrutti
 
 Non è infrequente, nei casi di utilizzo massiccio della selezione ([vedi @sec:etichette-selezione]), perdere il controllo della propagazione delle etichette e scordarsi di attivarle o attivare quelle sbagliate. In tali situazioni il risultato è la distruzione delle produzioni che dipendono dall’attivazione di tali etichette, con conseguenti epsilon-produzioni.
 
-I casi fortunati in cui tale distruzione riguarda un’intera produzione vengono regolarmente segnalati da un warning ([-@sec:potenziali-epsilon-produzioni]) o un errore ([-@sec:epsilon-produzioni]), ma nel caso in cui le produzioni distrutte siano all’interno di una sequenza non ci sarebbe modo, tramite solamente l’algoritmo di controllo delle epsilon-produzioni, di rilevare il problema, poiché di fatto non si è in presenza di epsilon-produzioni:
+I casi fortunati in cui tale distruzione riguarda un’intera produzione vengono regolarmente segnalati da un warning ([-@sec:potenziali-epsilon-produzioni]) o un errore ([-@sec:epsilon-produzioni]), ma nel caso in cui le produzioni distrutte siano all’interno di una sequenza non ci sarebbe modo, tramite solamente l’algoritmo di controllo delle epsilon-produzioni, di rilevare il problema, poiché di fatto non si è in presenza di epsilon-produzioni:
 
 **ESEMPIO**
 
@@ -1428,7 +1428,7 @@ Nel caso in cui in una sequenza appaia una sola sottoproduzione permutabile (si 
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= a {b} c ; 
+S ::= a {b} c ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Sebbene una simile situazione non sia propriamente un errore, viene generato un messaggio di warning di bassa gravità.
@@ -1441,7 +1441,7 @@ I casi in cui l'operatore di unfolding sia utilizzato in contesti --- pur non sc
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= >(b c) ; 
+S ::= >(b c) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 L'unfolding di una sottoproduzione costituita da una singola produzione è un caso di unfolding inutile.
@@ -1456,7 +1456,7 @@ L'unfolding di un simbolo legato da un binding forte (vedi [@sec:sospensioni]) �
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= >A A A ;
+S ::= >A A A ;
 
 A := a | b ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1478,7 +1478,7 @@ Tale trucco rappresenta però in qualche modo un abuso dell'unfolding e viene pe
 
 Segue la sintassi concreta in notazione _EBNF_ del linguaggio (di _[tipo-2]_) di definizione di grammatiche interpretato dal _Polygen_ e descritto in questo documento.
 
-I simboli non terminali associati a produzioni sono interamente maiuscoli; i simboli non terminali associati ad espressioni regolari cominciano per lettera minuscola  (si veda la [@sec:regole-lessicali]); i simboli terminali sono tra virgolette; `S` è il simbolo non terminale iniziale. 
+I simboli non terminali associati a produzioni sono interamente maiuscoli; i simboli non terminali associati ad espressioni regolari cominciano per lettera minuscola  (si veda la [@sec:regole-lessicali]); i simboli terminali sono tra virgolette; `S` è il simbolo non terminale iniziale.
 
 !comment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1516,7 +1516,7 @@ Si badi che anche il carattere di spazio può essere specificato tra virgolette 
 
 ## Sequenze escape
 
-L'espressione regolare `Term` di cui in [@sec:regole-lessicali] riconosce tra virgolette il backslash `\`, che funge da carattere escape. È possibile che un simbolo terminale tra virgolette contenga sequenze escape tra le seguenti:
+L'espressione regolare `Term` di cui in [@sec:regole-lessicali] riconosce tra virgolette il backslash `\`, che funge da carattere escape. È possibile che un simbolo terminale tra virgolette contenga sequenze escape tra le seguenti:
 
 |        |                             |
 |--------|-----------------------------|
@@ -1556,7 +1556,7 @@ INCLUDE TABLES: 4.1.5 Regole di traduzione
 
 !comment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                                  CHANGELOG                                   
+                                  CHANGELOG
 ==============================================================================
 v1.1.0 (2018-02-10) | PML 1.0 | Polygen v1.0.6
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

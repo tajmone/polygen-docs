@@ -23,7 +23,7 @@ keywords:
    - ebnf
 toc-title:     Contents
 #==============================================================================
-#                           pandoc-crossref settings                           
+#                           pandoc-crossref settings
 #==============================================================================
 numberSections: true
 sectionsDepth: -1
@@ -35,7 +35,7 @@ nameInLink: true
 chapters: true
 autoSectionLabels: true
 #==============================================================================
-#                            Text Block Before TOC                             
+#                            Text Block Before TOC
 #==============================================================================
 summary: |
    Edition **!DocVer** (!DocDate) for **PML !PMLVer**, Polygen **!PolygenV**.
@@ -72,7 +72,7 @@ __MISSING TRANSLATION__: This section needs to be translated
 
 A grammar is an ASCII text file providing the definition of the syntactical structure and terms used by the program to build sentences. *Polygen* is able to interpret a language designed for defining *[Type-2]* grammars (according to Chomsky classification) consisting in an extension of the *EBNF ([Extended Backus Naur Form])* --- a very simple and common notation for describing the formal syntax of a language.
 
-A definition consists in specifying for a given symbol a set of __productions__ interleaved by a **pipe** `|` and followed by a **semicolon** `;` terminator:
+A definition consists in specifying for a given symbol a set of __productions__ interleaved by a **pipe** `|` and followed by a **semicolon** `;` terminator:
 
 **EXAMPLE**
 
@@ -89,7 +89,7 @@ a mango
 an orange
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The above definition of the `S` symbol (called a **non-terminal**) allows generating the symbols `an apple`, `a mango` or `an orange` (called **terminals**).
+The above definition of the `S` symbol (called a **non-terminal**) allows generating the symbols `an apple`, `a mango` or `an orange` (called **terminals**).
 
 The probability of the generated output being `an apple` is 1 every 3 times; and the same applies to `a mango` and `an orange`: thus, when dealing with 3 productions, each has 1 out of 3 chances; with 5 productions, each has 1 out of 5 chances; and so on.
 
@@ -306,7 +306,7 @@ I.e., a grammar generating either `ball` or nothing as output.
 
 ## Controlling the probability of a production {#sec:controlling-probability-production}
 
-Prefixing the **plus** keyword `+`  to a (sub)production (regardless of its nesting level) increases its probability of being generated above other productions of the same series; likewise, the **minus** keyword `-` reduces its probability. Any number of `+` and `-` keywords may be specified:
+Prefixing the **plus** keyword `+`  to a (sub)production (regardless of its nesting level) increases its probability of being generated above other productions of the same series; likewise, the **minus** keyword `-` reduces its probability. Any number of `+` and `-` keywords may be specified:
 
 **EXAMPLE**
 
@@ -511,7 +511,7 @@ S ::= the dog | the cat | a fish | a bull | an alligator ;
 
 ### Labels and selection {#sec:labels-selection}
 
-Any (sub)production, regardless of its nesting level, can be bound to a label which can then be used in conjunction with the **dot** selector to constrain its production to a specific subset. 
+Any (sub)production, regardless of its nesting level, can be bound to a label which can then be used in conjunction with the **dot** selector to constrain its production to a specific subset.
 
 **EXAMPLE**
 
@@ -819,7 +819,7 @@ Fruit ::= an apple | a mango | an orange ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
-      
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 an apple and an apple
 an apple and a mango
@@ -848,7 +848,7 @@ Fruit := an apple | a mango | an orange ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
-      
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 an apple and an apple
 a mango and a mango
@@ -857,7 +857,7 @@ an orange and an orange
 
 The production associated to `Fruit` is suspendend and closed together with the current environment according to scoping rules. During generation, at the first occurence of the `Fruit` symbol in a descending environment (or in the same one, as in the example) the associated production is generated __a single time__ in the environment that was closed with it, and the immutable result of its generation is stored in the environment; every successive occurence of the same non terminal will always produce the same result.
 
-Please note that during its first generation the non terminal is still associated to the closure of the environment where it's being generated, and not (yet) to its suspension: this allows the use of recursion in strong binding deinitions. 
+Please note that during its first generation the non terminal is still associated to the closure of the environment where it's being generated, and not (yet) to its suspension: this allows the use of recursion in strong binding deinitions.
 
 **EXAMPLE**
 
@@ -869,7 +869,7 @@ A := a | a ^ A ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
-      
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 a a
 aa aa
@@ -914,7 +914,7 @@ Adj ::= handsome | nice ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
-      
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 I am handsome, maybe very handsome and nice
 I am handsome, maybe very handsome and handsome
@@ -947,7 +947,7 @@ Adj ::= handsome | nice ;
 
 Nothing prevents a subproduction's body from being a subproduction itself: this allows populating the environment without creating a mutually recursive relation between the bindings.
 
-Finally, bare in mind that __any__ type of subproduction can introduce local bindings. 
+Finally, bare in mind that __any__ type of subproduction can introduce local bindings.
 
 ### Static lexical scoping
 
@@ -965,7 +965,7 @@ X := x | y ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
-      
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 x x
 y y
@@ -983,7 +983,7 @@ S ::= (X ::= a | b; (X ::= x | y; X)) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
-      
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 x
 y
@@ -1003,7 +1003,7 @@ S ::= (X ::= a | b; (X ::= x [X]; X)) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
-      
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 x
 x x
@@ -1026,7 +1026,7 @@ S ::= (X ::= x [A]; A ::= a [X]; (X ::= y [A]; A ::= b [X]; X)) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
-      
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 y b
 y b y b
@@ -1037,7 +1037,7 @@ y b y b y b ...
 
 Even though labels are powerful and versatile, in most scenarios they're used just to _filter_ a series of productions that specify disjointed syntactical cases of a given language --- common examples of such usage are: suffixes for articles, nouns and adjectives according to gender and number; or conjugation of verbs according to person, tense and mood.
 
-In similar scenarios, the user is looking for a way to activate a certain label (e.g., that of gender) and then expect the production to take place accordingly. Sometimes this is only required for a single sentence:  
+In similar scenarios, the user is looking for a way to activate a certain label (e.g., that of gender) and then expect the production to take place accordingly. Sometimes this is only required for a single sentence:
 
 **EXAMPLE**
 
@@ -1047,7 +1047,7 @@ S ::= ((M: he | F: she) is a (M: handsome | F: pretty) act ^ (M: or | F: ress)).
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
-      
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 he is a handsome actor
 she is a pretty actress
@@ -1084,7 +1084,7 @@ S ::= time,fruit flies like an,a arrow,banana ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
-      
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 time flies like an arrow
 fruit flies like a banana
@@ -1102,7 +1102,7 @@ S ::= she is s^ (o^)+ pretty ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
-      
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 she is so pretty
 she is soo pretty
@@ -1120,7 +1120,7 @@ S ::= (a | b)+ ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
-      
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 a
 b
@@ -1142,7 +1142,7 @@ One might have --- quite reasonably so --- expected to see the same generation b
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= (X := a | b; (X)+) ;
+S ::= (X := a | b; (X)+) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
@@ -1193,7 +1193,7 @@ As an exercise, try to define a grammar for generating variable-length sentences
 
 ## Grouping
 
-In order to control the distribution of probability with finer granularity than described in [sections @sec:controlling-probability-production] and [-@sec:unfolding], mastery in the proper usage of round brackets is the key:
+In order to control the distribution of probability with finer granularity than described in [sections @sec:controlling-probability-production] and [-@sec:unfolding], mastery in the proper usage of round brackets is the key:
 
 **EXAMPLE**
 
@@ -1230,7 +1230,7 @@ while for the latter:
 | `cow`   | 1/2 \* 1/2 = 1/4 |
 | `camel` | 1/2 \* 1/2 = 1/4 |
 
-All this because the subproduction `(cow | camel)` is interpreted by the program as a single block.
+All this because the subproduction `(cow | camel)` is interpreted by the program as a single block.
 
 ## Controlling the probability of an optional subproduction {#sec:controlling-probability-optional}
 
@@ -1258,7 +1258,7 @@ In the above example, the chances of an empty production are higher than those o
 
 # Static validation of grammars
 
-*Polygen* features a powerful algorithm for statically checking the validity of a source file: it's therefore able to verify the correctness of a whole grammar in a finite amount of time, regardless of its complexity, without having to generate every possible production. 
+*Polygen* features a powerful algorithm for statically checking the validity of a source file: it's therefore able to verify the correctness of a whole grammar in a finite amount of time, regardless of its complexity, without having to generate every possible production.
 
 A source grammar that successfully passes the validation stage is guaranteed to always generate a valid output --- a proof of soundness of sorts.
 
@@ -1315,7 +1315,7 @@ Although the above grammar doesn't necessary incur in infinite recursion, due to
 
 ### Recursive unfoldings {#sec:recursive-unfoldings}
 
-You're not allowed to prefix the unfolding operator `>` (see [@sec:non-terminal-symbols]) to a non-terminal symbol that would cause a cyclic recursion.
+You're not allowed to prefix the unfolding operator `>` (see [@sec:non-terminal-symbols]) to a non-terminal symbol that would cause a cyclic recursion.
 
 **EXAMPLE**
 
@@ -1330,7 +1330,7 @@ Such a grammar would trigger a series of unfoldings that would expand it infinit
 
 ### Epsilon-productions {#sec:epsilon-productions}
 
-In some cases a grammar might meet the termination clause through an epsilon-production (see [@sec:epsilon]) --- i.e., its only possible outcome is an empty production. 
+In some cases a grammar might meet the termination clause through an epsilon-production (see [@sec:epsilon]) --- i.e., its only possible outcome is an empty production.
 
 Such grammars are considered incorrect.
 
@@ -1340,7 +1340,7 @@ Such grammars are considered incorrect.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 S ::= A ;
 
-A ::= A ^ | _ ;
+A ::= A ^ | _ ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
@@ -1372,7 +1372,7 @@ This also applies inside inserted scopes (see [@sec:environment-scoping]):
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= (A ::= apple | orange | banana ; A ::= tangerine | melon ; a ripe A) ; 
+S ::= (A ::= apple | orange | banana ; A ::= tangerine | melon ; a ripe A) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Illegal character
@@ -1441,7 +1441,7 @@ A ::= x: x | y: y ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
-      
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 a
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1471,14 +1471,14 @@ If the unfolding operator is used in contexts that --- albeit sound --- would no
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= >(b c) ; 
+S ::= >(b c) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Trying to unfold a subproduction containing a single production is useless.
 
 ### Level 3
 
-#### Unfolding a suspended symbol 
+#### Unfolding a suspended symbol
 
 Although unfolding a strongly bound symbol (see [@sec:suspensions]) is both sintactically legal and semantically correct, it raises some conceptual perplexity. Its outcome is somewhat similar to the concept of _inheratance_: inducing the preprocessor to replicate the productions bound to the suspended symbol, and then insert them flattened (see [@sec:non-terminal-symbols]) inside another production, is equivalent to _inheriting_ the productions of that symbol in order to have them generate something different.
 
@@ -1486,13 +1486,13 @@ Although unfolding a strongly bound symbol (see [@sec:suspensions]) is both sint
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= >A A A ;
+S ::= >A A A ;
 
 A := a | b ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
-      
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 a a a
 b a a
@@ -1546,7 +1546,7 @@ Bare in mind that also the space character can used as terminal symbol within qu
 
 ## Escape sequences
 
-The `Nonterm` regular expression of [@sec:lexical-rules] considers a backslash within quotes as the escape character. A terminal symbol within quotes may contain any of the following escape sequences: 
+The `Nonterm` regular expression of [@sec:lexical-rules] considers a backslash within quotes as the escape character. A terminal symbol within quotes may contain any of the following escape sequences:
 
 |        |                          |
 |--------|--------------------------|
@@ -1588,7 +1588,7 @@ INCLUDE TABLES: 4.1.5 Translation rules
 
 !comment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                                  CHANGELOG                                   
+                                  CHANGELOG
 ==============================================================================
 v1.1.0 (2018-02-10) | PML 1.0 | Polygen v1.0.6
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
