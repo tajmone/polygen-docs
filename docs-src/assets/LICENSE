@@ -10,14 +10,14 @@ of third party resources used in this folder and its subfolders.
 All these resources are compatible with the GPLv2 license of this project.
 
 ------------------------------------------------------------------------------
-                                Pandoc-Goodies                                
+                                Pandoc-Goodies
 ------------------------------------------------------------------------------
 The following file:
 
     macros.pp
 
-contain some PP macros taken from "The Pandoc-Goodies PP-Macros Library" and 
-readapted to our needs: 
+contain some PP macros taken from "The Pandoc-Goodies PP-Macros Library" and
+readapted to our needs:
 
     https://github.com/tajmone/pandoc-goodies/tree/master/pp/macros
 
@@ -26,7 +26,7 @@ They are released under MIT License, with copyright notice:
 Copyright (c) Tristano Ajmone 2017, MIT License.
 
 ------------------------------------------------------------------------------
-                         GitHub Pandoc HTML5 Template                         
+                         GitHub Pandoc HTML5 Template
 ------------------------------------------------------------------------------
 The following files:
 
@@ -52,7 +52,7 @@ of the following third party softwares:
 (2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
 
 ------------------------------------------------------------------------------
-                                Base16 Monokai                                
+                                Base16 Monokai
 ------------------------------------------------------------------------------
 The following file:
 
@@ -72,7 +72,7 @@ released under MIT License, with copyright notice:
 Copyright (C) 2012 Chris Kempson
 
 ------------------------------------------------------------------------------
-                              Base16 London Tube                              
+                              Base16 London Tube
 ------------------------------------------------------------------------------
 The following file:
 
@@ -91,7 +91,7 @@ released under MIT License, with copyright notice:
 Copyright (C) 2012 Chris Kempson
 
 ------------------------------------------------------------------------------
-                         Highlight Syntax Definitions                         
+                         Highlight Syntax Definitions
 ------------------------------------------------------------------------------
 The following files:
 
@@ -119,7 +119,7 @@ Here follows the full text of the licenses mentioned in the Copyright notices
 above.
 
 ==============================================================================
-                               The MIT License                                
+                               The MIT License
 ==============================================================================
 MIT License
 
@@ -142,7 +142,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-                                The Unlicense                                 
+                                The Unlicense
 ==============================================================================
 This is free and unencumbered software released into the public domain.
 

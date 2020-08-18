@@ -110,7 +110,7 @@ Keywords={
   -- as a label (eg: 'S::=` and 'X:=`, instead of 'S ::=` and 'X :=`) because of
   -- the colon; and a label with spaces before the colon will be parsed as a non-
   -- terminal symbol (eg: 'Label :' instead of 'Label:'). Since both usages are
-  -- considered bad (albeit valid) styles in Polygen grammars (and indeed are 
+  -- considered bad (albeit valid) styles in Polygen grammars (and indeed are
   -- rarely found in actual gramamrs), it's not worth implementing complex RegExs
   -- to capture such edge cases.
   -------------------------------------------------------------------------------
