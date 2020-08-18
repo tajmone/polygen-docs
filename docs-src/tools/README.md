@@ -93,7 +93,7 @@ If any of the above link have become obsolete in time, or if the proposed files 
 - [Pandoc-crossref documentation]
 - [Pandoc-crossref GitHub repository]
 - [Highlight homepage]
-- [Highlight GitHub repository]
+- [Highlight GitLab repository]
 
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS
@@ -115,7 +115,7 @@ If any of the above link have become obsolete in time, or if the proposed files 
 [pandoc-crossref GitHub repository]: https://github.com/lierdakil/pandoc-crossref "Visit pandoc-crossref GitHub repository"
 
 [Highlight Homepage]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight homepage"
-[Highlight GitHub repository]: https://github.com/andre-simon/highlight "Visit Highlight GitHub repository"
+[Highlight GitLab repository]: https://gitlab.com/saalen/highlight "Visit Highlight GitLab repository"
 
 [troubleshooting section]: #troubleshooting
 
