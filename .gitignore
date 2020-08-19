@@ -3,17 +3,24 @@
 #  https://github.com/tajmone/polygen-docs  #
 #############################################
 
+## Misc Work Files
+##################
+
+# Temporary/backup or removed files and folders:
+___*
+___*.*
+
+# Links and URLs
+*.lnk
+*.url
+
 ## Polygen Compiled Grammars
 ############################
 *.grm.o
 
-## Windows Binaries
-###################
-*.exe
-
-## Sass Cache Folder
-####################
-.sass-cache
+## Sass-generated CSS maps
+##########################
+*.css.map
 
 ## Tools Subfolder
 ##################

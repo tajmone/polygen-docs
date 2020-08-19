@@ -22,6 +22,8 @@ Working folder for Polygen Documentation.
 - [Requirements](#requirements)
     - [Third-Party Tools](#third-party-tools)
     - [Optional Third-Party Tools](#optional-third-party-tools)
+        - [Multiwatch](#multiwatch)
+        - [Dart Sass](#dart-sass)
 - [Credits](#credits)
 
 <!-- /MarkdownTOC -->
@@ -90,7 +92,7 @@ The HTML converted documents:
 
 These are the Bash scripts to convert the markdown source docs to html:
 
-- [`init.sh`](./init.sh) — initiliaze work environment
+- [`init.sh`](./init.sh) — initialize work environment
 - [`conv_IT.sh`](./conv_IT.sh) — convert Italian doc
 - [`conv_EN.sh`](./conv_EN.sh) — convert English doc
 - [`watch_IT.sh`](./watch_IT.sh) — watch and build Italian doc
@@ -138,12 +140,12 @@ For the English documents just use the equivalent English scripts, same logic ap
 - [`watch_IT.sh`](./watch_IT.sh) — watch and build Italian sources
 - [`watch_EN.sh`](./watch_EN.sh) — watch and build English sources
 
-The watch scripts will check for changes in all markdown sources connected to a given language (and CSS assets too): every time you save a source doc the watch script will launch the conversion script for that language.
-If you're editing the CSS file via the Sass project, every time the Sass compiler updates the CSS assets the watch script will trigger the conversion scripts again.
+The watch scripts will check for changes in all markdown sources connected to a given language, as well as the CSS files: every time you save a source doc the watch script will launch the conversion script for that language.
+If you're updating the CSS file via the Sass sources, every time the Sass compiler updates the CSS assets the watch script will trigger the conversion scripts again.
 
 This is very useful, you'll only have to refresh the browser to update the output document and see the changes, without having to rerun any conversion script.
 
-Furthermore, the watch scripts will also invoke `init.sh`, so you don't need to initialize the working environment before using them (but initialization is local to the script, and will be lost when the watch script exits).
+Furthermore, the watch scripts will also invoke `init.sh`, so you don't need to initialize the working environment before using them (but initialization is local to the watch script, and will be lost when the script exits).
 
 > **WARNING** — The watch scripts require __multiwatch__, a Node.js tool which is no longer available (see the _[Optional Third-Party Tools]_ section for more details).
 
@@ -157,7 +159,7 @@ Various files required for building the docs from markdown to html:
     + [`polygen.lang`](./assets/polygen.lang) — Polygen syntax for Highlight
     + [`ebnf2.lang`](./assets/ebnf2.lang) — EBNF syntax for Highlight
     + [`macros.pp`](./assets/macros.pp) — PP macros module.
-    + [`polyman.css`](./assets/polyman.css) — Polygen docs CSS styles (built via Sass from `polyman.scss`)
+    + [`polyman.css`][polyman.css] — Polygen docs CSS styles (built via Sass from `polyman.scss`)
     + [`polyman.scss`](./assets/polyman.scss) — main Sass source file
 
 You shouldn't bother about these unless you actually want to change elements of the build toolchain.
@@ -168,7 +170,6 @@ Third party tools folder:
 
 Tools required for building the docs.
 You only need to set them up once (see: [Third-Party Tools]).
-
 
 # Requirements
 
@@ -184,14 +185,16 @@ In order to run the conversion scripts you'll need the following tools:
 - [pandoc-crossref] v0.3.0.0
 - [Highlight] v3.42
 
-The tools version numbers in the list are the ones used for this project, and to avoid potential conflicts in the interactions between these tools, you're stronly advised to fetch those exact versions.
+The tools version numbers in the list are the ones used for this project, and to avoid potential conflicts in the interactions between these tools, you're strongly advised to fetch those exact versions.
 
-All these tools are small in size, and they're available as standalone packages, so you don't need to install them system wide.
-You can download them and unpack them in the [`tools/`][tools/] folder, where you'll also find a script that will automatically download and setup all these tools for you (see instructions in its [`README.md`][tools/README.md] file).
+All of these tools are small sized and available as standalone packages, so you don't need to install them system wide.
+You can manually download and unpack them in the [`tools/`][tools/] folder, or you can use our custom batch script that will automatically download and set them up for you (for instructions see [`tools/README.md`][tools/README.md]).
 
-Because PP precompiled binary is only available for `x86_64`, you'll need a 64-bit OS (or you'll have to compile it yourself for `x86`).
+Because the PP precompiled binary is only available for `x86_64`, you'll need a 64-bit OS (or you'll have to compile it yourself for `x86`).
 
 ## Optional Third-Party Tools
+
+### Multiwatch
 
 In order to benefit from the `wacth_*.sh` scripts, you'll need to install the Multiwatch tool (Node.js):
 
@@ -205,9 +208,19 @@ Multiwatch requires Node.js to be installed on your system:
 >
 > We're looking for a replacement tool to enable using the watch scripts again (see [Issue #19](https://github.com/tajmone/polygen-docs/issues/19)).
 
+### Dart Sass
+
+In order to build the [`assets/polyman.css`][polyman.css] stylesheet you'll need to install [Dart Sass] on your system.
+
+The easiest way to install Dart Sass on Windows is to install the [Sass Chocolatey Package] using the [Chocolatey GUI] package manager.
+
+> __NOTE__ — Early versions of this repository (`v1.1.0`) relied on [Ruby Sass], which reached its end of life in March 2019.
+> We switched to [Dart Sass] in August 2020; so beware that if you checkout commits prior to the switch to Dart Sass the old `assets/SASS-BUILD.bat` and `assets/SASS-WATCH.bat` scripts won't work with the Dart implementation of Sass.
+
+
 # Credits
 
-The creation of Polygen documents reuses some third party resources, all comptabile with the GPLv2 license.
+The creation of Polygen documents reuses some third party resources, all compatible with the GPLv2 license.
 
 For a full list of credits, and their licenses, see:
 
@@ -225,9 +238,13 @@ For a full list of credits, and their licenses, see:
 [pandoc-crossref]: http://lierdakil.github.io/pandoc-crossref/ "Visit pandoc-crossref website"
 [Highlight]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight website"
 
-
 [Multiwatch NPM homepage]: https://www.npmjs.com/package/multiwatch "Visit multiwatch page at NPM"
 [Node.js Website]: https://nodejs.org/en/ "Visit Node.js website"
+
+[Dart Sass]: https://sass-lang.com/dart-sass "Learn more about Dart Sass at sass-lang.com"
+[Ruby Sass]: https://sass-lang.com/ruby-sass "Learn more about Ruby Sass at sass-lang.com"
+[Sass Chocolatey Package]: https://chocolatey.org/packages/sass "View the Sass package at chocolatey.org"
+[Chocolatey GUI]: https://chocolatey.org/packages/ChocolateyGUI "View the Chocolatey GUI package at chocolatey.org"
 
 <!-- misc 3rd party tools -->
 
@@ -237,6 +254,7 @@ For a full list of credits, and their licenses, see:
 
 [tools/]: ./tools/ "Navigate to the 'tools/' folder"
 [tools/README.md]: ./tools/README.md "View 'tools/README.md' file"
+[polyman.css]: ./assets//polyman.css "View the stylesheet source files"
 
 <!-- internal XRefs -->
 

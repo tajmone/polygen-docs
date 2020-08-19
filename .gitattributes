@@ -45,4 +45,9 @@ LICENSE   text
 *.pp         text
 *.markdown   text
 
+## Sass/CSS
+###########
+*.scss   text
+*.css    ext eol=lf
+
 # EOF #
