@@ -1,23 +1,17 @@
 #!/bin/bash
-# ******************************************************************************
-# *                 Polygen Documentation Watch & Build Script                 *
-# *                  v1.0.1 | 2018/01/14 | by Tristano Ajmone                  *
-# *                   Public Domain (http://unlicense.org/)                    *
-# ******************************************************************************
-# In order to run this script you'll need multiwatch (Node.js):
-#    https://www.npmjs.com/package/multiwatch
+# ==============================================================================
+# "docs-src/watch_IT.sh" v2.0.0 | 2020/08/20 | by Tristano Ajmone
+# Released into the Public Domain (https://unlicense.org)
+# ------------------------------------------------------------------------------
+# Watch Italian "PML Spec" sources and rebuild HTML doc on changes dectection.
+# ------------------------------------------------------------------------------
+# In order to run this script you'll need to install "onchange" (Node.js):
+#    https://www.npmjs.com/package/onchange
 # ------------------------------------------------------------------------------
 
-# Initialize work environment
-# ===========================
-source init.sh
-
-# Wact source files for changes
-# =============================
-echo Now watching Polygen docs for changes...
-multiwatch \
-	polygen-spec_IT*.markdown \
-	polygen-spec_inc*.markdown \
-	assets/polyman.css \
-	-e 'bash conv_IT.sh'
-
+echo Now watching Italian Polygen docs source for changes...
+onchange \
+	'polygen-spec_IT*.markdown' \
+	'polygen-spec_inc*.markdown' \
+	'assets/polyman.css' \
+	-- bash convert.sh it

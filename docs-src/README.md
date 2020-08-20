@@ -1,4 +1,4 @@
-# Polygen Docs Work
+# Polygen Docs Sources
 
 Working folder for Polygen Documentation.
 
@@ -15,14 +15,14 @@ Working folder for Polygen Documentation.
     - [Source Docs](#source-docs)
     - [Output Docs](#output-docs)
     - [Build Scripts](#build-scripts)
-        - [Initializing The Work Environment](#initializing-the-work-environment)
         - [Building The Documents](#building-the-documents)
         - [Using The Watch Scripts](#using-the-watch-scripts)
     - [Assets and Tools](#assets-and-tools)
+        - [Build Environment Initializer](#build-environment-initializer)
 - [Requirements](#requirements)
     - [Third-Party Tools](#third-party-tools)
     - [Optional Third-Party Tools](#optional-third-party-tools)
-        - [Multiwatch](#multiwatch)
+        - [Onchange](#onchange)
         - [Dart Sass](#dart-sass)
 - [Credits](#credits)
 
@@ -36,8 +36,8 @@ A quick walkthrough the various files and how to use them.
 
 > __NOTE__ — In order to distinguish between markdown files intended for GitHub previewing and pandoc markdown files (with PP macros), in these folders we'll adopt the following file extensions convention:
 >
-> - "`*.md`" — GitHub flavored markdown (GFM)
-> - "`*.markdown`" — [Pandoc] flavored markdown (with [PP] macros)
+> - `*.md` — GitHub flavored markdown (GFM)
+> - `*.markdown` — [Pandoc] flavored markdown (with [PP] macros)
 
 ## Maintainers Notes
 
@@ -92,48 +92,47 @@ The HTML converted documents:
 
 These are the Bash scripts to convert the markdown source docs to html:
 
-- [`init.sh`](./init.sh) — initialize work environment
-- [`conv_IT.sh`](./conv_IT.sh) — convert Italian doc
-- [`conv_EN.sh`](./conv_EN.sh) — convert English doc
+- [`convert.sh`][convert.sh] — convert Italian or/and English doc(s)
 - [`watch_IT.sh`](./watch_IT.sh) — watch and build Italian doc
 - [`watch_EN.sh`](./watch_EN.sh) — watch and build English doc
 
 > __NOTE__ — These scripts where written for Git Bash, the Bash terminal that ships with Git for Windows.
-> Some commands in the scripts (or instructions) might be specific to Bash and need adjustments to be used in other \*nix shells.
+> Some commands in the scripts (or instructions) might be specific to Windows' Bash and need adjustments to be used in other \*nix shells.
+>
+> If you encounter problems executing them under different OSs and/or have a solution to improve their cross-platform support, please [open an Issue] with your suggestions or create a pull request with your solution.
 
-### Initializing The Work Environment
-
-Before using the conversion scripts, you must first initialize the working environment by sourcing the `init.sh` script.
-Open a Bash instance here and type:
-
-``` bash
-. init.sh
-```
-
-This is a one-time operation that will last as long as the Bash terminal is open.
-It will add to the `$PATH` the `tools/` folder, so that all the required third-party tools become available to the current Shell and its scripts.
-No permanent changes are made to the system.
-
-The `init.sh` script contains some checks that make it safe to run it more than once (calling it more than once won't have any further effects).
 
 ### Building The Documents
 
-To convert the Italian document, open here a Bash terminal and type:
+The repository now offers a unified script for converting the documents:
+
+- [`convert.sh`][convert.sh]
+
+The script accepts a single parameter: either the short-hand of a supported locale (`en`|`it`) or the `all` keyword (to build all available documents).
+The script's command line syntax is:
+
+    convert.sh <all|en|it>
+
+To convert the Italian document, open the Bash terminal in this folder and type:
 
 ``` bash
-. init.sh
-./conv_IT.sh
+./convert.sh it
 ```
 
-It will create/update the `polygen-spec_IT.html` file.
+which will create/update the `polygen-spec_IT.html` file.
 
-For subsequent conversions within the same Bash instance, you won't need to type "`. init.sh`" again; just type:
+To convert the English document, same as above but type `en` instead of the `it` parameter:
 
 ``` bash
-./conv_IT.sh
+./convert.sh en
 ```
+which will create/update the `polygen-spec_EN.html` file.
 
-For the English documents just use the equivalent English scripts, same logic applies.
+And to build the document in all the available languages at once, use the `all` parameter instead:
+
+``` bash
+./convert.sh all
+```
 
 ### Using The Watch Scripts
 
@@ -143,11 +142,8 @@ For the English documents just use the equivalent English scripts, same logic ap
 The watch scripts will check for changes in all markdown sources connected to a given language, as well as the CSS files: every time you save a source doc the watch script will launch the conversion script for that language.
 If you're updating the CSS file via the Sass sources, every time the Sass compiler updates the CSS assets the watch script will trigger the conversion scripts again.
 
-This is very useful, you'll only have to refresh the browser to update the output document and see the changes, without having to rerun any conversion script.
+This is very useful, you'll only have to refresh the browser to update the output document and see the changes, without having to manually re-run any conversion script.
 
-Furthermore, the watch scripts will also invoke `init.sh`, so you don't need to initialize the working environment before using them (but initialization is local to the watch script, and will be lost when the script exits).
-
-> **WARNING** — The watch scripts require __multiwatch__, a Node.js tool which is no longer available (see the _[Optional Third-Party Tools]_ section for more details).
 
 ## Assets and Tools
 
@@ -169,7 +165,29 @@ Third party tools folder:
 - [`tools/`][tools/]
 
 Tools required for building the docs.
-You only need to set them up once (see: [Third-Party Tools]).
+You only need to set them up once (see: _[Third-Party Tools]_ section).
+
+### Build Environment Initializer
+
+The following script is used internally by [`convert.sh`][convert.sh] to setup the working environment:
+
+- [`init.sh`][init.sh]
+
+It prepends the [`tools/`][tools/] folder to the `$PATH` environment variable, so that all the required third-party tools from that folder become available to the current Shell and its scripts, taking precedence over pre-existing system-wide versions of the same tools (i.e. over more recent versions of the tools, if present).
+
+This is a one-time operation that will last as long as the Bash terminal is open.
+The script contains some checks that make it safe to invoke it more than once (it simply won't have any further effects).
+No permanent changes are made to the system.
+
+You won't usually need to invoke this script in your working sessions, but you might want to do so if you're planning to tweak the conversion toolchain and carry out some tests.
+
+This feature was designed mainly for the Windows OS, for which the repository offers a script to fetch the exact version of all the required third party tools to build the documentation (see: _[Third-Party Tools]_ section) in order to ensure that all developers use identical tools, thus preventing errors or differences in the generated HTML docs.
+
+The script won't have any effect on OSs other than Windows, unless the end users has manually added to the [`tools/`][tools/] folder the required binaries.
+
+> __NOTE__ — Early versions of this repository required end users to manually invoke [`init.sh`][init.sh] (once) before converting the documents.
+> This is no longer the case.
+
 
 # Requirements
 
@@ -180,33 +198,33 @@ The Bash requirement is due to some PP macros using Shell commands; in the futur
 
 In order to run the conversion scripts you'll need the following tools:
 
-- [pandoc] v2.1
-- [PP] v2.2.2
-- [pandoc-crossref] v0.3.0.0
-- [Highlight] v3.42
+- [pandoc] `v2.1`
+- [PP] `v2.2.2`
+- [pandoc-crossref] `v0.3.0.0`
+- [Highlight] `v3.42`
 
-The tools version numbers in the list are the ones used for this project, and to avoid potential conflicts in the interactions between these tools, you're strongly advised to fetch those exact versions.
+The tools' version numbers in the list are the ones used for this project, and to avoid unneeded differences in the generated HTML docs, and potential conflicts, contributors to the project must use those exact versions.
 
-All of these tools are small sized and available as standalone packages, so you don't need to install them system wide.
-You can manually download and unpack them in the [`tools/`][tools/] folder, or you can use our custom batch script that will automatically download and set them up for you (for instructions see [`tools/README.md`][tools/README.md]).
+All of these tools are small sized and available as standalone packages, so you don't need to install them system-wide: you can manually download and unpack them in the [`tools/`][tools/] folder.
+
+Windows' users can run our [`tools/download.bat`][download.bat] batch script that will automatically download and set them up (for instructions see [`tools/README.md`][tools/README.md]).
 
 Because the PP precompiled binary is only available for `x86_64`, you'll need a 64-bit OS (or you'll have to compile it yourself for `x86`).
 
 ## Optional Third-Party Tools
 
-### Multiwatch
+### Onchange
 
-In order to benefit from the `wacth_*.sh` scripts, you'll need to install the Multiwatch tool (Node.js):
+In order to benefit from the `wacth_*.sh` scripts, you'll need to install the __onchange__ tool (Node.js):
 
-- [Multiwatch NPM homepage]
+- [Onchange NPM homepage]
 
-Multiwatch requires Node.js to be installed on your system:
+Onchange requires Node.js to be installed on your system:
 
 - [Node.js Website]
 
-> **WARNING** — The __multiwatch__ tool is no longer available on NPM.
->
-> We're looking for a replacement tool to enable using the watch scripts again (see [Issue #19](https://github.com/tajmone/polygen-docs/issues/19)).
+The easiest way to install Node.js on Windows is to install the [Node.js Chocolatey Package] using the [Chocolatey GUI] package manager.
+
 
 ### Dart Sass
 
@@ -231,6 +249,8 @@ For a full list of credits, and their licenses, see:
                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
+[open an Issue]: https://github.com/tajmone/polygen-docs/issues/new/choose "Click here to open an Issue on the Polygen-Docs repository"
+
 <!-- dependencies -->
 
 [pandoc]: http://pandoc.org/ "Visit pandoc website"
@@ -238,8 +258,9 @@ For a full list of credits, and their licenses, see:
 [pandoc-crossref]: http://lierdakil.github.io/pandoc-crossref/ "Visit pandoc-crossref website"
 [Highlight]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight website"
 
-[Multiwatch NPM homepage]: https://www.npmjs.com/package/multiwatch "Visit multiwatch page at NPM"
+[Onchange NPM homepage]: https://www.npmjs.com/package/onchange "Visit onchange page at NPM"
 [Node.js Website]: https://nodejs.org/en/ "Visit Node.js website"
+[Node.js Chocolatey Package]: https://chocolatey.org/packages/nodejs "View the Node.js package at chocolatey.org"
 
 [Dart Sass]: https://sass-lang.com/dart-sass "Learn more about Dart Sass at sass-lang.com"
 [Ruby Sass]: https://sass-lang.com/ruby-sass "Learn more about Ruby Sass at sass-lang.com"
@@ -252,9 +273,12 @@ For a full list of credits, and their licenses, see:
 
 <!-- project files and folders -->
 
+[convert.sh]: ./convert.sh "View script source"
+[init.sh]: ./init.sh "View script source"
+[polyman.css]: ./assets//polyman.css "View the stylesheet source files"
 [tools/]: ./tools/ "Navigate to the 'tools/' folder"
 [tools/README.md]: ./tools/README.md "View 'tools/README.md' file"
-[polyman.css]: ./assets//polyman.css "View the stylesheet source files"
+[download.bat]: ./tools/download.bat "View script source"
 
 <!-- internal XRefs -->
 
