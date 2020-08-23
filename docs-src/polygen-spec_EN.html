@@ -852,9 +852,9 @@ the cat is eating a lemon</code></pre>
 </code></pre>
 <p>the requested increases and decreases in probability are proportionally fulfilled: <code>an apple</code> has the highest probability of being generated, followed by <code>some meat</code>, then <code>an orange</code>, and lastly by <code>a lemon</code>, which has the least probability of all.</p>
 <h2 id="sec:unfolding">2.4 Unfolding</h2>
-<p><em>Polygen</em> provides a powerful unfolding system which, in general, allows to raise to the level of the current sequence a series of productions which would otherwise be folded (either by a subproduction or a non-terminal symbol) .</p>
+<p><em>Polygen</em> provides a powerful unfolding system which, in general, allows to raise a series of productions (which would otherwise be folded either by a subproduction or a non-terminal symbol) to the level of the current sequence.</p>
 <p>Roughly, you could consider this operation as <em>flattening</em> a portion of the grammar before its generation, thus affecting it only as far as probabilities are concerned, since the transformation does not alter the source grammar’s semantics — as the traslation rules in section <a href="#4.1.5_Regole_di_traduzione">4.1.5</a> confirm.</p>
-<p>Not every atom supports unfolding though, only those for which this operation makes sense: refer to <a href="#sec:concrete-syntax">section 5.1</a> for a syntactical formalization of this subset.</p>
+<p>Not every atom supports unfolding though, only those for which this operation makes sense do: refer to <a href="#sec:concrete-syntax">section 5.1</a> for a syntactical formalization of this subset.</p>
 <h3 id="sec:non-terminal-symbols">2.4.1 Non-terminal symbols</h3>
 <p>Consider the following scenario:</p>
 <p><strong>EXAMPLE</strong></p>
@@ -893,8 +893,8 @@ nice terrier</code></pre>
 <p>In order to redistribute equally the probabilities of subproductions, <code>S</code> should redefined this way:</p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> ugly cat <span class="hl opt">|</span> nice poodle <span class="hl opt">|</span> nice beagle <span class="hl opt">|</span> nice terrier <span class="hl opt">;</span>
 </code></pre>
-<p>but this way we lose the original architecture, which folded all dog breeds within a dedicated non-terminal symbol, and increases drastically the amount of editing work required.</p>
-<p>In order to solve this problem (which is an instance of the wider problem of irregular distribution of probability affecting subproductions), the language offers an operator for <strong>unfolding</strong> non-terminal symbols:</p>
+<p>but this way we lose the original architecture, which folded all dog breeds within a dedicated non-terminal symbol, and drastically increases the amount of editing work required.</p>
+<p>In order to solve this problem (which is an instance of the broader problem of irregular distribution of probability affecting subproductions), the language offers an operator for <strong>unfolding</strong> non-terminal symbols:</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> ugly cat <span class="hl opt">|</span> nice <span class="hl opt">&gt;</span><span class="hl kwa">Dog</span> <span class="hl opt">;</span>
 

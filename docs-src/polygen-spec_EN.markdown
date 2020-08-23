@@ -336,11 +336,11 @@ the requested increases and decreases in probability are proportionally fulfille
 
 ## Unfolding {#sec:unfolding}
 
-*Polygen* provides a powerful unfolding system which, in general, allows to raise to the level of the current sequence a series of productions which would otherwise be folded (either by a subproduction or a non-terminal symbol) .
+*Polygen* provides a powerful unfolding system which, in general, allows to raise a series of productions (which would otherwise be folded either by a subproduction or a non-terminal symbol) to the level of the current sequence.
 
 Roughly, you could consider this operation as *flattening* a portion of the grammar before its generation, thus affecting it only as far as probabilities are concerned, since the transformation does not alter the source grammar's semantics — as the traslation rules in section [4.1.5](#4.1.5_Regole_di_traduzione) confirm.
 
-Not every atom supports unfolding though, only those for which this operation makes sense: refer to [@sec:concrete-syntax] for a syntactical formalization of this subset.
+Not every atom supports unfolding though, only those for which this operation makes sense do: refer to [@sec:concrete-syntax] for a syntactical formalization of this subset.
 
 ### Non-terminal symbols {#sec:non-terminal-symbols}
 
@@ -384,9 +384,9 @@ In order to redistribute equally the probabilities of subproductions, `S` should
 S ::= ugly cat | nice poodle | nice beagle | nice terrier ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-but this way we lose the original architecture, which folded all dog breeds within a dedicated non-terminal symbol, and increases drastically the amount of editing work required.
+but this way we lose the original architecture, which folded all dog breeds within a dedicated non-terminal symbol, and drastically increases the amount of editing work required.
 
-In order to solve this problem (which is an instance of the wider problem of irregular distribution of probability affecting subproductions), the language offers an operator for **unfolding** non-terminal symbols:
+In order to solve this problem (which is an instance of the broader problem of irregular distribution of probability affecting subproductions), the language offers an operator for **unfolding** non-terminal symbols:
 
 **EXAMPLE**
 
