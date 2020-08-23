@@ -1,9 +1,9 @@
 ---
 css: assets/polyman.css
 ############################## DOCUMENT INFO DATA #############################
-# !define( DocVer   )( v1.1.0     ) <- Document version number
+# !define( DocVer   )( v1.1.1-rc  ) <- Document version number
 # !define( PMLVer   )( 1.0        ) <- PML version number
-# !define( DocDate  )( 2018-02-10 ) <- Document last edited (YYYY-MM-DD)
+# !define( DocDate  )( 2020-08-23 ) <- Document last edited (YYYY-MM-DD)
 # !define( PolygenV )( v1.0.6     ) <- Polygen version the doc applies to
 ###############################################################################
 lang: en
@@ -41,7 +41,7 @@ summary: |
    Edition **!DocVer** (!DocDate) for **PML !PMLVer**, Polygen **!PolygenV**.
 
    :::::: Note ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-   __Copyright © 2002-18 Alvise Spanò.__ This document is subject to the
+   __Copyright © 2002-2020 Alvise Spanò.__ This document is subject to the
    terms of the [GNU General Public License] (GPLv2+); either version 2 of the
    License, or (at your option) any later version. You can redistribute it
    and/or modify it under the same license terms.
