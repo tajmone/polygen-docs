@@ -120,9 +120,7 @@ etc.
 **Note:** By default, *Polygen* uses `S` as the starting non-terminal symbol; therefore every grammar should provide at least its definition (unless a different starting symbol is specified via the program options).
 ::::::::::::::::::::::::::::::::::::::::::::
 
-By default, a term beginning with a capital letter is considered as non-terminal (thus bound to a definition) and a term beginning with a non-capital letter as terminal (a simple word). If you need then to specify a capital word you must quote it in order to get the program not to mistake it for a non-terminal symbol:
-
-As a convention, any term beginning with a capital letter is considered a non-terminal symbol (therefore bound to a definition) and any term beginning with a non-capital letter is considered a terminal symbol (i.e., just a word). If you need to generate a word starting by capital letter you must place it within quotes, so that the program doesn't mistake it for a non-terminal symbol:
+Any term beginning with a capital letter is considered a non-terminal symbol (therefore bound to a definition) and any term beginning with a non-capital letter is considered a terminal symbol (i.e., just a word). If you need to generate a word starting by capital letter you must enclose it within double quotes, so that the program doesn't mistake it for a non-terminal symbol:
 
 **EXAMPLE**
 
@@ -141,7 +139,7 @@ a pig called Pet
 a dog called Pet
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Bare in mind that many characters (punctuation marks, parentheses, brackets, etc.), including those interpreted by the program as keywords, must be quoted in order to be included in the output (see [@sec:lexical-rules] for the complete lexical rules).
+Bear in mind that many characters (punctuation marks, parentheses, brackets, etc.), including those interpreted by the program as keywords, must be quoted in order to be included in the output (see [@sec:lexical-rules] for the complete lexical rules).
 
 **EXAMPLE**
 
@@ -266,7 +264,7 @@ I hate hating
 I hate loving
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Bare in mind that a sequence of multiple carets will be treated as if there was just a single caret (i.e., redundant carets will be ignored).
+Bear in mind that a sequence of multiple carets will be treated as if there was just a single caret (i.e., redundant carets will be ignored).
 
 ## Epsilon {#sec:epsilon}
 
@@ -324,7 +322,7 @@ the cat is eating some meat
 the cat is eating a lemon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The set of produceable sentences is as expected; indeed, the definition for the non-terminal symbol `S` is internally interpretet as follows:
+The set of producible sentences is as expected; indeed, the definition for the non-terminal symbol `S` is internally interpreted as follows:
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -334,7 +332,7 @@ S ::= the cat is eating ( an apple  | an apple | an apple | an apple
                         | a lemon) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-the requested increases and decreases in probability are proportionally fullfilled: `an apple` has the highest probability of being generated, followed by `some meat`, then `an orange`, and lastly by `a lemon`, which has the least probability of all.
+the requested increases and decreases in probability are proportionally fulfilled: `an apple` has the highest probability of being generated, followed by `some meat`, then `an orange`, and lastly by `a lemon`, which has the least probability of all.
 
 ## Unfolding {#sec:unfolding}
 
@@ -386,7 +384,7 @@ In order to redistribute equally the probabilities of subproductions, `S` should
 S ::= ugly cat | nice poodle | nice beagle | nice terrier ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-but this way we loose the original architecture, which folded all dog breeds within a dedicated non-terminal symbol, and increases drastically the amount of editing work required.
+but this way we lose the original architecture, which folded all dog breeds within a dedicated non-terminal symbol, and increases drastically the amount of editing work required.
 
 In order to solve this problem (which is an instance of the wider problem of irregular distribution of probability affecting subproductions), the language offers an operator for **unfolding** non-terminal symbols:
 
@@ -489,7 +487,7 @@ S ::= the dog and a (fish | bull)
 
 ### Deeply unfolded subproductions
 
-As stated in [@sec:deep-unfolding], deep unfolding leads to a subproduction where everything has been flatted out.
+As stated in [@sec:deep-unfolding], deep unfolding leads to a subproduction where everything has been flattened out.
 
 Nevertheless, sometimes one may wish to further **unfold** that very subproduction.
 
@@ -535,7 +533,7 @@ jumping
 
 The selection simply excludes all the (sub)productions bound to any label other than the selected one. More precisely, a selection propagates the label specified on the right-hand side of the dot operator for the whole generation of what lies on its left-hand side; during the generation, only (sub)productions which are either unbound to any label, or bound to the selected one, will be considered valid.
 
-Bare in mind that you can use consecutive selections, at different times, to populated the list of selected labels: this technique may be useful for propagating specific attributes to affect the generation.
+Bear in mind that you can use consecutive selections, at different times, to populate the list of selected labels: this technique may be useful for propagating specific attributes to affect the generation.
 
 **EXAMPLE**
 
@@ -634,11 +632,9 @@ When a **dot** operator not followed by a label is encountered during generation
 
 ## Capitalization
 
-It is often reuired, mainly for style purposes, to respect capitalization rules --- for instance, after a full stop.
+It is often required, mainly for style purposes, to respect capitalization rules --- for instance, after a full stop.
 
 Nevertheless, a complex grammar architecture, providing recursive productions generating subclauses, may render such an operation impossible, unless the user rewrites part of the source.
-
-In order to solve this problem, the language provides the **backslash** keyword `\`, which makes the program perform the capitalization of the very following terminal symbol, i.e. switching its first letter to uppercase.
 
 In order to solve this problem, the language provides the **backslash** keyword `\`, which instructs the program to capitalize the first letter of the next terminal symbol encountered (if it isn't already a capital letter).
 
@@ -661,7 +657,7 @@ Smith is really a gentleman.
 Smith. Really a gentleman.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Bare in mind that **backslash** capitalization is active until the following generated terminal symbol is encountered, therefore any other atom (epsilon, concatenation or the capitalization operator itself) encountred in the meantime will act as usual.
+Bear in mind that **backslash** capitalization is active until the following generated terminal symbol is encountered, therefore any other atom (epsilon, concatenation or the capitalization operator itself) encountered in the meantime will act as usual.
 
 **EXAMPLE**
 
@@ -700,7 +696,7 @@ whether he therefore is
 whether he is therefore
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Bare in mind that a subproduction's permutability only affects the sequence that contains it: no permutation occurs if permutable subproductions are specified in different subsequences (or subprodutions --- permutable or not). See the differences in the following two examples:
+Bear in mind that a subproduction's permutability only affects the sequence that contains it: no permutation occurs if permutable subproductions are specified in different subsequences (or subprodutions --- permutable or not). See the differences in the following two examples:
 
 **EXAMPLE**
 
@@ -799,7 +795,7 @@ S ::= look at ( the dog
               ) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Bare in mind that folding an unfolded atom, and viceversa, are syntax errors (see rules in [@sec:concrete-syntax]).
+Bear in mind that folding an unfolded atom, and viceversa, are syntax errors (see rules in [@sec:concrete-syntax]).
 
 ## Binding {#sec:binding}
 
@@ -924,10 +920,10 @@ I am nice, maybe very nice and handsome
 I am nice, maybe very nice and nice
 I am nice, maybe very ... nice and handsome
 I am nice, maybe very ... nice and nice
-I am decisamente very handsome and nice
-I am decisamente very handsome and handsome
-I am decisamente very .. handsome and nice
-I am decisamente very .. handsome and handsome
+I am definitely very handsome and nice
+I am definitely very handsome and handsome
+I am definitely very .. handsome and nice
+I am definitely very .. handsome and handsome
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The visibility (or scope) of the various non terminals in the above example is clear: `X` and `Very` are local to the subproduction that defines them, while `Adj` is used by both the subproduction's body as well as by the body of `S`.
@@ -947,7 +943,7 @@ Adj ::= handsome | nice ;
 
 Nothing prevents a subproduction's body from being a subproduction itself: this allows populating the environment without creating a mutually recursive relation between the bindings.
 
-Finally, bare in mind that __any__ type of subproduction can introduce local bindings.
+Finally, bear in mind that __any__ type of subproduction can introduce local bindings.
 
 ### Static lexical scoping
 
@@ -991,9 +987,7 @@ y
 
 Inside the second inserted subproduction, the external definition of `X` is not visible. Obviously, the same rules apply also to the top-level environment.
 
-Si badi infine che i binding sono ricorsivi, pertanto non è possibile fare riferimento alla definizione di un simbolo nell’ambiente in una ridefinizione in override del medesimo simbolo.
-
-Bare also in mind that bindings are recursive, therefore you can't refer to a symbol's environment definition from within an override redifinition of the same symbol.
+Bear also in mind that bindings are recursive, therefore you can't refer to a symbol's environment definition from within an override redefinition of the same symbol.
 
 **EXAMPLE**
 
@@ -1010,13 +1004,9 @@ x x
 x x x ...
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-L’occorrenza di `X` nel secondo binding innestato viene dunque vista come una ricorsione, non come un riferimento alla `X` dell’ambiente padre.
-
 The occurence of `X` inside the second inserted binding is thus seen as a recursion, not as a reference to the `X` of the parent environment.
 
-Analogamente in presenza di una serie di binding in rapporto di mutua ricorsione:
-
-Analogously, in the presence of a series of binding related by mutual recursion:
+Similarly, in presence of a series of binding related by mutual recursion:
 
 **EXAMPLE**
 
@@ -1053,8 +1043,8 @@ he is a handsome actor
 she is a pretty actress
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As a workaround to the burder of having to specify local labels, and activate them in place, the language offers a system of automatic positional generation.
-This feature --- which is operationally equivalent to using labels and selections, but less verbose --- allows to express in an extremely concise way groups of suffixes, declinations, conjucations, etc. The `,` keyword is used to separate the atoms representing the possibile choices:
+As a workaround to the burden of having to specify local labels, and activate them in place, the language offers a system of automatic positional generation.
+This feature --- which is operationally equivalent to using labels and selections, but less verbose --- allows to express in an extremely concise way groups of suffixes, declinations, conjugations, etc. The `,` keyword is used to separate the atoms representing the possible choices:
 
 **EXAMPLE**
 
@@ -1070,9 +1060,7 @@ The final result is identical to that of the previous example; the difference is
 S ::= he is a handsome act ^ or | she is a pretty act ^ ress ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The obvious limitation of this feature is that all the groups in a given production must contain __the same number of atoms__. Also, bare in mind that the _scope_ of this constraint is a single production.
-
-È importante capire che la generazione posizionale non sostituisce il sistema di label, ma offre un'alternativa sintetica ad esso nei frequenti casi in cui verrebbe utilizzato per declinare termini. Non è difficile immaginare comunque come tale meccanismo possa tornare utile in altri contesti; ad esempio, a livello macroscopico, per specificare relazioni tra porzioni di una frase:
+The obvious limitation of this feature is that all the groups in a given production must contain __the same number of atoms__. Also, bear in mind that the _scope_ of this constraint is a single production.
 
 It's important to understand that positional generation is not a substitute of the labels system, rather it's a concise alternative to it for those frequent scenarios where it would be employed for declination purposes. Nonetheless, it's easy to envisage how this feature could be useful in other contexts too; for example, on a macroscopic level, to specify relations between portions of a sentence:
 
@@ -1134,9 +1122,7 @@ a b a
 ...
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Si potrebbe ritenere ragionevole che venisse iterata sempre la stessa generazione, ma non è così (come dalle [regole di traduzione @sec:regole-traduzione]), poiché nella maggior parte dei frangenti il comportamento di cui sopra è preveribile ed inoltre semanticamente affine all'analogo costrutto EBNF. È possibile tuttavia ottenere l'effetto ipotizzato in maniera piuttosto semplice sfruttando il binding forte (vedi [@sec:sospensioni]):
-
-One might have --- quite reasonably so --- expected to see the same generation being iterated every time, but this is not the case (as stated in the [translation rules @sec:translation-rules]) because in most scenarios the behavior of the above example is the preferable one instead, and also because it bears semantic affinity with its analogous EBNF contruct. It's nevertheless possible to achieve the former behavior in a rather simple manner, by exploiting strong binding (see [@sec:suspensions]):
+One might have --- quite reasonably so --- expected to see the same generation being iterated every time, but this is not the case (as stated in the [translation rules @sec:translation-rules]) because in most scenarios the behavior of the above example is the preferable one instead, and also because it bears semantic affinity with its analogous EBNF construct. It's nevertheless possible to achieve the former behavior in a rather simple manner, by exploiting strong binding (see [@sec:suspensions]):
 
 **EXAMPLE**
 
@@ -1185,9 +1171,7 @@ etc.
 
 i.e., a random natural number made up of one or more digits ranging from 0 to 9.
 
-Keep in mind then that it is up to you providing a non-recursive production somewhere in order to let the program stop recurring sooner or later, otherwise a cyclic recursion error will be generated by the grammar checker (see [@sec:cyclic-recursions]).
-
-Bare in mind that you'll need to provide a non-recursive production somewhere along the line, in order to guarantee to the program an exit point from the recursion, at one point or another; otherwise, a cyclic recursion error will be generated by the grammar checker (see [@sec:cyclic-recursions]).
+Bear in mind that you'll need to provide a non-recursive production somewhere along the line, in order to guarantee to the program an exit point from the recursion, at one point or another; otherwise, a cyclic recursion error will be generated by the grammar checker (see [@sec:cyclic-recursions]).
 
 As an exercise, try to define a grammar for generating variable-length sentences by recursively linking subordinate clauses.
 
@@ -1368,7 +1352,7 @@ The above grammar leads to an error since `A` is defined twice.
 
 This also applies inside inserted scopes (see [@sec:environment-scoping]):
 
-**ESEMPIO**
+**EXAMPLE**
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1446,7 +1430,7 @@ A ::= x: x | y: y ;
 a
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When a destructive selection is detected, a specific warning is issued to inform the user about the problem. Bare in mind that, by fixing all the warning of this type, you'll increase the robustness of the grammar, and sometimes it might also help to detect coneptual misuses of the lables.
+When a destructive selection is detected, a specific warning is issued to inform the user about the problem. Bear in mind that, by fixing all the warning of this type, you'll increase the robustness of the grammar, and sometimes it might also help to detect coneptual misuses of the lables.
 
 ### Level 2
 
@@ -1542,7 +1526,7 @@ INCLUDE "Lexical rules" (EBNF Rules) from external file.
 
 !include(polygen-spec_inc_lex.markdown)
 
-Bare in mind that also the space character can used as terminal symbol within quotes.
+Bear in mind that also the space character can used as terminal symbol within quotes.
 
 ## Escape sequences
 

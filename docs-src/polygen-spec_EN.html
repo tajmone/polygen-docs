@@ -745,8 +745,7 @@ the dog is eating a mango</code></pre>
 <div class="Note">
 <p><strong>Note:</strong> By default, <em>Polygen</em> uses <code>S</code> as the starting non-terminal symbol; therefore every grammar should provide at least its definition (unless a different starting symbol is specified via the program options).</p>
 </div>
-<p>By default, a term beginning with a capital letter is considered as non-terminal (thus bound to a definition) and a term beginning with a non-capital letter as terminal (a simple word). If you need then to specify a capital word you must quote it in order to get the program not to mistake it for a non-terminal symbol:</p>
-<p>As a convention, any term beginning with a capital letter is considered a non-terminal symbol (therefore bound to a definition) and any term beginning with a non-capital letter is considered a terminal symbol (i.e., just a word). If you need to generate a word starting by capital letter you must place it within quotes, so that the program doesn’t mistake it for a non-terminal symbol:</p>
+<p>Any term beginning with a capital letter is considered a non-terminal symbol (therefore bound to a definition) and any term beginning with a non-capital letter is considered a terminal symbol (i.e., just a word). If you need to generate a word starting by capital letter you must enclose it within double quotes, so that the program doesn’t mistake it for a non-terminal symbol:</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> a <span class="hl kwa">Pet</span> called <span class="hl str">&quot;Pet&quot;</span> <span class="hl opt">;</span>
 
@@ -756,7 +755,7 @@ the dog is eating a mango</code></pre>
 <pre><code>a cat called Pet
 a pig called Pet
 a dog called Pet</code></pre>
-<p>Bare in mind that many characters (punctuation marks, parentheses, brackets, etc.), including those interpreted by the program as keywords, must be quoted in order to be included in the output (see <a href="#sec:lexical-rules">section 5.3</a> for the complete lexical rules).</p>
+<p>Bear in mind that many characters (punctuation marks, parentheses, brackets, etc.), including those interpreted by the program as keywords, must be quoted in order to be included in the output (see <a href="#sec:lexical-rules">section 5.3</a> for the complete lexical rules).</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> <span class="hl str">&quot;(&quot;</span> <span class="hl opt">(</span>apple <span class="hl opt">|</span> orange<span class="hl opt">)</span> <span class="hl str">&quot;)&quot;</span> <span class="hl opt">;</span>
 </code></pre>
@@ -818,7 +817,7 @@ mango</code></pre>
 I love loving
 I hate hating
 I hate loving</code></pre>
-<p>Bare in mind that a sequence of multiple carets will be treated as if there was just a single caret (i.e., redundant carets will be ignored).</p>
+<p>Bear in mind that a sequence of multiple carets will be treated as if there was just a single caret (i.e., redundant carets will be ignored).</p>
 <h2 id="sec:epsilon">2.2 Epsilon</h2>
 <p>The <strong>underscore</strong> keyword <code>_</code> represents an empty production, formally called <strong>epsilon</strong>.</p>
 <p><strong>EXAMPLE</strong></p>
@@ -845,13 +844,13 @@ _</code></pre>
 the cat is eating an orange
 the cat is eating some meat
 the cat is eating a lemon</code></pre>
-<p>The set of produceable sentences is as expected; indeed, the definition for the non-terminal symbol <code>S</code> is internally interpretet as follows:</p>
+<p>The set of producible sentences is as expected; indeed, the definition for the non-terminal symbol <code>S</code> is internally interpreted as follows:</p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> the cat is eating <span class="hl opt">(</span> an apple  <span class="hl opt">|</span> an apple <span class="hl opt">|</span> an apple <span class="hl opt">|</span> an apple
                         <span class="hl opt">|</span> an orange <span class="hl opt">|</span> an orange
                         <span class="hl opt">|</span> some meat <span class="hl opt">|</span> some meat <span class="hl opt">|</span> some meat
                         <span class="hl opt">|</span> a lemon<span class="hl opt">) ;</span>
 </code></pre>
-<p>the requested increases and decreases in probability are proportionally fullfilled: <code>an apple</code> has the highest probability of being generated, followed by <code>some meat</code>, then <code>an orange</code>, and lastly by <code>a lemon</code>, which has the least probability of all.</p>
+<p>the requested increases and decreases in probability are proportionally fulfilled: <code>an apple</code> has the highest probability of being generated, followed by <code>some meat</code>, then <code>an orange</code>, and lastly by <code>a lemon</code>, which has the least probability of all.</p>
 <h2 id="sec:unfolding">2.4 Unfolding</h2>
 <p><em>Polygen</em> provides a powerful unfolding system which, in general, allows to raise to the level of the current sequence a series of productions which would otherwise be folded (either by a subproduction or a non-terminal symbol) .</p>
 <p>Roughly, you could consider this operation as <em>flattening</em> a portion of the grammar before its generation, thus affecting it only as far as probabilities are concerned, since the transformation does not alter the source grammar’s semantics — as the traslation rules in section <a href="#4.1.5_Regole_di_traduzione">4.1.5</a> confirm.</p>
@@ -894,7 +893,7 @@ nice terrier</code></pre>
 <p>In order to redistribute equally the probabilities of subproductions, <code>S</code> should redefined this way:</p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> ugly cat <span class="hl opt">|</span> nice poodle <span class="hl opt">|</span> nice beagle <span class="hl opt">|</span> nice terrier <span class="hl opt">;</span>
 </code></pre>
-<p>but this way we loose the original architecture, which folded all dog breeds within a dedicated non-terminal symbol, and increases drastically the amount of editing work required.</p>
+<p>but this way we lose the original architecture, which folded all dog breeds within a dedicated non-terminal symbol, and increases drastically the amount of editing work required.</p>
 <p>In order to solve this problem (which is an instance of the wider problem of irregular distribution of probability affecting subproductions), the language offers an operator for <strong>unfolding</strong> non-terminal symbols:</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> ugly cat <span class="hl opt">|</span> nice <span class="hl opt">&gt;</span><span class="hl kwa">Dog</span> <span class="hl opt">;</span>
@@ -964,7 +963,7 @@ nice terrier</code></pre>
    <span class="hl opt">|</span>  a <span class="hl opt">(</span>fish <span class="hl opt">|</span> bull<span class="hl opt">)</span> and the cat <span class="hl opt">;</span>
 </code></pre>
 <h3 id="sec:deeply-unfolded-subproductions">2.4.5 Deeply unfolded subproductions</h3>
-<p>As stated in <a href="#sec:deep-unfolding">section 2.8</a>, deep unfolding leads to a subproduction where everything has been flatted out.</p>
+<p>As stated in <a href="#sec:deep-unfolding">section 2.8</a>, deep unfolding leads to a subproduction where everything has been flattened out.</p>
 <p>Nevertheless, sometimes one may wish to further <strong>unfold</strong> that very subproduction.</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=  &gt; &gt;&gt;</span> the <span class="hl opt">(</span>dog <span class="hl opt">|</span> cat<span class="hl opt">) |</span> a <span class="hl opt">(</span>fish <span class="hl opt">|</span> bull<span class="hl opt">) &lt;&lt; |</span> an alligator <span class="hl opt">;</span>
@@ -988,7 +987,7 @@ eating
 drinking
 jumping</code></pre>
 <p>The selection simply excludes all the (sub)productions bound to any label other than the selected one. More precisely, a selection propagates the label specified on the right-hand side of the dot operator for the whole generation of what lies on its left-hand side; during the generation, only (sub)productions which are either unbound to any label, or bound to the selected one, will be considered valid.</p>
-<p>Bare in mind that you can use consecutive selections, at different times, to populated the list of selected labels: this technique may be useful for propagating specific attributes to affect the generation.</p>
+<p>Bear in mind that you can use consecutive selections, at different times, to populate the list of selected labels: this technique may be useful for propagating specific attributes to affect the generation.</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= (</span><span class="hl kwa">Conjug</span><span class="hl opt">.</span><span class="hl kwc">S</span> <span class="hl opt">|</span> <span class="hl kwa">Conjug</span><span class="hl opt">.</span><span class="hl kwc">P</span><span class="hl opt">).</span><span class="hl kwc">sp</span> <span class="hl opt">| (</span><span class="hl kwa">Conjug</span><span class="hl opt">.</span><span class="hl kwc">S</span> <span class="hl opt">|</span> <span class="hl kwa">Conjug</span><span class="hl opt">.</span><span class="hl kwc">P</span><span class="hl opt">).</span><span class="hl kwc">pp</span> <span class="hl opt">;</span>
 
@@ -1047,9 +1046,8 @@ we are eating</code></pre>
 <p>etc.</p>
 <p>When a <strong>dot</strong> operator not followed by a label is encountered during generation, the set of active selections is reset there and then; in other words, it stops further propagation of the labels so far selected.</p>
 <h2 id="sec:capitalization">2.6 Capitalization</h2>
-<p>It is often reuired, mainly for style purposes, to respect capitalization rules — for instance, after a full stop.</p>
+<p>It is often required, mainly for style purposes, to respect capitalization rules — for instance, after a full stop.</p>
 <p>Nevertheless, a complex grammar architecture, providing recursive productions generating subclauses, may render such an operation impossible, unless the user rewrites part of the source.</p>
-<p>In order to solve this problem, the language provides the <strong>backslash</strong> keyword <code>\</code>, which makes the program perform the capitalization of the very following terminal symbol, i.e. switching its first letter to uppercase.</p>
 <p>In order to solve this problem, the language provides the <strong>backslash</strong> keyword <code>\</code>, which instructs the program to capitalize the first letter of the next terminal symbol encountered (if it isn’t already a capital letter).</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= \</span> smith <span class="hl opt">(</span>is <span class="hl opt">|</span> <span class="hl str">&quot;.&quot;</span> <span class="hl opt">\)</span> <span class="hl kwa">Eulogy</span> <span class="hl opt">^</span> <span class="hl str">&quot;.&quot;</span> <span class="hl opt">;</span>
@@ -1062,7 +1060,7 @@ we are eating</code></pre>
 Smith. Rather a smart man.
 Smith is really a gentleman.
 Smith. Really a gentleman.</code></pre>
-<p>Bare in mind that <strong>backslash</strong> capitalization is active until the following generated terminal symbol is encountered, therefore any other atom (epsilon, concatenation or the capitalization operator itself) encountred in the meantime will act as usual.</p>
+<p>Bear in mind that <strong>backslash</strong> capitalization is active until the following generated terminal symbol is encountered, therefore any other atom (epsilon, concatenation or the capitalization operator itself) encountered in the meantime will act as usual.</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> a <span class="hl opt">\ ^ \ _</span> b
 </code></pre>
@@ -1081,7 +1079,7 @@ whether therefore is he
 whether therefore he is
 whether he therefore is
 whether he is therefore</code></pre>
-<p>Bare in mind that a subproduction’s permutability only affects the sequence that contains it: no permutation occurs if permutable subproductions are specified in different subsequences (or subprodutions — permutable or not). See the differences in the following two examples:</p>
+<p>Bear in mind that a subproduction’s permutability only affects the sequence that contains it: no permutation occurs if permutable subproductions are specified in different subsequences (or subprodutions — permutable or not). See the differences in the following two examples:</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>in 10 minutes<span class="hl opt">}^, {</span>at 3 o'clock<span class="hl opt">}^, {</span><span class="hl str">&quot;I&quot;</span> <span class="hl opt">{</span>will depart<span class="hl opt">} {</span>alone<span class="hl opt">}} ;</span>
 </code></pre>
@@ -1143,7 +1141,7 @@ at 3 o'clock, in 10 minutes, I alone will depart</code></pre>
               <span class="hl opt">|</span> a <span class="hl kwa">Animal</span>
               <span class="hl opt">) ;</span>
 </code></pre>
-<p>Bare in mind that folding an unfolded atom, and viceversa, are syntax errors (see rules in <a href="#sec:concrete-syntax">section 5.1</a>).</p>
+<p>Bear in mind that folding an unfolded atom, and viceversa, are syntax errors (see rules in <a href="#sec:concrete-syntax">section 5.1</a>).</p>
 <h2 id="sec:binding">2.10 Binding</h2>
 <p>Binding is, in general, a declarative construct that associates a series of productions to a non terminal symbol. Each binding introduces in the environment (see <a href="#sec:environment-scoping">section 2.11</a>) that association, and every production generated in that environment can refer to its non terminal symbol.</p>
 <h3 id="sec:closures">2.10.1 Closures</h3>
@@ -1216,10 +1214,10 @@ I am nice, maybe very nice and handsome
 I am nice, maybe very nice and nice
 I am nice, maybe very ... nice and handsome
 I am nice, maybe very ... nice and nice
-I am decisamente very handsome and nice
-I am decisamente very handsome and handsome
-I am decisamente very .. handsome and nice
-I am decisamente very .. handsome and handsome</code></pre>
+I am definitely very handsome and nice
+I am definitely very handsome and handsome
+I am definitely very .. handsome and nice
+I am definitely very .. handsome and handsome</code></pre>
 <p>The visibility (or scope) of the various non terminals in the above example is clear: <code>X</code> and <code>Very</code> are local to the subproduction that defines them, while <code>Adj</code> is used by both the subproduction’s body as well as by the body of <code>S</code>.</p>
 <p>Pay close attention to how the scoping constructor is being used in conjuction with strong binding (see <a href="#sec:suspensions">section 2.10.2</a>): symbol <code>X</code> is introduced locally, with the sole purpose of <em>fixing</em> the generation of <code>Adj</code>, which in the top-level environment is defined via a weak binding (see <a href="#sec:closures">section 2.10.1</a>). The combined use of scopes with the various types of bindings is a powerful feature of the language, unleashing new possibilities for the engineering of grammars.</p>
 <p>Also note that the above example doesn’t rely on local bindings’ mutual recursion, and that the same result could have been achieved by inserting 2 scopes:</p>
@@ -1229,7 +1227,7 @@ I am decisamente very .. handsome and handsome</code></pre>
 <span class="hl kwa">Adj</span> <span class="hl opt">::=</span> handsome <span class="hl opt">|</span> nice <span class="hl opt">;</span>
 </code></pre>
 <p>Nothing prevents a subproduction’s body from being a subproduction itself: this allows populating the environment without creating a mutually recursive relation between the bindings.</p>
-<p>Finally, bare in mind that <strong>any</strong> type of subproduction can introduce local bindings.</p>
+<p>Finally, bear in mind that <strong>any</strong> type of subproduction can introduce local bindings.</p>
 <h3 id="sec:static-lexical-scoping">2.11.3 Static lexical scoping</h3>
 <p>Scoping rules are at the same time strict and intuitive: every production is generated in the environment where it was defined. Even though environments can be populated with locally inserted bindings, it’s <strong>not</strong> possible to use symbols defined in the current environment to generate a production defined elsewhere, <strong>even</strong> if these symbols are same-named.</p>
 <p><strong>EXAMPLE</strong></p>
@@ -1251,8 +1249,7 @@ y y</code></pre>
 <pre><code>x
 y</code></pre>
 <p>Inside the second inserted subproduction, the external definition of <code>X</code> is not visible. Obviously, the same rules apply also to the top-level environment.</p>
-<p>Si badi infine che i binding sono ricorsivi, pertanto non è possibile fare riferimento alla definizione di un simbolo nell’ambiente in una ridefinizione in override del medesimo simbolo.</p>
-<p>Bare also in mind that bindings are recursive, therefore you can’t refer to a symbol’s environment definition from within an override redifinition of the same symbol.</p>
+<p>Bear also in mind that bindings are recursive, therefore you can’t refer to a symbol’s environment definition from within an override redefinition of the same symbol.</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= (</span><span class="hl kwa">X</span> <span class="hl opt">::=</span> a <span class="hl opt">|</span> b<span class="hl opt">; (</span><span class="hl kwa">X</span> <span class="hl opt">::=</span> x <span class="hl opt">[</span><span class="hl kwa">X</span><span class="hl opt">];</span> <span class="hl kwa">X</span><span class="hl opt">)) ;</span>
 </code></pre>
@@ -1260,10 +1257,8 @@ y</code></pre>
 <pre><code>x
 x x
 x x x ...</code></pre>
-<p>L’occorrenza di <code>X</code> nel secondo binding innestato viene dunque vista come una ricorsione, non come un riferimento alla <code>X</code> dell’ambiente padre.</p>
 <p>The occurence of <code>X</code> inside the second inserted binding is thus seen as a recursion, not as a reference to the <code>X</code> of the parent environment.</p>
-<p>Analogamente in presenza di una serie di binding in rapporto di mutua ricorsione:</p>
-<p>Analogously, in the presence of a series of binding related by mutual recursion:</p>
+<p>Similarly, in presence of a series of binding related by mutual recursion:</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= (</span><span class="hl kwa">X</span> <span class="hl opt">::=</span> x <span class="hl opt">[</span><span class="hl kwa">A</span><span class="hl opt">];</span> <span class="hl kwa">A</span> <span class="hl opt">::=</span> a <span class="hl opt">[</span><span class="hl kwa">X</span><span class="hl opt">]; (</span><span class="hl kwa">X</span> <span class="hl opt">::=</span> y <span class="hl opt">[</span><span class="hl kwa">A</span><span class="hl opt">];</span> <span class="hl kwa">A</span> <span class="hl opt">::=</span> b <span class="hl opt">[</span><span class="hl kwa">X</span><span class="hl opt">];</span> <span class="hl kwa">X</span><span class="hl opt">)) ;</span>
 </code></pre>
@@ -1280,15 +1275,14 @@ y b y b y b ...</code></pre>
 <p><strong>PRODUCES</strong></p>
 <pre><code>he is a handsome actor
 she is a pretty actress</code></pre>
-<p>As a workaround to the burder of having to specify local labels, and activate them in place, the language offers a system of automatic positional generation. This feature — which is operationally equivalent to using labels and selections, but less verbose — allows to express in an extremely concise way groups of suffixes, declinations, conjucations, etc. The <code>,</code> keyword is used to separate the atoms representing the possibile choices:</p>
+<p>As a workaround to the burden of having to specify local labels, and activate them in place, the language offers a system of automatic positional generation. This feature — which is operationally equivalent to using labels and selections, but less verbose — allows to express in an extremely concise way groups of suffixes, declinations, conjugations, etc. The <code>,</code> keyword is used to separate the atoms representing the possible choices:</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> he<span class="hl opt">,</span>she is a handsome<span class="hl opt">,</span>pretty act <span class="hl opt">^</span> or<span class="hl opt">,</span>ress <span class="hl opt">;</span>
 </code></pre>
 <p>The final result is identical to that of the previous example; the difference is that no labels are used here: in accordance with the translation rules of <a href="#sec:translation-rules">section 5.5</a>, every production containing groups of comma-separated atoms is translated into a subproduction containing as many pipe-separated productions as the number of atoms in the group, and each production presents the <strong>i</strong><sup>th</sup> atom of each group, for every <strong>i</strong>. The above example is thus translated into:</p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> he is a handsome act <span class="hl opt">^</span> or <span class="hl opt">|</span> she is a pretty act <span class="hl opt">^</span> ress <span class="hl opt">;</span>
 </code></pre>
-<p>The obvious limitation of this feature is that all the groups in a given production must contain <strong>the same number of atoms</strong>. Also, bare in mind that the <em>scope</em> of this constraint is a single production.</p>
-<p>È importante capire che la generazione posizionale non sostituisce il sistema di label, ma offre un’alternativa sintetica ad esso nei frequenti casi in cui verrebbe utilizzato per declinare termini. Non è difficile immaginare comunque come tale meccanismo possa tornare utile in altri contesti; ad esempio, a livello macroscopico, per specificare relazioni tra porzioni di una frase:</p>
+<p>The obvious limitation of this feature is that all the groups in a given production must contain <strong>the same number of atoms</strong>. Also, bear in mind that the <em>scope</em> of this constraint is a single production.</p>
 <p>It’s important to understand that positional generation is not a substitute of the labels system, rather it’s a concise alternative to it for those frequent scenarios where it would be employed for declination purposes. Nonetheless, it’s easy to envisage how this feature could be useful in other contexts too; for example, on a macroscopic level, to specify relations between portions of a sentence:</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> time<span class="hl opt">,</span>fruit flies like an<span class="hl opt">,</span>a arrow<span class="hl opt">,</span>banana <span class="hl opt">;</span>
@@ -1321,8 +1315,7 @@ a a a
 a a b
 a b a
 ...</code></pre>
-<p>Si potrebbe ritenere ragionevole che venisse iterata sempre la stessa generazione, ma non è così (come dalle regole di traduzione <strong>¿sec:regole-traduzione?</strong>), poiché nella maggior parte dei frangenti il comportamento di cui sopra è preveribile ed inoltre semanticamente affine all’analogo costrutto EBNF. È possibile tuttavia ottenere l’effetto ipotizzato in maniera piuttosto semplice sfruttando il binding forte (vedi section <strong>¿sec:sospensioni?</strong>):</p>
-<p>One might have — quite reasonably so — expected to see the same generation being iterated every time, but this is not the case (as stated in the <a href="#sec:translation-rules">translation rules 5.5</a>) because in most scenarios the behavior of the above example is the preferable one instead, and also because it bears semantic affinity with its analogous EBNF contruct. It’s nevertheless possible to achieve the former behavior in a rather simple manner, by exploiting strong binding (see <a href="#sec:suspensions">section 2.10.2</a>):</p>
+<p>One might have — quite reasonably so — expected to see the same generation being iterated every time, but this is not the case (as stated in the <a href="#sec:translation-rules">translation rules 5.5</a>) because in most scenarios the behavior of the above example is the preferable one instead, and also because it bears semantic affinity with its analogous EBNF construct. It’s nevertheless possible to achieve the former behavior in a rather simple manner, by exploiting strong binding (see <a href="#sec:suspensions">section 2.10.2</a>):</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= (</span><span class="hl kwa">X</span> <span class="hl opt">:=</span> a <span class="hl opt">|</span> b<span class="hl opt">; (</span><span class="hl kwa">X</span><span class="hl opt">)+) ;</span>
 </code></pre>
@@ -1349,8 +1342,7 @@ b b b ...</code></pre>
 00011122335</code></pre>
 <p>etc.</p>
 <p>i.e., a random natural number made up of one or more digits ranging from 0 to 9.</p>
-<p>Keep in mind then that it is up to you providing a non-recursive production somewhere in order to let the program stop recurring sooner or later, otherwise a cyclic recursion error will be generated by the grammar checker (see <a href="#sec:cyclic-recursions">section 4.1.2</a>).</p>
-<p>Bare in mind that you’ll need to provide a non-recursive production somewhere along the line, in order to guarantee to the program an exit point from the recursion, at one point or another; otherwise, a cyclic recursion error will be generated by the grammar checker (see <a href="#sec:cyclic-recursions">section 4.1.2</a>).</p>
+<p>Bear in mind that you’ll need to provide a non-recursive production somewhere along the line, in order to guarantee to the program an exit point from the recursion, at one point or another; otherwise, a cyclic recursion error will be generated by the grammar checker (see <a href="#sec:cyclic-recursions">section 4.1.2</a>).</p>
 <p>As an exercise, try to define a grammar for generating variable-length sentences by recursively linking subordinate clauses.</p>
 <h2 id="sec:grouping">3.2 Grouping</h2>
 <p>In order to control the distribution of probability with finer granularity than described in <a href="#sec:controlling-probability-production">sections 2.3</a> and <a href="#sec:unfolding">2.4</a>, mastery in the proper usage of round brackets is the key:</p>
@@ -1468,7 +1460,7 @@ a beautiful house</code></pre>
 </code></pre>
 <p>The above grammar leads to an error since <code>A</code> is defined twice.</p>
 <p>This also applies inside inserted scopes (see <a href="#sec:environment-scoping">section 2.11</a>):</p>
-<p><strong>ESEMPIO</strong></p>
+<p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= (</span><span class="hl kwa">A</span> <span class="hl opt">::=</span> apple <span class="hl opt">|</span> orange <span class="hl opt">|</span> banana <span class="hl opt">;</span> <span class="hl kwa">A</span> <span class="hl opt">::=</span> tangerine <span class="hl opt">|</span> melon <span class="hl opt">;</span> a ripe <span class="hl kwa">A</span><span class="hl opt">) ;</span>
 </code></pre>
 <h3 id="sec:illegal-character">4.1.6 Illegal character</h3>
@@ -1505,7 +1497,7 @@ _</code></pre>
 </code></pre>
 <p><strong>PRODUCES</strong></p>
 <pre><code>a</code></pre>
-<p>When a destructive selection is detected, a specific warning is issued to inform the user about the problem. Bare in mind that, by fixing all the warning of this type, you’ll increase the robustness of the grammar, and sometimes it might also help to detect coneptual misuses of the lables.</p>
+<p>When a destructive selection is detected, a specific warning is issued to inform the user about the problem. Bear in mind that, by fixing all the warning of this type, you’ll increase the robustness of the grammar, and sometimes it might also help to detect coneptual misuses of the lables.</p>
 <h3 id="sec:level-2">4.2.3 Level 2</h3>
 <h4 id="sec:useless-permutation">4.2.3.1 Useless permutation</h4>
 <p>In case just a single permutable subproduction appears within a sequence (see <a href="#sec:permutation">section 2.7</a>), no permutation is actually performed (for obvious reasons).</p>
@@ -1609,7 +1601,7 @@ b b b</code></pre>
 
 <span class="hl kwa">DotLabel</span> <span class="hl opt">::= .</span> <span class="hl kwa">Label</span>
 </code></pre>
-<p>Bare in mind that also the space character can used as terminal symbol within quotes.</p>
+<p>Bear in mind that also the space character can used as terminal symbol within quotes.</p>
 <h2 id="sec:escape-sequences">5.4 Escape sequences</h2>
 <p>The <code>Nonterm</code> regular expression of <a href="#sec:lexical-rules">section 5.3</a> considers a backslash within quotes as the escape character. A terminal symbol within quotes may contain any of the following escape sequences:</p>
 <table>
