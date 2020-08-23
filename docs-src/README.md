@@ -63,19 +63,19 @@ The original HTML files were cleaned-up using [HTML Tidy]; they were downloaded 
 
 The markdown source files for Italian _Polygen Meta Language Spec_:
 
-- [`polygen-spec_IT.markdown`](./polygen-spec_IT.markdown) — main Italian source file
-    - [`polygen-spec_IT_inc_tables.markdown`](./polygen-spec_IT_inc_tables.markdown) — include file with "Translation Rules" tables (Appendix)
+- [`polygen-spec_IT.markdown`][spec_IT] — main Italian source file
+    - [`polygen-spec_IT_inc_tables.markdown`][IT_tables] — include file with "Translation Rules" tables (Appendix)
 
 The markdown source files for English _Polygen Meta Language Spec_:
 
-- [`polygen-spec_EN.markdown`](./polygen-spec_EN.markdown) — main English source file
-    - [`polygen-spec_EN_inc_tables.markdown`](./polygen-spec_EN_inc_tables.markdown) — include file with "Translation Rules" tables (Appendix)
+- [`polygen-spec_EN.markdown`][spec_EN] — main English source file
+    - [`polygen-spec_EN_inc_tables.markdown`][EN_tables] — include file with "Translation Rules" tables (Appendix)
 
 include files common to all versions of the manual (locale-agnostic):
 
-- [`polygen-spec_inc_abs.markdown`](./polygen-spec_inc_abs.markdown)
-- [`polygen-spec_inc_con.markdown`](./polygen-spec_inc_con.markdown)
-- [`polygen-spec_inc_lex.markdown`](./polygen-spec_inc_lex.markdown)
+- [`polygen-spec_inc_abs.markdown`][inc_abs] — EBNF for [§5.2 _Abstract syntax_][§5.2 EN].
+- [`polygen-spec_inc_con.markdown`][inc_con] — EBNF for [§5.1 _Concrete syntax_][§5.1 EN].
+- [`polygen-spec_inc_lex.markdown`][inc_lex] — EBNF for [§5.3 _Lexical rules_][§5.3 EN].
 
 
 The "Translation Rules" tables are kept in a separate include-file because of the excessive width of their rows.
@@ -83,10 +83,23 @@ When editing these, you'll want to disable text wrapping in your code editor.
 
 ## Output Docs
 
-The HTML converted documents:
+The converted HTML documents:
 
-- [`polygen-spec_IT.html`](./polygen-spec_IT.html) — converted Italian doc
-- [`polygen-spec_EN.html`](./polygen-spec_EN.html) — converted English doc
+- [`polygen-spec_IT.html`](./polygen-spec_IT.html) — converted Italian doc (developers' preview).
+- [`polygen-spec_EN.html`](./polygen-spec_EN.html) — converted English doc (developers' preview).
+
+These generated HTML docs have the same name as their counterparts in the repository root folder:
+
+- [`../polygen-spec_IT.html`](../polygen-spec_IT.html) — current Italian doc (in root).
+- [`../polygen-spec_EN.html`](../polygen-spec_EN.html) — current English doc (in root).
+
+The reason why the conversion scripts generate the docs in this folder (instead of directly into the root folder) is to keep development previews separate from the official releases.
+Having local access to both versions of a document allows developers to compare them in the browser (or via a diff tool) during the editing stages, without having to switch branches or check out specific commits.
+
+As for the reason why we track these preview documents (instead of telling Git to ignore them) it's to enable proofreaders to access Live HTML previews of work-in-progress documents without having to clone the repository.
+
+Although not a very elegant solution, it's a practical one — not only for developers, but also (and foremost) for proofreaders that don't know Git but would like to contribute.
+
 
 ## Build Scripts
 
@@ -280,10 +293,28 @@ For a full list of credits, and their licenses, see:
 [tools/README.md]: ./tools/README.md "View 'tools/README.md' file"
 [download.bat]: ./tools/download.bat "View script source"
 
+[inc_abs]: ./polygen-spec_inc_abs.markdown "View source document"
+[inc_con]: ./polygen-spec_inc_con.markdown "View source document"
+[inc_lex]: ./polygen-spec_inc_lex.markdown "View source document"
+
+[IT_tables]: ./polygen-spec_IT_inc_tables.markdown "View source document"
+[EN_tables]: ./polygen-spec_EN_inc_tables.markdown "View source document"
+[spec_IT]: ./polygen-spec_IT.markdown "View source document"
+[spec_EN]: ./polygen-spec_EN.markdown "View source document"
+
 <!-- internal XRefs -->
 
 [Third-Party Tools]: #third-party-tools
 [Optional Third-Party Tools]: #optional-third-party-tools
+
+<!-- Live HTML Previews -->
+
+[PML EN Live]: http://htmlpreview.github.io/?https://github.com/tajmone/polygen-docs/blob/master/polygen-spec_EN.html "Live HTML preview of 'Polygen Meta Language Spec' (English)"
+[PML IT Live]: http://htmlpreview.github.io/?https://github.com/tajmone/polygen-docs/blob/master/polygen-spec_IT.html "Live HTML preview of 'Polygen Meta Language Spec' (Italian)"
+
+[§5.1 EN]: https://htmlpreview.github.io/?https://github.com/tajmone/polygen-docs/blob/master/polygen-spec_EN.html#sec:concrete-syntax "Live HTML preview of PML Spec (EN) sec. §5.1"
+[§5.2 EN]: https://htmlpreview.github.io/?https://github.com/tajmone/polygen-docs/blob/master/polygen-spec_EN.html#sec:abstract-syntax "Live HTML preview of PML Spec (EN) sec. §5.2"
+[§5.3 EN]: https://htmlpreview.github.io/?https://github.com/tajmone/polygen-docs/blob/master/polygen-spec_EN.html#sec:lexical-rules "Live HTML preview of PML Spec (EN) sec. §5.3"
 
 <!-- people -->
 
