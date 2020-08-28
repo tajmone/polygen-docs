@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!--
 ==============================================================================
-           "GitHub HTML5 Pandoc Template" v2.0 — by Tristano Ajmone           
+           "GitHub HTML5 Pandoc Template" v2.2 — by Tristano Ajmone
 ==============================================================================
-Copyright © Tristano Ajmone, 2017, MIT License (MIT). Project's home:
+Copyright © Tristano Ajmone, 2017-2020, MIT License (MIT). Project's home:
 
 - https://github.com/tajmone/pandoc-goodies
 
@@ -16,15 +16,15 @@ The CSS in this template reuses source code taken from the following projects:
   http://primercss.io/
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The MIT License 
+The MIT License
 
-Copyright (c) Tristano Ajmone, 2017 (github.com/tajmone/pandoc-goodies)
+Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
 Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
 Copyright (c) 2017 GitHub Inc.
 
-"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017, released
-under the MIT License (MIT); it contains readaptations of substantial portions
-of the following third party softwares:
+"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
+released under the MIT License (MIT); it contains readaptations of substantial
+portions of the following third party softwares:
 
 (1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
 (2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
@@ -53,9 +53,9 @@ SOFTWARE.
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Alvise Spanò" />
-  <meta name="dcterms.date" content="2020-08-23" />
+  <meta name="dcterms.date" content="2020-08-28" />
   <meta name="keywords" content="polygen, language, grammar, specification, pml, ebnf" />
-  <meta name="description" content="Polygen Meta Language (PML) v1.0 — Technical specification and introductiory guide to using PML.">
+  <meta name="description" content="&lt;p&gt;Polygen Meta Language (PML) v1.0 — Technical specification and introductiory guide to using PML.&lt;/p&gt;">
   <title>Polygen Meta Language Spec 1.0</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">@charset "UTF-8";
@@ -628,10 +628,10 @@ color: #C28141;
 <h1 class="title followed-by-subtitle">Polygen Meta Language Spec 1.0</h1>
 <p class="subtitle">Introductiory guide to using PML</p>
 <div class="summary">
-<p>Edition <strong>v1.1.1-rc</strong> (2020-08-23) for <strong>PML 1.0</strong>, Polygen <strong>v1.0.6</strong>.</p>
+<p>Edition <strong>v1.1.1-rc</strong> (2020-08-28) for <strong>PML 1.0</strong>, Polygen <strong>v1.0.6</strong>.</p>
 <div class="Note">
-<p><strong>Copyright © 2002-2020 Alvise Spanò.</strong> This document is subject to the terms of the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" title="Visit the GNU GPLv2 homepage at www.gnu.org">GNU General Public License</a> (GPLv2+); either version 2 of the License, or (at your option) any later version. You can redistribute it and/or modify it under the same license terms.</p>
-<p>New digital edition by <a href="https://github.com/tajmone" title="View Tristano Ajmone's GitHub profile">Tristano Ajmone</a> (February 2018).</p>
+<p><strong>Copyright © 2002-18 Alvise Spanò.</strong> This document is subject to the terms of the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" title="Visit the GNU GPLv2 homepage at www.gnu.org">GNU General Public License</a> (GPLv2+); either version 2 of the License, or (at your option) any later version. You can redistribute it and/or modify it under the same license terms.</p>
+<p>New digital edition by <a href="https://github.com/tajmone" title="View Tristano Ajmone&#39;s GitHub profile">Tristano Ajmone</a> (February 2018).</p>
 </div>
 </div>
 </header>
@@ -639,23 +639,27 @@ color: #C28141;
 <nav id="TOC">
 <h1 class="toc-title">Contents</h1>
 <ul>
-<li><a href="#sec:what-is-a-grammar">1 What is a grammar?</a><ul>
+<li><a href="#sec:what-is-a-grammar">1 What is a grammar?</a>
+<ul>
 <li><a href="#sec:subproductions">1.1 Subproductions</a></li>
 <li><a href="#sec:optional-subproductions">1.2 Optional subproductions</a></li>
 <li><a href="#sec:comments">1.3 Comments</a></li>
 </ul></li>
-<li><a href="#sec:advanced-features">2 Advanced features</a><ul>
+<li><a href="#sec:advanced-features">2 Advanced features</a>
+<ul>
 <li><a href="#sec:concatenation">2.1 Concatenation</a></li>
 <li><a href="#sec:epsilon">2.2 Epsilon</a></li>
 <li><a href="#sec:controlling-probability-production">2.3 Controlling the probability of a production</a></li>
-<li><a href="#sec:unfolding">2.4 Unfolding</a><ul>
+<li><a href="#sec:unfolding">2.4 Unfolding</a>
+<ul>
 <li><a href="#sec:non-terminal-symbols">2.4.1 Non-terminal symbols</a></li>
 <li><a href="#sec:unfolding-subproductions">2.4.2 Subproductions</a></li>
 <li><a href="#sec:unfolding-optional-subproductions">2.4.3 Optional subproductions</a></li>
 <li><a href="#sec:permutable-subproductions">2.4.4 Permutable subproductions</a></li>
 <li><a href="#sec:deeply-unfolded-subproductions">2.4.5 Deeply unfolded subproductions</a></li>
 </ul></li>
-<li><a href="#sec:attributes">2.5 Attributes</a><ul>
+<li><a href="#sec:attributes">2.5 Attributes</a>
+<ul>
 <li><a href="#sec:labels-selection">2.5.1 Labels and selection</a></li>
 <li><a href="#sec:multiple-selection">2.5.2 Multiple selection</a></li>
 <li><a href="#sec:selection-reset">2.5.3 Selection reset</a></li>
@@ -664,11 +668,13 @@ color: #C28141;
 <li><a href="#sec:permutation">2.7 Permutation</a></li>
 <li><a href="#sec:deep-unfolding">2.8 Deep unfolding</a></li>
 <li><a href="#sec:folding">2.9 Folding</a></li>
-<li><a href="#sec:binding">2.10 Binding</a><ul>
+<li><a href="#sec:binding">2.10 Binding</a>
+<ul>
 <li><a href="#sec:closures">2.10.1 Closures</a></li>
 <li><a href="#sec:suspensions">2.10.2 Suspensions</a></li>
 </ul></li>
-<li><a href="#sec:environment-scoping">2.11 Environment and scoping</a><ul>
+<li><a href="#sec:environment-scoping">2.11 Environment and scoping</a>
+<ul>
 <li><a href="#sec:top-level-environment">2.11.1 Top-level environment</a></li>
 <li><a href="#sec:local-envirnoments">2.11.2 Local envirnoments</a></li>
 <li><a href="#sec:static-lexical-scoping">2.11.3 Static lexical scoping</a></li>
@@ -676,13 +682,16 @@ color: #C28141;
 <li><a href="#sec:positional-generation">2.12 Positional generation</a></li>
 <li><a href="#sec:iteration">2.13 Iteration</a></li>
 </ul></li>
-<li><a href="#sec:advanced-techniques">3 Advanced techniques</a><ul>
+<li><a href="#sec:advanced-techniques">3 Advanced techniques</a>
+<ul>
 <li><a href="#sec:recursion">3.1 Recursion</a></li>
 <li><a href="#sec:grouping">3.2 Grouping</a></li>
 <li><a href="#sec:controlling-probability-optional">3.3 Controlling the probability of an optional subproduction</a></li>
 </ul></li>
-<li><a href="#sec:static-validation-of-grammars">4 Static validation of grammars</a><ul>
-<li><a href="#sec:errors">4.1 Errors</a><ul>
+<li><a href="#sec:static-validation-of-grammars">4 Static validation of grammars</a>
+<ul>
+<li><a href="#sec:errors">4.1 Errors</a>
+<ul>
 <li><a href="#sec:undefined-non-terminal-symbols">4.1.1 Undefined non-terminal symbols</a></li>
 <li><a href="#sec:cyclic-recursions">4.1.2 Cyclic recursions and non-termination</a></li>
 <li><a href="#sec:recursive-unfoldings">4.1.3 Recursive unfoldings</a></li>
@@ -691,23 +700,28 @@ color: #C28141;
 <li><a href="#sec:illegal-character">4.1.6 Illegal character</a></li>
 <li><a href="#sec:unexpected-token">4.1.7 Unexpected token</a></li>
 </ul></li>
-<li><a href="#sec:warnings">4.2 Warnings</a><ul>
+<li><a href="#sec:warnings">4.2 Warnings</a>
+<ul>
 <li><a href="#sec:level-0">4.2.1 Level 0</a></li>
-<li><a href="#sec:level-1">4.2.2 Level 1</a><ul>
+<li><a href="#sec:level-1">4.2.2 Level 1</a>
+<ul>
 <li><a href="#sec:undefined-i-symbol">4.2.2.1 Undefined <code>I</code> symbol</a></li>
 <li><a href="#sec:potential-epsilon-productions">4.2.2.2 Potential epsilon-productions</a></li>
 <li><a href="#sec:destructive-selection">4.2.2.3 Destructive Selection</a></li>
 </ul></li>
-<li><a href="#sec:level-2">4.2.3 Level 2</a><ul>
+<li><a href="#sec:level-2">4.2.3 Level 2</a>
+<ul>
 <li><a href="#sec:useless-permutation">4.2.3.1 Useless permutation</a></li>
 <li><a href="#sec:useless-unfolding">4.2.3.2 Useless unfolding</a></li>
 </ul></li>
-<li><a href="#sec:level-3">4.2.4 Level 3</a><ul>
+<li><a href="#sec:level-3">4.2.4 Level 3</a>
+<ul>
 <li><a href="#sec:unfolding-a-suspended-symbol">4.2.4.1 Unfolding a suspended symbol</a></li>
 </ul></li>
 </ul></li>
 </ul></li>
-<li><a href="#sec:appendix">5 Appendix</a><ul>
+<li><a href="#sec:appendix">5 Appendix</a>
+<ul>
 <li><a href="#sec:concrete-syntax">5.1 Concrete syntax</a></li>
 <li><a href="#sec:abstract-syntax">5.2 Abstract syntax</a></li>
 <li><a href="#sec:lexical-rules">5.3 Lexical rules</a></li>
@@ -718,7 +732,7 @@ color: #C28141;
 </nav>
 <hr>
 <h1 id="sec:what-is-a-grammar">1 What is a grammar?</h1>
-<p>A grammar is an ASCII text file providing the definition of the syntactical structure and terms used by the program to build sentences. <em>Polygen</em> is able to interpret a language designed for defining <em><a href="https://en.wikipedia.org/wiki/Chomsky_hierarchy#Type-2_grammars" title="View 'Chomsky hierarchy' article on Wikipedia">Type-2</a></em> grammars (according to Chomsky classification) consisting in an extension of the <em>EBNF (<a href="https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form" title="View 'Extended Backus–Naur form' article on Wikipedia">Extended Backus Naur Form</a>)</em> — a very simple and common notation for describing the formal syntax of a language.</p>
+<p>A grammar is an ASCII text file providing the definition of the syntactical structure and terms used by the program to build sentences. <em>Polygen</em> is able to interpret a language designed for defining <em><a href="https://en.wikipedia.org/wiki/Chomsky_hierarchy#Type-2_grammars" title="View &#39;Chomsky hierarchy&#39; article on Wikipedia">Type-2</a></em> grammars (according to Chomsky classification) consisting in an extension of the <em>EBNF (<a href="https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form" title="View &#39;Extended Backus–Naur form&#39; article on Wikipedia">Extended Backus Naur Form</a>)</em> — a very simple and common notation for describing the formal syntax of a language.</p>
 <p>A definition consists in specifying for a given symbol a set of <strong>productions</strong> interleaved by a <strong>pipe</strong> <code>|</code> and followed by a <strong>semicolon</strong> <code>;</code> terminator:</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> an apple <span class="hl opt">|</span> a mango <span class="hl opt">|</span> an orange <span class="hl opt">;</span>
@@ -1081,29 +1095,29 @@ whether he therefore is
 whether he is therefore</code></pre>
 <p>Bear in mind that a subproduction’s permutability only affects the sequence that contains it: no permutation occurs if permutable subproductions are specified in different subsequences (or subprodutions — permutable or not). See the differences in the following two examples:</p>
 <p><strong>EXAMPLE</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>in 10 minutes<span class="hl opt">}^, {</span>at 3 o'clock<span class="hl opt">}^, {</span><span class="hl str">&quot;I&quot;</span> <span class="hl opt">{</span>will depart<span class="hl opt">} {</span>alone<span class="hl opt">}} ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>in 10 minutes<span class="hl opt">}^, {</span>at 3 o&#39;clock<span class="hl opt">}^, {</span><span class="hl str">&quot;I&quot;</span> <span class="hl opt">{</span>will depart<span class="hl opt">} {</span>alone<span class="hl opt">}} ;</span>
 </code></pre>
 <p><strong>PRODUCES</strong></p>
-<pre><code>in 10 minutes, at 3 o'clock, I will depart alone
-at 3 o'clock, in 10 minutes, I will depart alone
-in 10 minutes, I will depart alone, at 3 o'clock
-at 3 o'clock, I will depart alone, in 10 minutes
-I will depart alone, in 10 minutes, at 3 o'clock
-I will depart alone, at 3 o'clock, in 10 minutes
-in 10 minutes, at 3 o'clock, I alone will depart
-at 3 o'clock, in 10 minutes, I alone will depart
-in 10 minutes, I alone will depart, at 3 o'clock
-at 3 o'clock, I alone will depart, in 10 minutes
-I alone will depart, in 10 minutes, at 3 o'clock
-I alone will depart, at 3 o'clock, in 10 minutes</code></pre>
+<pre><code>in 10 minutes, at 3 o&#39;clock, I will depart alone
+at 3 o&#39;clock, in 10 minutes, I will depart alone
+in 10 minutes, I will depart alone, at 3 o&#39;clock
+at 3 o&#39;clock, I will depart alone, in 10 minutes
+I will depart alone, in 10 minutes, at 3 o&#39;clock
+I will depart alone, at 3 o&#39;clock, in 10 minutes
+in 10 minutes, at 3 o&#39;clock, I alone will depart
+at 3 o&#39;clock, in 10 minutes, I alone will depart
+in 10 minutes, I alone will depart, at 3 o&#39;clock
+at 3 o&#39;clock, I alone will depart, in 10 minutes
+I alone will depart, in 10 minutes, at 3 o&#39;clock
+I alone will depart, at 3 o&#39;clock, in 10 minutes</code></pre>
 <p><strong>EXAMPLE</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>in 10 minutes<span class="hl opt">}^, {</span>at 3 o'clock<span class="hl opt">}^, (</span><span class="hl str">&quot;I&quot;</span> <span class="hl opt">{</span>will depart<span class="hl opt">} {</span>alone<span class="hl opt">}) ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>in 10 minutes<span class="hl opt">}^, {</span>at 3 o&#39;clock<span class="hl opt">}^, (</span><span class="hl str">&quot;I&quot;</span> <span class="hl opt">{</span>will depart<span class="hl opt">} {</span>alone<span class="hl opt">}) ;</span>
 </code></pre>
 <p><strong>PRODUCES</strong></p>
-<pre><code>in 10 minutes, at 3 o'clock, I will depart alone
-at 3 o'clock, in 10 minutes, I will depart alone
-in 10 minutes, at 3 o'clock, I alone will depart
-at 3 o'clock, in 10 minutes, I alone will depart</code></pre>
+<pre><code>in 10 minutes, at 3 o&#39;clock, I will depart alone
+at 3 o&#39;clock, in 10 minutes, I will depart alone
+in 10 minutes, at 3 o&#39;clock, I alone will depart
+at 3 o&#39;clock, in 10 minutes, I alone will depart</code></pre>
 <h2 id="sec:deep-unfolding">2.8 Deep unfolding</h2>
 <p>The language allows the deep unfolding of a subproduction enclosed within reversed double angle brackets <code>&gt;&gt;</code> and <code>&lt;&lt;</code>: any atom (at any nesting level) for which unfolding makes sense (see <a href="#sec:unfolding">section 2.4</a>) will be unfolded. As a result, every subproduction and non-terminal symbol within <code>&gt;&gt;</code> and <code>&lt;&lt;</code> is completely flattened out:</p>
 <p><strong>EXAMPLE</strong></p>
@@ -1291,7 +1305,7 @@ she is a pretty actress</code></pre>
 <pre><code>time flies like an arrow
 fruit flies like a banana</code></pre>
 <h2 id="sec:iteration">2.13 Iteration</h2>
-<p>Although scoping constructs (see <a href="#sec:environment-scoping">section 2.11</a>) allow iterating a production in a very simple and concise manner, sometimes the use of a dedicated iteration construct similar to EBNF’s <a href="https://it.wikipedia.org/wiki/Star_di_Kleene" title="View 'Kleene star' article on Wikipedia">Kleene closure</a> can be more friendly:</p>
+<p>Although scoping constructs (see <a href="#sec:environment-scoping">section 2.11</a>) allow iterating a production in a very simple and concise manner, sometimes the use of a dedicated iteration construct similar to EBNF’s <a href="https://it.wikipedia.org/wiki/Star_di_Kleene" title="View &#39;Kleene star&#39; article on Wikipedia">Kleene closure</a> can be more friendly:</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> she is s<span class="hl opt">^ (</span>o<span class="hl opt">^)+</span> pretty <span class="hl opt">;</span>
 </code></pre>
@@ -1527,7 +1541,7 @@ b b b</code></pre>
 <p>This trick is regarded as a misuse of unfolding, and it’s therefore reported with a warning of extremely low priority.</p>
 <h1 id="sec:appendix">5 Appendix</h1>
 <h2 id="sec:concrete-syntax">5.1 Concrete syntax</h2>
-<p>What follows is the concrete syntax, in <em><a href="https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form" title="View 'Extended Backus–Naur form' article on Wikipedia">EBNF</a></em> notation, of the grammar definition language (<em><a href="https://en.wikipedia.org/wiki/Chomsky_hierarchy#Type-2_grammars" title="View 'Chomsky hierarchy' article on Wikipedia">Type-2</a></em>) interpreted by <em>Polygen</em> and described in this document.</p>
+<p>What follows is the concrete syntax, in <em><a href="https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form" title="View &#39;Extended Backus–Naur form&#39; article on Wikipedia">EBNF</a></em> notation, of the grammar definition language (<em><a href="https://en.wikipedia.org/wiki/Chomsky_hierarchy#Type-2_grammars" title="View &#39;Chomsky hierarchy&#39; article on Wikipedia">Type-2</a></em>) interpreted by <em>Polygen</em> and described in this document.</p>
 <p>Non-terminal symbols bound to productions are in uppercase; non-terminal symbols bound to regular expressions are capitalized (see <a href="#sec:lexical-rules">section 5.3</a>); terminal symbols are quoted; <code>S</code> is the starting non-terminal symbol.</p>
 <pre class="hl EBNF"><code class="EBNF"><span class="hl kwa">S</span>      <span class="hl opt">::=</span> <span class="hl kwa">DECLS</span>
 
@@ -1592,8 +1606,8 @@ b b b</code></pre>
 </code></pre>
 <h2 id="sec:lexical-rules">5.3 Lexical rules</h2>
 <p>Here follow the lexical rules in regular expression notation (<em>Type-3</em>).</p>
-<pre class="hl EBNF"><code class="EBNF"><span class="hl kwa">Term</span>     <span class="hl opt">::= [</span>a<span class="hl opt">-</span>z 0<span class="hl opt">-</span>9 '<span class="hl opt">][</span>a<span class="hl opt">-</span>z A<span class="hl opt">-</span>Z 0<span class="hl opt">-</span>9 '<span class="hl opt">]*</span>
-          <span class="hl opt">|</span>  <span class="hl str">&quot; [A-Z a-z 0-9 ( ) _ - ? . , ! &amp; # + * / % $ £ ` [ ] { } ~ @ ; : | &lt; &gt; = ^ ' \ ]* &quot;</span>
+<pre class="hl EBNF"><code class="EBNF"><span class="hl kwa">Term</span>     <span class="hl opt">::= [</span>a<span class="hl opt">-</span>z 0<span class="hl opt">-</span>9 &#39;<span class="hl opt">][</span>a<span class="hl opt">-</span>z A<span class="hl opt">-</span>Z 0<span class="hl opt">-</span>9 &#39;<span class="hl opt">]*</span>
+          <span class="hl opt">|</span>  <span class="hl str">&quot; [A-Z a-z 0-9 ( ) _ - ? . , ! &amp; # + * / % $ £ ` [ ] { } ~ @ ; : | &lt; &gt; = ^ &#39; \ ]* &quot;</span>
 
 <span class="hl kwa">Nonterm</span>  <span class="hl opt">::= [</span>A<span class="hl opt">-</span>Z<span class="hl opt">][</span>A<span class="hl opt">-</span>Z a<span class="hl opt">-</span>z 0<span class="hl opt">-</span>9<span class="hl opt">]*</span>
 
@@ -1640,8 +1654,8 @@ b b b</code></pre>
 <p>As a formal reference, we provide here the rules of translation from concrete- to abstract-syntax, in their order of precedence (where the <em>i</em>-th translation precedes the <em>i+1</em>-th). They refer to the operations performed by either the parser (in case of syntactic sugars) or the preprocessor (in all other cases).</p>
 <table>
 <colgroup>
-<col style="width: 42%"></col>
-<col style="width: 57%"></col>
+<col style="width: 42%" />
+<col style="width: 57%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1703,8 +1717,8 @@ b b b</code></pre>
 <p>Wherein the following notational conventions apply:</p>
 <table>
 <colgroup>
-<col style="width: 35%"></col>
-<col style="width: 64%"></col>
+<col style="width: 35%" />
+<col style="width: 64%" />
 </colgroup>
 <tbody>
 <tr class="odd">
