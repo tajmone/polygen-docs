@@ -211,10 +211,10 @@ The Bash requirement is due to some PP macros using Shell commands; in the futur
 
 In order to run the conversion scripts you'll need the following tools:
 
-- [pandoc] `v2.1`
-- [PP] `v2.2.2`
-- [pandoc-crossref] `v0.3.0.0`
-- [Highlight] `v3.42`
+- [pandoc] `v2.10.1`
+- [PP] `v2.14.1`
+- [pandoc-crossref] `v0.3.7.0a`
+- [Highlight] `v3.57.1`
 
 The tools' version numbers in the list are the ones used for this project, and to avoid unneeded differences in the generated HTML docs, and potential conflicts, contributors to the project must use those exact versions.
 
@@ -222,7 +222,7 @@ All of these tools are small sized and available as standalone packages, so you 
 
 Windows' users can run our [`tools/download.bat`][download.bat] batch script that will automatically download and set them up (for instructions see [`tools/README.md`][tools/README.md]).
 
-Because the PP precompiled binary is only available for `x86_64`, you'll need a 64-bit OS (or you'll have to compile it yourself for `x86`).
+Because some precompiled binaries are only available for `x86_64`, you'll need a 64-bit OS (or you'll have to compile them yourself for `x86`).
 
 ## Optional Third-Party Tools
 

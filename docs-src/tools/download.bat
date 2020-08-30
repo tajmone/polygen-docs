@@ -1,23 +1,23 @@
 @ECHO OFF
-::   "download.bat" | v1.0 | 2018/01/10
-::   ******************************************************************************
-::   *                                                                            *
-::   *                  Third-Party Tools Auto-Downloader Script                  *
-::   *                                                                            *
-::   *                             by Tristano Ajmone                             *
-::   *                                                                            *
-::   ******************************************************************************
-::   Downloads and unpacks here all required tools for building Polygen documents:
-::   - pandoc v2.1 (x86)
-::   - PP v2.2.2 (x86_64)
-::   - pandoc-crossref v0.3.0.0 (x86)
-::   - Highlight v3.42 (x86_64)
-::   ------------------------------------------------------------------------------
+:: "download.bat" | v1.2.0 | 2020/08/30
+:: *****************************************************************************
+:: *                                                                           *
+:: *                 Third-Party Tools Auto-Downloader Script                  *
+:: *                                                                           *
+:: *                            by Tristano Ajmone                             *
+:: *                                                                           *
+:: *****************************************************************************
+:: Downloads and unpacks here all required tools for building Polygen documents:
+:: - pandoc v2.10.1 (x86_64)
+:: - PP v2.14.1 (x86_64)
+:: - pandoc-crossref v0.3.7.0a (x86)
+:: - Highlight v3.57.1 (x86_64)
+:: -----------------------------------------------------------------------------
 
-SET PANDOC=https://github.com/jgm/pandoc/releases/download/2.1/pandoc-2.1-windows.zip
-SET PP=http://cdsoft.fr/pp/archives/pp-win-2.2.2.7z
-SET PANDOC_CROSSREF=https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.0.0/windows-ghc8-pandoc2-0.zip
-SET HIGHLIGHT=http://www.andre-simon.de/zip/highlight-3.42-x64.zip
+SET PANDOC=https://github.com/jgm/pandoc/releases/download/2.10.1/pandoc-2.10.1-windows-x86_64.zip
+SET PP=http://christophe.delord.free.fr/pp/archives/pp-win-2.14.1.7z
+SET PANDOC_CROSSREF=https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.7.0a/pandoc-crossref-Windows-2.10.1.7z
+SET HIGHLIGHT=http://www.andre-simon.de/zip/highlight-3.57.1-x64.zip
 
 ECHO.
 ECHO ********************************* [ START ] **********************************
@@ -44,11 +44,11 @@ ECHO ---------------------------------------------------------------------------
 ECHO ==============================================================================
 ECHO Downloading pandoc-crossref
 ECHO ------------------------------------------------------------------------------
-cURL -o pandoc-crossref.zip -L %PANDOC_CROSSREF%
+cURL -o pandoc-crossref.7z -L %PANDOC_CROSSREF%
 ECHO ------------------------------------------------------------------------------
 ECHO Unpacking pandoc-crossref
 ECHO ------------------------------------------------------------------------------
-7z e pandoc-crossref.zip *.exe -r -y
+7z e pandoc-crossref.7z *.exe -r -y
 
 ECHO ==============================================================================
 ECHO Downloading Highlight

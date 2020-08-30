@@ -9,9 +9,9 @@ of third party resources used in this folder and its subfolders.
 
 All these resources are compatible with the GPLv2 license of this project.
 
-------------------------------------------------------------------------------
+==============================================================================
                                 Pandoc-Goodies
-------------------------------------------------------------------------------
+==============================================================================
 The following file:
 
     macros.pp
@@ -21,107 +21,12 @@ readapted to our needs:
 
     https://github.com/tajmone/pandoc-goodies/tree/master/pp/macros
 
-They are released under MIT License, with copyright notice:
-
-Copyright (c) Tristano Ajmone 2017, MIT License.
+released under MIT License:
 
 ------------------------------------------------------------------------------
-                         GitHub Pandoc HTML5 Template
-------------------------------------------------------------------------------
-The following files:
-
-    GitHub.html5
-    sass/_alerts.scss
-    sass/_github-markdown.scss
-
-where adapted from "GitHub Pandoc HTML5 Template", taken from "Pandoc-Goodies":
-
-    https://github.com/tajmone/pandoc-goodies/tree/master/templates/html5/github
-
-They are released under MIT License, with copyright notice:
-
-Copyright (c) Tristano Ajmone, 2017 (github.com/tajmone/pandoc-goodies)
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-Copyright (c) 2017 GitHub Inc.
-
-"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017, released
-under the MIT License (MIT); it contains readaptations of substantial portions
-of the following third party softwares:
-
-(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
-(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
-
-------------------------------------------------------------------------------
-                                Base16 Monokai
-------------------------------------------------------------------------------
-The following file:
-
-    sass/_base16-monokai.scss
-
-uses the "Monokai" color scheme by Wimer Hazenberg:
-
-    http://www.monokai.nl
-
-The file was ported from YAML to SCSS by Tristano Ajmone, based on the source
-file from Chris Kempson’s Base16 project:
-
-    https://github.com/chriskempson/base16-builder/blob/master/schemes/monokai.yml
-
-released under MIT License, with copyright notice:
-
-Copyright (C) 2012 Chris Kempson
-
-------------------------------------------------------------------------------
-                              Base16 London Tube
-------------------------------------------------------------------------------
-The following file:
-
-    sass/_highlight-ebnf.scss
-
-uses some colors from the "Base16 London Tube" color scheme by Jan T. Sott:
-
-    https://github.com/chriskempson/base16-builder/blob/master/schemes/tube.yml
-
-whic is part of Chris Kempson’s Base16 project:
-
-    https://github.com/chriskempson/base16-builder/blob/master/schemes/monokai.yml
-
-released under MIT License, with copyright notice:
-
-Copyright (C) 2012 Chris Kempson
-
-------------------------------------------------------------------------------
-                         Highlight Syntax Definitions
-------------------------------------------------------------------------------
-The following files:
-
-    polygen.lang
-    ebnf.lang
-
-were created by Tristano Ajmone specifically for this project, but have then
-become part of the official Highlight distribution (since v3.42).
-
-Released into the public domain:
-
-    Written by Tristano Ajmone:
-        <tajmone@gmail.com>
-        https://github.com/tajmone
-    Released into the public domain according to the Unlicense terms:
-        http://unlicense.org/
-
-******************************************************************************
-*                                                                            *
-*                               LICENSES TEXTS                               *
-*                                                                            *
-******************************************************************************
-
-Here follows the full text of the licenses mentioned in the Copyright notices
-above.
-
-==============================================================================
-                               The MIT License
-==============================================================================
 MIT License
+
+Copyright (c) 2017 Tristano Ajmone
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -142,8 +47,123 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
-                                The Unlicense
+                         GitHub Pandoc HTML5 Template
 ==============================================================================
+The following files:
+
+    GitHub.html5
+    sass/_alerts.scss
+    sass/_github-markdown.scss
+
+were adapted from "GitHub Pandoc HTML5 Template", taken from "Pandoc-Goodies":
+
+    https://github.com/tajmone/pandoc-goodies/tree/master/templates/html5/github
+
+released under MIT License:
+
+------------------------------------------------------------------------------
+MIT License
+
+Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+Copyright (c) 2017 GitHub Inc.
+
+"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
+released under the MIT License (MIT); it contains readaptations of substantial
+portions of the following third party softwares:
+
+(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
+(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+                             Base16 Color Schemes
+==============================================================================
+
+The following files are derivative works based on color schemes contributed by
+third parties to the Base16 project:
+
+* "Monokai" by Wimer Hazenberg (www.monokai.nl):
+
+  sass/_base16-monokai.scss
+
+  ported from YAML to SCSS by Tristano Ajmone, based on the source from:
+
+  https://github.com/chriskempson/base16-builder/blob/master/schemes/monokai.yml
+
+* "London Tube" by Jan T. Sott:
+
+  sass/_highlight-ebnf.scss
+
+  reuses some colors from the "Base16 London Tube" color scheme:
+
+    https://github.com/chriskempson/base16-builder/blob/master/schemes/tube.yml
+
+All the above color schemes were taken from the "base16-builder" project by
+Chris Kempson, released under MIT License:
+
+------------------------------------------------------------------------------
+MIT License
+
+Copyright (C) 2012 Chris Kempson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+                         Highlight Syntax Definitions
+==============================================================================
+The following files:
+
+    polygen.lang
+    ebnf.lang
+
+were created by Tristano Ajmone specifically for this project, but have then
+become part of the official Highlight distribution (since v3.42).
+
+Released into the public domain:
+
+    Written by Tristano Ajmone:
+        <tajmone@gmail.com>
+        https://github.com/tajmone
+    Released into the public domain according to the Unlicense terms:
+        http://unlicense.org/
+
+------------------------------------------------------------------------------
+                                The Unlicense
+
 This is free and unencumbered software released into the public domain.
 
 Anyone is free to copy, modify, publish, use, compile, sell, or

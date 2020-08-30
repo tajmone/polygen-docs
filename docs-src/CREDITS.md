@@ -1,7 +1,10 @@
 # Credits
 
-The creation of Polygen documents reuses some third party resources, all comptabile with the GPLv2 license.
-Their full licenses can be found in:
+The creation of Polygen documents reuses some third party resources, all computable with the GPLv2 license.
+
+This document provides detailed credits to all the third parties whose works are being used in this repository (in their original form or adapted) and summary copyright and license information about the resources.
+
+The full license text of every third party asset can be found in:
 
 - [`assets/LICENSE`](./assets/LICENSE)
 
@@ -66,18 +69,18 @@ This is a modified version of a template I've created for the __[Pandoc-Goodies]
 
 - https://github.com/tajmone/pandoc-goodies/tree/master/templates/html5/github
 
-**GitHub HTML5 Panodc Template** is Copyright © Tristano Ajmone, 2017, released under [The MIT License](https://github.com/tajmone/pandoc-goodies/blob/master/templates/html5/github/LICENSE) (MIT):
+**GitHub HTML5 Panodc Template** is Copyright © Tristano Ajmone, 2017-2020, released under [The MIT License](https://github.com/tajmone/pandoc-goodies/blob/master/templates/html5/github/LICENSE) (MIT):
 
 ```
 MIT License
 
-Copyright (c) Tristano Ajmone, 2017 (github.com/tajmone/pandoc-goodies)
+Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
 Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
 Copyright (c) 2017 GitHub Inc.
 
-"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017, released
-under the MIT License (MIT); it contains readaptations of substantial portions
-of the following third party softwares:
+"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
+released under the MIT License (MIT); it contains readaptations of substantial
+portions of the following third party softwares:
 
 (1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
 (2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
@@ -131,10 +134,30 @@ For the syntax highlight themes in this project, I've used the following color s
 - [Base16 Monokai](#Base16-monokai)
 - [Base16 London Tube](#base16-london-tube)
 
+Base16 Builder is released under the MIT License:
 
 ```
-Base16 Builder is released under the MIT License:
+MIT License
+
 Copyright (C) 2012 Chris Kempson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
 
 ## Base16 Monokai
@@ -143,7 +166,7 @@ Copyright (C) 2012 Chris Kempson
 
 For the syntax highlighting of Polygen grammars examples, I've used the "__Monokai__" color scheme by Wimer Hazenberg:
 
-- http://www.monokai.nl
+- https://www.monokai.nl
 
 Ported from YAML to SCSS by Tristano Ajmone, based on the source file from Chris Kempson's __base16-builder__ project (MIT License):
 
@@ -167,11 +190,33 @@ The `macros.pp` module reuses some PP macros I had created for the "__The Pandoc
 
 - https://github.com/tajmone/pandoc-goodies/tree/master/pp/macros
 
-The macros have been readapted to needs of this project.
+The macros have been adapted to the needs of this project.
 
-The original macros are released under MIT License, with copyright notice:
+The original macros are released under MIT License:
 
-    Copyright (c) Tristano Ajmone 2017, MIT License.
+```
+MIT License
+
+Copyright (c) 2017 Tristano Ajmone
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
 
 <!-----------------------------------------------------------------------------

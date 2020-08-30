@@ -1,6 +1,6 @@
 !comment(   pp-macros module   )
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"macros.pp v1.0.1 (2018-01-14) | PP v2.2.2
+"macros.pp v2.0.0 (2020-08-30) | PP v2.14.1
 
 MACROS LIST:
 
@@ -18,7 +18,7 @@ The PP macros herein contained were taken and redapted from:
 
 
 
-!comment{   !Polygen                                         v1.0 | 2018-01-14 }
+!comment{   !Polygen                                       v2.0.0 | 2020-08-30 }
 ``````````````````````````````````````````````````````````````````````````````
 DECRIPTION: Pass the Polygen code block in the parameter to André Simon's
             Highlight tool, and inject the syntax highlighted raw HTML into
@@ -42,7 +42,7 @@ NOTES: To disable Shell expansion of the sourcecode block (and errors when
 !define(   Polygen   )
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-<pre class="hl Polygen"><code class="Polygen">!sh
+<pre class="hl Polygen"><code class="Polygen">!bash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 cat <<'EOF' | highlight -f --config-file=assets/polygen.lang --no-trailing-nl --validate-input
 !1
@@ -54,7 +54,7 @@ EOF
 
 
 
-!comment{   !EBNF                                            v1.0 | 2018-01-14 }
+!comment{   !EBNF                                          v2.0.0 | 2020-08-30 }
 ``````````````````````````````````````````````````````````````````````````````
 DECRIPTION: Like the !Polygen macro, but uses our custom EBNF syntax instead.
             Required to highlight EBNF blocks in Appendix of Polygen manual.
@@ -70,7 +70,7 @@ USAGE:
 !define(   EBNF   )
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-<pre class="hl EBNF"><code class="EBNF">!sh
+<pre class="hl EBNF"><code class="EBNF">!bash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 cat <<'EOF' | highlight -f --config-file=assets/ebnf2.lang --no-trailing-nl --validate-input
 !1

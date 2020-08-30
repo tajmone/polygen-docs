@@ -15,10 +15,10 @@ If you're using another OS, visit the links provided in the [troubleshooting sec
 
 - [Download Via Script](#download-via-script)
 - [Manual Download](#manual-download)
-    - [Pandoc v2.1](#pandoc-v21)
-    - [PP v2.2.2](#pp-v222)
-    - [pandoc-crossref v0.3.0.0](#pandoc-crossref-v0300)
-    - [Highlight v3.42](#highlight-v342)
+    - [Pandoc v2.10.1](#pandoc-v2101)
+    - [PP v2.14.1](#pp-v2141)
+    - [pandoc-crossref v0.3.7.0a](#pandoc-crossref-v0370a)
+    - [Highlight v3.57.1](#highlight-v3571)
 - [Troubleshooting](#troubleshooting)
 
 <!-- /MarkdownTOC -->
@@ -49,38 +49,37 @@ If you want a quick fix for this task, just download this file (x64):
 
 Here are the links and instructions for manually downloading and unpacking all the required third party tools.
 
-## Pandoc v2.1
+## Pandoc v2.10.1
 
-Download (x32):
+Download (64-bit only):
 
-- https://github.com/jgm/pandoc/releases/download/2.1/pandoc-2.1-windows.zip
+- https://github.com/jgm/pandoc/releases/download/2.10.1/pandoc-2.10.1-windows-x86_64.zip
 
-Unpack its contents here, you'll see a new folder `pandoc-2.1`: just move here all of its contents.
+Unpack its contents here, you'll see a new folder `pandoc-2.10.1`: just move here all of its contents.
 
-## PP v2.2.2
+## PP v2.14.1
 
-Download (x64 only):
+Download (64-bit only):
 
-- http://cdsoft.fr/pp/archives/pp-win-2.2.2.7z
-
-Just unpack its contents here.
-
-
-## pandoc-crossref v0.3.0.0
-
-Download (x32):
-
-- https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.0.0/windows-ghc8-pandoc2-0.zip
+- http://christophe.delord.free.fr/pp/archives/pp-win-2.14.1.7z
 
 Just unpack its contents here.
 
-## Highlight v3.42
+## pandoc-crossref v0.3.7.0a
 
-Download (x64):
+Download (64-bit only):
 
-- http://www.andre-simon.de/zip/highlight-3.42-x64.zip
+- https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.7.0a/pandoc-crossref-Windows-2.10.1.7z
 
-Unpack its contents here, you'll see a new folder `highlight-3.42-x64`: just move here all of its contents.
+Just unpack its contents here.
+
+## Highlight v3.57.1
+
+Download (64-bit):
+
+- http://www.andre-simon.de/zip/highlight-3.57.1-x64.zip
+
+Unpack its contents here, you'll see a new folder `highlight-3.57.1-x64`: just move here all of its contents.
 
 # Troubleshooting
 
