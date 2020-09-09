@@ -3,7 +3,7 @@ css: assets/polyman.css
 ############################## DOCUMENT INFO DATA #############################
 # !define( DocVer   )( v1.1.1-rc  ) <- Document version number
 # !define( PMLVer   )( 1.0        ) <- PML version number
-# !define( DocDate  )( 2020-08-23 ) <- Document last edited (YYYY-MM-DD)
+# !define( DocDate  )( 2020-09-09 ) <- Document last edited (YYYY-MM-DD)
 # !define( PolygenV )( v1.0.6     ) <- Polygen version the doc applies to
 ###############################################################################
 lang: it
@@ -691,7 +691,7 @@ Si badi che la permutabilità di una sottoproduzione si riferisce alla sola sequ
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= {tra 10 minuti}^, {alle 3 in punto}^, {{io} {partiro'} solo} ;
+S ::= {tra 10 minuti}^"," {alle 3 in punto}^"," {{io} {partiro'} solo} ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCE**
@@ -715,7 +715,7 @@ partiro' io solo, alle 3 in punto, tra 10 minuti
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= {tra 10 minuti}^, {alle 3 in punto}^, ({io} {partiro'} solo) ;
+S ::= {tra 10 minuti}^"," {alle 3 in punto}^"," ({io} {partiro'} solo) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCE**
@@ -1369,7 +1369,7 @@ Per ora non esistono warning appatenenti a questo gruppo.
 
 ### Livello 1
 
-#### Inesistenza del simbolo `I`
+#### Inesistenza del simbolo 'I'
 
 La mancata definizione del simbolo non terminale `I` non permette l'utilizzo dell'opzione `-info` del programma.
 

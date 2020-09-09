@@ -53,7 +53,7 @@ SOFTWARE.
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Alvise Spanò" />
-  <meta name="dcterms.date" content="2020-08-23" />
+  <meta name="dcterms.date" content="2020-09-09" />
   <meta name="keywords" content="polygen, linguaggio, grammatica, specifica, pml, ebnf" />
   <meta name="description" content="&lt;p&gt;Polygen Meta Language (PML) v1.0 — Specifica tecnica e guida introduttiva all’uso di PML, il meta linguaggio di Polygen.&lt;/p&gt;">
   <title>Polygen Meta Language Spec 1.0</title>
@@ -628,7 +628,7 @@ color: #C28141;
 <h1 class="title followed-by-subtitle">Polygen Meta Language Spec 1.0</h1>
 <p class="subtitle">Guida introduttiva all’uso di PML</p>
 <div class="summary">
-<p>Edizione <strong>v1.1.1-rc</strong> (2020-08-23) per <strong>PML 1.0</strong>, Polygen <strong>v1.0.6</strong>.</p>
+<p>Edizione <strong>v1.1.1-rc</strong> (2020-09-09) per <strong>PML 1.0</strong>, Polygen <strong>v1.0.6</strong>.</p>
 <div class="Note">
 <p><strong>Copyright © 2002-2020 Alvise Spanò.</strong> Questo documento è soggetto ai termini della licenza <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" title="Visita la pagina ufficiale della GNU GPLv2 su www.gnu.org">GNU General Public License</a> (GPLv2+); o la versione 2 della licenza o (a propria scelta) una versione successiva. È lecito redistribuirlo o modificarlo secondo i termini della medesima licenza.</p>
 <p>Nuova edizione digitale a cura di <a href="https://github.com/tajmone" title="Visita il profilo GitHub di Tristano Ajmone">Tristano Ajmone</a> (Febbraio 2018).</p>
@@ -705,7 +705,7 @@ color: #C28141;
 <li><a href="#sec:livello-0">4.2.1 Livello 0</a></li>
 <li><a href="#sec:livello-1">4.2.2 Livello 1</a>
 <ul>
-<li><a href="#sec:inesistenza-del-simbolo-i">4.2.2.1 Inesistenza del simbolo <code>I</code></a></li>
+<li><a href="#sec:inesistenza-del-simbolo-i">4.2.2.1 Inesistenza del simbolo ‘I’</a></li>
 <li><a href="#sec:potenziali-epsilon-produzioni">4.2.2.2 Potenziali epsilon-produzioni</a></li>
 <li><a href="#sec:selezione-distruttiva">4.2.2.3 Selezione distruttiva</a></li>
 </ul></li>
@@ -1102,7 +1102,7 @@ se quindi egli e&#39;
 se quindi e&#39; egli</code></pre>
 <p>Si badi che la permutabilità di una sottoproduzione si riferisce alla sola sequenza di cui fa parte: specificare sottoproduzioni permutabili in sottosequenze (o altre sottoproduzioni — permutabili o meno) differenti non consente la permutazione. Si noti la differenza tra i due esempi a venire:</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>tra 10 minuti<span class="hl opt">}^, {</span>alle 3 in punto<span class="hl opt">}^, {{</span>io<span class="hl opt">} {</span>partiro&#39;<span class="hl opt">}</span> solo<span class="hl opt">} ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>tra 10 minuti<span class="hl opt">}^</span><span class="hl str">&quot;,&quot;</span> <span class="hl opt">{</span>alle 3 in punto<span class="hl opt">}^</span><span class="hl str">&quot;,&quot;</span> <span class="hl opt">{{</span>io<span class="hl opt">} {</span>partiro&#39;<span class="hl opt">}</span> solo<span class="hl opt">} ;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
 <pre><code>tra 10 minuti, alle 3 in punto, io partiro&#39; solo
@@ -1118,7 +1118,7 @@ alle 3 in punto, partiro&#39; io solo, tra 10 minuti
 partiro&#39; io solo, tra 10 minuti, alle 3 in punto
 partiro&#39; io solo, alle 3 in punto, tra 10 minuti</code></pre>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>tra 10 minuti<span class="hl opt">}^, {</span>alle 3 in punto<span class="hl opt">}^, ({</span>io<span class="hl opt">} {</span>partiro&#39;<span class="hl opt">}</span> solo<span class="hl opt">) ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>tra 10 minuti<span class="hl opt">}^</span><span class="hl str">&quot;,&quot;</span> <span class="hl opt">{</span>alle 3 in punto<span class="hl opt">}^</span><span class="hl str">&quot;,&quot;</span> <span class="hl opt">({</span>io<span class="hl opt">} {</span>partiro&#39;<span class="hl opt">}</span> solo<span class="hl opt">) ;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
 <pre><code>tra 10 minuti, alle 3 in punto, io partiro&#39; solo
@@ -1498,7 +1498,7 @@ la bella casa</code></pre>
 <h3 id="sec:livello-0">4.2.1 Livello 0</h3>
 <p>Per ora non esistono warning appatenenti a questo gruppo.</p>
 <h3 id="sec:livello-1">4.2.2 Livello 1</h3>
-<h4 id="sec:inesistenza-del-simbolo-i">4.2.2.1 Inesistenza del simbolo <code>I</code></h4>
+<h4 id="sec:inesistenza-del-simbolo-i">4.2.2.1 Inesistenza del simbolo ‘I’</h4>
 <p>La mancata definizione del simbolo non terminale <code>I</code> non permette l’utilizzo dell’opzione <code>-info</code> del programma.</p>
 <p>Tale simbolo tipicamente specifica una stringa informativa sulla grammatica (autore, titolo, ecc.) e, sebbene non sia di per sè un errore ometterlo, è buona norma aderire a tale convenzione definendolo opportunamente.</p>
 <h4 id="sec:potenziali-epsilon-produzioni">4.2.2.2 Potenziali epsilon-produzioni</h4>
