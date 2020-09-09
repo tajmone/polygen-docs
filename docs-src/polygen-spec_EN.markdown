@@ -3,7 +3,7 @@ css: assets/polyman.css
 ############################## DOCUMENT INFO DATA #############################
 # !define( DocVer   )( v1.1.1-rc  ) <- Document version number
 # !define( PMLVer   )( 1.0        ) <- PML version number
-# !define( DocDate  )( 2020-08-28 ) <- Document last edited (YYYY-MM-DD)
+# !define( DocDate  )( 2020-09-09 ) <- Document last edited (YYYY-MM-DD)
 # !define( PolygenV )( v1.0.6     ) <- Polygen version the doc applies to
 ###############################################################################
 lang: en
@@ -674,7 +674,7 @@ aB
 
 ## Permutation {#sec:permutation}
 
-Many spoken languages allow changing the order of some words (or groups of words) in a sentence without altering its original meaning; likewise, at a macroscopic level, sometimes is possible to swap the order of sentences within a phrase.
+Many spoken languages allow changing the order of some words (or groups of words) in a sentence without altering its original meaning; likewise, at a macroscopic level, sometimes it is possible to swap the order of sentences within a phrase.
 
 To avoid writing each and every variation of a sequence in which some atoms swap positions, you can enclose within **curly brackets** `{` and `}` the subproductions that need to be permutated.
 
@@ -702,7 +702,7 @@ Bear in mind that a subproduction's permutability only affects the sequence that
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= {in 10 minutes}^, {at 3 o'clock}^, {"I" {will depart} {alone}} ;
+S ::= {in 10 minutes}^"," {at 3 o'clock}^"," {"I" {will depart} {alone}} ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
@@ -726,7 +726,7 @@ I alone will depart, at 3 o'clock, in 10 minutes
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= {in 10 minutes}^, {at 3 o'clock}^, ("I" {will depart} {alone}) ;
+S ::= {in 10 minutes}^"," {at 3 o'clock}^"," ("I" {will depart} {alone}) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
@@ -739,6 +739,7 @@ at 3 o'clock, in 10 minutes, I alone will depart
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ## Deep unfolding {#sec:deep-unfolding}
+
 The language allows the deep unfolding of a subproduction enclosed within reversed double angle brackets `>>` and `<<`: any atom (at any nesting level) for which unfolding makes sense (see [@sec:unfolding]) will be unfolded. As a result, every subproduction and non-terminal symbol within `>>` and `<<` is completely flattened out:
 
 **EXAMPLE**
@@ -799,7 +800,8 @@ Bear in mind that folding an unfolded atom, and viceversa, are syntax errors (se
 
 ## Binding {#sec:binding}
 
-Binding is, in general, a declarative construct that associates a series of productions to a non terminal symbol. Each binding introduces in the environment (see [@sec:environment-scoping]) that association, and every production generated in that environment can refer to its non terminal symbol.
+Binding are, in general, declarative constructs that associate a series of productions to a non terminal symbol.
+Each binding introduces that association in the environment where it is declared (see [@sec:environment-scoping]), and every production generated in that environment can refer to its non terminal symbol.
 
 ### Closures {#sec:closures}
 
@@ -828,7 +830,7 @@ an orange and a mango
 an orange and an orange
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The production associated to `Fruit` __does not__ undergo an immediate production but is closed together with the current environment according to scoping rules. Each occurence of the `Fruit` symbol in a descending environment (or in the same one, as in the example) causes the generation of the associated production in the environment that was closed with it.
+The production associated to `Fruit` __does not__ undergo an immediate generation but is closed together with the current environment according to scoping rules. Each occurrence of the `Fruit` symbol in a descending environment (or in the same one, as in the example) causes the generation of the associated production in the environment that was closed with it.
 
 ### Suspensions {#sec:suspensions}
 
@@ -851,7 +853,7 @@ a mango and a mango
 an orange and an orange
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The production associated to `Fruit` is suspendend and closed together with the current environment according to scoping rules. During generation, at the first occurence of the `Fruit` symbol in a descending environment (or in the same one, as in the example) the associated production is generated __a single time__ in the environment that was closed with it, and the immutable result of its generation is stored in the environment; every successive occurence of the same non terminal will always produce the same result.
+The production associated to `Fruit` is suspendend and closed together with the current environment according to scoping rules. During generation, at the first occurrence of the `Fruit` symbol in a descending environment (or in the same one, as in the example) the associated production is generated __just once__ in the environment that was closed with it, and the immutable result of its generation is stored in the environment; every successive occurrence of the same non terminal will always produce the same result.
 
 Please note that during its first generation the non terminal is still associated to the closure of the environment where it's being generated, and not (yet) to its suspension: this allows the use of recursion in strong binding deinitions.
 
@@ -1004,7 +1006,7 @@ x x
 x x x ...
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The occurence of `X` inside the second inserted binding is thus seen as a recursion, not as a reference to the `X` of the parent environment.
+The occurrence of `X` inside the second inserted binding is thus seen as a recursion, not as a reference to the `X` of the parent environment.
 
 Similarly, in presence of a series of binding related by mutual recursion:
 
@@ -1365,7 +1367,7 @@ This type of error is risen by the lexer when, during the syntactic analysis of 
 
 ### Unexpected token
 
-This type of error is risen by the parser when, during the syntactic analysis of the source file, it encounters a misplaced, albeit valid, token --- i.e., its occurence in a wrong position is a violation of the syntactical rules of [@sec:concrete-syntax].
+This type of error is risen by the parser when, during the syntactic analysis of the source file, it encounters a misplaced, albeit valid, token --- i.e., its occurrence in a wrong position is a violation of the syntactical rules of [@sec:concrete-syntax].
 
 ## Warnings
 

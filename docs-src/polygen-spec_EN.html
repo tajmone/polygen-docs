@@ -53,7 +53,7 @@ SOFTWARE.
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Alvise Spanò" />
-  <meta name="dcterms.date" content="2020-08-28" />
+  <meta name="dcterms.date" content="2020-09-09" />
   <meta name="keywords" content="polygen, language, grammar, specification, pml, ebnf" />
   <meta name="description" content="&lt;p&gt;Polygen Meta Language (PML) v1.0 — Technical specification and introductiory guide to using PML.&lt;/p&gt;">
   <title>Polygen Meta Language Spec 1.0</title>
@@ -628,7 +628,7 @@ color: #C28141;
 <h1 class="title followed-by-subtitle">Polygen Meta Language Spec 1.0</h1>
 <p class="subtitle">Introductiory guide to using PML</p>
 <div class="summary">
-<p>Edition <strong>v1.1.1-rc</strong> (2020-08-28) for <strong>PML 1.0</strong>, Polygen <strong>v1.0.6</strong>.</p>
+<p>Edition <strong>v1.1.1-rc</strong> (2020-09-09) for <strong>PML 1.0</strong>, Polygen <strong>v1.0.6</strong>.</p>
 <div class="Note">
 <p><strong>Copyright © 2002-18 Alvise Spanò.</strong> This document is subject to the terms of the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" title="Visit the GNU GPLv2 homepage at www.gnu.org">GNU General Public License</a> (GPLv2+); either version 2 of the License, or (at your option) any later version. You can redistribute it and/or modify it under the same license terms.</p>
 <p>New digital edition by <a href="https://github.com/tajmone" title="View Tristano Ajmone&#39;s GitHub profile">Tristano Ajmone</a> (February 2018).</p>
@@ -1081,7 +1081,7 @@ Smith. Really a gentleman.</code></pre>
 <p><strong>PRODUCES</strong></p>
 <pre><code>aB</code></pre>
 <h2 id="sec:permutation">2.7 Permutation</h2>
-<p>Many spoken languages allow changing the order of some words (or groups of words) in a sentence without altering its original meaning; likewise, at a macroscopic level, sometimes is possible to swap the order of sentences within a phrase.</p>
+<p>Many spoken languages allow changing the order of some words (or groups of words) in a sentence without altering its original meaning; likewise, at a macroscopic level, sometimes it is possible to swap the order of sentences within a phrase.</p>
 <p>To avoid writing each and every variation of a sequence in which some atoms swap positions, you can enclose within <strong>curly brackets</strong> <code>{</code> and <code>}</code> the subproductions that need to be permutated.</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> whether <span class="hl opt">{</span>is<span class="hl opt">} {</span>therefore<span class="hl opt">} {</span>he<span class="hl opt">} ;</span>
@@ -1095,7 +1095,7 @@ whether he therefore is
 whether he is therefore</code></pre>
 <p>Bear in mind that a subproduction’s permutability only affects the sequence that contains it: no permutation occurs if permutable subproductions are specified in different subsequences (or subprodutions — permutable or not). See the differences in the following two examples:</p>
 <p><strong>EXAMPLE</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>in 10 minutes<span class="hl opt">}^, {</span>at 3 o&#39;clock<span class="hl opt">}^, {</span><span class="hl str">&quot;I&quot;</span> <span class="hl opt">{</span>will depart<span class="hl opt">} {</span>alone<span class="hl opt">}} ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>in 10 minutes<span class="hl opt">}^</span><span class="hl str">&quot;,&quot;</span> <span class="hl opt">{</span>at 3 o&#39;clock<span class="hl opt">}^</span><span class="hl str">&quot;,&quot;</span> <span class="hl opt">{</span><span class="hl str">&quot;I&quot;</span> <span class="hl opt">{</span>will depart<span class="hl opt">} {</span>alone<span class="hl opt">}} ;</span>
 </code></pre>
 <p><strong>PRODUCES</strong></p>
 <pre><code>in 10 minutes, at 3 o&#39;clock, I will depart alone
@@ -1111,7 +1111,7 @@ at 3 o&#39;clock, I alone will depart, in 10 minutes
 I alone will depart, in 10 minutes, at 3 o&#39;clock
 I alone will depart, at 3 o&#39;clock, in 10 minutes</code></pre>
 <p><strong>EXAMPLE</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>in 10 minutes<span class="hl opt">}^, {</span>at 3 o&#39;clock<span class="hl opt">}^, (</span><span class="hl str">&quot;I&quot;</span> <span class="hl opt">{</span>will depart<span class="hl opt">} {</span>alone<span class="hl opt">}) ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>in 10 minutes<span class="hl opt">}^</span><span class="hl str">&quot;,&quot;</span> <span class="hl opt">{</span>at 3 o&#39;clock<span class="hl opt">}^</span><span class="hl str">&quot;,&quot;</span> <span class="hl opt">(</span><span class="hl str">&quot;I&quot;</span> <span class="hl opt">{</span>will depart<span class="hl opt">} {</span>alone<span class="hl opt">}) ;</span>
 </code></pre>
 <p><strong>PRODUCES</strong></p>
 <pre><code>in 10 minutes, at 3 o&#39;clock, I will depart alone
@@ -1157,7 +1157,7 @@ at 3 o&#39;clock, in 10 minutes, I alone will depart</code></pre>
 </code></pre>
 <p>Bear in mind that folding an unfolded atom, and viceversa, are syntax errors (see rules in <a href="#sec:concrete-syntax">section 5.1</a>).</p>
 <h2 id="sec:binding">2.10 Binding</h2>
-<p>Binding is, in general, a declarative construct that associates a series of productions to a non terminal symbol. Each binding introduces in the environment (see <a href="#sec:environment-scoping">section 2.11</a>) that association, and every production generated in that environment can refer to its non terminal symbol.</p>
+<p>Binding are, in general, declarative constructs that associate a series of productions to a non terminal symbol. Each binding introduces that association in the environment where it is declared (see <a href="#sec:environment-scoping">section 2.11</a>), and every production generated in that environment can refer to its non terminal symbol.</p>
 <h3 id="sec:closures">2.10.1 Closures</h3>
 <p>The <code>::=</code> keyword introduces the so-called <em>weak</em> binding, or <em>closure</em>, which has already been amply discussed in this document.</p>
 <p><strong>EXAMPLE</strong></p>
@@ -1175,7 +1175,7 @@ a mango and an orange
 an orange and an apple
 an orange and a mango
 an orange and an orange</code></pre>
-<p>The production associated to <code>Fruit</code> <strong>does not</strong> undergo an immediate production but is closed together with the current environment according to scoping rules. Each occurence of the <code>Fruit</code> symbol in a descending environment (or in the same one, as in the example) causes the generation of the associated production in the environment that was closed with it.</p>
+<p>The production associated to <code>Fruit</code> <strong>does not</strong> undergo an immediate generation but is closed together with the current environment according to scoping rules. Each occurrence of the <code>Fruit</code> symbol in a descending environment (or in the same one, as in the example) causes the generation of the associated production in the environment that was closed with it.</p>
 <h3 id="sec:suspensions">2.10.2 Suspensions</h3>
 <p>The <code>:=</code> keyword introduces a second kind of binding, known as <em>strong</em> binding, <em>suspension</em> or <em>assignment</em>.</p>
 <p><strong>EXAMPLE</strong></p>
@@ -1187,7 +1187,7 @@ an orange and an orange</code></pre>
 <pre><code>an apple and an apple
 a mango and a mango
 an orange and an orange</code></pre>
-<p>The production associated to <code>Fruit</code> is suspendend and closed together with the current environment according to scoping rules. During generation, at the first occurence of the <code>Fruit</code> symbol in a descending environment (or in the same one, as in the example) the associated production is generated <strong>a single time</strong> in the environment that was closed with it, and the immutable result of its generation is stored in the environment; every successive occurence of the same non terminal will always produce the same result.</p>
+<p>The production associated to <code>Fruit</code> is suspendend and closed together with the current environment according to scoping rules. During generation, at the first occurrence of the <code>Fruit</code> symbol in a descending environment (or in the same one, as in the example) the associated production is generated <strong>just once</strong> in the environment that was closed with it, and the immutable result of its generation is stored in the environment; every successive occurrence of the same non terminal will always produce the same result.</p>
 <p>Please note that during its first generation the non terminal is still associated to the closure of the environment where it’s being generated, and not (yet) to its suspension: this allows the use of recursion in strong binding deinitions.</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> <span class="hl kwa">A A</span> <span class="hl opt">;</span>
@@ -1271,7 +1271,7 @@ y</code></pre>
 <pre><code>x
 x x
 x x x ...</code></pre>
-<p>The occurence of <code>X</code> inside the second inserted binding is thus seen as a recursion, not as a reference to the <code>X</code> of the parent environment.</p>
+<p>The occurrence of <code>X</code> inside the second inserted binding is thus seen as a recursion, not as a reference to the <code>X</code> of the parent environment.</p>
 <p>Similarly, in presence of a series of binding related by mutual recursion:</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= (</span><span class="hl kwa">X</span> <span class="hl opt">::=</span> x <span class="hl opt">[</span><span class="hl kwa">A</span><span class="hl opt">];</span> <span class="hl kwa">A</span> <span class="hl opt">::=</span> a <span class="hl opt">[</span><span class="hl kwa">X</span><span class="hl opt">]; (</span><span class="hl kwa">X</span> <span class="hl opt">::=</span> y <span class="hl opt">[</span><span class="hl kwa">A</span><span class="hl opt">];</span> <span class="hl kwa">A</span> <span class="hl opt">::=</span> b <span class="hl opt">[</span><span class="hl kwa">X</span><span class="hl opt">];</span> <span class="hl kwa">X</span><span class="hl opt">)) ;</span>
@@ -1480,7 +1480,7 @@ a beautiful house</code></pre>
 <h3 id="sec:illegal-character">4.1.6 Illegal character</h3>
 <p>This type of error is risen by the lexer when, during the syntactic analysis of the source file, it encounters a character not belonging to any known token — i.e., not defined by the lexical rules of <a href="#sec:lexical-rules">section 5.3</a>.</p>
 <h3 id="sec:unexpected-token">4.1.7 Unexpected token</h3>
-<p>This type of error is risen by the parser when, during the syntactic analysis of the source file, it encounters a misplaced, albeit valid, token — i.e., its occurence in a wrong position is a violation of the syntactical rules of <a href="#sec:concrete-syntax">section 5.1</a>.</p>
+<p>This type of error is risen by the parser when, during the syntactic analysis of the source file, it encounters a misplaced, albeit valid, token — i.e., its occurrence in a wrong position is a violation of the syntactical rules of <a href="#sec:concrete-syntax">section 5.1</a>.</p>
 <h2 id="sec:warnings">4.2 Warnings</h2>
 <p>Warnings embrace all those cases that do not violate the definition of grammatically correct but could lead to unexpected or undesired results. The presence of warning messages doesn’t mean that the grammar is incorrect, but it does indicates that the grammar is not robust.</p>
 <p>Warnings don’t halt the program execution.</p>
