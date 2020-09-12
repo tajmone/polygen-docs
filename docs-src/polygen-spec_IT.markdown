@@ -3,7 +3,7 @@ css: assets/polyman.css
 ############################## DOCUMENT INFO DATA #############################
 # !define( DocVer   )( v1.1.1-rc  ) <- Document version number
 # !define( PMLVer   )( 1.0        ) <- PML version number
-# !define( DocDate  )( 2020-09-09 ) <- Document last edited (YYYY-MM-DD)
+# !define( DocDate  )( 2020-09-12 ) <- Document last edited (YYYY-MM-DD)
 # !define( PolygenV )( v1.0.6     ) <- Polygen version the doc applies to
 ###############################################################################
 lang: it
@@ -686,6 +686,16 @@ se quindi e' egli
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Si badi che la permutabilità di una sottoproduzione si riferisce alla sola sequenza di cui fa parte: specificare sottoproduzioni permutabili in sottosequenze (o altre sottoproduzioni --- permutabili o meno) differenti non consente la permutazione. Si noti la differenza tra i due esempi a venire:
+
+::: Alert :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+**ATTENZIONE!** --- I due esempi che seguono posso sembrare identici di primo acchito, ma differiscono nella parte finale:
+
+- il primo impiega parentesi graffe:
+   + `{{io} {partiro'} solo} ;`
+- il secondo parentesi tonde:
+   + `({io} {partiro'} solo) ;`
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 **ESEMPIO**
 
