@@ -680,6 +680,15 @@ whether he is therefore
 
 Bear in mind that a subproduction's permutability only affects the sequence that contains it: no permutation occurs if permutable subproductions are specified in different subsequences (or subprodutions --- permutable or not). See the differences in the following two examples:
 
+::: Alert :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+**BEWARE!** --- The two examples below might look the same at first glance, but their endings are different:
+
+- the first example uses braces:
+   + `{"I" {will depart} {alone}} ;`
+- the other one uses parentheses:
+   + `("I" {will depart} {alone}) ;`
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 **EXAMPLE**
 
 !Polygen
@@ -719,6 +728,7 @@ at 3 o'clock, in 10 minutes, I will depart alone
 in 10 minutes, at 3 o'clock, I alone will depart
 at 3 o'clock, in 10 minutes, I alone will depart
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 ## Deep Unfolding {#sec:deep-unfolding}
 
