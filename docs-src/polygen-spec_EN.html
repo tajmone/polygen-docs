@@ -53,7 +53,7 @@ SOFTWARE.
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Alvise Spanò" />
-  <meta name="dcterms.date" content="2020-09-09" />
+  <meta name="dcterms.date" content="2020-09-12" />
   <meta name="keywords" content="polygen, language, grammar, specification, pml, ebnf" />
   <meta name="description" content="&lt;p&gt;Polygen Meta Language (PML) v1.0 — Technical specification and introductiory guide to using PML.&lt;/p&gt;">
   <title>Polygen Meta Language Spec 1.0</title>
@@ -628,7 +628,7 @@ color: #C28141;
 <h1 class="title followed-by-subtitle">Polygen Meta Language Spec 1.0</h1>
 <p class="subtitle">Introductiory guide to using PML</p>
 <div class="summary">
-<p>Edition <strong>v1.1.1-rc</strong> (2020-09-09) for <strong>PML 1.0</strong>, Polygen <strong>v1.0.6</strong>.</p>
+<p>Edition <strong>v1.1.1-rc</strong> (2020-09-12) for <strong>PML 1.0</strong>, Polygen <strong>v1.0.6</strong>.</p>
 <div class="Note">
 <p><strong>Copyright © 2002-18 Alvise Spanò.</strong> This document is subject to the terms of the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" title="Visit the GNU GPLv2 homepage at www.gnu.org">GNU General Public License</a> (GPLv2+); either version 2 of the License, or (at your option) any later version. You can redistribute it and/or modify it under the same license terms.</p>
 <p>New digital edition by <a href="https://github.com/tajmone" title="View Tristano Ajmone&#39;s GitHub profile">Tristano Ajmone</a> (February 2018).</p>
@@ -1271,7 +1271,7 @@ y</code></pre>
 <pre><code>x
 x x
 x x x ...</code></pre>
-<p>The occurrence of <code>X</code> inside the second inserted binding is thus seen as a recursion, not as a reference to the <code>X</code> of the parent environment.</p>
+<p>The occurrence of <code>X</code> inside the second nested binding is thus seen as a recursion, not as a reference to the <code>X</code> of the parent environment.</p>
 <p>Similarly, in presence of a series of binding related by mutual recursion:</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= (</span><span class="hl kwa">X</span> <span class="hl opt">::=</span> x <span class="hl opt">[</span><span class="hl kwa">A</span><span class="hl opt">];</span> <span class="hl kwa">A</span> <span class="hl opt">::=</span> a <span class="hl opt">[</span><span class="hl kwa">X</span><span class="hl opt">]; (</span><span class="hl kwa">X</span> <span class="hl opt">::=</span> y <span class="hl opt">[</span><span class="hl kwa">A</span><span class="hl opt">];</span> <span class="hl kwa">A</span> <span class="hl opt">::=</span> b <span class="hl opt">[</span><span class="hl kwa">X</span><span class="hl opt">];</span> <span class="hl kwa">X</span><span class="hl opt">)) ;</span>
@@ -1289,7 +1289,7 @@ y b y b y b ...</code></pre>
 <p><strong>PRODUCES</strong></p>
 <pre><code>he is a handsome actor
 she is a pretty actress</code></pre>
-<p>As a workaround to the burden of having to specify local labels, and activate them in place, the language offers a system of automatic positional generation. This feature — which is operationally equivalent to using labels and selections, but less verbose — allows to express in an extremely concise way groups of suffixes, declinations, conjugations, etc. The <code>,</code> keyword is used to separate the atoms representing the possible choices:</p>
+<p>As a workaround to the burden of having to specify local labels, and activate them in place, the language offers a system of automatic positional generation. This feature — which is operationally equivalent to using labels and selections, but less verbose — allows to express groups of suffixes, declinations, conjugations, etc, in an extremely concise way. The <code>,</code> keyword is used to separate the atoms representing the possible choices:</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> he<span class="hl opt">,</span>she is a handsome<span class="hl opt">,</span>pretty act <span class="hl opt">^</span> or<span class="hl opt">,</span>ress <span class="hl opt">;</span>
 </code></pre>
@@ -1329,7 +1329,7 @@ a a a
 a a b
 a b a
 ...</code></pre>
-<p>One might have — quite reasonably so — expected to see the same generation being iterated every time, but this is not the case (as stated in the <a href="#sec:translation-rules">translation rules 5.5</a>) because in most scenarios the behavior of the above example is the preferable one instead, and also because it bears semantic affinity with its analogous EBNF construct. It’s nevertheless possible to achieve the former behavior in a rather simple manner, by exploiting strong binding (see <a href="#sec:suspensions">section 2.10.2</a>):</p>
+<p>One might have — quite reasonably — expected to see the same generation being iterated every time, but this is not the case (as stated in the <a href="#sec:translation-rules">translation rules 5.5</a>) because in most scenarios the behavior of the above example is the preferable one instead, and also because it bears semantic affinity with its analogous EBNF construct. It’s nevertheless possible to achieve the former behavior in a rather simple manner, by exploiting strong binding (see <a href="#sec:suspensions">section 2.10.2</a>):</p>
 <p><strong>EXAMPLE</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= (</span><span class="hl kwa">X</span> <span class="hl opt">:=</span> a <span class="hl opt">|</span> b<span class="hl opt">; (</span><span class="hl kwa">X</span><span class="hl opt">)+) ;</span>
 </code></pre>
@@ -1356,7 +1356,7 @@ b b b ...</code></pre>
 00011122335</code></pre>
 <p>etc.</p>
 <p>i.e., a random natural number made up of one or more digits ranging from 0 to 9.</p>
-<p>Bear in mind that you’ll need to provide a non-recursive production somewhere along the line, in order to guarantee to the program an exit point from the recursion, at one point or another; otherwise, a cyclic recursion error will be generated by the grammar checker (see <a href="#sec:cyclic-recursions">section 4.1.2</a>).</p>
+<p>Bear in mind that you’ll need to provide a non-recursive production somewhere along the line, in order to guarantee to the program an exit point from the recursion, at one point; otherwise, a cyclic recursion error will be generated by the grammar checker (see <a href="#sec:cyclic-recursions">section 4.1.2</a>).</p>
 <p>As an exercise, try to define a grammar for generating variable-length sentences by recursively linking subordinate clauses.</p>
 <h2 id="sec:grouping">3.2 Grouping</h2>
 <p>In order to control the distribution of probability with finer granularity than described in <a href="#sec:controlling-probability-production">sections 2.3</a> and <a href="#sec:unfolding">2.4</a>, mastery in the proper usage of round brackets is the key:</p>
