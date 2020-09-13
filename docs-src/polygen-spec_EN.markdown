@@ -1,9 +1,9 @@
 ---
 css: assets/polyman.css
 ############################## DOCUMENT INFO DATA #############################
-# !define( DocVer   )( v1.1.1-rc  ) <- Document version number
+# !define( DocVer   )( v1.1.1     ) <- Document version number
 # !define( PMLVer   )( 1.0        ) <- PML version number
-# !define( DocDate  )( 2020-09-12 ) <- Document last edited (YYYY-MM-DD)
+# !define( DocDate  )( 2020-09-13 ) <- Document last edited (YYYY-MM-DD)
 # !define( PolygenV )( v1.0.6     ) <- Polygen version the doc applies to
 ###############################################################################
 lang: en
@@ -1568,5 +1568,22 @@ INCLUDE TABLES: 4.1.5 Translation rules
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                                   CHANGELOG
 ==============================================================================
+v1.1.1 (2020-09-13) | PML 1.0 | Polygen v1.0.6
+
+  Maintenance update and various fixes and improvements.
+  Many thanks to Riccardo Bastianini (@RBastianini) for all the help.
+
+  * Removed duplicate paragraphs accidentally left over from the editing stage.
+  * Removed Italian paragraphs accidentally left over from the editing stage.
+  * Removed non-breaking space entities (xA0) from source document.
+  * Fixed numerous typos and polished some sentences.
+  * Fixed two examples in "§2.7 Permutation". (Issue #35)
+------------------------------------------------------------------------------
 v1.1.0 (2018-02-10) | PML 1.0 | Polygen v1.0.6
+
+  1st edition of the new Markdown version, translation completed.
+
+  * Ported from the original HTML document to Markdown.
+  * Completed the translation of missing sections from the Italian version.
+  * Polished English text and improved examples.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
