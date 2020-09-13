@@ -1,9 +1,9 @@
 ---
 css: assets/polyman.css
 ############################## DOCUMENT INFO DATA #############################
-# !define( DocVer   )( v1.1.1-rc  ) <- Document version number
+# !define( DocVer   )( v1.1.1     ) <- Document version number
 # !define( PMLVer   )( 1.0        ) <- PML version number
-# !define( DocDate  )( 2020-09-12 ) <- Document last edited (YYYY-MM-DD)
+# !define( DocDate  )( 2020-09-13 ) <- Document last edited (YYYY-MM-DD)
 # !define( PolygenV )( v1.0.6     ) <- Polygen version the doc applies to
 ###############################################################################
 lang: it
@@ -1568,5 +1568,20 @@ INCLUDE TABLES: 4.1.5 Regole di traduzione
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                                   CHANGELOG
 ==============================================================================
+v1.1.1 (2020-09-13) | PML 1.0 | Polygen v1.0.6
+
+  Aggiornamento di manutenzione con qualche miglioria.
+  Ringraziamo Riccardo Bastianini (@RBastianini) per tutto l'aiuto datoci in
+  questa nuove edizione.
+
+  * Rimossi degli spazi unificatori (xA0) dal documento sorgente.
+  * Ritroccati due esempi in "§2.7 Permutazioni". (Issue #35)
+------------------------------------------------------------------------------
 v1.1.0 (2018-02-10) | PML 1.0 | Polygen v1.0.6
+
+  Prima edizione della nuova versione in formato Markdown.
+
+  * Convertito il documento originale dallo HTML a Markdown.
+  * Rivisto il testo assieme ad Avlise Spanò (@alvisespano) e apportate lievi
+    migliorie.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
