@@ -1,9 +1,9 @@
 ---
 css: assets/polyman.css
 ############################## DOCUMENT INFO DATA #############################
-# !define( DocVer   )( v1.1.0     ) <- Document version number
+# !define( DocVer   )( v1.1.1     ) <- Document version number
 # !define( PMLVer   )( 1.0        ) <- PML version number
-# !define( DocDate  )( 2018-02-10 ) <- Document last edited (YYYY-MM-DD)
+# !define( DocDate  )( 2020-09-13 ) <- Document last edited (YYYY-MM-DD)
 # !define( PolygenV )( v1.0.6     ) <- Polygen version the doc applies to
 ###############################################################################
 lang: en
@@ -47,28 +47,10 @@ summary: |
    and/or modify it under the same license terms.
 
    New digital edition by [Tristano Ajmone] (February 2018).
-    :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+   ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ...
 
-!define( FIXME )
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-:::::: Warning :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-__FIXME__: !1
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-!define( MISSING_HEADING )( ~~__*MISSING SECTION*__~~ )
-
-!define( MISSING_CONTENTS )
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-:::::: Warning :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-__MISSING TRANSLATION__: This section needs to be translated
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-# What is a grammar?
+# What Is a Grammar?
 
 A grammar is an ASCII text file providing the definition of the syntactical structure and terms used by the program to build sentences. *Polygen* is able to interpret a language designed for defining *[Type-2]* grammars (according to Chomsky classification) consisting in an extension of the *EBNF ([Extended Backus Naur Form])* --- a very simple and common notation for describing the formal syntax of a language.
 
@@ -120,9 +102,7 @@ etc.
 **Note:** By default, *Polygen* uses `S` as the starting non-terminal symbol; therefore every grammar should provide at least its definition (unless a different starting symbol is specified via the program options).
 ::::::::::::::::::::::::::::::::::::::::::::
 
-By default, a term beginning with a capital letter is considered as non-terminal (thus bound to a definition) and a term beginning with a non-capital letter as terminal (a simple word). If you need then to specify a capital word you must quote it in order to get the program not to mistake it for a non-terminal symbol:
-
-As a convention, any term beginning with a capital letter is considered a non-terminal symbol (therefore bound to a definition) and any term beginning with a non-capital letter is considered a terminal symbol (i.e., just a word). If you need to generate a word starting by capital letter you must place it within quotes, so that the program doesn't mistake it for a non-terminal symbol:
+Any term beginning with a capital letter is considered a non-terminal symbol (therefore bound to a definition) and any term beginning with a non-capital letter is considered a terminal symbol (i.e., just a word). If you need to generate a word starting by capital letter you must enclose it within double quotes, so that the program doesn't mistake it for a non-terminal symbol:
 
 **EXAMPLE**
 
@@ -141,7 +121,7 @@ a pig called Pet
 a dog called Pet
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Bare in mind that many characters (punctuation marks, parentheses, brackets, etc.), including those interpreted by the program as keywords, must be quoted in order to be included in the output (see [@sec:lexical-rules] for the complete lexical rules).
+Bear in mind that many characters (punctuation marks, parentheses, brackets, etc.), including those interpreted by the program as keywords, must be quoted in order to be included in the output (see [@sec:lexical-rules] for the complete lexical rules).
 
 **EXAMPLE**
 
@@ -179,7 +159,7 @@ an orange is on the desk
 
 Subproductions are generated as standalone blocks, as if they were bound to a non-terminal symbol.
 
-## Optional subproductions {#sec:optional-subproductions}
+## Optional Subproductions {#sec:optional-subproductions}
 
 A subproduction specified between square brackets is considered optional and has 50% probability of being generated (1 out of 2):
 
@@ -224,7 +204,7 @@ orange
 mango
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Advanced features
+# Advanced Features
 
 *Polygen* provides a set of keywords that raise the expressivity of its grammars definition language far beyond *EBNF*.
 
@@ -266,7 +246,7 @@ I hate hating
 I hate loving
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Bare in mind that a sequence of multiple carets will be treated as if there was just a single caret (i.e., redundant carets will be ignored).
+Bear in mind that a sequence of multiple carets will be treated as if there was just a single caret (i.e., redundant carets will be ignored).
 
 ## Epsilon {#sec:epsilon}
 
@@ -304,7 +284,7 @@ _
 
 I.e., a grammar generating either `ball` or nothing as output.
 
-## Controlling the probability of a production {#sec:controlling-probability-production}
+## Controlling the Probability of a Production {#sec:controlling-probability-production}
 
 Prefixing the **plus** keyword `+`  to a (sub)production (regardless of its nesting level) increases its probability of being generated above other productions of the same series; likewise, the **minus** keyword `-` reduces its probability. Any number of `+` and `-` keywords may be specified:
 
@@ -324,7 +304,7 @@ the cat is eating some meat
 the cat is eating a lemon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The set of produceable sentences is as expected; indeed, the definition for the non-terminal symbol `S` is internally interpretet as follows:
+The set of producible sentences is as expected; indeed, the definition for the non-terminal symbol `S` is internally interpreted as follows:
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -334,17 +314,17 @@ S ::= the cat is eating ( an apple  | an apple | an apple | an apple
                         | a lemon) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-the requested increases and decreases in probability are proportionally fullfilled: `an apple` has the highest probability of being generated, followed by `some meat`, then `an orange`, and lastly by `a lemon`, which has the least probability of all.
+the requested increases and decreases in probability are proportionally fulfilled: `an apple` has the highest probability of being generated, followed by `some meat`, then `an orange`, and lastly by `a lemon`, which has the least probability of all.
 
 ## Unfolding {#sec:unfolding}
 
-*Polygen* provides a powerful unfolding system which, in general, allows to raise to the level of the current sequence a series of productions which would otherwise be folded (either by a subproduction or a non-terminal symbol) .
+*Polygen* provides a powerful unfolding system which, in general, allows to raise a series of productions (which would otherwise be folded either by a subproduction or a non-terminal symbol) to the level of the current sequence.
 
 Roughly, you could consider this operation as *flattening* a portion of the grammar before its generation, thus affecting it only as far as probabilities are concerned, since the transformation does not alter the source grammar's semantics — as the traslation rules in section [4.1.5](#4.1.5_Regole_di_traduzione) confirm.
 
-Not every atom supports unfolding though, only those for which this operation makes sense: refer to [@sec:concrete-syntax] for a syntactical formalization of this subset.
+Not every atom supports unfolding though, only those for which this operation makes sense do: refer to [@sec:concrete-syntax] for a syntactical formalization of this subset.
 
-### Non-terminal symbols {#sec:non-terminal-symbols}
+### Non-terminal Symbols {#sec:non-terminal-symbols}
 
 Consider the following scenario:
 
@@ -386,9 +366,9 @@ In order to redistribute equally the probabilities of subproductions, `S` should
 S ::= ugly cat | nice poodle | nice beagle | nice terrier ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-but this way we loose the original architecture, which folded all dog breeds within a dedicated non-terminal symbol, and increases drastically the amount of editing work required.
+but this way we lose the original architecture, which folded all dog breeds within a dedicated non-terminal symbol, and drastically increases the amount of editing work required.
 
-In order to solve this problem (which is an instance of the wider problem of irregular distribution of probability affecting subproductions), the language offers an operator for **unfolding** non-terminal symbols:
+In order to solve this problem (which is an instance of the broader problem of irregular distribution of probability affecting subproductions), the language offers an operator for **unfolding** non-terminal symbols:
 
 **EXAMPLE**
 
@@ -460,13 +440,13 @@ Digit ::=  z: 0 | nz: 1 | nz: 2 | nz: 3 | nz: 4 | nz: 5 | nz: 6
        |  nz: 7 | nz: 8 | nz: 9 ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-### Optional subproductions {#sec:unfolding-optional-subproductions}
+### Optional Subproductions {#sec:unfolding-optional-subproductions}
 
 A subproduction within square brackets (see [@sec:optional-subproductions]) is like a subproduction within round brackets which produces either the original content or **epsilon** (see the example in [@sec:controlling-probability-optional]).
 
 Therefore, **unfolding** an optional subproduction is perfectly legal and the result is analogous to what was mentioned in [@sec:unfolding-subproductions].
 
-### Permutable subproductions
+### Permutable Subproductions
 
 As the translation rules in [@sec:translation-rules] reveal, __unfolding__ is performed by the preprocessor after carrying out all permutations (see [@sec:permutation]): a permutable subproduction bound to a `>` operator is therefore permutated first, and then **unfolding** is applied to the new position within the sequence.
 
@@ -487,9 +467,9 @@ S ::= the dog and a (fish | bull)
    |  a (fish | bull) and the cat ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-### Deeply unfolded subproductions
+### Deeply Unfolded Subproductions
 
-As stated in [@sec:deep-unfolding], deep unfolding leads to a subproduction where everything has been flatted out.
+As stated in [@sec:deep-unfolding], deep unfolding leads to a subproduction where everything has been flattened out.
 
 Nevertheless, sometimes one may wish to further **unfold** that very subproduction.
 
@@ -509,7 +489,7 @@ S ::= the dog | the cat | a fish | a bull | an alligator ;
 
 ## Attributes
 
-### Labels and selection {#sec:labels-selection}
+### Labels and Selection {#sec:labels-selection}
 
 Any (sub)production, regardless of its nesting level, can be bound to a label which can then be used in conjunction with the **dot** selector to constrain its production to a specific subset.
 
@@ -535,7 +515,7 @@ jumping
 
 The selection simply excludes all the (sub)productions bound to any label other than the selected one. More precisely, a selection propagates the label specified on the right-hand side of the dot operator for the whole generation of what lies on its left-hand side; during the generation, only (sub)productions which are either unbound to any label, or bound to the selected one, will be considered valid.
 
-Bare in mind that you can use consecutive selections, at different times, to populated the list of selected labels: this technique may be useful for propagating specific attributes to affect the generation.
+Bear in mind that you can use consecutive selections, at different times, to populate the list of selected labels: this technique may be useful for propagating specific attributes to affect the generation.
 
 **EXAMPLE**
 
@@ -573,7 +553,7 @@ etc.
 
 In the above example --- where the labels `1`, `2`, `3`, `S` and `P`  identify the syntactical forms for the first, second and third persons, and the singular and plural, respectively --- we managed to correctly conjugate both simple present and present progressive tenses according to pronoun.
 
-### Multiple selection
+### Multiple Selection
 
 Reconsider the example in [@sec:labels-selection]; basically, the production activates both labels pairs before descending into the generation of the non-terminal `Conjug`: both `S`, `P` and `sp`, `pp` pairs are mutually activated, with the objective of generating all possible combinations of pronouns and conjugation suffix patterns. Nevertheless, similar cases introduce inelegant repetitions: the `(Conjug.S | Conjug.P)` subproduction is replicated twice (once for label `sp`, and then again for `pp`).
 
@@ -604,7 +584,7 @@ S ::= (Conjug.S | Conjug.S | Conjug.S | Conjug.S | Conjug.P).sp
    |  (Conjug.S | Conjug.S | Conjug.S | Conjug.S | Conjug.P).pp ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-### Selection reset
+### Selection Reset
 
 Keep in mind that the selection operator adds the specified label to the set of already active labels; this leads to the need of manually resetting that particular set from time to time. For example, let's generate natural numbers (including zero) of arbitrary length, without leading zeros:
 
@@ -634,11 +614,9 @@ When a **dot** operator not followed by a label is encountered during generation
 
 ## Capitalization
 
-It is often reuired, mainly for style purposes, to respect capitalization rules --- for instance, after a full stop.
+It is often required, mainly for style purposes, to respect capitalization rules --- for instance, after a full stop.
 
 Nevertheless, a complex grammar architecture, providing recursive productions generating subclauses, may render such an operation impossible, unless the user rewrites part of the source.
-
-In order to solve this problem, the language provides the **backslash** keyword `\`, which makes the program perform the capitalization of the very following terminal symbol, i.e. switching its first letter to uppercase.
 
 In order to solve this problem, the language provides the **backslash** keyword `\`, which instructs the program to capitalize the first letter of the next terminal symbol encountered (if it isn't already a capital letter).
 
@@ -661,7 +639,7 @@ Smith is really a gentleman.
 Smith. Really a gentleman.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Bare in mind that **backslash** capitalization is active until the following generated terminal symbol is encountered, therefore any other atom (epsilon, concatenation or the capitalization operator itself) encountred in the meantime will act as usual.
+Bear in mind that **backslash** capitalization is active until the following generated terminal symbol is encountered, therefore any other atom (epsilon, concatenation or the capitalization operator itself) encountered in the meantime will act as usual.
 
 **EXAMPLE**
 
@@ -678,7 +656,7 @@ aB
 
 ## Permutation {#sec:permutation}
 
-Many spoken languages allow changing the order of some words (or groups of words) in a sentence without altering its original meaning; likewise, at a macroscopic level, sometimes is possible to swap the order of sentences within a phrase.
+Many spoken languages allow changing the order of some words (or groups of words) in a sentence without altering its original meaning; likewise, at a macroscopic level, sometimes it is possible to swap the order of sentences within a phrase.
 
 To avoid writing each and every variation of a sequence in which some atoms swap positions, you can enclose within **curly brackets** `{` and `}` the subproductions that need to be permutated.
 
@@ -700,13 +678,22 @@ whether he therefore is
 whether he is therefore
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Bare in mind that a subproduction's permutability only affects the sequence that contains it: no permutation occurs if permutable subproductions are specified in different subsequences (or subprodutions --- permutable or not). See the differences in the following two examples:
+Bear in mind that a subproduction's permutability only affects the sequence that contains it: no permutation occurs if permutable subproductions are specified in different subsequences (or subprodutions --- permutable or not). See the differences in the following two examples:
+
+::: Alert :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+**BEWARE!** --- The two examples below might look the same at first glance, but their endings are different:
+
+- the first example uses braces:
+   + `{"I" {will depart} {alone}} ;`
+- the other one uses parentheses:
+   + `("I" {will depart} {alone}) ;`
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 **EXAMPLE**
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= {in 10 minutes}^, {at 3 o'clock}^, {"I" {will depart} {alone}} ;
+S ::= {in 10 minutes}^"," {at 3 o'clock}^"," {"I" {will depart} {alone}} ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
@@ -730,7 +717,7 @@ I alone will depart, at 3 o'clock, in 10 minutes
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= {in 10 minutes}^, {at 3 o'clock}^, ("I" {will depart} {alone}) ;
+S ::= {in 10 minutes}^"," {at 3 o'clock}^"," ("I" {will depart} {alone}) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCES**
@@ -742,7 +729,9 @@ in 10 minutes, at 3 o'clock, I alone will depart
 at 3 o'clock, in 10 minutes, I alone will depart
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-## Deep unfolding {#sec:deep-unfolding}
+
+## Deep Unfolding {#sec:deep-unfolding}
+
 The language allows the deep unfolding of a subproduction enclosed within reversed double angle brackets `>>` and `<<`: any atom (at any nesting level) for which unfolding makes sense (see [@sec:unfolding]) will be unfolded. As a result, every subproduction and non-terminal symbol within `>>` and `<<` is completely flattened out:
 
 **EXAMPLE**
@@ -799,11 +788,12 @@ S ::= look at ( the dog
               ) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Bare in mind that folding an unfolded atom, and viceversa, are syntax errors (see rules in [@sec:concrete-syntax]).
+Bear in mind that folding an unfolded atom, and viceversa, are syntax errors (see rules in [@sec:concrete-syntax]).
 
 ## Binding {#sec:binding}
 
-Binding is, in general, a declarative construct that associates a series of productions to a non terminal symbol. Each binding introduces in the environment (see [@sec:environment-scoping]) that association, and every production generated in that environment can refer to its non terminal symbol.
+Binding are, in general, declarative constructs that associate a series of productions to a non terminal symbol.
+Each binding introduces that association in the environment where it is declared (see [@sec:environment-scoping]), and every production generated in that environment can refer to its non terminal symbol.
 
 ### Closures {#sec:closures}
 
@@ -832,7 +822,7 @@ an orange and a mango
 an orange and an orange
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The production associated to `Fruit` __does not__ undergo an immediate production but is closed together with the current environment according to scoping rules. Each occurence of the `Fruit` symbol in a descending environment (or in the same one, as in the example) causes the generation of the associated production in the environment that was closed with it.
+The production associated to `Fruit` __does not__ undergo an immediate generation but is closed together with the current environment according to scoping rules. Each occurrence of the `Fruit` symbol in a descending environment (or in the same one, as in the example) causes the generation of the associated production in the environment that was closed with it.
 
 ### Suspensions {#sec:suspensions}
 
@@ -855,7 +845,7 @@ a mango and a mango
 an orange and an orange
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The production associated to `Fruit` is suspendend and closed together with the current environment according to scoping rules. During generation, at the first occurence of the `Fruit` symbol in a descending environment (or in the same one, as in the example) the associated production is generated __a single time__ in the environment that was closed with it, and the immutable result of its generation is stored in the environment; every successive occurence of the same non terminal will always produce the same result.
+The production associated to `Fruit` is suspendend and closed together with the current environment according to scoping rules. During generation, at the first occurrence of the `Fruit` symbol in a descending environment (or in the same one, as in the example) the associated production is generated __just once__ in the environment that was closed with it, and the immutable result of its generation is stored in the environment; every successive occurrence of the same non terminal will always produce the same result.
 
 Please note that during its first generation the non terminal is still associated to the closure of the environment where it's being generated, and not (yet) to its suspension: this allows the use of recursion in strong binding deinitions.
 
@@ -879,11 +869,11 @@ aaaa aaaa
 
 etc.
 
-## Environment and scoping {#sec:environment-scoping}
+## Environment and Scoping {#sec:environment-scoping}
 
 The environment is the context and ensemble of bindings (see [@sec:binding]), i.e., of the associations between non terminal symbols and series of productions. The environment can be populated either by top-level bindings or by those introduced by scope constructs.
 
-### Top-level environment
+### Top-Level Environment
 
 All the various examples discussed so far dealt with bindings (of various types) introduced at the top-level of a source file, separated by the `;` keyword. As we've already mentioned, similar bindings are introduced into the (empty) environment according to a relation of mutual recursion: every production bound to a non terminal can reference any non terminal symbol which is defined at the top-level, be it upsteam or downstream, including the one the production itself is bound to.
 
@@ -900,7 +890,7 @@ B :=  S | A | B | b ;
 
 It's easy to imagine the powerful potentials offered by this sytem.
 
-### Local envirnoments
+### Local Envirnoments
 
 Within a subproduction (of any type) it's possible to introduce new bindings with local visibility: the subproduction's body (which consists of a series of productions) can be preceded by a series of semicolon-separated bindings, where the last `;` separates the last binding from the subproduction's main body.
 
@@ -924,10 +914,10 @@ I am nice, maybe very nice and handsome
 I am nice, maybe very nice and nice
 I am nice, maybe very ... nice and handsome
 I am nice, maybe very ... nice and nice
-I am decisamente very handsome and nice
-I am decisamente very handsome and handsome
-I am decisamente very .. handsome and nice
-I am decisamente very .. handsome and handsome
+I am definitely very handsome and nice
+I am definitely very handsome and handsome
+I am definitely very .. handsome and nice
+I am definitely very .. handsome and handsome
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The visibility (or scope) of the various non terminals in the above example is clear: `X` and `Very` are local to the subproduction that defines them, while `Adj` is used by both the subproduction's body as well as by the body of `S`.
@@ -947,9 +937,9 @@ Adj ::= handsome | nice ;
 
 Nothing prevents a subproduction's body from being a subproduction itself: this allows populating the environment without creating a mutually recursive relation between the bindings.
 
-Finally, bare in mind that __any__ type of subproduction can introduce local bindings.
+Finally, bear in mind that __any__ type of subproduction can introduce local bindings.
 
-### Static lexical scoping
+### Static Lexical Scoping
 
 Scoping rules are at the same time strict and intuitive: every production is generated in the environment where it was defined. Even though environments can be populated with locally inserted bindings, it's __not__ possible to use symbols defined in the current environment to generate a production defined elsewhere, __even__ if these symbols are same-named.
 
@@ -991,9 +981,7 @@ y
 
 Inside the second inserted subproduction, the external definition of `X` is not visible. Obviously, the same rules apply also to the top-level environment.
 
-Si badi infine che i binding sono ricorsivi, pertanto non è possibile fare riferimento alla definizione di un simbolo nell’ambiente in una ridefinizione in override del medesimo simbolo.
-
-Bare also in mind that bindings are recursive, therefore you can't refer to a symbol's environment definition from within an override redifinition of the same symbol.
+Bear also in mind that bindings are recursive, therefore you can't refer to a symbol's environment definition from within an override redefinition of the same symbol.
 
 **EXAMPLE**
 
@@ -1010,13 +998,9 @@ x x
 x x x ...
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-L’occorrenza di `X` nel secondo binding innestato viene dunque vista come una ricorsione, non come un riferimento alla `X` dell’ambiente padre.
+The occurrence of `X` inside the second nested binding is thus seen as a recursion, not as a reference to the `X` of the parent environment.
 
-The occurence of `X` inside the second inserted binding is thus seen as a recursion, not as a reference to the `X` of the parent environment.
-
-Analogamente in presenza di una serie di binding in rapporto di mutua ricorsione:
-
-Analogously, in the presence of a series of binding related by mutual recursion:
+Similarly, in presence of a series of binding related by mutual recursion:
 
 **EXAMPLE**
 
@@ -1033,7 +1017,7 @@ y b y b
 y b y b y b ...
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-## Positional generation
+## Positional Generation
 
 Even though labels are powerful and versatile, in most scenarios they're used just to _filter_ a series of productions that specify disjointed syntactical cases of a given language --- common examples of such usage are: suffixes for articles, nouns and adjectives according to gender and number; or conjugation of verbs according to person, tense and mood.
 
@@ -1053,8 +1037,8 @@ he is a handsome actor
 she is a pretty actress
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As a workaround to the burder of having to specify local labels, and activate them in place, the language offers a system of automatic positional generation.
-This feature --- which is operationally equivalent to using labels and selections, but less verbose --- allows to express in an extremely concise way groups of suffixes, declinations, conjucations, etc. The `,` keyword is used to separate the atoms representing the possibile choices:
+As a workaround to the burden of having to specify local labels, and activate them in place, the language offers a system of automatic positional generation.
+This feature --- which is operationally equivalent to using labels and selections, but less verbose --- allows to express groups of suffixes, declinations, conjugations, etc, in an extremely concise way. The `,` keyword is used to separate the atoms representing the possible choices:
 
 **EXAMPLE**
 
@@ -1070,9 +1054,7 @@ The final result is identical to that of the previous example; the difference is
 S ::= he is a handsome act ^ or | she is a pretty act ^ ress ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The obvious limitation of this feature is that all the groups in a given production must contain __the same number of atoms__. Also, bare in mind that the _scope_ of this constraint is a single production.
-
-È importante capire che la generazione posizionale non sostituisce il sistema di label, ma offre un'alternativa sintetica ad esso nei frequenti casi in cui verrebbe utilizzato per declinare termini. Non è difficile immaginare comunque come tale meccanismo possa tornare utile in altri contesti; ad esempio, a livello macroscopico, per specificare relazioni tra porzioni di una frase:
+The obvious limitation of this feature is that all the groups in a given production must contain __the same number of atoms__. Also, bear in mind that the _scope_ of this constraint is a single production.
 
 It's important to understand that positional generation is not a substitute of the labels system, rather it's a concise alternative to it for those frequent scenarios where it would be employed for declination purposes. Nonetheless, it's easy to envisage how this feature could be useful in other contexts too; for example, on a macroscopic level, to specify relations between portions of a sentence:
 
@@ -1134,9 +1116,7 @@ a b a
 ...
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Si potrebbe ritenere ragionevole che venisse iterata sempre la stessa generazione, ma non è così (come dalle [regole di traduzione @sec:regole-traduzione]), poiché nella maggior parte dei frangenti il comportamento di cui sopra è preveribile ed inoltre semanticamente affine all'analogo costrutto EBNF. È possibile tuttavia ottenere l'effetto ipotizzato in maniera piuttosto semplice sfruttando il binding forte (vedi [@sec:sospensioni]):
-
-One might have --- quite reasonably so --- expected to see the same generation being iterated every time, but this is not the case (as stated in the [translation rules @sec:translation-rules]) because in most scenarios the behavior of the above example is the preferable one instead, and also because it bears semantic affinity with its analogous EBNF contruct. It's nevertheless possible to achieve the former behavior in a rather simple manner, by exploiting strong binding (see [@sec:suspensions]):
+One might have --- quite reasonably --- expected to see the same generation being iterated every time, but this is not the case (as stated in the [translation rules @sec:translation-rules]) because in most scenarios the behavior of the above example is the preferable one instead, and also because it bears semantic affinity with its analogous EBNF construct. It's nevertheless possible to achieve the former behavior in a rather simple manner, by exploiting strong binding (see [@sec:suspensions]):
 
 **EXAMPLE**
 
@@ -1156,7 +1136,7 @@ a a a ...
 b b b ...
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Advanced techniques
+# Advanced Techniques
 
 ## Recursion
 
@@ -1185,9 +1165,7 @@ etc.
 
 i.e., a random natural number made up of one or more digits ranging from 0 to 9.
 
-Keep in mind then that it is up to you providing a non-recursive production somewhere in order to let the program stop recurring sooner or later, otherwise a cyclic recursion error will be generated by the grammar checker (see [@sec:cyclic-recursions]).
-
-Bare in mind that you'll need to provide a non-recursive production somewhere along the line, in order to guarantee to the program an exit point from the recursion, at one point or another; otherwise, a cyclic recursion error will be generated by the grammar checker (see [@sec:cyclic-recursions]).
+Bear in mind that you'll need to provide a non-recursive production somewhere along the line, in order to guarantee to the program an exit point from the recursion, at one point; otherwise, a cyclic recursion error will be generated by the grammar checker (see [@sec:cyclic-recursions]).
 
 As an exercise, try to define a grammar for generating variable-length sentences by recursively linking subordinate clauses.
 
@@ -1232,7 +1210,7 @@ while for the latter:
 
 All this because the subproduction `(cow | camel)` is interpreted by the program as a single block.
 
-## Controlling the probability of an optional subproduction {#sec:controlling-probability-optional}
+## Controlling the Probability of an Optional Subproduction {#sec:controlling-probability-optional}
 
 *Polygen*’s grammars definition language does not allow any direct control over the probabilities of an optional subproduction. In other words, there is no **plus**- or **minus**-like operator for subproductions within square brackets.
 
@@ -1256,7 +1234,7 @@ Since an optional subproduction is a _de facto_ equivalent of a non-optional sub
 
 In the above example, the chances of an empty production are higher than those of `beautiful`.
 
-# Static validation of grammars
+# Static Validation of Grammars
 
 *Polygen* features a powerful algorithm for statically checking the validity of a source file: it's therefore able to verify the correctness of a whole grammar in a finite amount of time, regardless of its complexity, without having to generate every possible production.
 
@@ -1272,7 +1250,7 @@ _Polygen_ classifies as errors those cases that violate the definition of grammt
 
 An error halts the program execution.
 
-### Undefined non-terminal symbols
+### Undefined Non-terminal Symbols
 
 The existence of each non-terminal symbol appearing in the right-hand side of a definition is checked in order to avoid the erroneous usage of undefined non-terminal symbols.
 
@@ -1287,7 +1265,7 @@ A ::= a ;
 
 The above grammar generates an error message since `B` is not defined.
 
-### Cyclic recursions and non-termination {#sec:cyclic-recursions}
+### Cyclic Recursions and Non-termination {#sec:cyclic-recursions}
 
 The validation algorithm checks that every non-terminal symbol is able to produce an output --- i.e., that the generation will eventually terminate, without incurring in infinite recursion.
 
@@ -1313,7 +1291,7 @@ B ::= A ;
 
 Although the above grammar doesn't necessary incur in infinite recursion, due to the presence of the `a` terminal, a never-ending generation is still a possibility. Therefore, similar situations are reported as errors too.
 
-### Recursive unfoldings {#sec:recursive-unfoldings}
+### Recursive Unfoldings {#sec:recursive-unfoldings}
 
 You're not allowed to prefix the unfolding operator `>` (see [@sec:non-terminal-symbols]) to a non-terminal symbol that would cause a cyclic recursion.
 
@@ -1328,7 +1306,7 @@ B ::= >S ;
 
 Such a grammar would trigger a series of unfoldings that would expand it infinitely; therefore, it will generate an error message.
 
-### Epsilon-productions {#sec:epsilon-productions}
+### Epsilon-Productions {#sec:epsilon-productions}
 
 In some cases a grammar might meet the termination clause through an epsilon-production (see [@sec:epsilon]) --- i.e., its only possible outcome is an empty production.
 
@@ -1351,7 +1329,7 @@ _
 
 In some situations, also a selective destruction (see [@sec:destructive-selection]) could lead to an epsilon production.
 
-### Overriding of non-terminal symbols
+### Overriding of Non-terminal Symbols
 
 Grammars are checked to ensure that the same non-terminal symbol is not being defined more than once in the same scope.
 
@@ -1368,20 +1346,20 @@ The above grammar leads to an error since `A` is defined twice.
 
 This also applies inside inserted scopes (see [@sec:environment-scoping]):
 
-**ESEMPIO**
+**EXAMPLE**
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 S ::= (A ::= apple | orange | banana ; A ::= tangerine | melon ; a ripe A) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-### Illegal character
+### Illegal Character
 
 This type of error is risen by the lexer when, during the syntactic analysis of the source file, it encounters a character not belonging to any known token --- i.e., not defined by the lexical rules of [@sec:lexical-rules].
 
-### Unexpected token
+### Unexpected Token
 
-This type of error is risen by the parser when, during the syntactic analysis of the source file, it encounters a misplaced, albeit valid, token --- i.e., its occurence in a wrong position is a violation of the syntactical rules of [@sec:concrete-syntax].
+This type of error is risen by the parser when, during the syntactic analysis of the source file, it encounters a misplaced, albeit valid, token --- i.e., its occurrence in a wrong position is a violation of the syntactical rules of [@sec:concrete-syntax].
 
 ## Warnings
 
@@ -1397,13 +1375,13 @@ Currently, there are no warnings belonging to this level.
 
 ### Level 1
 
-#### Undefined `I` symbol
+#### Undefined 'I' Symbol
 
 Gammars lacking a definition for the non-terminal `I` symbol can't be queried with *Polygen*’s `-info` option.
 
 The `I` symbol is usually employed to generate a description string about the grammar (its author, title, etc.); although its omission is not an error, it is highly recommended to follow this convention and provide a useful definition.
 
-#### Potential epsilon-productions {#sec:potential-epsilon-productions}
+#### Potential Epsilon-Productions {#sec:potential-epsilon-productions}
 
 In some cases, a grammar doesn't always generate an epsilon production (see [@sec:epsilon-productions]), but it could potentially do so.
 
@@ -1446,11 +1424,11 @@ A ::= x: x | y: y ;
 a
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When a destructive selection is detected, a specific warning is issued to inform the user about the problem. Bare in mind that, by fixing all the warning of this type, you'll increase the robustness of the grammar, and sometimes it might also help to detect coneptual misuses of the lables.
+When a destructive selection is detected, a specific warning is issued to inform the user about the problem. Bear in mind that, by fixing all the warning of this type, you'll increase the robustness of the grammar, and sometimes it might also help to detect coneptual misuses of the lables.
 
 ### Level 2
 
-#### Useless permutation
+#### Useless Permutation
 
 In case just a single permutable subproduction appears within a sequence (see [@sec:permutation]), no permutation is actually performed (for obvious reasons).
 
@@ -1463,7 +1441,7 @@ S ::= a {b} c ;
 
 Although this is not an actual error, it will still produce a low-priority warning message.
 
-#### Useless unfolding
+#### Useless Unfolding
 
 If the unfolding operator is used in contexts that --- albeit sound --- would not lead to any actual unfolding, a low-priority warning is generated.
 
@@ -1478,7 +1456,7 @@ Trying to unfold a subproduction containing a single production is useless.
 
 ### Level 3
 
-#### Unfolding a suspended symbol
+#### Unfolding a Suspended Symbol
 
 Although unfolding a strongly bound symbol (see [@sec:suspensions]) is both sintactically legal and semantically correct, it raises some conceptual perplexity. Its outcome is somewhat similar to the concept of _inheratance_: inducing the preprocessor to replicate the productions bound to the suspended symbol, and then insert them flattened (see [@sec:non-terminal-symbols]) inside another production, is equivalent to _inheriting_ the productions of that symbol in order to have them generate something different.
 
@@ -1504,7 +1482,7 @@ This trick is regarded as a misuse of unfolding, and it's therefore reported wit
 
 # Appendix
 
-## Concrete syntax {#sec:concrete-syntax}
+## Concrete Syntax {#sec:concrete-syntax}
 
 What follows is the concrete syntax, in *[EBNF]* notation, of the grammar definition language (*[Type-2]*) interpreted by *Polygen* and described in this document.
 
@@ -1518,7 +1496,7 @@ INCLUDE "Concrete syntax" (EBNF Rules) from external file.
 
 !include(polygen-spec_inc_con.markdown)
 
-## Abstract syntax
+## Abstract Syntax
 
 For the sake of completeness, here follows the abstract syntax of the language interpreted by *Polygen*, stripped of all syntactic sugars and any terms that pertain solely to the preprocessing stage (see [@sec:translation-rules] for the translation rules).
 
@@ -1530,7 +1508,7 @@ INCLUDE "Abstract syntax" (EBNF Rules) from external file.
 
 !include(polygen-spec_inc_abs.markdown)
 
-## Lexical rules {#sec:lexical-rules}
+## Lexical Rules {#sec:lexical-rules}
 
 Here follow the lexical rules in regular expression notation (*Type-3*).
 
@@ -1542,9 +1520,9 @@ INCLUDE "Lexical rules" (EBNF Rules) from external file.
 
 !include(polygen-spec_inc_lex.markdown)
 
-Bare in mind that also the space character can used as terminal symbol within quotes.
+Bear in mind that also the space character can used as terminal symbol within quotes.
 
-## Escape sequences
+## Escape Sequences
 
 The `Nonterm` regular expression of [@sec:lexical-rules] considers a backslash within quotes as the escape character. A terminal symbol within quotes may contain any of the following escape sequences:
 
@@ -1558,7 +1536,7 @@ The `Nonterm` regular expression of [@sec:lexical-rules] considers a backslash w
 | `\t`   | tab                      |
 | `\xyz` | ASCII decimal code _xyz_ |
 
-## Translation rules {#sec:translation-rules}
+## Translation Rules {#sec:translation-rules}
 
 As a formal reference, we provide here the rules of translation from concrete- to abstract-syntax, in their order of precedence (where the _i_-th translation precedes the _i+1_-th). They refer to the operations performed by either the parser (in case of syntactic sugars) or the preprocessor (in all other cases).
 
@@ -1590,5 +1568,22 @@ INCLUDE TABLES: 4.1.5 Translation rules
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                                   CHANGELOG
 ==============================================================================
+v1.1.1 (2020-09-13) | PML 1.0 | Polygen v1.0.6
+
+  Maintenance update and various fixes and improvements.
+  Many thanks to Riccardo Bastianini (@RBastianini) for all the help.
+
+  * Removed duplicate paragraphs accidentally left over from the editing stage.
+  * Removed Italian paragraphs accidentally left over from the editing stage.
+  * Removed non-breaking space entities (xA0) from source document.
+  * Fixed numerous typos and polished some sentences.
+  * Fixed two examples in "§2.7 Permutation". (Issue #35)
+------------------------------------------------------------------------------
 v1.1.0 (2018-02-10) | PML 1.0 | Polygen v1.0.6
+
+  1st edition of the new Markdown version, translation completed.
+
+  * Ported from the original HTML document to Markdown.
+  * Completed the translation of missing sections from the Italian version.
+  * Polished English text and improved examples.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
