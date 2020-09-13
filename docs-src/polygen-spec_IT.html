@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!--
 ==============================================================================
-           "GitHub HTML5 Pandoc Template" v2.0 — by Tristano Ajmone           
+           "GitHub HTML5 Pandoc Template" v2.2 — by Tristano Ajmone
 ==============================================================================
-Copyright © Tristano Ajmone, 2017, MIT License (MIT). Project's home:
+Copyright © Tristano Ajmone, 2017-2020, MIT License (MIT). Project's home:
 
 - https://github.com/tajmone/pandoc-goodies
 
@@ -16,15 +16,15 @@ The CSS in this template reuses source code taken from the following projects:
   http://primercss.io/
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The MIT License 
+The MIT License
 
-Copyright (c) Tristano Ajmone, 2017 (github.com/tajmone/pandoc-goodies)
+Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
 Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
 Copyright (c) 2017 GitHub Inc.
 
-"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017, released
-under the MIT License (MIT); it contains readaptations of substantial portions
-of the following third party softwares:
+"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
+released under the MIT License (MIT); it contains readaptations of substantial
+portions of the following third party softwares:
 
 (1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
 (2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
@@ -53,12 +53,571 @@ SOFTWARE.
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Alvise Spanò" />
-  <meta name="dcterms.date" content="2018-02-10" />
+  <meta name="dcterms.date" content="2020-09-13" />
   <meta name="keywords" content="polygen, linguaggio, grammatica, specifica, pml, ebnf" />
-  <meta name="description" content="Polygen Meta Language (PML) v1.0 — Specifica tecnica e guida introduttiva all’uso di PML, il meta linguaggio di Polygen.">
+  <meta name="description" content="&lt;p&gt;Polygen Meta Language (PML) v1.0 — Specifica tecnica e guida introduttiva all’uso di PML, il meta linguaggio di Polygen.&lt;/p&gt;">
   <title>Polygen Meta Language Spec 1.0</title>
   <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">.markdown-body {-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;line-height: 1.5;color: #24292e;font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";font-size: 16px;line-height: 1.5;word-wrap: break-word;box-sizing: border-box;min-width: 200px;max-width: 980px;margin: 0 auto;padding: 45px; }.markdown-body a {color: #0366d6;background-color: transparent;text-decoration: none;-webkit-text-decoration-skip: objects; }.markdown-body a:active, .markdown-body a:hover {outline-width: 0; }.markdown-body a:hover {text-decoration: underline; }.markdown-body a:not([href]) {color: inherit;text-decoration: none; }.markdown-body strong {font-weight: 600; }.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6 {margin-top: 24px;margin-bottom: 16px;font-weight: 600;line-height: 1.25; }.markdown-body h1 {font-size: 2em;margin: 0.67em 0;padding-bottom: 0.3em;border-bottom: 1px solid #eaecef; }.markdown-body h2 {padding-bottom: 0.3em;font-size: 1.5em;border-bottom: 1px solid #eaecef; }.markdown-body h3 {font-size: 1.25em; }.markdown-body h4 {font-size: 1em; }.markdown-body h5 {font-size: 0.875em; }.markdown-body h6 {font-size: 0.85em;color: #6a737d; }.markdown-body img {border-style: none; }.markdown-body svg:not(:root) {overflow: hidden; }.markdown-body code,.markdown-body kbd,.markdown-body pre {font-family: monospace, monospace;font-size: 1em; }.markdown-body hr {box-sizing: content-box;height: 0.25em;margin: 24px 0;padding: 0;overflow: hidden;background-color: #e1e4e8;border: 0; }.markdown-body hr::before {display: table;content: ""; }.markdown-body hr::after {display: table;clear: both;content: ""; }.markdown-body input {margin: 0;overflow: visible;font: inherit;font-family: inherit;font-size: inherit;line-height: inherit; }.markdown-body [type="checkbox"] {box-sizing: border-box;padding: 0; }.markdown-body * {box-sizing: border-box; }.markdown-body p {margin-top: 0;margin-bottom: 10px; }.markdown-body blockquote {margin: 0; }.markdown-body ul,.markdown-body ol {padding-left: 2em;margin-top: 0;margin-bottom: 0; }.markdown-body ul ol,.markdown-body ol ol {list-style-type: lower-roman; }.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ul,.markdown-body ol ol {margin-top: 0;margin-bottom: 0; }.markdown-body ul ul ol,.markdown-body ul ol ol,.markdown-body ol ul ol,.markdown-body ol ol ol {list-style-type: lower-alpha; }.markdown-body li > p {margin-top: 16px; }.markdown-body li + li {margin-top: 0.25em; }.markdown-body dd {margin-left: 0; }.markdown-body dl {padding: 0; }.markdown-body dl dt {padding: 0;margin-top: 16px;font-size: 1em;font-style: italic;font-weight: 600; }.markdown-body dl dd {padding: 0 16px;margin-bottom: 16px; }.markdown-body code {font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;font-size: 12px; }.markdown-body pre {margin-top: 0;margin-bottom: 0;font: 12px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre {margin-top: 0;margin-bottom: 16px; }.markdown-body blockquote {padding: 0 1em;color: #6a737d;border-left: 0.25em solid #dfe2e5; }.markdown-body blockquote > :first-child {margin-top: 0; }.markdown-body blockquote > :last-child {margin-bottom: 0; }.markdown-body kbd {display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #444d56;vertical-align: middle;background-color: #fafbfc;border: solid 1px #c6cbd1;border-bottom-color: #959da5;border-radius: 3px;box-shadow: inset 0 -1px 0 #959da5; }.markdown-body table {display: block;width: 100%;overflow: auto;border-spacing: 0;border-collapse: collapse; }.markdown-body table th {font-weight: 600; }.markdown-body table th, .markdown-body table td {padding: 6px 13px;border: 1px solid #dfe2e5; }.markdown-body table tr {background-color: #fff;border-top: 1px solid #c6cbd1; }.markdown-body table tr:nth-child(2n) {background-color: #f6f8fa; }.markdown-body img {max-width: 100%;box-sizing: content-box;background-color: #fff; }.markdown-body code {padding: 0;padding-top: 0.2em;padding-bottom: 0.2em;margin: 0;font-size: 85%;background-color: rgba(27, 31, 35, 0.05);border-radius: 3px; }.markdown-body code::before,.markdown-body code::after {letter-spacing: -0.2em;content: "\00a0"; }.markdown-body pre {word-wrap: normal; }.markdown-body pre > code {padding: 0;margin: 0;font-size: 100%;word-break: normal;white-space: pre;background: transparent;border: 0; }.markdown-body .highlight {margin-bottom: 16px; }.markdown-body .highlight pre {margin-bottom: 0;word-break: normal; }.markdown-body .highlight pre,.markdown-body pre {padding: 16px;overflow: auto;font-size: 85%;line-height: 1.45;background-color: #f6f8fa;border-radius: 3px; }.markdown-body pre code {display: inline;max-width: auto;padding: 0;margin: 0;overflow: visible;line-height: inherit;word-wrap: normal;background-color: transparent;border: 0; }.markdown-body pre code::before,.markdown-body pre code::after {content: normal; }.markdown-body .full-commit .btn-outline:not(:disabled):hover {color: #005cc5;border-color: #005cc5; }.markdown-body kbd {display: inline-block;padding: 3px 5px;font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;line-height: 10px;color: #444d56;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #c6cbd1;border-bottom-color: #959da5;border-radius: 3px;box-shadow: inset 0 -1px 0 #959da5; }.markdown-body :checked + .radio-label {position: relative;z-index: 1;border-color: #0366d6; }.markdown-body .task-list-item {list-style-type: none; }.markdown-body .task-list-item + .task-list-item {margin-top: 3px; }.markdown-body .task-list-item input {margin: 0 0.2em 0.25em -1.6em;vertical-align: middle; }.markdown-body::before {display: table;content: ""; }.markdown-body::after {display: table;clear: both;content: ""; }.markdown-body > *:first-child {margin-top: 0 !important; }.markdown-body > *:last-child {margin-bottom: 0 !important; }.Alert,.Warning,.Error,.Success,.Note {padding: 11px;margin-bottom: 24px;border-style: solid;border-width: 1px;border-radius: 4px; }.Alert p,.Warning p,.Error p,.Success p,.Note p {margin-top: 0; }.Alert p:last-child,.Warning p:last-child,.Error p:last-child,.Success p:last-child,.Note p:last-child {margin-bottom: 0; }.Alert {color: #224466;background-color: #E2EEF9;border-color: #BAC6D3; }.Warning {color: #4C4A42;background-color: #FFF9EA;border-color: #DFD8C2; }.Error {color: #991111;background-color: #FCDEDE;border-color: #D2B2B2; }.Success {color: #22662C;background-color: #E2F9E5;border-color: #BAD3BE; }.Note {color: #2F363D;background-color: #F6F8FA;border-color: #D5D8DA; }.Alert h1,.Alert h2,.Alert h3,.Alert h4,.Alert h5,.Alert h6 {color: #224466;margin-bottom: 0; }.Warning h1,.Warning h2,.Warning h3,.Warning h4,.Warning h5,.Warning h6 {color: #4C4A42;margin-bottom: 0; }.Error h1,.Error h2,.Error h3,.Error h4,.Error h5,.Error h6 {color: #991111;margin-bottom: 0; }.Success h1,.Success h2,.Success h3,.Success h4,.Success h5,.Success h6 {color: #22662C;margin-bottom: 0; }.Note h1,.Note h2,.Note h3,.Note h4,.Note h5,.Note h6 {color: #2F363D;margin-bottom: 0; }.Alert h1:first-child,.Alert h2:first-child,.Alert h3:first-child,.Alert h4:first-child,.Alert h5:first-child,.Alert h6:first-child {margin-top: 0; }.Warning h1:first-child,.Warning h2:first-child,.Warning h3:first-child,.Warning h4:first-child,.Warning h5:first-child,.Warning h6:first-child {margin-top: 0; }.Error h1:first-child,.Error h2:first-child,.Error h3:first-child,.Error h4:first-child,.Error h5:first-child,.Error h6:first-child {margin-top: 0; }.Success h1:first-child,.Success h2:first-child,.Success h3:first-child,.Success h4:first-child,.Success h5:first-child,.Success h6:first-child {margin-top: 0; }.Note h1:first-child,.Note h2:first-child,.Note h3:first-child,.Note h4:first-child,.Note h5:first-child,.Note h6:first-child {margin-top: 0; }h1.title,p.subtitle {text-align: center; }h1.title.followed-by-subtitle {margin-bottom: 0; }p.subtitle {font-size: 1.5em;font-weight: 600;line-height: 1.25;margin-top: 0;margin-bottom: 16px;padding-bottom: 0.3em; }div.line-block {white-space: pre-line; }pre.Polygen,code.Polygen {color: #F8F8F2;background-color: #272822; }code.Polygen .hl.opt {color: #F92672; }code.Polygen .hl.str,code.Polygen .hl.esc {background-color: #49483E; }code.Polygen .hl.esc {color: #FD971F; }code.Polygen .hl.com {color: #A59F85;font-style: italic; }code.Polygen .hl.kwa {color: #F4BF75; }code.Polygen .hl.kwb {color: #66D9EF; }code.Polygen .hl.kwc {color: #A6E22E; }code.Polygen .hl.lin {color: #75715E; }pre.EBNF,code.EBNF {color: #231f20; }code.EBNF .hl.opt {color: #ee2e24; }code.EBNF .hl.str {color: #009ddc; }code.EBNF .hl.kwa {color: #b06110; }.mono,.monobold {font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }.monobold {font-weight: bold; }.R {color: #CC0000; }.B {color: #3333FF; }.G {color: #37A693; }.X {color: #C28141; }</style>
+  <style type="text/css">@charset "UTF-8";
+
+.markdown-body {
+-ms-text-size-adjust: 100%;
+-webkit-text-size-adjust: 100%;
+line-height: 1.5;
+color: #24292e;
+font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.5;
+word-wrap: break-word;
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+}
+.markdown-body a {
+color: #0366d6;
+background-color: transparent;
+text-decoration: none;
+-webkit-text-decoration-skip: objects;
+}
+.markdown-body a:active, .markdown-body a:hover {
+outline-width: 0;
+}
+.markdown-body a:hover {
+text-decoration: underline;
+}
+.markdown-body a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.markdown-body strong {
+font-weight: 600;
+}
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+margin-top: 24px;
+margin-bottom: 16px;
+font-weight: 600;
+line-height: 1.25;
+}
+.markdown-body h1 {
+font-size: 2em;
+margin: 0.67em 0;
+padding-bottom: 0.3em;
+border-bottom: 1px solid #eaecef;
+}
+.markdown-body h2 {
+padding-bottom: 0.3em;
+font-size: 1.5em;
+border-bottom: 1px solid #eaecef;
+}
+.markdown-body h3 {
+font-size: 1.25em;
+}
+.markdown-body h4 {
+font-size: 1em;
+}
+.markdown-body h5 {
+font-size: 0.875em;
+}
+.markdown-body h6 {
+font-size: 0.85em;
+color: #6a737d;
+}
+.markdown-body img {
+border-style: none;
+}
+.markdown-body svg:not(:root) {
+overflow: hidden;
+}
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+.markdown-body hr {
+box-sizing: content-box;
+height: 0.25em;
+margin: 24px 0;
+padding: 0;
+overflow: hidden;
+background-color: #e1e4e8;
+border: 0;
+}
+.markdown-body hr::before {
+display: table;
+content: "";
+}
+.markdown-body hr::after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body input {
+margin: 0;
+overflow: visible;
+font: inherit;
+font-family: inherit;
+font-size: inherit;
+line-height: inherit;
+}
+.markdown-body [type=checkbox] {
+box-sizing: border-box;
+padding: 0;
+}
+.markdown-body * {
+box-sizing: border-box;
+}
+.markdown-body p {
+margin-top: 0;
+margin-bottom: 10px;
+}
+.markdown-body blockquote {
+margin: 0;
+}
+.markdown-body ul,
+.markdown-body ol {
+padding-left: 2em;
+margin-top: 0;
+margin-bottom: 0;
+}
+.markdown-body ul ol,
+.markdown-body ol ol {
+list-style-type: lower-roman;
+}
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ul,
+.markdown-body ol ol {
+margin-top: 0;
+margin-bottom: 0;
+}
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+list-style-type: lower-alpha;
+}
+.markdown-body li > p {
+margin-top: 16px;
+}
+.markdown-body li + li {
+margin-top: 0.25em;
+}
+.markdown-body dd {
+margin-left: 0;
+}
+.markdown-body dl {
+padding: 0;
+}
+.markdown-body dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: 600;
+}
+.markdown-body dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+.markdown-body code {
+font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+.markdown-body pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+.markdown-body blockquote {
+padding: 0 1em;
+color: #6a737d;
+border-left: 0.25em solid #dfe2e5;
+}
+.markdown-body blockquote > :first-child {
+margin-top: 0;
+}
+.markdown-body blockquote > :last-child {
+margin-bottom: 0;
+}
+.markdown-body kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #444d56;
+vertical-align: middle;
+background-color: #fafbfc;
+border: solid 1px #c6cbd1;
+border-bottom-color: #959da5;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #959da5;
+}
+.markdown-body table {
+display: block;
+width: 100%;
+overflow: auto;
+border-spacing: 0;
+border-collapse: collapse;
+}
+.markdown-body table th {
+font-weight: 600;
+}
+.markdown-body table th, .markdown-body table td {
+padding: 6px 13px;
+border: 1px solid #dfe2e5;
+}
+.markdown-body table tr {
+background-color: #fff;
+border-top: 1px solid #c6cbd1;
+}
+.markdown-body table tr:nth-child(2n) {
+background-color: #f6f8fa;
+}
+.markdown-body img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+.markdown-body code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(27, 31, 35, 0.05);
+border-radius: 3px;
+}
+.markdown-body code::before,
+.markdown-body code::after {
+letter-spacing: -0.2em;
+content: " ";
+}
+.markdown-body pre {
+word-wrap: normal;
+}
+.markdown-body pre > code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.markdown-body .highlight {
+margin-bottom: 16px;
+}
+.markdown-body .highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+.markdown-body .highlight pre,
+.markdown-body pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f6f8fa;
+border-radius: 3px;
+}
+.markdown-body pre code {
+display: inline;
+max-width: auto;
+padding: 0;
+margin: 0;
+overflow: visible;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+.markdown-body pre code::before,
+.markdown-body pre code::after {
+content: normal;
+}
+.markdown-body .full-commit .btn-outline:not(:disabled):hover {
+color: #005cc5;
+border-color: #005cc5;
+}
+.markdown-body kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #444d56;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #c6cbd1;
+border-bottom-color: #959da5;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #959da5;
+}
+.markdown-body :checked + .radio-label {
+position: relative;
+z-index: 1;
+border-color: #0366d6;
+}
+.markdown-body .task-list-item {
+list-style-type: none;
+}
+.markdown-body .task-list-item + .task-list-item {
+margin-top: 3px;
+}
+.markdown-body .task-list-item input {
+margin: 0 0.2em 0.25em -1.6em;
+vertical-align: middle;
+}
+.markdown-body::before {
+display: table;
+content: "";
+}
+.markdown-body::after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body > *:first-child {
+margin-top: 0 !important;
+}
+.markdown-body > *:last-child {
+margin-bottom: 0 !important;
+}
+.Alert,
+.Warning,
+.Error,
+.Success,
+.Note {
+padding: 11px;
+margin-bottom: 24px;
+border-style: solid;
+border-width: 1px;
+border-radius: 4px;
+}
+.Alert p,
+.Warning p,
+.Error p,
+.Success p,
+.Note p {
+margin-top: 0;
+}
+.Alert p:last-child,
+.Warning p:last-child,
+.Error p:last-child,
+.Success p:last-child,
+.Note p:last-child {
+margin-bottom: 0;
+}
+.Alert {
+color: #224466;
+background-color: #E2EEF9;
+border-color: #BAC6D3;
+}
+.Warning {
+color: #4C4A42;
+background-color: #FFF9EA;
+border-color: #DFD8C2;
+}
+.Error {
+color: #991111;
+background-color: #FCDEDE;
+border-color: #D2B2B2;
+}
+.Success {
+color: #22662C;
+background-color: #E2F9E5;
+border-color: #BAD3BE;
+}
+.Note {
+color: #2F363D;
+background-color: #F6F8FA;
+border-color: #D5D8DA;
+}
+.Alert h1,
+.Alert h2,
+.Alert h3,
+.Alert h4,
+.Alert h5,
+.Alert h6 {
+color: #224466;
+margin-bottom: 0;
+}
+.Warning h1,
+.Warning h2,
+.Warning h3,
+.Warning h4,
+.Warning h5,
+.Warning h6 {
+color: #4C4A42;
+margin-bottom: 0;
+}
+.Error h1,
+.Error h2,
+.Error h3,
+.Error h4,
+.Error h5,
+.Error h6 {
+color: #991111;
+margin-bottom: 0;
+}
+.Success h1,
+.Success h2,
+.Success h3,
+.Success h4,
+.Success h5,
+.Success h6 {
+color: #22662C;
+margin-bottom: 0;
+}
+.Note h1,
+.Note h2,
+.Note h3,
+.Note h4,
+.Note h5,
+.Note h6 {
+color: #2F363D;
+margin-bottom: 0;
+}
+.Alert h1:first-child,
+.Alert h2:first-child,
+.Alert h3:first-child,
+.Alert h4:first-child,
+.Alert h5:first-child,
+.Alert h6:first-child {
+margin-top: 0;
+}
+.Warning h1:first-child,
+.Warning h2:first-child,
+.Warning h3:first-child,
+.Warning h4:first-child,
+.Warning h5:first-child,
+.Warning h6:first-child {
+margin-top: 0;
+}
+.Error h1:first-child,
+.Error h2:first-child,
+.Error h3:first-child,
+.Error h4:first-child,
+.Error h5:first-child,
+.Error h6:first-child {
+margin-top: 0;
+}
+.Success h1:first-child,
+.Success h2:first-child,
+.Success h3:first-child,
+.Success h4:first-child,
+.Success h5:first-child,
+.Success h6:first-child {
+margin-top: 0;
+}
+.Note h1:first-child,
+.Note h2:first-child,
+.Note h3:first-child,
+.Note h4:first-child,
+.Note h5:first-child,
+.Note h6:first-child {
+margin-top: 0;
+}
+h1.title,
+p.subtitle {
+text-align: center;
+}
+h1.title.followed-by-subtitle {
+margin-bottom: 0;
+}
+p.subtitle {
+font-size: 1.5em;
+font-weight: 600;
+line-height: 1.25;
+margin-top: 0;
+margin-bottom: 16px;
+padding-bottom: 0.3em;
+}
+div.line-block {
+white-space: pre-line;
+}
+pre.Polygen,
+code.Polygen {
+color: #F8F8F2;
+background-color: #272822;
+}
+code.Polygen .hl.opt {
+color: #F92672;
+}
+code.Polygen .hl.str,
+code.Polygen .hl.esc {
+background-color: #49483E;
+}
+code.Polygen .hl.esc {
+color: #FD971F;
+}
+code.Polygen .hl.com {
+color: #A59F85;
+font-style: italic;
+}
+code.Polygen .hl.kwa {
+color: #F4BF75;
+}
+code.Polygen .hl.kwb {
+color: #66D9EF;
+}
+code.Polygen .hl.kwc {
+color: #A6E22E;
+}
+code.Polygen .hl.lin {
+color: #75715E;
+}
+pre.EBNF,
+code.EBNF {
+color: #231f20;
+}
+code.EBNF hl.opt {
+color: #ee2e24;
+}
+code.EBNF .hl.str {
+color: #009ddc;
+}
+code.EBNF .hl.kwa {
+color: #b06110;
+}
+.mono,
+.monobold {
+font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.monobold {
+font-weight: bold;
+}
+.R {
+color: #CC0000;
+}
+.B {
+color: #3333FF;
+}
+.G {
+color: #37A693;
+}
+.X {
+color: #C28141;
+}
+
+</style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -69,9 +628,9 @@ SOFTWARE.
 <h1 class="title followed-by-subtitle">Polygen Meta Language Spec 1.0</h1>
 <p class="subtitle">Guida introduttiva all’uso di PML</p>
 <div class="summary">
-<p>Edizione <strong>v1.1.0</strong> (2018-02-10) per <strong>PML 1.0</strong>, Polygen <strong>v1.0.6</strong>.</p>
+<p>Edizione <strong>v1.1.1</strong> (2020-09-13) per <strong>PML 1.0</strong>, Polygen <strong>v1.0.6</strong>.</p>
 <div class="Note">
-<p><strong>Copyright © 2002-18 Alvise Spanò.</strong> Questo documento è soggetto ai termini della licenza <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" title="Visita la pagina ufficiale della GNU GPLv2 su www.gnu.org">GNU General Public License</a> (GPLv2+); o la versione 2 della licenza o (a propria scelta) una versione successiva. È lecito redistribuirlo o modificarlo secondo i termini della medesima licenza.</p>
+<p><strong>Copyright © 2002-2020 Alvise Spanò.</strong> Questo documento è soggetto ai termini della licenza <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" title="Visita la pagina ufficiale della GNU GPLv2 su www.gnu.org">GNU General Public License</a> (GPLv2+); o la versione 2 della licenza o (a propria scelta) una versione successiva. È lecito redistribuirlo o modificarlo secondo i termini della medesima licenza.</p>
 <p>Nuova edizione digitale a cura di <a href="https://github.com/tajmone" title="Visita il profilo GitHub di Tristano Ajmone">Tristano Ajmone</a> (Febbraio 2018).</p>
 </div>
 </div>
@@ -80,23 +639,27 @@ SOFTWARE.
 <nav id="TOC">
 <h1 class="toc-title">Indice</h1>
 <ul>
-<li><a href="#sec:cosè-una-grammatica">1 Cos’è una grammatica?</a><ul>
+<li><a href="#sec:cosè-una-grammatica">1 Cos’è una grammatica?</a>
+<ul>
 <li><a href="#sec:sottoproduzioni">1.1 Sottoproduzioni</a></li>
 <li><a href="#sec:sottoproduzioni-opzionali">1.2 Sottoproduzioni opzionali</a></li>
 <li><a href="#sec:commenti">1.3 Commenti</a></li>
 </ul></li>
-<li><a href="#sec:caratteristiche-avanzate">2 Caratteristiche avanzate</a><ul>
+<li><a href="#sec:caratteristiche-avanzate">2 Caratteristiche avanzate</a>
+<ul>
 <li><a href="#sec:concatenazione">2.1 Concatenazione</a></li>
 <li><a href="#sec:epsilon">2.2 Epsilon</a></li>
 <li><a href="#sec:controllo-probabilita">2.3 Controllo della probabilità di una produzione</a></li>
-<li><a href="#sec:unfolding">2.4 Unfolding</a><ul>
+<li><a href="#sec:unfolding">2.4 Unfolding</a>
+<ul>
 <li><a href="#sec:simboli-non-terminali">2.4.1 Di simboli non terminali</a></li>
 <li><a href="#sec:unfolding-sottoproduzioni">2.4.2 Di sottoproduzioni</a></li>
 <li><a href="#sec:di-sottoproduzioni-opzionali">2.4.3 Di sottoproduzioni opzionali</a></li>
 <li><a href="#sec:di-sottoproduzioni-permutabili">2.4.4 Di sottoproduzioni permutabili</a></li>
 <li><a href="#sec:di-sottoproduzioni-soggette-ad-unfolding-in-profondità">2.4.5 Di sottoproduzioni soggette ad unfolding in profondità</a></li>
 </ul></li>
-<li><a href="#sec:attributi">2.5 Attributi</a><ul>
+<li><a href="#sec:attributi">2.5 Attributi</a>
+<ul>
 <li><a href="#sec:etichette-selezione">2.5.1 Etichette e selezione</a></li>
 <li><a href="#sec:selezione-multipla">2.5.2 Selezione multipla</a></li>
 <li><a href="#sec:reset-dellambiente-delle-etichette">2.5.3 Reset dell’ambiente delle etichette</a></li>
@@ -105,11 +668,13 @@ SOFTWARE.
 <li><a href="#sec:permutazioni">2.7 Permutazioni</a></li>
 <li><a href="#sec:unfolding-profondita">2.8 Unfolding in profondità</a></li>
 <li><a href="#sec:folding">2.9 Folding</a></li>
-<li><a href="#sec:binding">2.10 Binding</a><ul>
+<li><a href="#sec:binding">2.10 Binding</a>
+<ul>
 <li><a href="#sec:chiusure">2.10.1 Chiusure</a></li>
 <li><a href="#sec:sospensioni">2.10.2 Sospensioni</a></li>
 </ul></li>
-<li><a href="#sec:ambienti-scoping">2.11 Ambienti e Scoping</a><ul>
+<li><a href="#sec:ambienti-scoping">2.11 Ambienti e Scoping</a>
+<ul>
 <li><a href="#sec:ambiente-a-top-level">2.11.1 Ambiente a top-level</a></li>
 <li><a href="#sec:ambienti-locali">2.11.2 Ambienti locali</a></li>
 <li><a href="#sec:scoping-statico-lessicale">2.11.3 Scoping statico lessicale</a></li>
@@ -117,13 +682,16 @@ SOFTWARE.
 <li><a href="#sec:generazione-posizionale">2.12 Generazione posizionale</a></li>
 <li><a href="#sec:iterazione">2.13 Iterazione</a></li>
 </ul></li>
-<li><a href="#sec:tecniche-avanzate">3 Tecniche avanzate</a><ul>
+<li><a href="#sec:tecniche-avanzate">3 Tecniche avanzate</a>
+<ul>
 <li><a href="#sec:ricorsione">3.1 Ricorsione</a></li>
 <li><a href="#sec:raggruppamento">3.2 Raggruppamento</a></li>
 <li><a href="#sec:controllo-probabilita-opzionale">3.3 Controllo della probabilità di una sottoproduzione opzionale</a></li>
 </ul></li>
-<li><a href="#sec:controllo-statico-di-una-grammatica">4 Controllo statico di una grammatica</a><ul>
-<li><a href="#sec:errori">4.1 Errori</a><ul>
+<li><a href="#sec:controllo-statico-di-una-grammatica">4 Controllo statico di una grammatica</a>
+<ul>
+<li><a href="#sec:errori">4.1 Errori</a>
+<ul>
 <li><a href="#sec:inesistenza-di-simboli-non-terminali">4.1.1 Inesistenza di simboli non terminali</a></li>
 <li><a href="#sec:ricorsioni-cicliche-e-non-terminazione">4.1.2 Ricorsioni cicliche e non-terminazione</a></li>
 <li><a href="#sec:unfolding-ricorsivi">4.1.3 Unfolding ricorsivi</a></li>
@@ -132,23 +700,28 @@ SOFTWARE.
 <li><a href="#sec:carattere-illegale">4.1.6 Carattere illegale</a></li>
 <li><a href="#sec:token-inaspettato">4.1.7 Token inaspettato</a></li>
 </ul></li>
-<li><a href="#sec:warning">4.2 Warning</a><ul>
+<li><a href="#sec:warning">4.2 Warning</a>
+<ul>
 <li><a href="#sec:livello-0">4.2.1 Livello 0</a></li>
-<li><a href="#sec:livello-1">4.2.2 Livello 1</a><ul>
-<li><a href="#sec:inesistenza-del-simbolo-i">4.2.2.1 Inesistenza del simbolo <code>I</code></a></li>
+<li><a href="#sec:livello-1">4.2.2 Livello 1</a>
+<ul>
+<li><a href="#sec:inesistenza-del-simbolo-i">4.2.2.1 Inesistenza del simbolo ‘I’</a></li>
 <li><a href="#sec:potenziali-epsilon-produzioni">4.2.2.2 Potenziali epsilon-produzioni</a></li>
 <li><a href="#sec:selezione-distruttiva">4.2.2.3 Selezione distruttiva</a></li>
 </ul></li>
-<li><a href="#sec:livello-2">4.2.3 Livello 2</a><ul>
+<li><a href="#sec:livello-2">4.2.3 Livello 2</a>
+<ul>
 <li><a href="#sec:permutazione-inutile">4.2.3.1 Permutazione inutile</a></li>
 <li><a href="#sec:unfolding-inutile">4.2.3.2 Unfolding inutile</a></li>
 </ul></li>
-<li><a href="#sec:livello-3">4.2.4 Livello 3</a><ul>
+<li><a href="#sec:livello-3">4.2.4 Livello 3</a>
+<ul>
 <li><a href="#sec:unfolding-di-un-simbolo-legato-ad-unassegnazione">4.2.4.1 Unfolding di un simbolo legato ad un’assegnazione</a></li>
 </ul></li>
 </ul></li>
 </ul></li>
-<li><a href="#sec:appendice">5 Appendice</a><ul>
+<li><a href="#sec:appendice">5 Appendice</a>
+<ul>
 <li><a href="#sec:sintassi-concreta">5.1 Sintassi concreta</a></li>
 <li><a href="#sec:sintassi-astratta">5.2 Sintassi astratta</a></li>
 <li><a href="#sec:regole-lessicali">5.3 Regole lessicali</a></li>
@@ -159,17 +732,17 @@ SOFTWARE.
 </nav>
 <hr>
 <h1 id="sec:cosè-una-grammatica">1 Cos’è una grammatica?</h1>
-<p>Una grammatica è un file di testo ASCII che contiene le definizioni della struttura sintattica e dei termini che il programma utilizza per comporre frasi. Il <em>Polygen</em> è in grado di interpretare un linguaggio per la definizione di grammatiche di <em><a href="https://it.wikipedia.org/wiki/Gerarchia_di_Chomsky" title="Vedi pagina 'Gerarchia di Chomsky' su Wikipedia">tipo-2</a></em> (secondo la classificazione di Chomsky) che consiste in una variante più espressiva dell’<em>EBNF (<a href="https://it.wikipedia.org/wiki/EBNF" title="Vedi pagina 'Extended Backus–Naur form' su Wikipedia">Extended Backus Naur Form</a>)</em> — una forma semplice e molto utilizzata di descrizione della sintassi di un linguaggio.</p>
+<p>Una grammatica è un file di testo ASCII che contiene le definizioni della struttura sintattica e dei termini che il programma utilizza per comporre frasi. Il <em>Polygen</em> è in grado di interpretare un linguaggio per la definizione di grammatiche di <em><a href="https://it.wikipedia.org/wiki/Gerarchia_di_Chomsky" title="Vedi pagina &#39;Gerarchia di Chomsky&#39; su Wikipedia">tipo-2</a></em> (secondo la classificazione di Chomsky) che consiste in una variante più espressiva dell’<em>EBNF (<a href="https://it.wikipedia.org/wiki/EBNF" title="Vedi pagina &#39;Extended Backus–Naur form&#39; su Wikipedia">Extended Backus Naur Form</a>)</em> — una forma semplice e molto utilizzata di descrizione della sintassi di un linguaggio.</p>
 <p>Una definizione consiste nello specificare per un dato simbolo una serie di <strong>produzioni</strong> separate dal <strong>pipe</strong> <code>|</code> e seguite dal <strong>punto e virgola <code>;</code></strong> che funge da terminatore:</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> la mela <span class="hl opt">|</span> il mango <span class="hl opt">|</span> l'arancia <span class="hl opt">;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> la mela <span class="hl opt">|</span> il mango <span class="hl opt">|</span> l&#39;arancia <span class="hl opt">;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
 <pre><code>la mela
 il mango
-l'arancia</code></pre>
-<p>Questa definizione del simbolo <code>S</code> (detto <strong>non terminale</strong>) permette la generazione dei simboli <code>la mela</code>, <code>il mango</code> oppure <code>l'arancia</code> (detti <strong>terminali</strong>).</p>
-<p>La probabilità con cui viene generata <code>la mela</code> è pari ad 1 volta su 3, così come per <code>il mango</code> e <code>l'arancia</code>: perciò in presenza di 3 produzioni si ha 1 probabilità su 3 per ciascuna di esse; in presenza di 5 produzioni si ha una probabilità su 5, ecc.</p>
+l&#39;arancia</code></pre>
+<p>Questa definizione del simbolo <code>S</code> (detto <strong>non terminale</strong>) permette la generazione dei simboli <code>la mela</code>, <code>il mango</code> oppure <code>l&#39;arancia</code> (detti <strong>terminali</strong>).</p>
+<p>La probabilità con cui viene generata <code>la mela</code> è pari ad 1 volta su 3, così come per <code>il mango</code> e <code>l&#39;arancia</code>: perciò in presenza di 3 produzioni si ha 1 probabilità su 3 per ciascuna di esse; in presenza di 5 produzioni si ha una probabilità su 5, ecc.</p>
 <p>È possibile fornire numerose definizioni di simboli non terminali diversi e richiamare tali simboli nelle varie produzioni, al fine di rendere articolata la generazione di frasi:</p>
 <p><strong>ESEMPIO</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> il <span class="hl kwa">Animale</span> mangia <span class="hl kwa">Frutto</span> <span class="hl opt">;</span>
@@ -206,31 +779,31 @@ alano Fido</code></pre>
 <h2 id="sec:sottoproduzioni">1.1 Sottoproduzioni</h2>
 <p>In una definizione, nella parte a destra del <code>::=</code>, è possibile specificare una sottoproduzione di qualunque forma tra parentesi tonde:</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> la <span class="hl opt">(</span>pera <span class="hl opt">|</span> mela <span class="hl opt">|</span> banana<span class="hl opt">)</span> e' sul <span class="hl opt">(</span>tavolo <span class="hl opt">|</span> davanzale<span class="hl opt">) ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> la <span class="hl opt">(</span>pera <span class="hl opt">|</span> mela <span class="hl opt">|</span> banana<span class="hl opt">)</span> e&#39; sul <span class="hl opt">(</span>tavolo <span class="hl opt">|</span> davanzale<span class="hl opt">) ;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
-<pre><code>la pera e' sul tavolo
-la pera e' sul davanzale
-la mela e' sul tavolo
-la mela e' sul davanzale
-la banana e' sul tavolo
-la banana e' sul davanzale</code></pre>
+<pre><code>la pera e&#39; sul tavolo
+la pera e&#39; sul davanzale
+la mela e&#39; sul tavolo
+la mela e&#39; sul davanzale
+la banana e&#39; sul tavolo
+la banana e&#39; sul davanzale</code></pre>
 <h2 id="sec:sottoproduzioni-opzionali">1.2 Sottoproduzioni opzionali</h2>
 <p>Una sottoproduzione specificata tra parentesi quadrate anziché tonde è considerata opzionale ed ha una probabilità del 50% (pari ad 1 volta su 2) di essere generata:</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> la <span class="hl opt">(</span>pera <span class="hl opt">|</span> mela<span class="hl opt">)</span> e' sul <span class="hl opt">(</span>tavolo <span class="hl opt">|</span> davanzale<span class="hl opt">) [</span>del salotto <span class="hl opt">|</span> della cucina<span class="hl opt">] ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> la <span class="hl opt">(</span>pera <span class="hl opt">|</span> mela<span class="hl opt">)</span> e&#39; sul <span class="hl opt">(</span>tavolo <span class="hl opt">|</span> davanzale<span class="hl opt">) [</span>del salotto <span class="hl opt">|</span> della cucina<span class="hl opt">] ;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
-<pre><code>la pera e' sul tavolo
-la pera e' sul tavolo del salotto
-la pera e' sul tavolo della cucina
-la pera e' sul davanzale</code></pre>
+<pre><code>la pera e&#39; sul tavolo
+la pera e&#39; sul tavolo del salotto
+la pera e&#39; sul tavolo della cucina
+la pera e&#39; sul davanzale</code></pre>
 <p>ecc.</p>
 <h2 id="sec:commenti">1.3 Commenti</h2>
 <p>È possibile scrivere testo qualunque tra la coppia di parole chiave <code>(*</code> e <code>*)</code>. Tale testo verrà completamente ignorato dal <em>Polygen</em>.</p>
 <p><strong>ESEMPIO</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> la mela <span class="hl opt">|</span> la pera <span class="hl com">(* | la banana *)</span> <span class="hl opt">|</span> il mango <span class="hl opt">;</span>
-<span class="hl com">(* anche questo e' un commento *)</span>
+<span class="hl com">(* anche questo e&#39; un commento *)</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
 <pre><code>la mela
@@ -276,20 +849,20 @@ _</code></pre>
 <h2 id="sec:controllo-probabilita">2.3 Controllo della probabilità di una produzione</h2>
 <p>Il simbolo <strong>più</strong> <code>+</code> prefisso ad una qualunque produzione aumenta la probabilità che questa venga generata rispetto alle altre della stessa serie; simmetricamente, il simbolo <strong>meno</strong> <code>-</code> diminuisce la probabilità. Un numero a piacere di <code>+</code> e <code>-</code> può essere specificato:</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> il gatto mangia <span class="hl opt">(+</span> la mela <span class="hl opt">|-</span> la pera <span class="hl opt">|</span> l'arancia <span class="hl opt">|--</span> il  limone<span class="hl opt">)  ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> il gatto mangia <span class="hl opt">(+</span> la mela <span class="hl opt">|-</span> la pera <span class="hl opt">|</span> l&#39;arancia <span class="hl opt">|--</span> il  limone<span class="hl opt">)  ;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
 <pre><code>il gatto mangia la mela
 il gatto mangia la pera
-il gatto mangia l'arancia
+il gatto mangia l&#39;arancia
 il gatto mangia il limone</code></pre>
 <p>La definizione del simbolo non terminale <code>S</code> viene internamente interpretata come:</p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> il gatto mangia <span class="hl opt">(</span> la mela <span class="hl opt">|</span> la mela <span class="hl opt">|</span> la mela <span class="hl opt">|</span> la mela
-                      <span class="hl opt">|</span> la pera <span class="hl opt">|</span> la  pera
-                      <span class="hl opt">|</span> l'arancia <span class="hl opt">|</span> l'arancia <span class="hl opt">|</span> l'arancia
-                      <span class="hl opt">|</span> il  limone<span class="hl opt">) ;</span>
+                      <span class="hl opt">|</span> la pera <span class="hl opt">|</span> la  pera
+                      <span class="hl opt">|</span> l&#39;arancia <span class="hl opt">|</span> l&#39;arancia <span class="hl opt">|</span> l&#39;arancia
+                      <span class="hl opt">|</span> il  limone<span class="hl opt">) ;</span>
 </code></pre>
-<p>pertanto la probabilità che la produzione <code>la mela</code> venga generata è maggiore rispetto a quella de <code>l'arancia</code>, che è maggiore di quella de <code>la pera</code>, a sua volta maggiore de <code>il limone</code>.</p>
+<p>pertanto la probabilità che la produzione <code>la mela</code> venga generata è maggiore rispetto a quella de <code>l&#39;arancia</code>, che è maggiore di quella de <code>la pera</code>, a sua volta maggiore de <code>il limone</code>.</p>
 <h2 id="sec:unfolding">2.4 Unfolding</h2>
 <p>Il <em>Polygen</em> dispone di un potente sottosistema di unfolding che, in generale, permette di portare al livello della sequenza corrente una serie di produzioni altrimenti raccolte in una sottoproduzione o da un simbolo non terminale.</p>
 <p>Si può intuitivamente vedere questa operazione come un <em>appiattimento</em> di una grammatica operato a monte della generazione e che pertanto può influire su quest’ultima dal punto di vista probabilistico soltanto, poiché la trasformazione non altera la semantica della grammatica sorgente — come dimostrano le regole di traduzione riportate in <a href="#sec:regole-traduzione">sezione 5.5</a>.</p>
@@ -297,9 +870,9 @@ il gatto mangia il limone</code></pre>
 <h3 id="sec:simboli-non-terminali">2.4.1 Di simboli non terminali</h3>
 <p>Si consideri il seguente scenario:</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> gatto soriano <span class="hl opt">|</span> cane <span class="hl kwa">Razza</span> <span class="hl opt">;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> gatto soriano <span class="hl opt">|</span> cane <span class="hl kwa">Razza</span> <span class="hl opt">;</span>
 
-<span class="hl kwa">Razza</span> <span class="hl opt">::=</span> pastore <span class="hl opt">|</span> dalmata <span class="hl opt">|</span> bastardo <span class="hl opt">;</span>
+<span class="hl kwa">Razza</span> <span class="hl opt">::=</span> pastore <span class="hl opt">|</span> dalmata <span class="hl opt">|</span> bastardo <span class="hl opt">;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
 <pre><code>gatto soriano
@@ -307,7 +880,7 @@ cane pastore
 cane dalmata
 cane bastardo</code></pre>
 <p>La probabilità che <code>gatto soriano</code> sia generato è pari a 1 su 2; non vale però lo stesso per <code>cane pastore</code>, <code>cane dalmata</code> e <code>cane bastardo</code>, sebbene un utente possa ritenere ragionevole che siano tutti generabili con la medesima probabilità.</p>
-<p>Il problema nasce dal fatto che <code>gatto soriano</code> e <code>cane Razza</code> si spartiscono equamente la produzione di <code>S</code>, ovvero la probabilità con cui viene generato <code>gatto soriano</code> è la stessa (pari ad 1 su 2) con cui viene generato uno tra <code>cane pastore</code>, <code>cane dalmata</code> e <code>cane bastardo</code>. Nella fattispecie la distribuzione delle probabilità per ogni produzione possibile appare come segue:</p>
+<p>Il problema nasce dal fatto che <code>gatto soriano</code> e <code>cane Razza</code> si spartiscono equamente la produzione di <code>S</code>, ovvero la probabilità con cui viene generato <code>gatto soriano</code> è la stessa (pari ad 1 su 2) con cui viene generato uno tra <code>cane pastore</code>, <code>cane dalmata</code> e <code>cane bastardo</code>. Nella fattispecie la distribuzione delle probabilità per ogni produzione possibile appare come segue:</p>
 <table>
 <tbody>
 <tr class="odd">
@@ -337,7 +910,7 @@ cane bastardo</code></pre>
 <p><strong>ESEMPIO</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> gatto soriano <span class="hl opt">|</span> cane <span class="hl opt">&gt;</span><span class="hl kwa">Razza</span> <span class="hl opt">;</span>
 
-<span class="hl kwa">Razza</span> <span class="hl opt">::=</span> pastore <span class="hl opt">|</span> dalmata <span class="hl opt">|</span> bastardo <span class="hl opt">;</span>
+<span class="hl kwa">Razza</span> <span class="hl opt">::=</span> pastore <span class="hl opt">|</span> dalmata <span class="hl opt">|</span> bastardo <span class="hl opt">;</span>
 </code></pre>
 <p>Prefiggendo la parola chiave <code>&gt;</code>, il programma opera, nella fase di preprocessing a monte della generazione, la trasformazione di cui sopra, cambiando la distribuzione delle probabilità nel seguente modo:</p>
 <table>
@@ -363,34 +936,34 @@ cane bastardo</code></pre>
 <h3 id="sec:unfolding-sottoproduzioni">2.4.2 Di sottoproduzioni</h3>
 <p>Non è raro utilizzare una sottoproduzione per diminuire la verbosità di una grammatica, ad esempio raccogliendo una serie di sostantivi in base all’articolo che supportano, evitando così di doverne specificare uno per ciascuno.</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> il <span class="hl opt">(</span>gatto <span class="hl opt">|</span> cane <span class="hl opt">|</span> canarino <span class="hl opt">|</span> toro <span class="hl opt">|</span> lupo <span class="hl opt">|</span> gallo<span class="hl opt">)</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> il <span class="hl opt">(</span>gatto <span class="hl opt">|</span> cane <span class="hl opt">|</span> canarino <span class="hl opt">|</span> toro <span class="hl opt">|</span> lupo <span class="hl opt">|</span> gallo<span class="hl opt">)</span>
     <span class="hl opt">|</span> lo storione
-    <span class="hl opt">|</span> la <span class="hl opt">(</span>capra <span class="hl opt">|</span> pecora<span class="hl opt">) ;</span>
+    <span class="hl opt">|</span> la <span class="hl opt">(</span>capra <span class="hl opt">|</span> pecora<span class="hl opt">) ;</span>
 </code></pre>
 <p>Se da una parte l’architettura e la scalabilità della grammatica ne giovano, dall’altra la qualità dell’output ne risente molto, in quanto 1 volta su 3 verrà generato <code>lo storione</code> per un motivo analogo a quello esposto in <a href="#sec:simboli-non-terminali">sezione 2.4.1</a>. Per portare l’eterogeneità dell’output al (ragionevolmente desiderabile) livello in cui ciascun animale possa essere prodotto con la medesima probabilità, sarebbe necessario evitare l’utilizzo delle parentesi tonde, le quali danno luogo a sole 3 macro-produzioni, e specificare l’articolo accanto ad ogni nome di animale; in altre parole, quindi, rinunciare all’architettura originale della grammatica.</p>
-<p>A tale proposito una qualunque sottoproduzione può essere sottoposta ad <strong>unfolding</strong> in maniera analoga a quanto esposto in <a href="#sec:simboli-non-terminali">sezione 2.4.1</a> per i simboli non terminali. L’uso dell’operatore <code>&gt;</code> istruisce il programma a delegare al preprocessore l’onere di operare l’unfolding della sottoproduzione immediatamente seguente, permettendo all’utente di mantenere inalterata l’architettura della grammatica sorgente.</p>
+<p>A tale proposito una qualunque sottoproduzione può essere sottoposta ad <strong>unfolding</strong> in maniera analoga a quanto esposto in <a href="#sec:simboli-non-terminali">sezione 2.4.1</a> per i simboli non terminali. L’uso dell’operatore <code>&gt;</code> istruisce il programma a delegare al preprocessore l’onere di operare l’unfolding della sottoproduzione immediatamente seguente, permettendo all’utente di mantenere inalterata l’architettura della grammatica sorgente.</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> il <span class="hl opt">&gt;(</span>gatto <span class="hl opt">|</span> cane <span class="hl opt">|</span> canarino <span class="hl opt">|</span> toro <span class="hl opt">|</span> lupo <span class="hl opt">|</span> gallo<span class="hl opt">)</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> il <span class="hl opt">&gt;(</span>gatto <span class="hl opt">|</span> cane <span class="hl opt">|</span> canarino <span class="hl opt">|</span> toro <span class="hl opt">|</span> lupo <span class="hl opt">|</span> gallo<span class="hl opt">)</span>
     <span class="hl opt">|</span> lo storione
-    <span class="hl opt">|</span> la <span class="hl opt">&gt;(</span>capra <span class="hl opt">|</span> pecora<span class="hl opt">) ;</span>
+    <span class="hl opt">|</span> la <span class="hl opt">&gt;(</span>capra <span class="hl opt">|</span> pecora<span class="hl opt">) ;</span>
 </code></pre>
 <p>viene tradotto esattamente come desiderato:</p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> il gatto <span class="hl opt">|</span> il cane <span class="hl opt">|</span> il canarino <span class="hl opt">|</span> il toro <span class="hl opt">|</span> il lupo <span class="hl opt">|</span> il gallo
-    <span class="hl opt">|</span> lo storione
-    <span class="hl opt">|</span> la capra <span class="hl opt">|</span> la pecora <span class="hl opt">;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> il gatto <span class="hl opt">|</span> il cane <span class="hl opt">|</span> il canarino <span class="hl opt">|</span> il toro <span class="hl opt">|</span> il lupo <span class="hl opt">|</span> il gallo
+    <span class="hl opt">|</span> lo storione
+    <span class="hl opt">|</span> la capra <span class="hl opt">|</span> la pecora <span class="hl opt">;</span>
 </code></pre>
 <p>ovvero una serie di produzioni alla stesso livello.</p>
 <p>Un esempio più articolato:</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> <span class="hl kwb">M</span><span class="hl opt">:</span> <span class="hl opt">&gt;(</span> il <span class="hl opt">(</span>gatto <span class="hl opt">|</span> cane <span class="hl opt">&gt;(</span>pastore <span class="hl opt">|</span> dalmata<span class="hl opt">) |</span> canarino <span class="hl opt">|</span> toro <span class="hl opt">|</span> lupo <span class="hl opt">|</span> gallo<span class="hl opt">)</span>
-          <span class="hl opt">|</span> lo storione
-          <span class="hl opt">)</span>
-   <span class="hl opt">|</span>  <span class="hl kwb">F</span><span class="hl opt">:</span> la <span class="hl opt">&gt;(</span>capra <span class="hl opt">|</span> pecora<span class="hl opt">) ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> <span class="hl kwb">M</span><span class="hl opt">: &gt;(</span> il <span class="hl opt">(</span>gatto <span class="hl opt">|</span> cane <span class="hl opt">&gt;(</span>pastore <span class="hl opt">|</span> dalmata<span class="hl opt">) |</span> canarino <span class="hl opt">|</span> toro <span class="hl opt">|</span> lupo <span class="hl opt">|</span> gallo<span class="hl opt">)</span>
+          <span class="hl opt">|</span> lo storione
+          <span class="hl opt">)</span>
+   <span class="hl opt">|</span>  <span class="hl kwb">F</span><span class="hl opt">:</span> la <span class="hl opt">&gt;(</span>capra <span class="hl opt">|</span> pecora<span class="hl opt">) ;</span>
 </code></pre>
 <p>viene tradotto in:</p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il gatto <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il cane pastore <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il cane dalmata <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il canarino <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il toro <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il lupo <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il gallo
-   <span class="hl opt">|</span>  <span class="hl kwb">M</span><span class="hl opt">:</span> lo storione
-   <span class="hl opt">|</span>  <span class="hl kwb">F</span><span class="hl opt">:</span> la capra <span class="hl opt">|</span> <span class="hl kwb">F</span><span class="hl opt">:</span> pecora <span class="hl opt">;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il gatto <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il cane pastore <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il cane dalmata <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il canarino <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il toro <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il lupo <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il gallo
+   <span class="hl opt">|</span>  <span class="hl kwb">M</span><span class="hl opt">:</span> lo storione
+   <span class="hl opt">|</span>  <span class="hl kwb">F</span><span class="hl opt">:</span> la capra <span class="hl opt">|</span> <span class="hl kwb">F</span><span class="hl opt">:</span> pecora <span class="hl opt">;</span>
 </code></pre>
 <h3 id="sec:di-sottoproduzioni-opzionali">2.4.3 Di sottoproduzioni opzionali</h3>
 <p>Una sottoproduzione tra parentesi quadrate (vedi <a href="#sec:sottoproduzioni-opzionali">sezione 1.2</a>) è equivalente ad una sottoproduzione tra parentesi tonde che produce il contenuto originale oppure <strong>epsilon</strong> (si veda l’esempio di cui in <a href="#sec:controllo-probabilita-opzionale">sezione 3.3</a>).</p>
@@ -398,22 +971,22 @@ cane bastardo</code></pre>
 <h3 id="sec:di-sottoproduzioni-permutabili">2.4.4 Di sottoproduzioni permutabili</h3>
 <p>Come è possibile constatare dalle regole di traduzione in <a href="#sec:regole-traduzione">sezione 5.5</a>, l’<strong>unfolding</strong> operato dal preprocessore avviene a valle delle permutazioni (vedi <a href="#sec:permutazioni">sezione 2.7</a>): una sottoproduzione permutabile legata all’operatore <code>&gt;</code> è pertanto soggetta prima alla permutazione, la quale mantiene valida l’azione dell’<strong>unfolding</strong> specificata, che viene eseguita successivamente nella nuova posizione all’interno della sequenza.</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= &gt;{</span>il <span class="hl opt">&gt;(</span>cane <span class="hl opt">|</span> gatto<span class="hl opt">)}</span> e <span class="hl opt">{</span>la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> capra<span class="hl opt">)} ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= &gt;{</span>il <span class="hl opt">&gt;(</span>cane <span class="hl opt">|</span> gatto<span class="hl opt">)}</span> e <span class="hl opt">{</span>la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> capra<span class="hl opt">)} ;</span>
 </code></pre>
 <p>Si presti attenzione al differente comportamento dell’unfolding esterno alle parentesi graffe rispetto a quello interno; la traduzione dà luogo a:</p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> il cane e la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> capra<span class="hl opt">)</span>
-   <span class="hl opt">|</span> il gatto e la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> capra<span class="hl opt">)</span>
-   <span class="hl opt">|</span> la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> capra<span class="hl opt">)</span> e il cane
-   <span class="hl opt">|</span> la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> capra<span class="hl opt">)</span> e il gatto <span class="hl opt">;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> il cane e la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> capra<span class="hl opt">)</span>
+   <span class="hl opt">|</span> il gatto e la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> capra<span class="hl opt">)</span>
+   <span class="hl opt">|</span> la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> capra<span class="hl opt">)</span> e il cane
+   <span class="hl opt">|</span> la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> capra<span class="hl opt">)</span> e il gatto <span class="hl opt">;</span>
 </code></pre>
 <h3 id="sec:di-sottoproduzioni-soggette-ad-unfolding-in-profondità">2.4.5 Di sottoproduzioni soggette ad unfolding in profondità</h3>
 <p>Come descritto in <a href="#sec:unfolding-profondita">sezione 2.8</a> l’unfolding in profondità dà luogo ad una sottoproduzione al cui interno tutto è stato appiattito.</p>
 <p>Tuttavia talvolta è desiderabile operare un ulteriore <strong>unfolding</strong>: quello di tale sottoproduzione.</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= &gt; &gt;&gt;</span> il <span class="hl opt">(</span>cane <span class="hl opt">|</span> gatto<span class="hl opt">) |</span> la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> capra<span class="hl opt">) &lt;&lt; |</span> lo storione <span class="hl opt">;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= &gt; &gt;&gt;</span> il <span class="hl opt">(</span>cane <span class="hl opt">|</span> gatto<span class="hl opt">) |</span> la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> capra<span class="hl opt">) &lt;&lt; |</span> lo storione <span class="hl opt">;</span>
 </code></pre>
 <p>che viene tradotto in:</p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> il cane <span class="hl opt">|</span> il gatto <span class="hl opt">|</span> la pecora <span class="hl opt">|</span> la capra <span class="hl opt">|</span> lo storione <span class="hl opt">;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> il cane <span class="hl opt">|</span> il gatto <span class="hl opt">|</span> la pecora <span class="hl opt">|</span> la capra <span class="hl opt">|</span> lo storione <span class="hl opt">;</span>
 </code></pre>
 <h2 id="sec:attributi">2.5 Attributi</h2>
 <h3 id="sec:etichette-selezione">2.5.1 Etichette e selezione</h3>
@@ -473,9 +1046,9 @@ le pecore</code></pre>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">(+M|--F)</span><span class="hl opt">.</span><span class="hl kwc">(S|-P)</span> <span class="hl opt">;</span>
 </code></pre>
 <p>Che è equivalente a:</p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= (</span><span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">F</span><span class="hl opt">).</span><span class="hl kwc">S</span>
-   <span class="hl opt">|</span>  <span class="hl opt">(</span><span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">F</span><span class="hl opt">).</span><span class="hl kwc">S</span>
-   <span class="hl opt">|</span>  <span class="hl opt">(</span><span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">F</span><span class="hl opt">).</span><span class="hl kwc">P</span> <span class="hl opt">;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= (</span><span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">F</span><span class="hl opt">).</span><span class="hl kwc">S</span>
+   <span class="hl opt">|  (</span><span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">F</span><span class="hl opt">).</span><span class="hl kwc">S</span>
+   <span class="hl opt">|  (</span><span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">M</span> <span class="hl opt">|</span> <span class="hl kwa">Ogg</span><span class="hl opt">.</span><span class="hl kwc">F</span><span class="hl opt">).</span><span class="hl kwc">P</span> <span class="hl opt">;</span>
 </code></pre>
 <h3 id="sec:reset-dellambiente-delle-etichette">2.5.3 Reset dell’ambiente delle etichette</h3>
 <p>Va tenuto a mente che l’operatore di selezione aggiunge l’etichetta specificata alla serie di quelle già attive; ciò comporta la necessità di azzerare manualmente tale serie di quando in quando. Si vogliano ad esempio generare numeri interi positivi (zero incluso) di qualunque lunghezza in cui non compaiano zeri non significativi:</p>
@@ -498,15 +1071,15 @@ le pecore</code></pre>
 <p>D’altro canto però l’architettura stessa di una grammattica assai complessa, provvista di produzioni ricorsive che generano subordinate, potrebbe rendere impossibile tale operazione, a meno di riscrivere parte del sorgente.</p>
 <p>A tale proposito il linguaggio mette a disposizione la parola chiave <strong>backslash</strong> <code>\</code> che istruisce il programma a trasformare in maiuscola (nel caso in cui già non lo sia) la prima lettera del simbolo terminale immediatamente successivo.</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= \</span> pippo <span class="hl opt">(</span>e' <span class="hl opt">|</span> <span class="hl str">&quot;.&quot;</span> <span class="hl opt">\)</span> <span class="hl kwa">Eulogia</span> <span class="hl opt">^</span> <span class="hl str">&quot;.&quot;</span> <span class="hl opt">;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= \</span> pippo <span class="hl opt">(</span>e&#39; <span class="hl opt">|</span> <span class="hl str">&quot;.&quot;</span> <span class="hl opt">\)</span> <span class="hl kwa">Eulogia</span> <span class="hl opt">^</span> <span class="hl str">&quot;.&quot;</span> <span class="hl opt">;</span>
 
-<span class="hl kwa">Eulogia</span> <span class="hl opt">::=</span> proprio un bell'uomo
-         <span class="hl opt">|</span>  davvero un signore <span class="hl opt">;</span>
+<span class="hl kwa">Eulogia</span> <span class="hl opt">::=</span> proprio un bell&#39;uomo
+         <span class="hl opt">|</span>  davvero un signore <span class="hl opt">;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
-<pre><code>Pippo e' proprio un bell'uomo.
-Pippo. Proprio un bell'uomo.
-Pippo e' davvero un signore.
+<pre><code>Pippo e&#39; proprio un bell&#39;uomo.
+Pippo. Proprio un bell&#39;uomo.
+Pippo e&#39; davvero un signore.
 Pippo. Davvero un signore.</code></pre>
 <p>Si badi che l’azione dell’operatore <code>\</code> persiste fino al successivo simbolo terminale risultato della produzione, pertanto ogni altro atomo (epsilon, concatenazione o l’operatore <code>\</code> stesso) che si interpone agirà come di consueto:</p>
 <p><strong>ESEMPIO</strong></p>
@@ -518,70 +1091,83 @@ Pippo. Davvero un signore.</code></pre>
 <p>In molte lingue è possibile cambiare l’ordine delle parole (o di gruppi di parole) in una frase senza che il significato cambi; a livello macroscopico, analogamente, è talvolta possibile cambiare l’ordine delle frasi in un discorso.</p>
 <p>Per evitare che l’utente debba scrivere più volte la stessa sequenza con alcuni atomi cambiati di posizione, è possibile specificare tra <strong>parentesi graffe</strong> <code>{</code> e<code>}</code> sottoproduzioni che vengono automaticamente sottoposte ad una permutazione.</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> se <span class="hl opt">{</span>e'<span class="hl opt">}</span> <span class="hl opt">{</span>quindi<span class="hl opt">}</span> <span class="hl opt">{</span>egli<span class="hl opt">} ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> se <span class="hl opt">{</span>e&#39;<span class="hl opt">} {</span>quindi<span class="hl opt">} {</span>egli<span class="hl opt">} ;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
-<pre><code>se e' quindi egli
-se e' egli quindi
-se egli e' quindi
-se egli quindi e'
-se quindi egli e'
-se quindi e' egli</code></pre>
+<pre><code>se e&#39; quindi egli
+se e&#39; egli quindi
+se egli e&#39; quindi
+se egli quindi e&#39;
+se quindi egli e&#39;
+se quindi e&#39; egli</code></pre>
 <p>Si badi che la permutabilità di una sottoproduzione si riferisce alla sola sequenza di cui fa parte: specificare sottoproduzioni permutabili in sottosequenze (o altre sottoproduzioni — permutabili o meno) differenti non consente la permutazione. Si noti la differenza tra i due esempi a venire:</p>
+<div class="Alert">
+<p><strong>ATTENZIONE!</strong> — I due esempi che seguono posso sembrare identici di primo acchito, ma differiscono nella parte finale:</p>
+<ul>
+<li>il primo impiega parentesi graffe:
+<ul>
+<li><code>{{io} {partiro&#39;} solo} ;</code></li>
+</ul></li>
+<li>il secondo parentesi tonde:
+<ul>
+<li><code>({io} {partiro&#39;} solo) ;</code></li>
+</ul></li>
+</ul>
+</div>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>tra 10 minuti<span class="hl opt">}^, {</span>alle 3 in punto<span class="hl opt">}^, {{</span>io<span class="hl opt">} {</span>partiro'<span class="hl opt">}</span> solo<span class="hl opt">} ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>tra 10 minuti<span class="hl opt">}^</span><span class="hl str">&quot;,&quot;</span> <span class="hl opt">{</span>alle 3 in punto<span class="hl opt">}^</span><span class="hl str">&quot;,&quot;</span> <span class="hl opt">{{</span>io<span class="hl opt">} {</span>partiro&#39;<span class="hl opt">}</span> solo<span class="hl opt">} ;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
-<pre><code>tra 10 minuti, alle 3 in punto, io partiro' solo
-alle 3 in punto, tra 10 minuti, io partiro' solo
-tra 10 minuti, io partiro' solo, alle 3 in punto
-alle 3 in punto, io partiro' solo, tra 10 minuti
-io partiro' solo, tra 10 minuti, alle 3 in punto
-io partiro' solo, alle 3 in punto, tra 10 minuti
-tra 10 minuti, alle 3 in punto, partiro' io solo
-alle 3 in punto, tra 10 minuti, partiro' io solo
-tra 10 minuti, partiro' io solo, alle 3 in punto
-alle 3 in punto, partiro' io solo, tra 10 minuti
-partiro' io solo, tra 10 minuti, alle 3 in punto
-partiro' io solo, alle 3 in punto, tra 10 minuti</code></pre>
+<pre><code>tra 10 minuti, alle 3 in punto, io partiro&#39; solo
+alle 3 in punto, tra 10 minuti, io partiro&#39; solo
+tra 10 minuti, io partiro&#39; solo, alle 3 in punto
+alle 3 in punto, io partiro&#39; solo, tra 10 minuti
+io partiro&#39; solo, tra 10 minuti, alle 3 in punto
+io partiro&#39; solo, alle 3 in punto, tra 10 minuti
+tra 10 minuti, alle 3 in punto, partiro&#39; io solo
+alle 3 in punto, tra 10 minuti, partiro&#39; io solo
+tra 10 minuti, partiro&#39; io solo, alle 3 in punto
+alle 3 in punto, partiro&#39; io solo, tra 10 minuti
+partiro&#39; io solo, tra 10 minuti, alle 3 in punto
+partiro&#39; io solo, alle 3 in punto, tra 10 minuti</code></pre>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>tra 10 minuti<span class="hl opt">}^, {</span>alle 3 in punto<span class="hl opt">}^, ({</span>io<span class="hl opt">} {</span>partiro'<span class="hl opt">}</span> solo<span class="hl opt">) ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= {</span>tra 10 minuti<span class="hl opt">}^</span><span class="hl str">&quot;,&quot;</span> <span class="hl opt">{</span>alle 3 in punto<span class="hl opt">}^</span><span class="hl str">&quot;,&quot;</span> <span class="hl opt">({</span>io<span class="hl opt">} {</span>partiro&#39;<span class="hl opt">}</span> solo<span class="hl opt">) ;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
-<pre><code>tra 10 minuti, alle 3 in punto, io partiro' solo
-alle 3 in punto, tra 10 minuti, io partiro' solo
-tra 10 minuti, alle 3 in punto, partiro' io solo
-alle 3 in punto, tra 10 minuti, partiro' io solo</code></pre>
+<pre><code>tra 10 minuti, alle 3 in punto, io partiro&#39; solo
+alle 3 in punto, tra 10 minuti, io partiro&#39; solo
+tra 10 minuti, alle 3 in punto, partiro&#39; io solo
+alle 3 in punto, tra 10 minuti, partiro&#39; io solo</code></pre>
 <h2 id="sec:unfolding-profondita">2.8 Unfolding in profondità</h2>
 <p>È possibile operare l’unfolding in profondità di una sottoproduzione specificata tra doppie parentesi acute rivolte verso l’interno <code>&gt;&gt;</code> e <code>&lt;&lt;</code>: ciascun atomo, a qualunque livello, per cui ha senso l’unfolding (vedi <a href="#sec:unfolding">sezione 2.4</a>) è soggetto ad un unfolding appunto. Il risultato è l’appiattimento totale di qualunque sottoproduzione e simbolo non terminale specificati all’interno delle doppie parentesi acute:</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> senti <span class="hl opt">&gt;&gt;</span> <span class="hl kwb">M</span><span class="hl opt">:</span> <span class="hl opt">(</span> il <span class="hl opt">(</span>cane<span class="hl opt">|</span> gatto <span class="hl opt">(</span>soriano <span class="hl opt">|</span> persiano<span class="hl opt">)</span> <span class="hl opt">|</span> colibri'<span class="hl opt">)</span>
-                  <span class="hl opt">|</span> lo <span class="hl opt">(</span>storione
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> senti <span class="hl opt">&gt;&gt;</span> <span class="hl kwb">M</span><span class="hl opt">: (</span> il <span class="hl opt">(</span>cane<span class="hl opt">|</span> gatto <span class="hl opt">(</span>soriano <span class="hl opt">|</span> persiano<span class="hl opt">) |</span> colibri&#39;<span class="hl opt">)</span>
+                  <span class="hl opt">|</span> lo <span class="hl opt">(</span>storione
                   <span class="hl opt">|</span> sciacallo<span class="hl opt">)</span>
-                  <span class="hl opt">)</span>
-             <span class="hl opt">|</span> <span class="hl kwb">F</span><span class="hl opt">:</span> la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> raganella <span class="hl opt">|</span> <span class="hl kwa">Animale</span><span class="hl opt">)</span>
-            <span class="hl opt">&lt;&lt; ;</span>
+                  <span class="hl opt">)</span>
+             <span class="hl opt">|</span> <span class="hl kwb">F</span><span class="hl opt">:</span> la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> raganella <span class="hl opt">|</span> <span class="hl kwa">Animale</span><span class="hl opt">)</span>
+            <span class="hl opt">&lt;&lt; ;</span>
 
-<span class="hl kwa">Animale</span> <span class="hl opt">::=</span> capra <span class="hl opt">|</span> mucca da <span class="hl opt">(</span>latte <span class="hl opt">|</span> carne<span class="hl opt">) ;</span>
+<span class="hl kwa">Animale</span> <span class="hl opt">::=</span> capra <span class="hl opt">|</span> mucca da <span class="hl opt">(</span>latte <span class="hl opt">|</span> carne<span class="hl opt">) ;</span>
 </code></pre>
 <p>Il simbolo non terminale <code>S</code> viene tradotto in:</p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> senti <span class="hl opt">(</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il cane
-            <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il gatto soriano
-            <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il gatto persiano
-            <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il colibri'
-            <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> lo storione
-            <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> lo sciacallo
-            <span class="hl opt">|</span> <span class="hl kwb">F</span><span class="hl opt">:</span> la pecora
-            <span class="hl opt">|</span> <span class="hl kwb">F</span><span class="hl opt">:</span> la raganella
-            <span class="hl opt">|</span> <span class="hl kwb">F</span><span class="hl opt">:</span> la capra
-            <span class="hl opt">|</span> <span class="hl kwb">F</span><span class="hl opt">:</span> la mucca da <span class="hl opt">(</span>latte <span class="hl opt">|</span> carne<span class="hl opt">)</span>
-            <span class="hl opt">) ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> senti <span class="hl opt">(</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il cane
+            <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il gatto soriano
+            <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il gatto persiano
+            <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il colibri&#39;
+            <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> lo storione
+            <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> lo sciacallo
+            <span class="hl opt">|</span> <span class="hl kwb">F</span><span class="hl opt">:</span> la pecora
+            <span class="hl opt">|</span> <span class="hl kwb">F</span><span class="hl opt">:</span> la raganella
+            <span class="hl opt">|</span> <span class="hl kwb">F</span><span class="hl opt">:</span> la capra
+            <span class="hl opt">|</span> <span class="hl kwb">F</span><span class="hl opt">:</span> la mucca da <span class="hl opt">(</span>latte <span class="hl opt">|</span> carne<span class="hl opt">)</span>
+            <span class="hl opt">) ;</span>
 </code></pre>
 <p>L’unfolding in profondità viene tradotto quindi in una sottoproduzione al cui interno tutto viene appiattito ricorsivamente, ad esclusione delle produzioni associate ai simboli non terminali. Ciò è dovuto al fatto che l’operazione consiste di fatto nell’unfolding semplice di ogni atomo per cui tale operazione abbia senso: mentre quindi anche i simboli non terminali sono soggetti a tale trattamento, le produzioni ad essi associate invece non vengono toccate. Tale politica, sebbene possa apparire di primo acchito ingiustificata, permette invero all’utente di specificare un qualunque simbolo non terminale all’interno di una sottoproduzione tra doppie parentesi acute senza dare luogo inavvertitamente ad una serie enorme di unfolding o, ancor peggio, ad unfolding ciclici (vedi <a href="#sec:unfolding-ricorsivi">sezione 4.1.3</a>).</p>
 <h2 id="sec:folding">2.9 Folding</h2>
 <p>L’unfolding in profondità descritto in <a href="#sec:unfolding-profondita">sezione 2.8</a> può talvolta non essere completamente desiderabile: se nella maggior parte dei casi esso è utilizzato per evitare di specificare esplicitamente l’operatore <code>&gt;</code> per ogni sottoproduzione o simbolo non terminale di una sottoproduzione, non sempre è possibile tuttavia operare ricorsivamente l’unfolding di ogni singolo atomo senza dare luogo ad errori. Il linguaggio supportato dal <em>Polygen</em> permette a tale proposito di <strong>bloccare</strong> l’unfolding (di un atomo per cui tale operazione avrebbe senso) tramite l’operatore prefisso <code>&lt;</code>.</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> senti <span class="hl opt">&gt;&gt;</span> <span class="hl kwb">M</span><span class="hl opt">: (</span> il <span class="hl opt">(</span>cane <span class="hl opt">|</span> gatto <span class="hl opt">&lt;(</span>soriano <span class="hl opt">|</span> persiano<span class="hl opt">) |</span> colibri'<span class="hl opt">)</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> senti <span class="hl opt">&gt;&gt;</span> <span class="hl kwb">M</span><span class="hl opt">: (</span> il <span class="hl opt">(</span>cane <span class="hl opt">|</span> gatto <span class="hl opt">&lt;(</span>soriano <span class="hl opt">|</span> persiano<span class="hl opt">) |</span> colibri&#39;<span class="hl opt">)</span>
                   <span class="hl opt">|</span>lo <span class="hl opt">(</span>storione <span class="hl opt">|</span> sciacallo<span class="hl opt">)</span>
                   <span class="hl opt">)</span>
              <span class="hl opt">|</span> <span class="hl kwb">F</span><span class="hl opt">:</span> la <span class="hl opt">(</span>pecora <span class="hl opt">|</span> raganella<span class="hl opt">)</span>
@@ -590,7 +1176,7 @@ alle 3 in punto, tra 10 minuti, partiro' io solo</code></pre>
 <p>in cui il simbolo non terminale <code>S</code> viene tradotto in:</p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> senti <span class="hl opt">(</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il cane
             <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il gatto <span class="hl opt">(</span>soriano <span class="hl opt">|</span> persiano<span class="hl opt">)</span>
-            <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il colibri'
+            <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> il colibri&#39;
             <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> lo storione
             <span class="hl opt">|</span> <span class="hl kwb">M</span><span class="hl opt">:</span> lo sciacallo
             <span class="hl opt">|</span> <span class="hl kwb">F</span><span class="hl opt">:</span> la pecora
@@ -605,30 +1191,30 @@ alle 3 in punto, tra 10 minuti, partiro' io solo</code></pre>
 <p><strong>ESEMPIO</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> <span class="hl kwa">Frutto</span> e <span class="hl kwa">Frutto</span> <span class="hl opt">;</span>
 
-<span class="hl kwa">Frutto</span> <span class="hl opt">::=</span> la mela <span class="hl opt">|</span> il mango <span class="hl opt">|</span> l'arancia <span class="hl opt">;</span>
+<span class="hl kwa">Frutto</span> <span class="hl opt">::=</span> la mela <span class="hl opt">|</span> il mango <span class="hl opt">|</span> l&#39;arancia <span class="hl opt">;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
 <pre><code>la mela e la mela
 la mela e il mango
-la mela e l'arancia
+la mela e l&#39;arancia
 il mango e la mela
 il mango e il mango
-il mango e l'arancia
-l'arancia e la mela
-l'arancia e il mango
-l'arancia e l'arancia</code></pre>
+il mango e l&#39;arancia
+l&#39;arancia e la mela
+l&#39;arancia e il mango
+l&#39;arancia e l&#39;arancia</code></pre>
 <p>La produzione associata a <code>Frutto</code> <strong>non</strong> subisce una generazione immediata ma viene chiusa insieme all’ambiente corrente secondo le regole di scoping. Ogni occorrenza del simbolo <code>Frutto</code> in un ambiente discendente (od il medesimo, come nell’esempio) provoca la generazione della produzione associata nell’ambiente chiuso assieme ad essa.</p>
 <h3 id="sec:sospensioni">2.10.2 Sospensioni</h3>
 <p>La parola chiave <code>:=</code> introduce una seconda forma di binding detta <em>forte</em> o <em>sospensione</em> o <em>assegnazione</em>.</p>
 <p><strong>ESEMPIO</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> <span class="hl kwa">Frutto</span> e <span class="hl kwa">Frutto</span> <span class="hl opt">;</span>
 
-<span class="hl kwa">Frutto</span> <span class="hl opt">:=</span> la mela <span class="hl opt">|</span> il mango <span class="hl opt">|</span> l'arancia <span class="hl opt">;</span>
+<span class="hl kwa">Frutto</span> <span class="hl opt">:=</span> la mela <span class="hl opt">|</span> il mango <span class="hl opt">|</span> l&#39;arancia <span class="hl opt">;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
 <pre><code>la mela e la mela
 il mango e il mango
-l'arancio e l'arancio</code></pre>
+l&#39;arancio e l&#39;arancio</code></pre>
 <p>La produzione associata a <code>Frutto</code> viene sospesa e chiusa insieme all’ambiente corrente secondo le regole di scoping. Durante la generazione, alla prima occorrenza del simbolo <code>Frutto</code> in un ambiente discendente (od il medesimo, come nell’esempio) la produzione associata viene generata <strong>una sola volta</strong> nell’ambiente chiuso assieme ad essa ed il risultato, immodificabile, della generazione risposto nell’ambiente; ogni successiva occorrenza dello stesso non terminale produrrà sempre lo stesso risultato.</p>
 <p>Si badi che la prima generazione avviene in un ambiente in cui il simbolo non terminale in questione è associato alla chiusura, non ancora ad una sospensione: in tal modo è possibile fare uso di ricorsione anche definendo binding forti.</p>
 <p><strong>ESEMPIO</strong></p>
@@ -735,19 +1321,19 @@ sei una bella ragazza</code></pre>
 <p><strong>ESEMPIO</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> sei un<span class="hl opt">,</span>una  bel<span class="hl opt">,</span>bella ragazz <span class="hl opt">^</span> o<span class="hl opt">,</span>a <span class="hl opt">;</span>
 </code></pre>
-<p>Il risultato è identico a quello dell’esempio più verboso; la differenza consiste nel fatto che non c’è menzione ad alcuna etichetta: come dalle regole di traduzione in <a href="#sec:regole-traduzione">sezione 5.5</a>, ogni produzione che presenta gruppi di atomi separati da <code>,</code> viene tradotta in una sottoproduzione che consiste in tante produzioni separate da  <code>|</code> quanti sono gli atomi nel gruppo e dove ognuna di tali produzioni presenta l’<strong>i</strong>-esimo atomo di ogni gruppo, per ogni <strong>i</strong>. L’esempio di cui sopra viene tradotto in:</p>
+<p>Il risultato è identico a quello dell’esempio più verboso; la differenza consiste nel fatto che non c’è menzione ad alcuna etichetta: come dalle regole di traduzione in <a href="#sec:regole-traduzione">sezione 5.5</a>, ogni produzione che presenta gruppi di atomi separati da <code>,</code> viene tradotta in una sottoproduzione che consiste in tante produzioni separate da <code>|</code> quanti sono gli atomi nel gruppo e dove ognuna di tali produzioni presenta l’<strong>i</strong>-esimo atomo di ogni gruppo, per ogni <strong>i</strong>. L’esempio di cui sopra viene tradotto in:</p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> sei un bel ragazz <span class="hl opt">^</span> o <span class="hl opt">|</span> sei una bella ragazz <span class="hl opt">^</span> a <span class="hl opt">;</span>
 </code></pre>
 <p>L’unico limite di questa caratteristica è ovviamente che tutti i gruppi di una produzione raccolgano <strong>lo stesso numero di atomi</strong>. Si badi inoltre che lo <em>scope</em> di tale vincolo è un singola produzione.</p>
 <p>È importante capire che la generazione posizionale non sostituisce il sistema di label, ma offre un’alternativa sintetica ad esso nei frequenti casi in cui verrebbe utilizzato per declinare termini. Non è difficile immaginare comunque come tale meccanismo possa tornare utile in altri contesti; ad esempio, a livello macroscopico, per specificare relazioni tra porzioni di una frase:</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> non potro'<span class="hl opt">,(</span>ho potuto<span class="hl opt">)</span> mai<span class="hl opt">,_</span> venire da te <span class="hl opt">;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> non potro&#39;<span class="hl opt">,(</span>ho potuto<span class="hl opt">)</span> mai<span class="hl opt">,_</span> venire da te <span class="hl opt">;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
-<pre><code>non potro' mai venire da te
+<pre><code>non potro&#39; mai venire da te
 non ho potuto venire da te</code></pre>
 <h2 id="sec:iterazione">2.13 Iterazione</h2>
-<p>Sebbene grazie ai costrutti di scoping (<a href="#sec:ambienti-scoping">vedi 2.11</a>) sia possibile iterare una produzione in maniera molto semplice e concisa, un apposito costrutto di iterazione analogo alla <a href="https://it.wikipedia.org/wiki/Star_di_Kleene" title="Vedi pagina 'Star di Kleene' su Wikipedia">chiusura di Kleene</a> di EBNF può risultare talvolta assai comodo:</p>
+<p>Sebbene grazie ai costrutti di scoping (<a href="#sec:ambienti-scoping">vedi 2.11</a>) sia possibile iterare una produzione in maniera molto semplice e concisa, un apposito costrutto di iterazione analogo alla <a href="https://it.wikipedia.org/wiki/Star_di_Kleene" title="Vedi pagina &#39;Star di Kleene&#39; su Wikipedia">chiusura di Kleene</a> di EBNF può risultare talvolta assai comodo:</p>
 <p><strong>ESEMPIO</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> una ragazza m<span class="hl opt">^ (</span>o<span class="hl opt">^)+</span> lto carina <span class="hl opt">;</span>
 </code></pre>
@@ -773,7 +1359,7 @@ a b a
 ...</code></pre>
 <p>Si potrebbe ritenere ragionevole che venisse iterata sempre la stessa generazione, ma non è così (come dalle <a href="#sec:regole-traduzione">regole di traduzione 5.5</a>), poiché nella maggior parte dei frangenti il comportamento di cui sopra è preferibile ed inoltre semanticamente affine all’analogo costrutto EBNF. È possibile tuttavia ottenere l’effetto ipotizzato in maniera piuttosto semplice sfruttando il binding forte (vedi <a href="#sec:sospensioni">sezione 2.10.2</a>):</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= (</span><span class="hl kwa">X</span> <span class="hl opt">:=</span> a <span class="hl opt">|</span> b<span class="hl opt">; (</span><span class="hl kwa">X</span><span class="hl opt">)+) ;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= (</span><span class="hl kwa">X</span> <span class="hl opt">:=</span> a <span class="hl opt">|</span> b<span class="hl opt">; (</span><span class="hl kwa">X</span><span class="hl opt">)+) ;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
 <pre><code>a
@@ -876,7 +1462,7 @@ la bella casa</code></pre>
 <p><strong>ESEMPIO</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> <span class="hl kwa">S</span> <span class="hl opt">|</span> <span class="hl kwa">A</span> <span class="hl opt">;</span>
 <span class="hl kwa">A</span> <span class="hl opt">::=</span> <span class="hl kwa">B</span> <span class="hl opt">;</span>
-<span class="hl kwa">B</span> <span class="hl opt">::=</span> <span class="hl kwa">S</span> <span class="hl opt">|</span> <span class="hl kwa">A</span><span class="hl opt">;</span> 
+<span class="hl kwa">B</span> <span class="hl opt">::=</span> <span class="hl kwa">S</span> <span class="hl opt">|</span> <span class="hl kwa">A</span> <span class="hl opt">;</span>
 </code></pre>
 <p>Questa grammatica non potrebbe produrre alcun output, poiché la generazione, indipendentemente da quale simbolo non terminale abbia inizio, incorrerebbe in un ciclo ricorsivo infinito.</p>
 <p>Altri casi più subdoli possono dare luogo a sottocicli:</p>
@@ -884,7 +1470,7 @@ la bella casa</code></pre>
 <span class="hl kwa">A</span> <span class="hl opt">::=</span> <span class="hl kwa">B</span> <span class="hl opt">;</span>
 <span class="hl kwa">B</span> <span class="hl opt">::=</span> <span class="hl kwa">A</span> <span class="hl opt">;</span>
 </code></pre>
-<p>Sebbene in tale frangente la generazione non dia necessariamente luogo ad una ricorsione infinita grazie alla presenza del simbolo terminale <code>a</code>, è virtualmente possibile che la generazione non termini. Casi simili sono segnalati da un messaggio di errore.</p>
+<p>Sebbene in tale frangente la generazione non dia necessariamente luogo ad una ricorsione infinita grazie alla presenza del simbolo terminale <code>a</code>, è virtualmente possibile che la generazione non termini. Casi simili sono segnalati da un messaggio di errore.</p>
 <h3 id="sec:unfolding-ricorsivi">4.1.3 Unfolding ricorsivi</h3>
 <p>Non è lecito prefiggere l’operatore <code>&gt;</code> di unfolding (vedi la <a href="#sec:simboli-non-terminali">sezione 2.4.1</a>) ad un simbolo non terminale che produrrebbe una ricorsione ciclica.</p>
 <p><strong>ESEMPIO</strong></p>
@@ -899,7 +1485,7 @@ la bella casa</code></pre>
 <p><strong>ESEMPIO</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> <span class="hl kwa">A</span> <span class="hl opt">;</span>
 
-<span class="hl kwa">A</span> <span class="hl opt">::=</span> <span class="hl kwa">A</span> <span class="hl opt">^ | _ ;</span>
+<span class="hl kwa">A</span> <span class="hl opt">::=</span> <span class="hl kwa">A</span> <span class="hl opt">^ | _ ;</span>
 </code></pre>
 <p><strong>PRODUCE</strong></p>
 <pre><code>_</code></pre>
@@ -913,7 +1499,7 @@ la bella casa</code></pre>
 </code></pre>
 <p>La cosa vale anche all’interno di scope innestati (vedi <a href="#sec:ambienti-scoping">sezione 2.11</a>):</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= (</span><span class="hl kwa">A</span> <span class="hl opt">::=</span> mela <span class="hl opt">|</span> pera <span class="hl opt">|</span> capra <span class="hl opt">;</span> <span class="hl kwa">A</span> <span class="hl opt">::=</span> mandarino <span class="hl opt">|</span> anguria <span class="hl opt">;</span> il <span class="hl kwa">A</span><span class="hl opt">)</span> <span class="hl opt">;</span> 
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= (</span><span class="hl kwa">A</span> <span class="hl opt">::=</span> mela <span class="hl opt">|</span> pera <span class="hl opt">|</span> capra <span class="hl opt">;</span> <span class="hl kwa">A</span> <span class="hl opt">::=</span> mandarino <span class="hl opt">|</span> anguria <span class="hl opt">;</span> il <span class="hl kwa">A</span><span class="hl opt">) ;</span>
 </code></pre>
 <h3 id="sec:carattere-illegale">4.1.6 Carattere illegale</h3>
 <p>Propriamente si tratta di un errore generato dal lexer nel caso in cui, in fase di analisi sintattica del file sorgente, si imbatta in un carattere che non appartiene ad alcun token riconosciuto — ovvero non definito dalle regole lessicali di cui in <a href="#sec:regole-lessicali">sezione 5.3</a>.</p>
@@ -925,7 +1511,7 @@ la bella casa</code></pre>
 <h3 id="sec:livello-0">4.2.1 Livello 0</h3>
 <p>Per ora non esistono warning appatenenti a questo gruppo.</p>
 <h3 id="sec:livello-1">4.2.2 Livello 1</h3>
-<h4 id="sec:inesistenza-del-simbolo-i">4.2.2.1 Inesistenza del simbolo <code>I</code></h4>
+<h4 id="sec:inesistenza-del-simbolo-i">4.2.2.1 Inesistenza del simbolo ‘I’</h4>
 <p>La mancata definizione del simbolo non terminale <code>I</code> non permette l’utilizzo dell’opzione <code>-info</code> del programma.</p>
 <p>Tale simbolo tipicamente specifica una stringa informativa sulla grammatica (autore, titolo, ecc.) e, sebbene non sia di per sè un errore ometterlo, è buona norma aderire a tale convenzione definendolo opportunamente.</p>
 <h4 id="sec:potenziali-epsilon-produzioni">4.2.2.2 Potenziali epsilon-produzioni</h4>
@@ -939,7 +1525,7 @@ _</code></pre>
 <p>Anche alcune situazioni di selezione distruttiva (<a href="#sec:selezione-distruttiva">vedi 4.2.2.3</a>) portano a potenziali epsilon-produzioni.</p>
 <h4 id="sec:selezione-distruttiva">4.2.2.3 Selezione distruttiva</h4>
 <p>Non è infrequente, nei casi di utilizzo massiccio della selezione (<a href="#sec:etichette-selezione">vedi 2.5.1</a>), perdere il controllo della propagazione delle etichette e scordarsi di attivarle o attivare quelle sbagliate. In tali situazioni il risultato è la distruzione delle produzioni che dipendono dall’attivazione di tali etichette, con conseguenti epsilon-produzioni.</p>
-<p>I casi fortunati in cui tale distruzione riguarda un’intera produzione vengono regolarmente segnalati da un warning (<a href="#sec:potenziali-epsilon-produzioni">4.2.2.2</a>) o un errore (<a href="#sec:epsilon-produzioni">4.1.4</a>), ma nel caso in cui le produzioni distrutte siano all’interno di una sequenza non ci sarebbe modo, tramite solamente l’algoritmo di controllo delle epsilon-produzioni, di rilevare il problema, poiché di fatto non si è in presenza di epsilon-produzioni:</p>
+<p>I casi fortunati in cui tale distruzione riguarda un’intera produzione vengono regolarmente segnalati da un warning (<a href="#sec:potenziali-epsilon-produzioni">4.2.2.2</a>) o un errore (<a href="#sec:epsilon-produzioni">4.1.4</a>), ma nel caso in cui le produzioni distrutte siano all’interno di una sequenza non ci sarebbe modo, tramite solamente l’algoritmo di controllo delle epsilon-produzioni, di rilevare il problema, poiché di fatto non si è in presenza di epsilon-produzioni:</p>
 <p><strong>ESEMPIO</strong></p>
 <pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> a <span class="hl kwa">A</span><span class="hl opt">.</span><span class="hl kwc">z</span> <span class="hl opt">;</span>
 
@@ -952,20 +1538,20 @@ _</code></pre>
 <h4 id="sec:permutazione-inutile">4.2.3.1 Permutazione inutile</h4>
 <p>Nel caso in cui in una sequenza appaia una sola sottoproduzione permutabile (si veda la <a href="#sec:permutazioni">sezione 2.7</a>), non avviene di fatto alcuna permutazione per ovvi motivi.</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> a <span class="hl opt">{</span>b<span class="hl opt">}</span> c <span class="hl opt">;</span> 
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::=</span> a <span class="hl opt">{</span>b<span class="hl opt">}</span> c <span class="hl opt">;</span>
 </code></pre>
 <p>Sebbene una simile situazione non sia propriamente un errore, viene generato un messaggio di warning di bassa gravità.</p>
 <h4 id="sec:unfolding-inutile">4.2.3.2 Unfolding inutile</h4>
 <p>I casi in cui l’operatore di unfolding sia utilizzato in contesti — pur non scorretti — che non darebbero di fatto luogo ad alcun unfolding vengono segnalati da un warning di bassa gravità.</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= &gt;(</span>b c<span class="hl opt">) ;</span> 
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= &gt;(</span>b c<span class="hl opt">) ;</span>
 </code></pre>
 <p>L’unfolding di una sottoproduzione costituita da una singola produzione è un caso di unfolding inutile.</p>
 <h3 id="sec:livello-3">4.2.4 Livello 3</h3>
 <h4 id="sec:unfolding-di-un-simbolo-legato-ad-unassegnazione">4.2.4.1 Unfolding di un simbolo legato ad un’assegnazione</h4>
 <p>L’unfolding di un simbolo legato da un binding forte (vedi <a href="#sec:sospensioni">sezione 2.10.2</a>) è sintatticamente legale e semanticamente corretto; tuttavia potrebbe suscitare qualche perplessità concettuale. Il risultato è in qualche modo simile al concetto di <em>ereditarietà</em>: facendo sì che il preprocessore replichi le produzioni legate al simbolo in questione e le inserisca, appiattendole (vedi <a href="#sec:simboli-non-terminali">sezione 2.4.1</a>), all’interno di un’altra produzione è equivalente a <em>ereditare</em> le produzioni di tale simbolo per fare in modo che possano generare qualcosa di diverso.</p>
 <p><strong>ESEMPIO</strong></p>
-<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= &gt;</span><span class="hl kwa">A A</span> <span class="hl kwa">A</span> <span class="hl opt">;</span>
+<pre class="hl Polygen"><code class="Polygen"><span class="hl kwa">S</span> <span class="hl opt">::= &gt;</span><span class="hl kwa">A A A</span> <span class="hl opt">;</span>
 
 <span class="hl kwa">A</span> <span class="hl opt">:=</span> a <span class="hl opt">|</span> b <span class="hl opt">;</span>
 </code></pre>
@@ -977,8 +1563,8 @@ b b b</code></pre>
 <p>Tale trucco rappresenta però in qualche modo un abuso dell’unfolding e viene pertanto segnalato da un warning a bassissima gravità.</p>
 <h1 id="sec:appendice">5 Appendice</h1>
 <h2 id="sec:sintassi-concreta">5.1 Sintassi concreta</h2>
-<p>Segue la sintassi concreta in notazione <em>EBNF</em> del linguaggio (di <em><a href="https://it.wikipedia.org/wiki/Gerarchia_di_Chomsky" title="Vedi pagina 'Gerarchia di Chomsky' su Wikipedia">tipo-2</a></em>) di definizione di grammatiche interpretato dal <em>Polygen</em> e descritto in questo documento.</p>
-<p>I simboli non terminali associati a produzioni sono interamente maiuscoli; i simboli non terminali associati ad espressioni regolari cominciano per lettera minuscola  (si veda la <a href="#sec:regole-lessicali">sezione 5.3</a>); i simboli terminali sono tra virgolette; <code>S</code> è il simbolo non terminale iniziale.</p>
+<p>Segue la sintassi concreta in notazione <em>EBNF</em> del linguaggio (di <em><a href="https://it.wikipedia.org/wiki/Gerarchia_di_Chomsky" title="Vedi pagina &#39;Gerarchia di Chomsky&#39; su Wikipedia">tipo-2</a></em>) di definizione di grammatiche interpretato dal <em>Polygen</em> e descritto in questo documento.</p>
+<p>I simboli non terminali associati a produzioni sono interamente maiuscoli; i simboli non terminali associati ad espressioni regolari cominciano per lettera minuscola (si veda la <a href="#sec:regole-lessicali">sezione 5.3</a>); i simboli terminali sono tra virgolette; <code>S</code> è il simbolo non terminale iniziale.</p>
 <pre class="hl EBNF"><code class="EBNF"><span class="hl kwa">S</span>      <span class="hl opt">::=</span> <span class="hl kwa">DECLS</span>
 
 <span class="hl kwa">DECL</span>   <span class="hl opt">::=</span> <span class="hl kwa">Nonterm</span> <span class="hl str">&quot;::=&quot;</span> <span class="hl kwa">PRODS</span>
@@ -1042,8 +1628,8 @@ b b b</code></pre>
 </code></pre>
 <h2 id="sec:regole-lessicali">5.3 Regole lessicali</h2>
 <p>Seguono le regole lessicali in notazione di espressioni regolari di <em>tipo-3</em>.</p>
-<pre class="hl EBNF"><code class="EBNF"><span class="hl kwa">Term</span>     <span class="hl opt">::= [</span>a<span class="hl opt">-</span>z 0<span class="hl opt">-</span>9 '<span class="hl opt">][</span>a<span class="hl opt">-</span>z A<span class="hl opt">-</span>Z 0<span class="hl opt">-</span>9 '<span class="hl opt">]*</span>
-          <span class="hl opt">|</span>  <span class="hl str">&quot; [A-Z a-z 0-9 ( ) _ - ? . , ! &amp; # + * / % $ £ ` [ ] { } ~ @ ; : | &lt; &gt; = ^ ' \ ]* &quot;</span>
+<pre class="hl EBNF"><code class="EBNF"><span class="hl kwa">Term</span>     <span class="hl opt">::= [</span>a<span class="hl opt">-</span>z 0<span class="hl opt">-</span>9 &#39;<span class="hl opt">][</span>a<span class="hl opt">-</span>z A<span class="hl opt">-</span>Z 0<span class="hl opt">-</span>9 &#39;<span class="hl opt">]*</span>
+          <span class="hl opt">|</span>  <span class="hl str">&quot; [A-Z a-z 0-9 ( ) _ - ? . , ! &amp; # + * / % $ £ ` [ ] { } ~ @ ; : | &lt; &gt; = ^ &#39; \ ]* &quot;</span>
 
 <span class="hl kwa">Nonterm</span>  <span class="hl opt">::= [</span>A<span class="hl opt">-</span>Z<span class="hl opt">][</span>A<span class="hl opt">-</span>Z a<span class="hl opt">-</span>z 0<span class="hl opt">-</span>9<span class="hl opt">]*</span>
 
@@ -1053,7 +1639,7 @@ b b b</code></pre>
 </code></pre>
 <p>Si badi che anche il carattere di spazio può essere specificato tra virgolette come simbolo terminale.</p>
 <h2 id="sec:sequenze-escape">5.4 Sequenze escape</h2>
-<p>L’espressione regolare <code>Term</code> di cui in <a href="#sec:regole-lessicali">sezione 5.3</a> riconosce tra virgolette il backslash <code>\</code>, che funge da carattere escape. È possibile che un simbolo terminale tra virgolette contenga sequenze escape tra le seguenti:</p>
+<p>L’espressione regolare <code>Term</code> di cui in <a href="#sec:regole-lessicali">sezione 5.3</a> riconosce tra virgolette il backslash <code>\</code>, che funge da carattere escape. È possibile che un simbolo terminale tra virgolette contenga sequenze escape tra le seguenti:</p>
 <table>
 <tbody>
 <tr class="odd">
@@ -1090,8 +1676,8 @@ b b b</code></pre>
 <p>Come riferimento formale riportiamo le regole di traduzione da sintassi concreta a sintassi astratta in ordine di precedenza (dove ovvero la traduzione <em>i</em>-esima ha luogo prima della <em>i+1</em>-esima). Esse rappresentano quanto operato dal parser nel caso di zuccheri sintattici o dal preprocessore altrimenti.</p>
 <table>
 <colgroup>
-<col style="width: 42%"></col>
-<col style="width: 57%"></col>
+<col style="width: 42%" />
+<col style="width: 57%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1153,8 +1739,8 @@ b b b</code></pre>
 <p>In cui valgono le seguenti convenzioni notazionali:</p>
 <table>
 <colgroup>
-<col style="width: 37%"></col>
-<col style="width: 62%"></col>
+<col style="width: 37%" />
+<col style="width: 62%" />
 </colgroup>
 <tbody>
 <tr class="odd">

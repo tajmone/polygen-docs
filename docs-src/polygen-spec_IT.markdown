@@ -1,9 +1,9 @@
 ---
 css: assets/polyman.css
 ############################## DOCUMENT INFO DATA #############################
-# !define( DocVer   )( v1.1.0     ) <- Document version number
+# !define( DocVer   )( v1.1.1     ) <- Document version number
 # !define( PMLVer   )( 1.0        ) <- PML version number
-# !define( DocDate  )( 2018-02-10 ) <- Document last edited (YYYY-MM-DD)
+# !define( DocDate  )( 2020-09-13 ) <- Document last edited (YYYY-MM-DD)
 # !define( PolygenV )( v1.0.6     ) <- Polygen version the doc applies to
 ###############################################################################
 lang: it
@@ -41,7 +41,7 @@ summary: |
     Edizione **!DocVer** (!DocDate) per **PML !PMLVer**, Polygen **!PolygenV**.
 
     :::::: Note :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-    __Copyright © 2002-18 Alvise Spanò.__ Questo documento è soggetto ai termini
+    __Copyright © 2002-2020 Alvise Spanò.__ Questo documento è soggetto ai termini
     della licenza [GNU General Public License] (GPLv2+); o la versione 2 della
     licenza o (a propria scelta) una versione successiva. È lecito redistribuirlo
     o modificarlo secondo i termini della medesima licenza.
@@ -687,11 +687,21 @@ se quindi e' egli
 
 Si badi che la permutabilità di una sottoproduzione si riferisce alla sola sequenza di cui fa parte: specificare sottoproduzioni permutabili in sottosequenze (o altre sottoproduzioni --- permutabili o meno) differenti non consente la permutazione. Si noti la differenza tra i due esempi a venire:
 
+::: Alert :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+**ATTENZIONE!** --- I due esempi che seguono posso sembrare identici di primo acchito, ma differiscono nella parte finale:
+
+- il primo impiega parentesi graffe:
+   + `{{io} {partiro'} solo} ;`
+- il secondo parentesi tonde:
+   + `({io} {partiro'} solo) ;`
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 **ESEMPIO**
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= {tra 10 minuti}^, {alle 3 in punto}^, {{io} {partiro'} solo} ;
+S ::= {tra 10 minuti}^"," {alle 3 in punto}^"," {{io} {partiro'} solo} ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCE**
@@ -715,7 +725,7 @@ partiro' io solo, alle 3 in punto, tra 10 minuti
 
 !Polygen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-S ::= {tra 10 minuti}^, {alle 3 in punto}^, ({io} {partiro'} solo) ;
+S ::= {tra 10 minuti}^"," {alle 3 in punto}^"," ({io} {partiro'} solo) ;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **PRODUCE**
@@ -1369,7 +1379,7 @@ Per ora non esistono warning appatenenti a questo gruppo.
 
 ### Livello 1
 
-#### Inesistenza del simbolo `I`
+#### Inesistenza del simbolo 'I'
 
 La mancata definizione del simbolo non terminale `I` non permette l'utilizzo dell'opzione `-info` del programma.
 
@@ -1558,5 +1568,20 @@ INCLUDE TABLES: 4.1.5 Regole di traduzione
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                                   CHANGELOG
 ==============================================================================
+v1.1.1 (2020-09-13) | PML 1.0 | Polygen v1.0.6
+
+  Aggiornamento di manutenzione con qualche miglioria.
+  Ringraziamo Riccardo Bastianini (@RBastianini) per tutto l'aiuto datoci in
+  questa nuove edizione.
+
+  * Rimossi degli spazi unificatori (xA0) dal documento sorgente.
+  * Ritroccati due esempi in "§2.7 Permutazioni". (Issue #35)
+------------------------------------------------------------------------------
 v1.1.0 (2018-02-10) | PML 1.0 | Polygen v1.0.6
+
+  Prima edizione della nuova versione in formato Markdown.
+
+  * Convertito il documento originale dallo HTML a Markdown.
+  * Rivisto il testo assieme ad Alvise Spanò (@alvisespano) e apportate lievi
+    migliorie.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
